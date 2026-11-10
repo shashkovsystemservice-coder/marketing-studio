@@ -15,6 +15,7 @@ Standalone website for the Marketing Studio project.
 - Root Directory: repository root (`./`)
 - Framework Preset: `Other`
 - Git integration: deploy on every push to `main`.
+- Vercel Web Analytics: enabled; static HTML pages load `/_vercel/insights/script.js`.
 
 ## Environment variables
 
