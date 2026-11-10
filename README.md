@@ -14,6 +14,7 @@ Standalone website for the Marketing Studio project.
 - Production branch: `main`
 - Root Directory: repository root (`./`)
 - Framework Preset: `Other`
+- Git integration: deploy on every push to `main`.
 
 ## Environment variables
 
