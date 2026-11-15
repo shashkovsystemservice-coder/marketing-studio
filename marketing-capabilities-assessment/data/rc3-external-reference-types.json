@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ENT.ORG.001",
+    "kind": "external_entity_reference",
+    "meaning": "Организация как носитель ролей, ресурсов или способностей",
+    "evidence": "Встречается в RC3 Domain/Range; не является самостоятельной записью T-ID",
+    "resolution": "reference_only",
+    "canonical_equivalence": null
+  },
+  {
+    "id": "FLOW.PHYSICAL",
+    "kind": "flow_type",
+    "meaning": "Физический поток",
+    "evidence": "Используется в RC3 REL.025 и REL.045; рядом существуют территориальные элементы T9.11–T9.14, но тождество не доказано",
+    "resolution": "reference_only",
+    "canonical_equivalence": null
+  },
+  {
+    "id": "FLOW.INFORMATION",
+    "kind": "flow_type",
+    "meaning": "Информационный поток",
+    "evidence": "Используется в RC3 REL.025 и REL.045; рядом существуют территориальные элементы T9.11–T9.14, но тождество не доказано",
+    "resolution": "reference_only",
+    "canonical_equivalence": null
+  },
+  {
+    "id": "FLOW.RIGHTS",
+    "kind": "flow_type",
+    "meaning": "Поток прав/собственности",
+    "evidence": "Используется в RC3 REL.025 и REL.045; рядом существуют территориальные элементы T9.11–T9.14, но тождество не доказано",
+    "resolution": "reference_only",
+    "canonical_equivalence": null
+  },
+  {
+    "id": "FLOW.PAYMENT",
+    "kind": "flow_type",
+    "meaning": "Платёжный поток",
+    "evidence": "Используется в RC3 REL.025 и REL.045; рядом существуют территориальные элементы T9.11–T9.14, но тождество не доказано",
+    "resolution": "reference_only",
+    "canonical_equivalence": null
+  },
+  {
+    "id": "TemporalInterval",
+    "kind": "value_type",
+    "meaning": "Временной интервал",
+    "evidence": "Range REL.N03; тип значения, не самостоятельный элемент T",
+    "resolution": "reference_only",
+    "canonical_equivalence": null
+  },
+  {
+    "id": "MeasurementUnit",
+    "kind": "value_type",
+    "meaning": "Единица измерения",
+    "evidence": "Range REL.N13; тип значения, не самостоятельный элемент T",
+    "resolution": "reference_only",
+    "canonical_equivalence": null
+  },
+  {
+    "id": "Method",
+    "kind": "value_type",
+    "meaning": "Метод получения результата",
+    "evidence": "Range REL.N14; тип значения, не самостоятельный элемент T",
+    "resolution": "reference_only",
+    "canonical_equivalence": null
+  }
+]
