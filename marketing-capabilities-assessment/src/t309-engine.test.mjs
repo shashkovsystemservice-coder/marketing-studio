@@ -13,4 +13,4 @@ assert.equal(nextT309({}),'Q-T309-01');
 assert.equal(nextT309({'Q-T309-01':'documented'}),'Q-T309-02');
 assert.equal(nextT309({'Q-T309-01':'unknown'}),null);
 assert.equal(nextT309({'Q-T309-01':'documented','Q-T309-02':'decision_maker','Q-T309-03':'interviews'}),'Q-T309-04');
-console.log('8 checks passed (5 scenario cases + 3 routing checks)');
+console.log('9 checks passed (5 scenario cases + 4 routing checks)');
