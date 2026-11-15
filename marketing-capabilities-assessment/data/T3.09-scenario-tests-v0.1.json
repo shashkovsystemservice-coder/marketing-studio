@@ -1,0 +1,97 @@
+{
+  "node_id": "T3.09",
+  "spec_version": "0.1-draft",
+  "testing_method": "manual logic walkthrough, not user study or executable test",
+  "cases": [
+    {
+      "id": "A",
+      "name": "Бездумно положительные ответы",
+      "a": [
+        "documented",
+        "decision_maker",
+        "internal_opinion",
+        "no_example",
+        "not_reviewed"
+      ],
+      "expected": "Заявление о знании не подтверждено; отсутствие примера применения и проверки актуальности",
+      "flags": [
+        "weak_evidence_for_documented_claim",
+        "application_not_demonstrated",
+        "recency_not_demonstrated"
+      ],
+      "next_question": "Попросить независимый источник критериев выбора",
+      "verdict": "No numeric capability score assigned; verification pending"
+    },
+    {
+      "id": "B",
+      "name": "Последовательные подтверждаемые ответы",
+      "a": [
+        "documented",
+        "decision_maker",
+        "interviews",
+        "documented_example",
+        "dated_evidence"
+      ],
+      "expected": "Согласованный самоотчёт с потенциальными доказательствами, но не верифицированная способность",
+      "flags": [],
+      "next_question": "Запросить источник для проверки, не повышая уровень автоматически",
+      "verdict": "No numeric capability score assigned; verification pending"
+    },
+    {
+      "id": "C",
+      "name": "Не знаю",
+      "a": [
+        "unknown",
+        "unknown",
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "expected": "Недостаточно данных, не нулевая способность",
+      "flags": [
+        "insufficient_information"
+      ],
+      "next_question": "Определить сегмент и роль покупателя",
+      "verdict": "No numeric capability score assigned; verification pending"
+    },
+    {
+      "id": "D",
+      "name": "Противоречие",
+      "a": [
+        "not_identified",
+        "decision_maker",
+        "won_lost_deals",
+        "documented_example",
+        "dated_evidence"
+      ],
+      "expected": "Требуется уточнить, что именно не идентифицировано",
+      "flags": [
+        "apparent_contradiction"
+      ],
+      "next_question": "Уточнить, относится ли пример к тому же сегменту и периоду",
+      "verdict": "No numeric capability score assigned; verification pending"
+    },
+    {
+      "id": "E",
+      "name": "Гипотеза с практическим примером",
+      "a": [
+        "hypothesis",
+        "user",
+        "observed_behavior",
+        "recalled_example",
+        "informal_review"
+      ],
+      "expected": "Неоднородные свидетельства, запросить контекст и уточнить статус гипотезы",
+      "flags": [],
+      "next_question": "Запросить источник для проверки, не повышая уровень автоматически",
+      "verdict": "No numeric capability score assigned; verification pending"
+    }
+  ],
+  "findings": [
+    "The current schema has no machine-readable branching predicates; scenarios are manually evaluated.",
+    "Evidence strength must not be inferred from answer positivity.",
+    "A contradiction may reflect different scopes; ask context before flagging inconsistency.",
+    "No scoring rule or aggregation can be validated until explicit measurement model exists."
+  ],
+  "acceptance_status": "partial: diagnostic behavior described, not executable"
+}
