@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {evaluate,TERRITORIES} from './adaptive-router.mjs';
+test('13 canonical axes',()=>assert.equal(TERRITORIES.length,13));
+test('unknown is not zero',()=>assert.deepEqual(evaluate({territory:'T8',answer:'unknown',scope:'main product'}).score,null));
+test('NA needs reason',()=>assert.equal(evaluate({territory:'T10',answer:'na',scope:'main product'}).field,'naReason'));
+test('NA with reason stops without score',()=>assert.equal(evaluate({territory:'T10',answer:'na',scope:'main product',naReason:'no webinars needed'}).status,'not_applicable'));
+test('no is not numeric zero',()=>assert.equal(evaluate({territory:'T10',answer:'no',scope:'main product'}).score,null));
+test('scope is required',()=>assert.equal(evaluate({territory:'T3',answer:'yes'}).field,'scope'));
+test('yes requires basis',()=>assert.equal(evaluate({territory:'T3',answer:'yes',scope:'B2B segment'}).field,'basis'));
+test('yes requires decision use after basis',()=>assert.equal(evaluate({territory:'T3',answer:'yes',scope:'B2B segment',basis:'direct'}).field,'decisionUse'));
+test('yes terminates with no score',()=>assert.equal(evaluate({territory:'T3',answer:'yes',scope:'B2B segment',basis:'direct',decisionUse:'changed offer'}).score,null));
+test('partial needs clarification',()=>assert.equal(evaluate({territory:'T2',answer:'partial',scope:'B2B segment'}).field,'basis'));
+test('followup limit',()=>assert.equal(evaluate({territory:'T2',answer:'partial',scope:'B2B segment',followupCount:2}).type,'stop'));
+test('invalid territory fails',()=>assert.throws(()=>evaluate({territory:'T14',answer:'yes',scope:'all'})));
+test('alias unknown',()=>assert.equal(evaluate({territory:'T8',answer:'dont_know',scope:'all'}).status,'unknown'));
