@@ -25,7 +25,12 @@
     "external_references": [
       "ENT.ORG.001"
     ],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "ENT.ORG.001"
+    ],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.002",
@@ -40,7 +45,10 @@
     "raw_domain": "T2.02–T2.04",
     "raw_range": "T3.01",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.005",
@@ -56,7 +64,10 @@
     "raw_domain": "T2.06–T2.09",
     "raw_range": "T3.09",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.006",
@@ -73,7 +84,10 @@
     "raw_domain": "T2.01–T2.05",
     "raw_range": "T3.08",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.007",
@@ -93,7 +107,10 @@
     "raw_domain": "T4.02",
     "raw_range": "T2.06–T2.09;T3.01;T6.08–T6.10",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.008",
@@ -109,7 +126,10 @@
     "raw_domain": "T4.06 / T4.07 / T4.03",
     "raw_range": "T4.01 / T4.02",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.010",
@@ -122,7 +142,10 @@
     "raw_domain": "T2.12",
     "raw_range": "T2.12",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.011",
@@ -138,7 +161,12 @@
     "external_references": [
       "ENT.ORG.001"
     ],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "ENT.ORG.001"
+    ],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.012",
@@ -273,7 +301,12 @@
     "external_references": [
       "ENT.ORG.001"
     ],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "ENT.ORG.001"
+    ],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.014",
@@ -291,7 +324,10 @@
     "raw_domain": "T6.06 / T7.03",
     "raw_range": "T3.01–T3.05",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.015",
@@ -314,7 +350,10 @@
     "raw_domain": "T6.06",
     "raw_range": "T6.07–T6.17",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.016",
@@ -329,7 +368,12 @@
     "external_references": [
       "ENT.ORG.001"
     ],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "ENT.ORG.001"
+    ],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.017",
@@ -342,7 +386,10 @@
     "raw_domain": "T7.01",
     "raw_range": "T7.02",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.021",
@@ -361,7 +408,10 @@
     "raw_domain": "T6.07–T6.13",
     "raw_range": "T8.01",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.022",
@@ -380,7 +430,12 @@
     "raw_domain": "T2.06–T2.13; T6.07",
     "raw_range": "P.13",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "P.13"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.023",
@@ -389,7 +444,16 @@
     "raw_domain": "P.04 / P.08 / P.13",
     "raw_range": "E.01–E.05",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "P.04",
+      "P.08",
+      "P.13",
+      "E.01",
+      "E.05"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.024",
@@ -411,7 +475,10 @@
     "raw_domain": "T6.07",
     "raw_range": "T9.01–T9.10",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.025",
@@ -426,7 +493,15 @@
     "raw_domain": "T9.01–T9.05",
     "raw_range": "FLOW.PHYSICAL; FLOW.INFORMATION; FLOW.RIGHTS; FLOW.PAYMENT",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "FLOW.PHYSICAL",
+      "FLOW.INFORMATION",
+      "FLOW.RIGHTS",
+      "FLOW.PAYMENT"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.026",
@@ -439,7 +514,10 @@
     "raw_domain": "T10.01",
     "raw_range": "T10.02",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.027",
@@ -452,7 +530,10 @@
     "raw_domain": "T10.02",
     "raw_range": "T10.03",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.028",
@@ -466,7 +547,10 @@
     "raw_domain": "T10.02",
     "raw_range": "T10.04–T10.05",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.030",
@@ -481,7 +565,12 @@
     "external_references": [
       "ENT.ORG.001"
     ],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "ENT.ORG.001"
+    ],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.031",
@@ -499,7 +588,10 @@
     "raw_domain": "T2.06–T2.08",
     "raw_range": "T11.09–T11.12",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.032",
@@ -514,7 +606,10 @@
     "raw_domain": "T2.06–T2.08",
     "raw_range": "T11.07",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.033",
@@ -533,7 +628,12 @@
     "external_references": [
       "ENT.ORG.001"
     ],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "ENT.ORG.001"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.035",
@@ -551,7 +651,12 @@
     "external_references": [
       "ENT.ORG.001"
     ],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "ENT.ORG.001"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.036",
@@ -564,7 +669,15 @@
     "raw_domain": "P.01 / P.24 / E.01–E.07",
     "raw_range": "T13.01–T13.03",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "P.01",
+      "P.24",
+      "E.01",
+      "E.07"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.038",
@@ -577,7 +690,13 @@
     "raw_domain": "T13.04–T13.06",
     "raw_range": "D.01–D.09",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "D.01",
+      "D.09"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.039",
@@ -594,7 +713,21 @@
     "raw_domain": "M.01–M.05",
     "raw_range": "T4.12–T4.14; T5.06–T5.09; S.01–S.08; A.01–A.05; R.01–R.08; F.01–F.03",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "M.01",
+      "M.05",
+      "S.01",
+      "S.08",
+      "A.01",
+      "A.05",
+      "R.01",
+      "R.08",
+      "F.01",
+      "F.03"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.041",
@@ -610,7 +743,12 @@
     "raw_domain": "T8.01–T8.06",
     "raw_range": "P.13",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "P.13"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.042",
@@ -619,7 +757,13 @@
     "raw_domain": "P.09",
     "raw_range": "E.07",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "P.09",
+      "E.07"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.045",
@@ -628,7 +772,16 @@
     "raw_domain": "P.13",
     "raw_range": "FLOW.PHYSICAL; FLOW.INFORMATION; FLOW.RIGHTS; FLOW.PAYMENT",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "P.13",
+      "FLOW.PHYSICAL",
+      "FLOW.INFORMATION",
+      "FLOW.RIGHTS",
+      "FLOW.PAYMENT"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N01",
@@ -637,7 +790,18 @@
     "raw_domain": "OT.03;OT.07;OT.08;OT.09",
     "raw_range": "OT.01;OT.02;OT.11",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.03",
+      "OT.07",
+      "OT.08",
+      "OT.09",
+      "OT.01",
+      "OT.02",
+      "OT.11"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N02",
@@ -646,7 +810,14 @@
     "raw_domain": "OT.03;OT.04",
     "raw_range": "T;E;P;OT.11",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.03",
+      "OT.04",
+      "OT.11"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N03",
@@ -659,7 +830,16 @@
     "raw_domain": "OT.03;OT.04;OT.07;OT.08;T6.07;T8.01;T8.06",
     "raw_range": "TemporalInterval",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.03",
+      "OT.04",
+      "OT.07",
+      "OT.08",
+      "TemporalInterval"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N04",
@@ -670,7 +850,12 @@
     "raw_domain": "T6.07",
     "raw_range": "OT.02",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.02"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N05",
@@ -685,7 +870,10 @@
     "raw_domain": "T6.07",
     "raw_range": "T6.08;T6.09;T6.10",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.N06",
@@ -700,7 +888,10 @@
     "raw_domain": "T6.07",
     "raw_range": "T8.01;T8.03;T8.04",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.N07",
@@ -709,7 +900,17 @@
     "raw_domain": "OT.04;OT.05;OT.06;OT.11",
     "raw_range": "OT.02;OT.03",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.04",
+      "OT.05",
+      "OT.06",
+      "OT.11",
+      "OT.02",
+      "OT.03"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N08",
@@ -721,7 +922,14 @@
     "raw_domain": "E.06;E.07;E.08",
     "raw_range": "T3.11;T9.09",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "E.06",
+      "E.07",
+      "E.08"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N09",
@@ -730,7 +938,14 @@
     "raw_domain": "OT.05;OT.06",
     "raw_range": "OT.07",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.05",
+      "OT.06",
+      "OT.07"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N10",
@@ -739,7 +954,21 @@
     "raw_domain": "OT.10;OT.13",
     "raw_range": "OT.01;OT.02;OT.04;OT.05;OT.06;OT.07;OT.08;OT.11",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.10",
+      "OT.13",
+      "OT.01",
+      "OT.02",
+      "OT.04",
+      "OT.05",
+      "OT.06",
+      "OT.07",
+      "OT.08",
+      "OT.11"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N11",
@@ -748,7 +977,15 @@
     "raw_domain": "OT.10;OT.13;OT.05",
     "raw_range": "OT.06",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.10",
+      "OT.13",
+      "OT.05",
+      "OT.06"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N12",
@@ -764,7 +1001,13 @@
     "raw_domain": "OT.10;OT.13",
     "raw_range": "T13.01–T13.06;OT.10",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.10",
+      "OT.13"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N13",
@@ -773,7 +1016,14 @@
     "raw_domain": "M.00;OT.13",
     "raw_range": "MeasurementUnit",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "M.00",
+      "OT.13",
+      "MeasurementUnit"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N14",
@@ -782,7 +1032,14 @@
     "raw_domain": "M.00;OT.13",
     "raw_range": "Method",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "M.00",
+      "OT.13",
+      "Method"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N15",
@@ -791,7 +1048,16 @@
     "raw_domain": "OT.11",
     "raw_range": "OT.01;OT.02;OT.04;OT.10;OT.11",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "OT.11",
+      "OT.01",
+      "OT.02",
+      "OT.04",
+      "OT.10"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   },
   {
     "relation_id": "REL.N16",
@@ -807,7 +1073,13 @@
     "raw_domain": "T11.17",
     "raw_range": "T11.09–T11.12;E.06;E.07",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "E.06",
+      "E.07"
+    ],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.N17",
@@ -824,7 +1096,10 @@
     "raw_domain": "T13.11",
     "raw_range": "T2.01–T2.05",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [],
+    "review_class": "rc3_ids_expanded_review_required",
+    "interpretation_note": "Раскрытие T-ID предварительное; направление и применимость проверяются отдельно."
   },
   {
     "relation_id": "REL.N18",
@@ -833,6 +1108,12 @@
     "raw_domain": "P.13",
     "raw_range": "E.09",
     "external_references": [],
-    "review_status": "machine_expansion_needs_review"
+    "review_status": "pending_semantic_validation",
+    "external_reference_tokens": [
+      "P.13",
+      "E.09"
+    ],
+    "review_class": "external_ontology_reference_not_rc3_element",
+    "interpretation_note": "Отсутствие T-ID на стороне отношения не означает отсутствие связи: ссылка может вести к внешней процессной, событийной, онтологической или метрической сущности."
   }
 ]
