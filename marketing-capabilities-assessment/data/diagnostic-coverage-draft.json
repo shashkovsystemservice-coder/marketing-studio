@@ -8,7 +8,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -24,7 +26,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -40,7 +44,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -56,7 +62,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -72,7 +80,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -88,7 +98,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -104,7 +116,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -120,7 +134,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -136,7 +152,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -152,7 +170,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -168,7 +188,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -184,7 +206,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -200,7 +224,9 @@
     "assessment_scope": "Внешняя среда",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -264,7 +290,11 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.006",
+      "REL.012",
+      "REL.N17"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -280,7 +310,13 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.002",
+      "REL.006",
+      "REL.012",
+      "REL.N17"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -296,7 +332,13 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.002",
+      "REL.006",
+      "REL.012",
+      "REL.N17"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -312,7 +354,13 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.002",
+      "REL.006",
+      "REL.012",
+      "REL.N17"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -328,7 +376,12 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.006",
+      "REL.012",
+      "REL.N17"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -344,7 +397,15 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.005",
+      "REL.007",
+      "REL.022",
+      "REL.030",
+      "REL.031",
+      "REL.032"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -360,7 +421,14 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.005",
+      "REL.007",
+      "REL.022",
+      "REL.031",
+      "REL.032"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -376,7 +444,14 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.005",
+      "REL.007",
+      "REL.022",
+      "REL.031",
+      "REL.032"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -392,7 +467,12 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.005",
+      "REL.007",
+      "REL.022"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -408,7 +488,10 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.022"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -424,7 +507,10 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.022"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -440,7 +526,11 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.010",
+      "REL.022"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -456,7 +546,10 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001",
+      "REL.022"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -472,7 +565,9 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -488,7 +583,9 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -504,7 +601,9 @@
     "assessment_scope": "Акторы и роли",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.001"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -520,7 +619,11 @@
     "assessment_scope": "Клиент и покупательская система",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.002",
+      "REL.007",
+      "REL.014"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -536,7 +639,9 @@
     "assessment_scope": "Клиент и покупательская система",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.014"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -552,7 +657,9 @@
     "assessment_scope": "Клиент и покупательская система",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.014"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -568,7 +675,9 @@
     "assessment_scope": "Клиент и покупательская система",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.014"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -584,7 +693,9 @@
     "assessment_scope": "Клиент и покупательская система",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.014"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -632,7 +743,9 @@
     "assessment_scope": "Клиент и покупательская система",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.006"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -648,7 +761,9 @@
     "assessment_scope": "Клиент и покупательская система",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.005"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -680,7 +795,9 @@
     "assessment_scope": "Клиент и покупательская система",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.N08"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -696,7 +813,10 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.008",
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -712,7 +832,11 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.007",
+      "REL.008",
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -728,7 +852,10 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.008",
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -744,7 +871,9 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -760,7 +889,9 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -776,7 +907,10 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.008",
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -792,7 +926,10 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.008",
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -872,7 +1009,9 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.039"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -888,7 +1027,9 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.039"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -904,7 +1045,9 @@
     "assessment_scope": "Рынок и спрос",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.039"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -968,7 +1111,9 @@
     "assessment_scope": "Конкуренция",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -984,7 +1129,9 @@
     "assessment_scope": "Конкуренция",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1016,7 +1163,10 @@
     "assessment_scope": "Конкуренция",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.011",
+      "REL.039"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1032,7 +1182,10 @@
     "assessment_scope": "Конкуренция",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.039"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1048,7 +1201,10 @@
     "assessment_scope": "Конкуренция",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.039"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1064,7 +1220,10 @@
     "assessment_scope": "Конкуренция",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.039"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1208,7 +1367,10 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.014",
+      "REL.015"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1224,7 +1386,19 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.011",
+      "REL.012",
+      "REL.015",
+      "REL.016",
+      "REL.021",
+      "REL.022",
+      "REL.024",
+      "REL.N03",
+      "REL.N04",
+      "REL.N05",
+      "REL.N06"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1240,7 +1414,13 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.007",
+      "REL.012",
+      "REL.015",
+      "REL.021",
+      "REL.N05"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1256,7 +1436,13 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.007",
+      "REL.012",
+      "REL.015",
+      "REL.021",
+      "REL.N05"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1272,7 +1458,13 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.007",
+      "REL.012",
+      "REL.015",
+      "REL.021",
+      "REL.N05"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1288,7 +1480,11 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.015",
+      "REL.021"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1304,7 +1500,11 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.015",
+      "REL.021"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1320,7 +1520,11 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.015",
+      "REL.021"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1336,7 +1540,10 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.015"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1352,7 +1559,10 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.015"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1368,7 +1578,10 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.015"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1384,7 +1597,10 @@
     "assessment_scope": "Ценность и предложение",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.015"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1400,7 +1616,12 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.011",
+      "REL.012",
+      "REL.016",
+      "REL.017"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1416,7 +1637,10 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.017"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1432,7 +1656,10 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.014"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1448,7 +1675,9 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1464,7 +1693,9 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1480,7 +1711,9 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1496,7 +1729,9 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1512,7 +1747,9 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1528,7 +1765,9 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1544,7 +1783,9 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1560,7 +1801,9 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1576,7 +1819,9 @@
     "assessment_scope": "Бренд",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1592,7 +1837,13 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.021",
+      "REL.041",
+      "REL.N03",
+      "REL.N06"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1608,7 +1859,10 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.041"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1624,7 +1878,11 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.041",
+      "REL.N06"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1640,7 +1898,11 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.041",
+      "REL.N06"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1656,7 +1918,10 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.041"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1672,7 +1937,11 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.041",
+      "REL.N03"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1688,7 +1957,9 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1704,7 +1975,9 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1720,7 +1993,9 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1736,7 +2011,9 @@
     "assessment_scope": "Цена и обмен",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1752,7 +2029,11 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024",
+      "REL.025"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1768,7 +2049,11 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024",
+      "REL.025"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1784,7 +2069,11 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024",
+      "REL.025"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1800,7 +2089,11 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024",
+      "REL.025"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1816,7 +2109,11 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024",
+      "REL.025"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1832,7 +2129,10 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1848,7 +2148,10 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1864,7 +2167,10 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1880,7 +2186,11 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024",
+      "REL.N08"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -1896,7 +2206,10 @@
     "assessment_scope": "Каналы и доступ",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.024"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2008,7 +2321,10 @@
     "assessment_scope": "Коммуникации",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.026"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2024,7 +2340,12 @@
     "assessment_scope": "Коммуникации",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.026",
+      "REL.027",
+      "REL.028"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2040,7 +2361,10 @@
     "assessment_scope": "Коммуникации",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.027"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2056,7 +2380,10 @@
     "assessment_scope": "Коммуникации",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.028"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2072,7 +2399,10 @@
     "assessment_scope": "Коммуникации",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.028"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2232,7 +2562,10 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.030"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2248,7 +2581,9 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2264,7 +2599,9 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2280,7 +2617,9 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2296,7 +2635,9 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2312,7 +2653,9 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2328,7 +2671,10 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.032"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2344,7 +2690,9 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2360,7 +2708,10 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.031",
+      "REL.N16"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2376,7 +2727,10 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.031",
+      "REL.N16"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2392,7 +2746,10 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.031",
+      "REL.N16"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2408,7 +2765,10 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.031",
+      "REL.N16"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2488,7 +2848,9 @@
     "assessment_scope": "Отношения, сервис и опыт",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.N16"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2520,7 +2882,9 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2536,7 +2900,9 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2552,7 +2918,9 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2568,7 +2936,9 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2584,7 +2954,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.033"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2600,7 +2973,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.033"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2616,7 +2992,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.033"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2632,7 +3011,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.033"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2648,7 +3030,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.033"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2664,7 +3049,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.033"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2680,7 +3068,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.033"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2696,7 +3087,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.035"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2712,7 +3106,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.035"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2728,7 +3125,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.035"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2744,7 +3144,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.035"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2760,7 +3163,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.035"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2776,7 +3182,10 @@
     "assessment_scope": "Ресурсы и способности",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.035"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2792,7 +3201,11 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.036",
+      "REL.N12"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2808,7 +3221,11 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.036",
+      "REL.N12"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2824,7 +3241,11 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.036",
+      "REL.N12"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2840,7 +3261,11 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.038",
+      "REL.N12"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2856,7 +3281,11 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.038",
+      "REL.N12"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2872,7 +3301,11 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012",
+      "REL.038",
+      "REL.N12"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2888,7 +3321,9 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2904,7 +3339,9 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2920,7 +3357,9 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2936,7 +3375,9 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.012"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
@@ -2952,7 +3393,9 @@
     "assessment_scope": "Информация и знание",
     "candidate_construct": "Способность компании распознавать, исследовать, учитывать и/или управлять данным объектом в применимом контексте; конкретизация обязательна",
     "question_ids": [],
-    "relation_ids": [],
+    "relation_ids": [
+      "REL.N17"
+    ],
     "evidence_rule": null,
     "scoring_rule": null,
     "applicability_rule": null,
