@@ -1,0 +1,176 @@
+{
+  "version": "0.1-draft",
+  "status": "research_not_validated",
+  "source": "RC3",
+  "principles": [
+    "Every question belongs to a diagnostic criterion linked to an RC3 element",
+    "Capability and evidence strength are separate dimensions",
+    "Unknown and not applicable are not zero",
+    "Cross-element relations can trigger checks but cannot transfer scores"
+  ],
+  "nodes": [
+    {
+      "id": "T3.09",
+      "name": "Критерий выбора",
+      "construct": "Способность организации устанавливать, проверять и использовать реальные критерии выбора конкретных покупателей",
+      "context_required": [
+        "segment",
+        "product_or_offer",
+        "time_period"
+      ],
+      "criteria": [
+        {
+          "id": "T3.09.C1",
+          "name": "Выявление",
+          "observable": "Компания может назвать критерии выбора конкретного сегмента и указать их источник",
+          "question_ids": [
+            "Q-T309-01",
+            "Q-T309-02"
+          ]
+        },
+        {
+          "id": "T3.09.C2",
+          "name": "Подтверждение",
+          "observable": "Критерии проверены на данных о покупках, интервью или наблюдениях",
+          "question_ids": [
+            "Q-T309-03"
+          ]
+        },
+        {
+          "id": "T3.09.C3",
+          "name": "Использование",
+          "observable": "Критерии влияют на предложения, сообщения или решения компании",
+          "question_ids": [
+            "Q-T309-04"
+          ]
+        },
+        {
+          "id": "T3.09.C4",
+          "name": "Актуализация",
+          "observable": "Компания пересматривает критерии при изменении сегмента или новых данных",
+          "question_ids": [
+            "Q-T309-05"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "id": "REL.005",
+          "purpose": "Verify that criteria are attributable to a specified buyer role, not automatically to every buyer"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-T309-01",
+      "criterion_id": "T3.09.C1",
+      "prompt": "Для выбранного сегмента известны ли вам основные критерии, по которым покупатели выбирают между предложениями?",
+      "type": "single_choice",
+      "options": [
+        "documented",
+        "hypothesis",
+        "not_identified",
+        "unknown"
+      ],
+      "evidence_role": "self_report"
+    },
+    {
+      "id": "Q-T309-02",
+      "criterion_id": "T3.09.C1",
+      "prompt": "К какой роли покупателя относятся эти критерии?",
+      "type": "multi_choice",
+      "options": [
+        "decision_maker",
+        "user",
+        "payer",
+        "other",
+        "unknown"
+      ],
+      "evidence_role": "scope_check"
+    },
+    {
+      "id": "Q-T309-03",
+      "criterion_id": "T3.09.C2",
+      "prompt": "Какими источниками подтверждаются эти критерии?",
+      "type": "multi_choice",
+      "options": [
+        "interviews",
+        "won_lost_deals",
+        "observed_behavior",
+        "internal_opinion",
+        "none",
+        "unknown"
+      ],
+      "evidence_role": "evidence_claim_not_verified"
+    },
+    {
+      "id": "Q-T309-04",
+      "criterion_id": "T3.09.C3",
+      "prompt": "Можете ли вы привести конкретное решение, изменённое на основании этих критериев?",
+      "type": "single_choice",
+      "options": [
+        "documented_example",
+        "recalled_example",
+        "no_example",
+        "unknown"
+      ],
+      "evidence_role": "application_check"
+    },
+    {
+      "id": "Q-T309-05",
+      "criterion_id": "T3.09.C4",
+      "prompt": "Когда и на основании чего вы последний раз пересматривали эти критерии?",
+      "type": "single_choice",
+      "options": [
+        "dated_evidence",
+        "informal_review",
+        "not_reviewed",
+        "unknown"
+      ],
+      "evidence_role": "recency_check"
+    }
+  ],
+  "assessment": {
+    "capability_state": [
+      "not_assessed",
+      "not_demonstrated",
+      "hypothesized",
+      "practiced_self_reported",
+      "practiced_evidence_reviewed"
+    ],
+    "evidence_state": [
+      "none",
+      "assertion_only",
+      "source_named",
+      "artifact_supplied",
+      "artifact_reviewed"
+    ],
+    "applicability": [
+      "applicable",
+      "not_applicable_with_reason",
+      "undetermined"
+    ],
+    "consistency": [
+      "not_checked",
+      "consistent",
+      "needs_clarification"
+    ],
+    "scoring_rule": null,
+    "aggregate_rule": null
+  },
+  "routing": [
+    {
+      "when": "Q-T309-01 = unknown or not_identified",
+      "action": "do_not_assume_failure; ask whether a segment and buyer role are known before deeper questions"
+    },
+    {
+      "when": "Q-T309-01 = documented",
+      "action": "request source, scope, example and recency; no automatic positive score"
+    },
+    {
+      "when": "answers conflict across roles or time",
+      "action": "ask clarification before interpreting"
+    }
+  ]
+}
