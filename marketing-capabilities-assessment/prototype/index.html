@@ -24,8 +24,11 @@ const requirementProfiles={
   4:{primary:[11,6],supporting:[7,12,13],context:[3]}
 };
 const tierRequirements={primary:8,supporting:7,context:5};
+// Preliminary expert reference for a mature, systematically managed marketing function.
+// Not an industry benchmark or evidence of commercial success.
+const generalTargetLevels=[6,6,8,7,7,8,5,7,8,6,8,6,7];
 function targetProfile(task){
-  if(task.id==="general")return names.map(()=>null);
+  if(task.id==="general")return generalTargetLevels.map(value=>({value:value/10,tier:"general"}));
   const profile=requirementProfiles[task.id];
   return names.map((_,i)=>{
     const area=i+1;
@@ -88,7 +91,7 @@ function drawComparisonProfiles(){
  const add=(tag,attrs,parent=svg)=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));parent.appendChild(e);return e};
  for(const k of [.25,.5,.75,1])add("polygon",{points:polygon(Array(13).fill(k)),fill:"none",stroke:"#dbe6de","stroke-width":1});
  for(let i=0;i<13;i++){const p=polar(i,1);add("line",{x1:cx,y1:cy,x2:p[0],y2:p[1],stroke:"#cad8cf","stroke-width":1.2})}
- if(selected.id!=="general")add("polygon",{points:polygon(targetDraw),fill:"#12816c","fill-opacity":".07",stroke:"#12816c","stroke-width":2.5,"stroke-dasharray":"5 3"});
+ add("polygon",{points:polygon(targetDraw),fill:"#12816c","fill-opacity":".07",stroke:"#12816c","stroke-width":2.5,"stroke-dasharray":"5 3"});
  // Two closed visual profiles. Missing answers use a neutral drawing anchor only,
  // never a scored observation; hollow markers distinguish those anchors.
  const drawingObserved=observed.map(v=>v===null?.5:v);
