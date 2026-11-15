@@ -1,0 +1,838 @@
+[
+  {
+    "relation_id": "REL.001",
+    "domain_ids": [
+      "T2.02",
+      "T2.03",
+      "T2.04",
+      "T2.05"
+    ],
+    "range_ids": [
+      "T2.06",
+      "T2.07",
+      "T2.08",
+      "T2.09",
+      "T2.10",
+      "T2.11",
+      "T2.12",
+      "T2.13",
+      "T2.14",
+      "T2.15",
+      "T2.16"
+    ],
+    "raw_domain": "ENT.ORG.001 / T2.02–T2.05",
+    "raw_range": "T2.06–T2.16",
+    "external_references": [
+      "ENT.ORG.001"
+    ],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.002",
+    "domain_ids": [
+      "T2.02",
+      "T2.03",
+      "T2.04"
+    ],
+    "range_ids": [
+      "T3.01"
+    ],
+    "raw_domain": "T2.02–T2.04",
+    "raw_range": "T3.01",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.005",
+    "domain_ids": [
+      "T2.06",
+      "T2.07",
+      "T2.08",
+      "T2.09"
+    ],
+    "range_ids": [
+      "T3.09"
+    ],
+    "raw_domain": "T2.06–T2.09",
+    "raw_range": "T3.09",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.006",
+    "domain_ids": [
+      "T2.01",
+      "T2.02",
+      "T2.03",
+      "T2.04",
+      "T2.05"
+    ],
+    "range_ids": [
+      "T3.08"
+    ],
+    "raw_domain": "T2.01–T2.05",
+    "raw_range": "T3.08",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.007",
+    "domain_ids": [
+      "T4.02"
+    ],
+    "range_ids": [
+      "T2.06",
+      "T2.07",
+      "T2.08",
+      "T2.09",
+      "T3.01",
+      "T6.08",
+      "T6.09",
+      "T6.10"
+    ],
+    "raw_domain": "T4.02",
+    "raw_range": "T2.06–T2.09;T3.01;T6.08–T6.10",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.008",
+    "domain_ids": [
+      "T4.03",
+      "T4.06",
+      "T4.07"
+    ],
+    "range_ids": [
+      "T4.01",
+      "T4.02"
+    ],
+    "raw_domain": "T4.06 / T4.07 / T4.03",
+    "raw_range": "T4.01 / T4.02",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.010",
+    "domain_ids": [
+      "T2.12"
+    ],
+    "range_ids": [
+      "T2.12"
+    ],
+    "raw_domain": "T2.12",
+    "raw_range": "T2.12",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.011",
+    "domain_ids": [
+      "T6.07",
+      "T7.01"
+    ],
+    "range_ids": [
+      "T5.06"
+    ],
+    "raw_domain": "ENT.ORG.001 / T6.07 / T7.01",
+    "raw_range": "T5.06",
+    "external_references": [
+      "ENT.ORG.001"
+    ],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.012",
+    "domain_ids": [
+      "T1.01",
+      "T1.02",
+      "T1.03",
+      "T1.04",
+      "T1.05",
+      "T1.06",
+      "T1.07",
+      "T1.08",
+      "T1.09",
+      "T1.10",
+      "T1.11",
+      "T1.12",
+      "T1.13",
+      "T10.01",
+      "T10.02",
+      "T10.03",
+      "T10.04",
+      "T10.05",
+      "T11.01",
+      "T11.02",
+      "T11.03",
+      "T11.04",
+      "T11.05",
+      "T11.06",
+      "T11.07",
+      "T11.08",
+      "T12.02",
+      "T12.03",
+      "T12.04",
+      "T12.05",
+      "T12.06",
+      "T12.07",
+      "T12.08",
+      "T12.09",
+      "T12.10",
+      "T12.11",
+      "T12.12",
+      "T12.13",
+      "T12.14",
+      "T12.15",
+      "T12.16",
+      "T12.17",
+      "T12.18",
+      "T13.01",
+      "T13.02",
+      "T13.03",
+      "T13.04",
+      "T13.05",
+      "T13.06",
+      "T13.07",
+      "T13.08",
+      "T13.09",
+      "T13.10",
+      "T2.01",
+      "T2.02",
+      "T2.03",
+      "T2.04",
+      "T2.05",
+      "T4.01",
+      "T4.02",
+      "T4.03",
+      "T4.04",
+      "T4.05",
+      "T4.06",
+      "T4.07",
+      "T6.07",
+      "T6.08",
+      "T6.09",
+      "T6.10",
+      "T6.11",
+      "T6.12",
+      "T6.13",
+      "T6.14",
+      "T6.15",
+      "T6.16",
+      "T6.17",
+      "T7.01",
+      "T7.02",
+      "T7.03",
+      "T7.04",
+      "T7.05",
+      "T7.06",
+      "T7.07",
+      "T7.08",
+      "T7.09",
+      "T7.10",
+      "T7.11",
+      "T7.12",
+      "T8.01",
+      "T8.02",
+      "T8.03",
+      "T8.04",
+      "T8.05",
+      "T8.06",
+      "T9.01",
+      "T9.02",
+      "T9.03",
+      "T9.04",
+      "T9.05",
+      "T9.06",
+      "T9.07",
+      "T9.08",
+      "T9.09",
+      "T9.10"
+    ],
+    "range_ids": [
+      "T11.08",
+      "T12.03",
+      "T12.14",
+      "T5.03",
+      "T5.04",
+      "T5.07",
+      "T5.08",
+      "T5.09",
+      "T6.14",
+      "T6.15",
+      "T8.07",
+      "T8.08",
+      "T8.09",
+      "T8.10",
+      "T9.02",
+      "T9.06",
+      "T9.07",
+      "T9.08"
+    ],
+    "raw_domain": "T1.01–T1.13; T2.01–T2.05; T4.01–T4.07; T6.07–T6.17; T7.01–T7.12; T8.01–T8.06; T9.01–T9.10; T10.01–T10.05; T11.01–T11.08; ENT.ORG.001; T12.02–T12.18; T13.01–T13.10",
+    "raw_range": "T5.03–T5.04; T5.07–T5.09; T6.14–T6.15; T8.07–T8.10; T9.02; T9.06–T9.08; T11.08; T12.03; T12.14",
+    "external_references": [
+      "ENT.ORG.001"
+    ],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.014",
+    "domain_ids": [
+      "T6.06",
+      "T7.03"
+    ],
+    "range_ids": [
+      "T3.01",
+      "T3.02",
+      "T3.03",
+      "T3.04",
+      "T3.05"
+    ],
+    "raw_domain": "T6.06 / T7.03",
+    "raw_range": "T3.01–T3.05",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.015",
+    "domain_ids": [
+      "T6.06"
+    ],
+    "range_ids": [
+      "T6.07",
+      "T6.08",
+      "T6.09",
+      "T6.10",
+      "T6.11",
+      "T6.12",
+      "T6.13",
+      "T6.14",
+      "T6.15",
+      "T6.16",
+      "T6.17"
+    ],
+    "raw_domain": "T6.06",
+    "raw_range": "T6.07–T6.17",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.016",
+    "domain_ids": [
+      "T7.01"
+    ],
+    "range_ids": [
+      "T6.07"
+    ],
+    "raw_domain": "T7.01",
+    "raw_range": "T6.07 / ENT.ORG.001",
+    "external_references": [
+      "ENT.ORG.001"
+    ],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.017",
+    "domain_ids": [
+      "T7.01"
+    ],
+    "range_ids": [
+      "T7.02"
+    ],
+    "raw_domain": "T7.01",
+    "raw_range": "T7.02",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.021",
+    "domain_ids": [
+      "T6.07",
+      "T6.08",
+      "T6.09",
+      "T6.10",
+      "T6.11",
+      "T6.12",
+      "T6.13"
+    ],
+    "range_ids": [
+      "T8.01"
+    ],
+    "raw_domain": "T6.07–T6.13",
+    "raw_range": "T8.01",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.022",
+    "domain_ids": [
+      "T2.06",
+      "T2.07",
+      "T2.08",
+      "T2.09",
+      "T2.10",
+      "T2.11",
+      "T2.12",
+      "T2.13",
+      "T6.07"
+    ],
+    "range_ids": [],
+    "raw_domain": "T2.06–T2.13; T6.07",
+    "raw_range": "P.13",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.023",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "P.04 / P.08 / P.13",
+    "raw_range": "E.01–E.05",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.024",
+    "domain_ids": [
+      "T6.07"
+    ],
+    "range_ids": [
+      "T9.01",
+      "T9.02",
+      "T9.03",
+      "T9.04",
+      "T9.05",
+      "T9.06",
+      "T9.07",
+      "T9.08",
+      "T9.09",
+      "T9.10"
+    ],
+    "raw_domain": "T6.07",
+    "raw_range": "T9.01–T9.10",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.025",
+    "domain_ids": [
+      "T9.01",
+      "T9.02",
+      "T9.03",
+      "T9.04",
+      "T9.05"
+    ],
+    "range_ids": [],
+    "raw_domain": "T9.01–T9.05",
+    "raw_range": "FLOW.PHYSICAL; FLOW.INFORMATION; FLOW.RIGHTS; FLOW.PAYMENT",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.026",
+    "domain_ids": [
+      "T10.01"
+    ],
+    "range_ids": [
+      "T10.02"
+    ],
+    "raw_domain": "T10.01",
+    "raw_range": "T10.02",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.027",
+    "domain_ids": [
+      "T10.02"
+    ],
+    "range_ids": [
+      "T10.03"
+    ],
+    "raw_domain": "T10.02",
+    "raw_range": "T10.03",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.028",
+    "domain_ids": [
+      "T10.02"
+    ],
+    "range_ids": [
+      "T10.04",
+      "T10.05"
+    ],
+    "raw_domain": "T10.02",
+    "raw_range": "T10.04–T10.05",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.030",
+    "domain_ids": [
+      "T2.06"
+    ],
+    "range_ids": [
+      "T11.01"
+    ],
+    "raw_domain": "T2.06 / ENT.ORG.001",
+    "raw_range": "T11.01",
+    "external_references": [
+      "ENT.ORG.001"
+    ],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.031",
+    "domain_ids": [
+      "T2.06",
+      "T2.07",
+      "T2.08"
+    ],
+    "range_ids": [
+      "T11.09",
+      "T11.10",
+      "T11.11",
+      "T11.12"
+    ],
+    "raw_domain": "T2.06–T2.08",
+    "raw_range": "T11.09–T11.12",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.032",
+    "domain_ids": [
+      "T2.06",
+      "T2.07",
+      "T2.08"
+    ],
+    "range_ids": [
+      "T11.07"
+    ],
+    "raw_domain": "T2.06–T2.08",
+    "raw_range": "T11.07",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.033",
+    "domain_ids": [],
+    "range_ids": [
+      "T12.06",
+      "T12.07",
+      "T12.08",
+      "T12.09",
+      "T12.10",
+      "T12.11",
+      "T12.12"
+    ],
+    "raw_domain": "ENT.ORG.001",
+    "raw_range": "T12.06–T12.12",
+    "external_references": [
+      "ENT.ORG.001"
+    ],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.035",
+    "domain_ids": [],
+    "range_ids": [
+      "T12.13",
+      "T12.14",
+      "T12.15",
+      "T12.16",
+      "T12.17",
+      "T12.18"
+    ],
+    "raw_domain": "ENT.ORG.001",
+    "raw_range": "T12.13–T12.18",
+    "external_references": [
+      "ENT.ORG.001"
+    ],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.036",
+    "domain_ids": [],
+    "range_ids": [
+      "T13.01",
+      "T13.02",
+      "T13.03"
+    ],
+    "raw_domain": "P.01 / P.24 / E.01–E.07",
+    "raw_range": "T13.01–T13.03",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.038",
+    "domain_ids": [
+      "T13.04",
+      "T13.05",
+      "T13.06"
+    ],
+    "range_ids": [],
+    "raw_domain": "T13.04–T13.06",
+    "raw_range": "D.01–D.09",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.039",
+    "domain_ids": [],
+    "range_ids": [
+      "T4.12",
+      "T4.13",
+      "T4.14",
+      "T5.06",
+      "T5.07",
+      "T5.08",
+      "T5.09"
+    ],
+    "raw_domain": "M.01–M.05",
+    "raw_range": "T4.12–T4.14; T5.06–T5.09; S.01–S.08; A.01–A.05; R.01–R.08; F.01–F.03",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.041",
+    "domain_ids": [
+      "T8.01",
+      "T8.02",
+      "T8.03",
+      "T8.04",
+      "T8.05",
+      "T8.06"
+    ],
+    "range_ids": [],
+    "raw_domain": "T8.01–T8.06",
+    "raw_range": "P.13",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.042",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "P.09",
+    "raw_range": "E.07",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.045",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "P.13",
+    "raw_range": "FLOW.PHYSICAL; FLOW.INFORMATION; FLOW.RIGHTS; FLOW.PAYMENT",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N01",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "OT.03;OT.07;OT.08;OT.09",
+    "raw_range": "OT.01;OT.02;OT.11",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N02",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "OT.03;OT.04",
+    "raw_range": "T;E;P;OT.11",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N03",
+    "domain_ids": [
+      "T6.07",
+      "T8.01",
+      "T8.06"
+    ],
+    "range_ids": [],
+    "raw_domain": "OT.03;OT.04;OT.07;OT.08;T6.07;T8.01;T8.06",
+    "raw_range": "TemporalInterval",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N04",
+    "domain_ids": [
+      "T6.07"
+    ],
+    "range_ids": [],
+    "raw_domain": "T6.07",
+    "raw_range": "OT.02",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N05",
+    "domain_ids": [
+      "T6.07"
+    ],
+    "range_ids": [
+      "T6.08",
+      "T6.09",
+      "T6.10"
+    ],
+    "raw_domain": "T6.07",
+    "raw_range": "T6.08;T6.09;T6.10",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N06",
+    "domain_ids": [
+      "T6.07"
+    ],
+    "range_ids": [
+      "T8.01",
+      "T8.03",
+      "T8.04"
+    ],
+    "raw_domain": "T6.07",
+    "raw_range": "T8.01;T8.03;T8.04",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N07",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "OT.04;OT.05;OT.06;OT.11",
+    "raw_range": "OT.02;OT.03",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N08",
+    "domain_ids": [],
+    "range_ids": [
+      "T3.11",
+      "T9.09"
+    ],
+    "raw_domain": "E.06;E.07;E.08",
+    "raw_range": "T3.11;T9.09",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N09",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "OT.05;OT.06",
+    "raw_range": "OT.07",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N10",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "OT.10;OT.13",
+    "raw_range": "OT.01;OT.02;OT.04;OT.05;OT.06;OT.07;OT.08;OT.11",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N11",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "OT.10;OT.13;OT.05",
+    "raw_range": "OT.06",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N12",
+    "domain_ids": [],
+    "range_ids": [
+      "T13.01",
+      "T13.02",
+      "T13.03",
+      "T13.04",
+      "T13.05",
+      "T13.06"
+    ],
+    "raw_domain": "OT.10;OT.13",
+    "raw_range": "T13.01–T13.06;OT.10",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N13",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "M.00;OT.13",
+    "raw_range": "MeasurementUnit",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N14",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "M.00;OT.13",
+    "raw_range": "Method",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N15",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "OT.11",
+    "raw_range": "OT.01;OT.02;OT.04;OT.10;OT.11",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N16",
+    "domain_ids": [
+      "T11.17"
+    ],
+    "range_ids": [
+      "T11.09",
+      "T11.10",
+      "T11.11",
+      "T11.12"
+    ],
+    "raw_domain": "T11.17",
+    "raw_range": "T11.09–T11.12;E.06;E.07",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N17",
+    "domain_ids": [
+      "T13.11"
+    ],
+    "range_ids": [
+      "T2.01",
+      "T2.02",
+      "T2.03",
+      "T2.04",
+      "T2.05"
+    ],
+    "raw_domain": "T13.11",
+    "raw_range": "T2.01–T2.05",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  },
+  {
+    "relation_id": "REL.N18",
+    "domain_ids": [],
+    "range_ids": [],
+    "raw_domain": "P.13",
+    "raw_range": "E.09",
+    "external_references": [],
+    "review_status": "machine_expansion_needs_review"
+  }
+]
