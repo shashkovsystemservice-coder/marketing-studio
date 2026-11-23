@@ -160,6 +160,12 @@ master4Desc:"Цель этапа Build — соединить диагности
 planned:"ПЛАНИРУЕМАЯ ИНТЕГРАЦИЯ",working:"РАБОТАЮЩАЯ САМОДИАГНОСТИКА",method:"МЕТОДОЛОГИЯ ЕСТЬ · ДВИЖОК НЕ РЕАЛИЗОВАН",end:"Работающий вход уже есть. Доказательная интегрированная работа — следующий этап.",return:"Вернуться к результату",
 footer:"Ранняя демонстрация. Marketing Map: 13 областей. Источник: самодиагностика FROZEN v1.0 от 15.11.2026. MASTER v1.5 — методологический эталон. Данные реальных клиентов и подтверждённая эффективность не заявляются."
 }};
+try{
+ const cleanUrl=new URL(window.location.href);
+ let changed=false;
+ for(const key of [...cleanUrl.searchParams.keys()])if(/^utm_/i.test(key)){cleanUrl.searchParams.delete(key);changed=true}
+ if(changed)window.history.replaceState(null,"",cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
+}catch(e){}
 let lang="en",screen=0,answers={},demo=false,scope="product",stage="active",mode="problem",scenario=1,gateAnswers={},lastReturn=null;
 function questions(){
  if(mode==="general")return general;
