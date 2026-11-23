@@ -212,7 +212,7 @@ function renderStart(){
  const isEn=lang==="en";
  $("stage").innerHTML=
  '<button class="choice" onclick="selectEntry(\'general\')"><span><strong>'+escape(isEn?"1. Assess my company's marketing":"1. Оценить маркетинг компании")+'</strong><small>'+escape(isEn?"13 questions → two radar profiles (target and actual) → gaps → recommendations":"13 вопросов → две паутинки (цель и факт) → разрывы → рекомендации")+'</small></span><span class="go">→</span></button>'+
- '<button class="choice" onclick="window.location.assign(\'./master-runner.html\')"><span><strong>'+escape(isEn?"2. Open the MASTER professional workflow":"2. Разобрать бизнес-задачу через MASTER")+'</strong><small>'+escape(isEn?"Three real rule-driven examples → different MASTER graphs → evidence gates and returns":"3 сценария → разные графы операций MASTER → контрольные точки и возвраты")+'</small></span><span class="go">→</span></button>';
+ '<button class="choice" onclick="window.location.assign(\'./master-runner.html?lang=\'+lang)"><span><strong>'+escape(isEn?"2. Open the MASTER professional workflow":"2. Разобрать бизнес-задачу через MASTER")+'</strong><small>'+escape(isEn?"3 working examples today · free-text business questions planned":"Сейчас 3 работающих примера · свободный ввод задач в разработке")+'</small></span><span class="go">→</span></button>';
 }
 function renderQuestions(){const t=L(),f=lang==="en"?0:1,qset=questions();
  if(mode==="problem"&&scenario===null){
