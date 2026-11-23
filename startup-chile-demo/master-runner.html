@@ -1,0 +1,97 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Marketing Studio — MASTER Engine</title>
+<style>
+:root{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;color:#17392d;background:#f3f7f4}*{box-sizing:border-box}body{margin:0}header{background:#15513c;color:white;padding:15px 24px}header .wrap{max-width:1250px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}header a{color:white;text-decoration:none;font-size:13px}main{max-width:1250px;margin:auto;padding:24px 18px 45px}h1{font-size:clamp(29px,3.5vw,44px);letter-spacing:-.04em;line-height:1.1;margin:8px 0}h2{font-size:22px;margin:0 0 10px}.kicker{font-size:11px;font-weight:800;letter-spacing:.1em;color:#257b5d}.intro{color:#547363;font-size:15px;line-height:1.6;max-width:900px}.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.scene{background:white;border:1px solid #c9ddcf;border-radius:12px;padding:15px;text-align:left;color:#173e2e;cursor:pointer;font:inherit}.scene strong{display:block;font-size:17px;margin:0 0 7px}.scene small{font-size:12px;line-height:1.4;color:#5d7768}.scene.active{border:2px solid #176b50;background:#e8f4ec;padding:14px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 335px;gap:15px}.panel{background:white;border:1px solid #d7e5dc;border-radius:15px;padding:19px;min-width:0}.graph{overflow-x:auto;border:1px solid #dce8df;background:#fcfefa;border-radius:12px}.graph svg{display:block;width:100%;min-width:660px;height:auto}.graphbtn{font:inherit;cursor:pointer}.graphbtn:hover rect{stroke-width:3}button{cursor:pointer;font:inherit}button:focus-visible{outline:3px solid #d7a85c;outline-offset:2px}.btn{background:white;color:#176047;border:1px solid #bed7c7;padding:10px 12px;border-radius:9px;font-size:13px;font-weight:750}.btn.primary{color:white;background:#18664a;border-color:#18664a}.btn.warn{color:#9a4b2c;background:#fff7ef;border-color:#d9a17a}.btn:disabled{opacity:.4;cursor:not-allowed}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.side h3{font-size:20px;margin:8px 0}.side p{font-size:13px;line-height:1.5;color:#536e5e}.box{background:#f7faf8;border:1px solid #e0e9e1;padding:12px;border-radius:9px;margin:10px 0}.box small{display:block;text-transform:uppercase;font-size:10px;color:#4d765e;font-weight:750;margin-bottom:6px}.box p{margin:0;color:#2b523d}.pill{background:#e5f2e9;padding:5px 8px;font-size:11px;font-weight:750;border-radius:7px;color:#256448}.banner{background:#fff0e2;border-left:4px solid #bd814b;border-radius:6px;padding:12px;margin:12px 0;color:#754827;font-size:13px;line-height:1.5}.ok{background:#e6f5ed;border-left-color:#3e9873;color:#2b6e4b}.report{margin-top:15px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #e9eee9;padding:9px 0;font-size:13px}.row span:first-child{font-weight:650}.small{font-size:12px;color:#658071;line-height:1.55}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#56705f;margin:12px 0}.dot{display:inline-block;width:10px;height:10px;border-radius:3px;border:1px solid #acc2b0;margin-right:5px}.foot{font-size:12px;color:#657c6d;line-height:1.6;margin-top:17px}@media(max-width:900px){.layout{grid-template-columns:1fr}.scenarios{grid-template-columns:1fr}.panel{padding:14px}}
+</style></head><body><header><div class="wrap"><strong>MARKETING STUDIO / MASTER</strong><div><a href="./index.html" id="back">← К двум вариантам входа</a>　<button class="btn" id="language" data-action="lang">EN</button></div></div></header>
+<main><span class="kicker" id="kicker">РАБОТАЮЩИЕ ПРАВИЛА · 3 ПРИМЕРА</span><h1 id="headline">MASTER строит разные маршруты для разных задач</h1><p id="intro" class="intro"></p><div class="scenarios" id="scenes"></div><div class="layout"><div class="panel"><h2 id="chartTitle">Схема работы</h2><div id="chartDesc" class="small"></div><div id="legend" class="legend"></div><div id="graph" class="graph"></div><div id="message"></div><div class="buttons"><button class="btn" data-action="reset" id="reset"></button><button class="btn primary" data-action="next" id="next"></button></div></div><aside class="panel side" id="details"></aside></div><div class="panel report" id="report"></div><div class="foot" id="foot"></div></main>
+<script>
+"use strict";
+// Operational node IDs follow MASTER 0–20. Scenario subgraphs and gate mappings are
+// illustrative configurations of MASTER v1.5, cross-checked with MASTER v2.0 RC5 DRAFT.
+// No external evidence is read or validated; all confirmation is explicit simulation.
+const ops={
+0:["Паспорт задачи","Problem brief","Задача, объект, ограничения","Problem, scope and constraints","Паспорт задачи","Problem definition","Контекст и цель заданы","Context and goal are specified"],
+3:["Продукт / ЦКП","Product / outcome","Продукт и результат","Offering and outcome","Результат продукта","Product outcome","Результат проверяем и исполним","Outcome is testable and feasible"],
+4:["Референтный рынок","Reference market","Функции, клиенты, альтернативы","Needs, buyers and alternatives","Границы рынка","Market boundaries","Рынок определён по спросу","Market is defined by demand"],
+5:["Ситуация спроса","Demand situation","Контекст, триггеры, ограничения","Context, triggers, constraints","Карта ситуаций спроса","Demand situations","Ясно когда и почему возникает спрос","Demand timing and triggers are clear"],
+6:["Сегмент / ICP","Segment / ICP","Потребности, доступность, привлекательность","Needs, access, attractiveness","Приоритетный сегмент","Priority segment","Выбор сегмента обоснован","Segment choice is justified"],
+7:["Покупательская система","Buying system","Роли, процесс, препятствия","Roles, journey and barriers","Карта покупки","Buying journey map","Уточнены критерии выбора","Buying criteria are understood"],
+8:["Задача клиента / JTBD","Customer job / JTBD","Задача, триггеры, контекст","Job, triggers and context","Гипотеза задачи клиента","Customer job hypothesis","Задача клиента подтверждается","Customer job has supporting evidence"],
+9:["CVP / ценность","CVP / value","JTBD, продукт, альтернативы","JTBD, product and alternatives","Проверяемая ценность","Testable value proposition","Ценность отвечает на задачу клиента","Value addresses the customer job"],
+10:["Альтернативы","Alternatives","Конкуренты, заменители, критерии","Competitors, substitutes, criteria","Карта сравнений","Comparison map","Отличие значимо и исполнимо","Difference is meaningful and feasible"],
+11:["Стратегический выбор","Strategic choice","Сегмент, альтернативы, ценность","Segment, alternatives and value","Где играть / как выигрывать","Where to play / how to win","Выбор обоснован","Choice is justified"],
+14:["Proof Points","Proof points","Заявления и свидетельства","Claims and evidence","Обоснованное обещание","Evidence-supported claim","Обещание не сильнее доказательств","Claim does not exceed evidence"],
+15:["Оффер","Offer","Условия, ценность, исполнение","Terms, value and delivery","Проверяемое предложение","Testable offer","Выполнимость обещания проверена","Promise feasibility is checked"],
+20:["Доставка и контроль","Delivery & control","Опыт клиента, исполнение обещания","Customer experience and delivery","Маршрут и контроль","Journey and controls","Путь клиента проверен фактами","Journey has supporting evidence"]};
+const cases=[
+{title:["Почему клиенты не покупают?","Why don't customers buy?"],description:["Маршрут выбора покупателей, альтернатив и доказательств ценности","Buying criteria, alternatives and value proof"],ids:[0,7,8,10,9,14],edges:[[0,7],[7,8],[7,10],[8,9],[10,9],[9,14]],gates:[{id:7,back:0},{id:9,back:10},{id:14,back:9}]},
+{title:["Как выйти на новый рынок?","How can we enter a new market?"],description:["Маршрут рынка, спроса, сегмента и стратегического выбора","Market, demand, segments and strategic choice"],ids:[0,4,5,6,10,11],edges:[[0,4],[4,5],[5,6],[4,10],[6,11],[10,11]],gates:[{id:5,back:4},{id:6,back:5},{id:11,back:10}]},
+{title:["Почему клиенты уходят?","Why are customers leaving?"],description:["Маршрут клиентского опыта, ценности и исполнения обещаний","Customer experience, value and delivery"],ids:[0,7,20,8,9,15],edges:[[0,7],[7,20],[7,8],[8,9],[20,9],[9,15]],gates:[{id:20,back:7},{id:9,back:20},{id:15,back:9}]}];
+let lang="ru",which=0,active=0,states={},event=null;
+const $=id=>document.getElementById(id),loc=()=>lang==="ru"?0:1,t=(ru,en)=>lang==="ru"?ru:en,caseNow=()=>cases[which];
+function label(id){return ops[id][loc()]}
+function parentOf(id){return caseNow().edges.filter(x=>x[1]===id).map(x=>x[0])}
+function children(id){let discovered=new Set(),stack=[id];while(stack.length){let current=stack.pop();for(const [a,b] of caseNow().edges){if(a===current&&!discovered.has(b)){discovered.add(b);stack.push(b)}}}return [...discovered]}
+function initialize(){states={};caseNow().ids.forEach(x=>states[x]="unknown");active=caseNow().ids[0];event=null}
+function setScenario(n){which=n;initialize();render()}
+function setLanguage(){lang=lang==="ru"?"en":"ru";render()}
+function step(id){if(caseNow().ids.includes(id)){active=id;render()}}
+function changeStatus(id,status){
+ if(!caseNow().ids.includes(id))return;
+ const missing=parentOf(id).filter(p=>states[p]!=="verified");
+ if(status==="verified"&&missing.length){active=missing[0];event={kind:"blocked",from:id,to:active};render();return}
+ if(states[id]!==status){states[id]=status;children(id).forEach(n=>states[n]="unknown")}
+ if(status==="verified"){
+  let next=caseNow().ids.find(x=>states[x]!=="verified"&&parentOf(x).every(p=>states[p]==="verified"));
+  active=next===undefined?id:next;event={kind:"pass",from:id,to:active};
+ }else{
+  const gate=caseNow().gates.find(g=>g.id===id);
+  active=gate?.back??id;event={kind:"return",from:id,to:active,status};
+ }
+ render();
+}
+function nextCheck(){let n=caseNow().ids.find(id=>states[id]!=="verified"&&parentOf(id).every(p=>states[p]==="verified"));active=n??caseNow().ids[0];render()}
+function reset(){initialize();render()}
+function escaped(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&quot;"}[c]))}
+function positions(){let depths={},groups={};for(const id of caseNow().ids){let p=parentOf(id);depths[id]=p.length?Math.max(...p.map(x=>depths[x]))+1:0;(groups[depths[id]]??=[]).push(id)}const points={};for(const [col,ids] of Object.entries(groups)){ids.forEach((id,i)=>points[id]={x:93+Number(col)*174,y:165+(i-(ids.length-1)/2)*120})}return {points,width:Math.max(750,(Math.max(...Object.values(depths))+1)*174+90),height:340}}
+function chart(){
+ const c=caseNow(),{points,width,height}=positions();let out='<svg viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+t("Граф операций MASTER","MASTER graph")+'"><defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#247f59"/></marker><marker id="b" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#bc8148"/></marker></defs>';
+ for(const [a,b] of c.edges){let p=points[a],q=points[b];out+='<path d="M'+(p.x+59)+' '+p.y+' C'+(p.x+98)+' '+p.y+' '+(q.x-95)+' '+q.y+' '+(q.x-61)+' '+q.y+'" fill="none" stroke="#247f59" stroke-width="2" marker-end="url(#a)"/>'}
+ c.gates.forEach((g,i)=>{let p=points[g.id],q=points[g.back];let y=36+i*15;out+='<path d="M'+p.x+' '+(p.y+29)+' Q'+((p.x+q.x)/2)+' '+(height-19-i*9)+' '+q.x+' '+(q.y+30)+'" fill="none" stroke="#ba8047" stroke-width="1.7" stroke-dasharray="6 4" marker-end="url(#b)"/><text x="'+(p.x+18)+'" y="'+(p.y+47)+'" font-size="10" fill="#95622b">G'+(i+1)+'</text>'});
+ for(const id of c.ids){let p=points[id],st=states[id],fill=st==="verified"?"#e2f2e9":st==="insufficient"?"#fff0e1":st==="hypothesis"?"#fcf5dd":"#f9fbf9",stroke=id===active?"#175b43":"#b9d3c3";let words=label(id).split(" "),lines=[],line="";for(const word of words){if((line+" "+word).length>17&&line){lines.push(line);line=word}else line+=(line?" ":"")+word}if(line)lines.push(line);
+ out+='<g class="graphbtn" tabindex="0" role="button" data-node="'+id+'"><rect x="'+(p.x-60)+'" y="'+(p.y-29)+'" width="120" height="58" rx="9" fill="'+fill+'" stroke="'+stroke+'" stroke-width="'+(id===active?3:1.5)+'"/><text x="'+p.x+'" y="'+(p.y-15)+'" text-anchor="middle" font-size="11" fill="#267b5b">M'+id+'</text>';
+ lines.slice(0,2).forEach((q,i)=>out+='<text x="'+p.x+'" y="'+(p.y+i*14+1)+'" font-size="11" text-anchor="middle" fill="#173e2e">'+escaped(q)+'</text>');out+='</g>'
+ }
+ return out+"</svg>"
+}
+function detail(){
+ let values=ops[active],missing=parentOf(active).filter(x=>states[x]!=="verified"),gate=caseNow().gates.findIndex(x=>x.id===active),state=states[active],statusNames={unknown:t("Нет данных","Unknown"),hypothesis:t("Гипотеза","Hypothesis"),verified:t("Условно проверено","Simulated verified"),insufficient:t("Недостаточно","Insufficient")};
+ let html='<span class="pill">MASTER · M'+active+(gate>=0?' / G'+(gate+1):"")+'</span><h3>'+label(active)+'</h3>';
+ for(const [caption,index] of [[t("Входные данные","Inputs"),2],[t("Выход операции","Output"),4],[t("Правило проверки","Gate criterion"),6]])html+='<div class="box"><small>'+caption+'</small><p>'+values[index+loc()]+'</p></div>';
+ html+='<p><strong>'+t("Статус: ","Status: ")+'</strong>'+statusNames[state]+'</p>';
+ if(missing.length)html+='<div class="banner">'+t("Нельзя подтвердить без предыдущих операций: ","Requires completed predecessor operations: ")+missing.map(x=>"M"+x).join(", ")+'</div>';
+ html+='<div class="buttons"><button class="btn" data-mark="hypothesis">'+t("Гипотеза","Hypothesis")+'</button><button class="btn primary" data-mark="verified" '+(missing.length?"disabled":"")+'>'+t("Доказательства есть*","Evidence available*")+'</button><button class="btn warn" data-mark="insufficient">'+t("Нет данных — возврат","Insufficient — return")+'</button></div>';
+ if(gate>=0)html+='<div class="banner">'+t("G"+(gate+1)+": при недостатке доказательств метод возвращает к M","G"+(gate+1)+": insufficient evidence returns to M")+caseNow().gates[gate].back+'</div>';
+ html+='<p class="small">'+t("* Ручной условный статус для проверки алгоритма. Источники автоматически не анализируются.","* Manually simulated status to test the workflow; no automatic evidence analysis.")+'</p>';
+ $("details").innerHTML=html
+}
+function render(){
+ $("back").textContent=t("← К двум входам","← Two entry paths");$("language").textContent=lang==="ru"?"EN":"РУС";
+ $("kicker").textContent=t("РАБОТАЮЩИЙ ПРОТОТИП ПРАВИЛ MASTER","WORKING MASTER RULES PROTOTYPE");
+ $("headline").textContent=t("Одна методология — три разные схемы","One methodology — three different workflows");
+ $("intro").textContent=t("Выбери бизнес-задачу: система строит схему операций, отмечает зависимости и контрольные точки. При отсутствии доказательств возвращает к нужной операции, а при изменении раннего узла сбрасывает зависимые подтверждения.","Choose a business problem to generate a dependency graph, control gates and return routes. Missing evidence triggers a return; changing an earlier node invalidates dependent confirmations.");
+ $("scenes").innerHTML=cases.map((c,i)=>'<button class="scene '+(i===which?"active":"")+'" data-scenario="'+i+'"><strong>'+(i+1)+'. '+c.title[loc()]+'</strong><small>'+c.description[loc()]+'</small></button>').join("");
+ $("chartTitle").textContent=t("Маршрут MASTER","MASTER workflow");
+ $("chartDesc").textContent=t("Зелёные стрелки — рабочие зависимости. Пунктир — адреса возвратов от контрольных точек.","Green arrows show dependencies; dashed arrows show gate return routes.");
+ $("legend").innerHTML=[["#f9fbf9",t("Нет данных","Unknown")],["#fcf5dd",t("Гипотеза","Hypothesis")],["#e2f2e9",t("Условно проверено","Verified*")],["#fff0e1",t("Недостаточно","Insufficient")]].map(x=>'<span><i class="dot" style="background:'+x[0]+'"></i>'+x[1]+'</span>').join("");
+ $("graph").innerHTML=chart();
+ $("reset").textContent=t("↺ Начать заново","↺ Reset");$("next").textContent=t("Следующая проверка →","Next gate →");
+ $("message").innerHTML=event?.kind==="return"?'<div class="banner"><strong>'+t("ВОЗВРАТ: ","RETURN: ")+'</strong>M'+event.from+' → M'+event.to+'. '+t("Зависимые статусы сброшены.","Dependent statuses reset.")+'</div>':event?.kind==="blocked"?'<div class="banner">'+t("Переход заблокирован: ","Progress blocked: ")+'M'+event.from+' → M'+event.to+'</div>':event?.kind==="pass"?'<div class="banner ok">M'+event.from+t(" условно подтверждён. Следующий доступный узел: M"," simulated verified. Next accessible node: M")+event.to+'</div>':"";
+ detail();
+ let remaining=caseNow().ids.filter(id=>states[id]!=="verified");
+ $("report").innerHTML='<h2>'+t("Состояние операций","Operation states")+'</h2><p class="small">'+t("Всего узлов: ","Nodes: ")+caseNow().ids.length+' · '+t("Условно проверено: ","Simulated verified: ")+(caseNow().ids.length-remaining.length)+'</p>'+caseNow().ids.map(id=>'<div class="row"><span>M'+id+' · '+label(id)+'</span><span>'+({unknown:t("Нет данных","Unknown"),hypothesis:t("Гипотеза","Hypothesis"),verified:t("Условно проверено","Verified*"),insufficient:t("Недостаточно","Insufficient")})[states[id]]+'</span><button class="btn" data-node="'+id+'">'+t("Открыть","Open")+'</button></div>').join("");
+ $("foot").textContent=t("Это ограниченный исполняемый прототип правил и зависимостей, основанный на MASTER v1.5; названия операций сверены с проектом MASTER v2.0 RC5 (DRAFT). Сценарии — демонстрационные конфигурации. Не проводит исследования, не проверяет источники, не принимает управленческие решения.","A bounded executable rules prototype grounded in MASTER v1.5; operation names cross-checked with MASTER v2.0 RC5 DRAFT. Routes are illustrative. No research, automated evidence validation, or management decisions are performed.");
+}
+document.addEventListener("click",e=>{let el=e.target.closest("[data-node],[data-scenario],[data-mark],[data-action]");if(!el)return;if(el.dataset.node!==undefined)step(Number(el.dataset.node));else if(el.dataset.scenario!==undefined)setScenario(Number(el.dataset.scenario));else if(el.dataset.mark)changeStatus(active,el.dataset.mark);else if(el.dataset.action==="lang")setLanguage();else if(el.dataset.action==="reset")reset();else if(el.dataset.action==="next")nextCheck()});
+document.addEventListener("keydown",e=>{let el=e.target.closest("[data-node]");if(el&&(e.key==="Enter"||e.key===" ")){e.preventDefault();step(Number(el.dataset.node))}});
+initialize();render();
+</script></body></html>
