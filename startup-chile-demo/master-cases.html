@@ -110,7 +110,7 @@ function graph(){
  if(current===2&&phase===3){html+='<text x="705" y="221" font-size="11" fill="#9f602f">'+t("Оранжевые узлы пересматриваются","Orange nodes require review")+'</text>'}
  return html+"</svg>";
 }
-function metrics(items){return items.map(it=>'<div class="entry"><div><strong>'+it.name+'</strong></div><span>'+fmt(it.value)+'/100</span></div>').join("")}
+function metrics(items){return items.map(it=>'<div class="entry"><div><strong>'+(Array.isArray(it.name)?it.name[idx()]:it.name)+'</strong></div><span>'+fmt(it.value??it.weight)+'/100</span></div>').join("")}
 function sourceEvidence(){
  const v=values(),p=phase,e=evaluate();
  if(current===0)return [
