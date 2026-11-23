@@ -56,6 +56,12 @@ const cases=[
 {title:["Почему клиенты не покупают?","Why don't customers buy?"],description:["Маршрут выбора покупателей, альтернатив и доказательств ценности","Buying criteria, alternatives and value proof"],ids:[0,7,8,10,9,14],edges:[[0,7],[7,8],[7,10],[8,9],[10,9],[9,14]],gates:[{id:7,back:0},{id:9,back:10},{id:14,back:9}]},
 {title:["Как выйти на новый рынок?","How can we enter a new market?"],description:["Маршрут рынка, спроса, сегмента и стратегического выбора","Market, demand, segments and strategic choice"],ids:[0,4,5,6,10,11],edges:[[0,4],[4,5],[5,6],[4,10],[6,11],[10,11]],gates:[{id:5,back:4},{id:6,back:5},{id:11,back:10}]},
 {title:["Почему клиенты уходят?","Why are customers leaving?"],description:["Маршрут клиентского опыта, ценности и исполнения обещаний","Customer experience, value and delivery"],ids:[0,7,20,8,9,15],edges:[[0,7],[7,20],[7,8],[8,9],[20,9],[9,15]],gates:[{id:20,back:7},{id:9,back:20},{id:15,back:9}]}];
+try{
+ const cleanUrl=new URL(window.location.href);
+ let changed=false;
+ for(const key of [...cleanUrl.searchParams.keys()])if(/^utm_/i.test(key)){cleanUrl.searchParams.delete(key);changed=true}
+ if(changed)window.history.replaceState(null,"",cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
+}catch(e){}
 let lang="en",which=0,active=0,states={},event=null;
 let tourIndex=-1;
 function tourSteps(){
