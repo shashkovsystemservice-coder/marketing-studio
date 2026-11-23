@@ -27,6 +27,13 @@ h2{font-size:25px;letter-spacing:-.03em;margin:3px 0 10px;line-height:1.2}
 .choice{display:flex;width:100%;align-items:center;justify-content:space-between;text-align:left;background:#f9fbf9;color:#18392f;border:1px solid #d5e3da;border-radius:14px;padding:20px;gap:15px;margin:10px 0}
 .choice:hover,.choice:focus-visible{border-color:#2d8868;background:#f1f9f2}
 .choice strong{display:block;font-size:19px;margin-bottom:6px}.choice small{font-size:13px;color:#60766b;line-height:1.4;display:block}.choice .go{font-size:24px;color:#247858}
+.routebox{margin-top:18px;border:1px solid #d4e5db;background:#f4f8f5;border-radius:13px;padding:17px}
+.routeTitle{font-size:12px;color:#357359;font-weight:800;letter-spacing:.05em;margin:0 0 12px}
+.routeLine{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap}
+.routeNode{background:white;border:1px solid #bed6c7;border-radius:10px;padding:12px 14px;text-align:center;font-size:13px;font-weight:700;flex:1;min-width:105px}
+.routeArrow{color:#298160;font-size:20px;font-weight:bold}
+@media(max-width:600px){.routeNode{min-width:95px}.routeLine{gap:5px}}
+
 .label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#247858;font-weight:850;margin:0 0 8px}
 .context{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
 select{padding:10px;background:white;border:1px solid #c7d9cd;border-radius:8px;font:inherit;font-size:14px;max-width:100%}
@@ -179,7 +186,11 @@ $("stage").innerHTML='<div class="label">'+escape(t.steps[0])+'</div><h2>'+escap
 '<p class="explain">'+escape(lang==="en"?"Both routes use the same 13-domain Marketing Map. They serve different starting needs.":"Оба маршрута используют одну карту из 13 областей, но начинаются с разных потребностей.")+'</p>'+
 '<button class="choice" onclick="selectEntry(\'problem\')"><span><strong>'+escape(t.businessEntry)+'</strong><small>'+escape(t.businessHint)+'</small></span><span class="go">→</span></button>'+
 '<button class="choice" onclick="selectEntry(\'general\')"><span><strong>'+escape(t.generalEntry)+'</strong><small>'+escape(t.generalHint)+'</small></span><span class="go">→</span></button>'+
-'<div class="callout">'+escape(lang==="en"?"Both routes use the existing self-assessment logic. The automatic research and decision engine is a planned integration.":"Оба входа используют существующую логику самодиагностики. Автоматический движок исследований и решений ещё проектируется.")+'</div>';
+'<div class="routebox"><p class="routeTitle">'+escape(lang==="en"?"TWO ENTRIES · ONE PROFESSIONAL MODEL":"ДВА ВХОДА · ОДНА ПРОФЕССИОНАЛЬНАЯ МОДЕЛЬ")+'</p>'+
+'<div class="routeLine"><div class="routeNode">'+escape(lang==="en"?"Your need":"Ваша потребность")+'</div><span class="routeArrow">→</span>'+
+'<div class="routeNode">Marketing Map<br><small>13 areas</small></div><span class="routeArrow">→</span>'+
+'<div class="routeNode">'+escape(lang==="en"?"Checks and next steps":"Проверки и следующие шаги")+'</div></div></div>'+
+'<div class="callout">'+escape(lang==="en"?"Both routes use the existing self-assessment logic. Automated research, decision rules and their integration are planned.":"Оба входа используют существующую самодиагностику. Автоматизированные исследования, правила решений и их интеграция ещё планируются.")+'</div>';
 }
 function renderQuestions(){const t=L(),f=lang==="en"?0:1,qset=questions();
 $("stage").innerHTML='<div class="label">'+escape(t.steps[1])+'</div><h2>'+escape(mode==="general"?(lang==="en"?"13-area company self-assessment":"Самооценка компании по 13 областям"):t.questionTitle)+'</h2><p class="explain">'+escape(mode==="general"?(lang==="en"?"Rate one practice in each marketing area. This is self-report, not an effectiveness score.":"Оцените по одной практике в каждой области. Это самооценка, а не оценка эффективности."):t.questionDesc)+'</p>'+
