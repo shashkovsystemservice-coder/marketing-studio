@@ -47,6 +47,12 @@ p{line-height:1.55}.muted{color:#5d7769}.small{font-size:12px;color:#648071}.eye
 /* Bounded scenario evaluation based on MASTER operation contracts.
    All evidence values are synthetic fixtures, never evidence collected from customers.
    The three simulation rules below do NOT constitute a general decision agent. */
+try{
+ const cleanUrl=new URL(window.location.href);
+ let changed=false;
+ for(const key of [...cleanUrl.searchParams.keys()])if(/^utm_/i.test(key)){cleanUrl.searchParams.delete(key);changed=true}
+ if(changed)window.history.replaceState(null,"",cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
+}catch(e){}
 let lang="en",current=0,phase=0;
 const $=id=>document.getElementById(id),t=(ru,en)=>lang==="ru"?ru:en,idx=()=>lang==="ru"?0:1;
 const fmt=n=>Math.round(n*10)/10;
