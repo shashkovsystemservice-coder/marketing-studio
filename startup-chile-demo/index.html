@@ -113,7 +113,7 @@ start:"Start self-assessment",contextTitle:"Tell us about your situation",scope:
 questionTitle:"Six questions selected for this business problem",questionDesc:"Answer about what your company actually does, not what it plans to do. You can see the source links in the results.",
 answers:["Yes, systematically","Sometimes / partly","No","I don't know","Not relevant"],
 next:"Show my results",back:"Back",clear:"Reset answers",edit:"Edit answers",home:"Back to the problem",resetConfirm:"Reset all six answers?",missing:"Answer all six questions to continue.",scenario:"Fictional example for a quick walkthrough",scenarioHint:"Fills six answers and clearly labels the result as fictional. Use only if you want to show a sample instead of completing the assessment.",fiction:"FICTIONAL EXAMPLE — not a real customer",real:"Answers entered in this session",
-resultTitle:"Your initial marketing profile",resultDesc:"The chart shows all 13 domains. Only six have been assessed; empty domains must not be interpreted as weaknesses.",chartLabel:"Selected practices · no maturity score",notAssessed:"Not assessed",priority:"Check next",reported:"Reported as systematic",unknown:"Information missing",noGaps:"No gaps were reported for these six questions. Verify the practices with evidence before relying on them.",
+resultTitle:"Your initial marketing profile",resultDesc:"The chart shows all 13 domains. Only six have been assessed; empty domains must not be interpreted as weaknesses.",chartLabel:"Green: preliminary target · Orange: self-reported practices (illustrative scale)",notAssessed:"Not assessed",priority:"Check next",reported:"Reported as systematic",unknown:"Information missing",noGaps:"No gaps were reported for these six questions. Verify the practices with evidence before relying on them.",
 findingTitle:"What should be checked next?",possible:"A potential inconsistency: value is claimed, but the criteria customers use to choose alternatives are not being studied. This calls for verification, not an automatic diagnosis.",other:"Suggested verification",nextMaster:"How does MASTER structure the next work?",restart:"Start again",source:"Source links from the frozen diagnostic",masterTitle:"From self-assessment to professional work",
 masterDesc:"The diagnostic identifies possible gaps. MASTER describes the method that could guide professional verification. This demo shows that connection without claiming an executing integrated system.",
 master1:"Input from your assessment",master2:"Professional check proposed",master3:"MASTER method: evidence gate",master4:"Next action under the intended product",
@@ -143,7 +143,7 @@ questionTitle:"Шесть вопросов, выбранных для этой �
 answers:["Да, систематически","Иногда / частично","Нет","Не знаю","Не относится"],
 next:"Показать результат",back:"Назад",clear:"Сбросить ответы",edit:"Изменить ответы",home:"Вернуться к задаче",resetConfirm:"Сбросить все шесть ответов?",missing:"Ответьте на все шесть вопросов.",scenario:"Условный пример для быстрого показа",scenarioHint:"Заполняет шесть ответов и явно обозначает вымышленную компанию. Используйте, только если не проходите опрос вручную.",fiction:"УСЛОВНЫЙ ПРИМЕР — не реальный клиент",real:"Ответы, введённые в этом сеансе",
 resultTitle:"Предварительный маркетинговый профиль",resultDesc:"Показаны все 13 областей. Оценены только шесть: отсутствие ответа по другим областям не означает слабость.",
-chartLabel:"Оценённые практики · не оценка зрелости",notAssessed:"Не оценивалось",priority:"Нужно проверить",reported:"Заявлено как систематическая практика",unknown:"Нет информации",noGaps:"По этим шести вопросам пробелы не заявлены. Для выводов нужны подтверждающие данные.",
+chartLabel:"Зелёный: экспертный ориентир · оранжевый: ответы (условная шкала)",notAssessed:"Не оценивалось",priority:"Нужно проверить",reported:"Заявлено как систематическая практика",unknown:"Нет информации",noGaps:"По этим шести вопросам пробелы не заявлены. Для выводов нужны подтверждающие данные.",
 findingTitle:"Что требуется проверить дальше?",possible:"Возможная несогласованность: ценность предложения заявлена, но критерии выбора покупателей не исследуются. Это повод для проверки, а не доказательство проблемы.",other:"Предлагаемая проверка",nextMaster:"Как MASTER организует дальнейшую работу?",restart:"Начать заново",source:"Коды связей из исходной самодиагностики",masterTitle:"От самодиагностики к профессиональной работе",
 masterDesc:"Самодиагностика выявляет возможные пробелы. MASTER описывает метод дальнейших профессиональных проверок. Здесь показывается связь, но не готовый интегрированный движок.",
 master1:"Данные самодиагностики",master2:"Какая профессиональная проверка нужна",master3:"MASTER: контроль доказательств",master4:"Следующий этап разработки",
@@ -200,9 +200,36 @@ qset.map(q=>'<div class="question" id="question-'+q.n+'"><div class="qhead"><spa
 }
 function risk(q){return ["no","partial","unknown"].includes(answers[q.n])}
 function priorityList(){return questions().filter(risk)}
-function radarSvg(){const cx=151,cy=148,r=111,k=2*Math.PI/13;const point=(i,v)=>{const a=-Math.PI/2+i*k;return [cx+Math.cos(a)*r*v,cy+Math.sin(a)*r*v]};let s='<svg class="radar" viewBox="0 0 305 310" role="img" aria-label="13 marketing domains: only assessed dimensions are marked">';
-for(const lev of [.25,.5,.75,1]){s+='<polygon points="'+areas.map((_,i)=>point(i,lev).map(n=>n.toFixed(1)).join(",")).join(" ")+'" fill="none" stroke="#dce9df"/>'}
-areas.forEach((a,i)=>{let [x,y]=point(i,1);s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="#dce8df"/>';const n=i+1,active=Object.hasOwn(answers,n),pos=point(i,1.19);s+='<text x="'+pos[0].toFixed(1)+'" y="'+(pos[1]+4).toFixed(1)+'" text-anchor="middle" fill="'+(active?"#17654d":"#8b9e91")+'" font-size="11" font-weight="'+(active?800:450)+'">T'+n+'</text>';if(active){const v=({yes:.83,partial:.51,no:.2,unknown:.5,na:.5})[answers[n]];const [px,py]=point(i,v);s+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="6" fill="'+(answers[n]==="unknown"||answers[n]==="na"?"#fff":"#d98f46")+'" stroke="#a66b32" stroke-width="2"/>';}});return s+"</svg>";}
+
+const generalTargetLevels=[6,6,8,7,7,8,5,7,8,6,8,6,7];
+const requirementProfiles={
+0:{primary:[3,4,6],supporting:[9,10,13],context:[2,5]},
+1:{primary:[3,6],supporting:[2,5,8,9],context:[11]},
+2:{primary:[8,6],supporting:[13,12,4],context:[9]},
+3:{primary:[4,2,6],supporting:[1,5,9],context:[3,10]},
+4:{primary:[11,6],supporting:[7,12,13],context:[3]}
+};
+function radarSvg(){
+ const cx=151,cy=148,r=106,step=Math.PI*2/13;
+ const polar=(i,v)=>{const a=-Math.PI/2+i*step;return [cx+r*v*Math.cos(a),cy+r*v*Math.sin(a)]};
+ const poly=vs=>vs.map((v,i)=>polar(i,v).map(x=>x.toFixed(1)).join(",")).join(" ");
+ const actual=areas.map((_,i)=>({yes:.83,partial:.52,no:.18})[answers[i+1]]??null);
+ const target=mode==="general"?generalTargetLevels.map(v=>v/10):areas.map((_,i)=>{const p=requirementProfiles[typeof scenario==="number"?scenario:1],n=i+1;return p.primary.includes(n)?.8:p.supporting.includes(n)?.7:p.context.includes(n)?.5:null});
+ const plottedTarget=target.map(x=>x===null?.15:x),plottedActual=actual.map(x=>x===null?.5:x);
+ let h='<svg class="radar" viewBox="0 0 305 310" role="img" aria-label="Target reference and actual self-report, 13 domains">';
+ for(const k of [.25,.5,.75,1])h+='<polygon points="'+poly(Array(13).fill(k))+'" fill="none" stroke="#dce8df"/>';
+ for(let i=0;i<13;i++){const p=polar(i,1);h+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#dce8df"/>'}
+ h+='<polygon points="'+poly(plottedTarget)+'" stroke="#12816c" stroke-width="2.5" stroke-dasharray="5 3" fill="#12816c" fill-opacity=".07"/>';
+ h+='<polygon points="'+poly(plottedActual)+'" stroke="#d98a42" stroke-width="2.5" fill="#d98a42" fill-opacity=".07"/>';
+ for(let i=0;i<13;i++){
+  const n=i+1,pos=polar(i,plottedActual[i]),lab=polar(i,1.2);
+  h+='<text x="'+lab[0]+'" y="'+(lab[1]+4)+'" font-size="10" text-anchor="middle" fill="currentColor">T'+n+'</text>';
+  if(target[i]!==null){const g=polar(i,target[i]);h+='<circle cx="'+g[0]+'" cy="'+g[1]+'" r="3.5" fill="#12816c"/>'}
+  h+='<circle cx="'+pos[0]+'" cy="'+pos[1]+'" r="4.5" fill="'+(actual[i]===null?"white":"#d98a42")+'" stroke="#d98a42" stroke-width="1.5"/>';
+ }
+ return h+"</svg>";
+}
+
 function renderResults(){const t=L(),gaps=priorityList(),f=lang==="en"?0:1;
 $("stage").innerHTML='<div class="label">'+escape(t.steps[2])+'</div><h2>'+escape(mode==="general"?(lang==="en"?"Your 13-domain marketing self-assessment":"Ваша самооценка по 13 областям"):t.resultTitle)+'</h2><p class="explain">'+escape(mode==="general"?(lang==="en"?"All 13 areas were asked. Responses are self-reported practices, not validated marketing maturity.":"Оценены все 13 областей. Ответы — самооценка практик, а не валидированная зрелость маркетинга."):t.resultDesc)+'</p>'+(demo?'<div class="status plan">'+escape(t.fiction)+'</div>':'<div class="status">'+escape(t.real)+'</div>')+
 '<div class="results"><div>'+radarSvg()+'<p class="legend"><i></i>'+escape(t.chartLabel)+'<br><i class="empty"></i>'+escape(t.notAssessed)+'</p></div><div><h3 style="margin:0 0 12px;font-size:18px">'+escape(t.findingTitle)+'</h3>'+
