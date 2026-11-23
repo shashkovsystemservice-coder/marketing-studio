@@ -16,7 +16,7 @@ main{max-width:1160px;margin:auto;padding:23px 24px 40px}
 h1{font-size:clamp(30px,4.0vw,48px);line-height:1.1;letter-spacing:-.05em;margin:8px 0 12px;max-width:900px}
 .lead{font-size:17px;line-height:1.5;max-width:870px;color:#51695e;margin:0 0 20px}
 .steps{display:flex;gap:8px;margin:0 0 18px}.step{flex:1;border:1px solid #d6e3d9;background:white;border-radius:10px;padding:10px 13px;color:#4e7060;font-size:13px;font-weight:750}
-.step.current{background:#175b45;color:#fff;border-color:#175b45}.step.complete{background:#e5f2e9;color:#175b45}
+.step:disabled{cursor:default;opacity:.55}.step.current{background:#175b45;color:#fff;border-color:#175b45}.step.complete{background:#e5f2e9;color:#175b45}
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:18px;align-items:start}
 .stage{background:white;border:1px solid #d7e5dc;border-radius:18px;padding:27px 31px;box-shadow:0 12px 34px #14372a09;min-height:480px}
 .sidebar{background:#eaf3ed;border-radius:16px;padding:21px;border:1px solid #d6e6dc}
@@ -104,7 +104,7 @@ problem:"Why don't customers buy?",problemHint:"The assessment checks six practi
 start:"Start self-assessment",contextTitle:"Tell us about your situation",scope:"What are you assessing?",scopeOpts:["A product or business line","The company as a whole"],stage:"Are you already selling?",stageOpts:["Yes, to customers","Not yet — preparing to launch"],
 questionTitle:"Six questions selected for this business problem",questionDesc:"Answer about what your company actually does, not what it plans to do. You can see the source links in the results.",
 answers:["Yes, systematically","Sometimes / partly","No","I don't know","Not relevant"],
-next:"Show my results",back:"Back",clear:"Reset answers",missing:"Answer all six questions to continue.",scenario:"Fictional example for a quick walkthrough",scenarioHint:"Fills six answers and clearly labels the result as fictional. Use only if you want to show a sample instead of completing the assessment.",fiction:"FICTIONAL EXAMPLE — not a real customer",real:"Answers entered in this session",
+next:"Show my results",back:"Back",clear:"Reset answers",edit:"Edit answers",home:"Back to the problem",resetConfirm:"Reset all six answers?",missing:"Answer all six questions to continue.",scenario:"Fictional example for a quick walkthrough",scenarioHint:"Fills six answers and clearly labels the result as fictional. Use only if you want to show a sample instead of completing the assessment.",fiction:"FICTIONAL EXAMPLE — not a real customer",real:"Answers entered in this session",
 resultTitle:"Your initial marketing profile",resultDesc:"The chart shows all 13 domains. Only six have been assessed; empty domains must not be interpreted as weaknesses.",chartLabel:"Selected practices · no maturity score",notAssessed:"Not assessed",priority:"Check next",reported:"Reported as systematic",unknown:"Information missing",noGaps:"No gaps were reported for these six questions. Verify the practices with evidence before relying on them.",
 findingTitle:"What should be checked next?",possible:"A potential inconsistency: value is claimed, but the criteria customers use to choose alternatives are not being studied. This calls for verification, not an automatic diagnosis.",other:"Suggested verification",nextMaster:"How does MASTER structure the next work?",restart:"Start again",source:"Source links from the frozen diagnostic",masterTitle:"From self-assessment to professional work",
 masterDesc:"The diagnostic identifies possible gaps. MASTER describes the method that could guide professional verification. This demo shows that connection without claiming an executing integrated system.",
@@ -133,7 +133,7 @@ problem:"Почему клиенты не покупают?",problemHint:"Диа
 start:"Начать самодиагностику",contextTitle:"Контекст компании",scope:"Что оцениваем?",scopeOpts:["Продукт или направление","Компанию целиком"],stage:"Продажи уже идут?",stageOpts:["Да, есть клиенты","Нет, готовимся к запуску"],
 questionTitle:"Шесть вопросов, выбранных для этой задачи",questionDesc:"Отвечайте о том, что действительно делаете. Связи с онтологией показаны в результатах.",
 answers:["Да, систематически","Иногда / частично","Нет","Не знаю","Не относится"],
-next:"Показать результат",back:"Назад",clear:"Сбросить ответы",missing:"Ответьте на все шесть вопросов.",scenario:"Условный пример для быстрого показа",scenarioHint:"Заполняет шесть ответов и явно обозначает вымышленную компанию. Используйте, только если не проходите опрос вручную.",fiction:"УСЛОВНЫЙ ПРИМЕР — не реальный клиент",real:"Ответы, введённые в этом сеансе",
+next:"Показать результат",back:"Назад",clear:"Сбросить ответы",edit:"Изменить ответы",home:"Вернуться к задаче",resetConfirm:"Сбросить все шесть ответов?",missing:"Ответьте на все шесть вопросов.",scenario:"Условный пример для быстрого показа",scenarioHint:"Заполняет шесть ответов и явно обозначает вымышленную компанию. Используйте, только если не проходите опрос вручную.",fiction:"УСЛОВНЫЙ ПРИМЕР — не реальный клиент",real:"Ответы, введённые в этом сеансе",
 resultTitle:"Предварительный маркетинговый профиль",resultDesc:"Показаны все 13 областей. Оценены только шесть: отсутствие ответа по другим областям не означает слабость.",
 chartLabel:"Оценённые практики · не оценка зрелости",notAssessed:"Не оценивалось",priority:"Нужно проверить",reported:"Заявлено как систематическая практика",unknown:"Нет информации",noGaps:"По этим шести вопросам пробелы не заявлены. Для выводов нужны подтверждающие данные.",
 findingTitle:"Что требуется проверить дальше?",possible:"Возможная несогласованность: ценность предложения заявлена, но критерии выбора покупателей не исследуются. Это повод для проверки, а не доказательство проблемы.",other:"Предлагаемая проверка",nextMaster:"Как MASTER организует дальнейшую работу?",restart:"Начать заново",source:"Коды связей из исходной самодиагностики",masterTitle:"От самодиагностики к профессиональной работе",
@@ -149,26 +149,29 @@ footer:"Ранняя демонстрация. Marketing Map: 13 областе�
 let lang="en",screen=0,answers={},demo=false,scope="product",stage="active";
 const $=id=>document.getElementById(id),L=()=>tr[lang],txt=(x)=>x[lang==="en"?0:1],escape=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function setLang(next){lang=next;render()}
-function go(next){screen=next;render();window.scrollTo({top:0,behavior:"smooth"})}
+function go(next){if(next<0||next>3)return;if(next>=2&&!original.every(q=>answers[q.n]))next=1;screen=next;render();window.scrollTo({top:0,behavior:"smooth"})}
+function jumpToStep(i){if(i<=screen)go(i)}
+function changeAnswer(n){go(1);const el=document.getElementById("question-"+n);if(el)el.scrollIntoView({behavior:"smooth",block:"center"})}
+function resetAll(){if(window.confirm(L().resetConfirm)){answers={};demo=false;go(1)}}
 function setAnswer(n,value){answers[n]=value;demo=false;render()}
 function setScope(v){scope=v}
 function setStage(v){stage=v}
 function demoAnswers(){answers={3:"no",5:"partial",2:"yes",6:"yes",8:"unknown",9:"partial"};demo=true;go(2)}
-function clearAnswers(){answers={};demo=false;render()}
-function begin(){answers={};demo=false;go(1)}
+function clearAnswers(){resetAll()}
+function begin(){go(1)}
 function showResults(){if(original.every(q=>answers[q.n]))go(2)}
 function name(n){return areas[n-1][lang==="en"?0:1]}
 function initShell(){const t=L();$("hdrSub").textContent=t.sub;$("kicker").textContent=t.kicker;$("headline").textContent=t.headline;$("lead").textContent=t.lead;$("footer").textContent=t.footer;
 $("langEn").classList.toggle("active",lang==="en");$("langRu").classList.toggle("active",lang==="ru");
-$("steps").innerHTML=t.steps.map((x,i)=>'<div class="step '+(screen===i?"current":screen>i?"complete":"")+'">'+(i+1)+'. '+escape(x)+'</div>').join("");
+$("steps").innerHTML=t.steps.map((x,i)=>'<button type="button" class="step '+(screen===i?"current":screen>i?"complete":"")+'" '+(i>screen?"disabled":"")+' onclick="jumpToStep('+i+')">'+(i+1)+'. '+escape(x)+'</button>').join("");
 $("sidebar").innerHTML='<h3>'+escape(t.sideTitle[screen])+'</h3>'+t.side[screen].map((s,i)=>'<p'+(i===2?' class="notice"':'')+'>'+escape(s)+'</p>').join("");
 }
 function renderStart(){const t=L();$("stage").innerHTML='<div class="label">'+escape(t.steps[0])+'</div><h2>'+escape(t.problemTitle)+'</h2><p class="explain">'+escape(t.problemDesc)+'</p><button class="choice" onclick="begin()"><span><strong>'+escape(t.problem)+'</strong><small>'+escape(t.problemHint)+'</small></span><span class="go">→</span></button><div class="controls"><button class="primary" onclick="begin()">'+escape(t.start)+' →</button></div>';}
 function renderQuestions(){const t=L(),f=lang==="en"?0:1;
 $("stage").innerHTML='<div class="label">'+escape(t.steps[1])+'</div><h2>'+escape(t.questionTitle)+'</h2><p class="explain">'+escape(t.questionDesc)+'</p>'+
 '<div class="context"><label class="field"><span>'+escape(t.scope)+'</span><select onchange="setScope(this.value)"><option value="product" '+(scope==="product"?"selected":"")+'>'+escape(t.scopeOpts[0])+'</option><option value="company" '+(scope==="company"?"selected":"")+'>'+escape(t.scopeOpts[1])+'</option></select></label><label class="field"><span>'+escape(t.stage)+'</span><select onchange="setStage(this.value)"><option value="active" '+(stage==="active"?"selected":"")+'>'+escape(t.stageOpts[0])+'</option><option value="new" '+(stage==="new"?"selected":"")+'>'+escape(t.stageOpts[1])+'</option></select></label></div>'+
-original.map(q=>'<div class="question"><div class="qhead"><span class="qtag">T'+q.n+'</span><span class="qtext">'+escape(q.q[f])+'</span></div><div class="answers">'+["yes","partial","no","unknown","na"].map((v,i)=>'<button class="ans '+(answers[q.n]===v?"active":"")+'" onclick="setAnswer('+q.n+',\''+v+'\')" aria-pressed="'+(answers[q.n]===v)+'">'+escape(t.answers[i])+'</button>').join("")+'</div></div>').join("")+
-'<div class="controls"><button class="primary" '+(!original.every(q=>answers[q.n])?"disabled":"")+' onclick="showResults()">'+escape(t.next)+' → ('+original.filter(q=>answers[q.n]).length+'/6)</button><button class="secondary" onclick="go(0)">'+escape(t.back)+'</button><button class="secondary" onclick="clearAnswers()">'+escape(t.clear)+'</button></div><div class="callout"><b>'+escape(t.scenario)+'</b><p class="caption">'+escape(t.scenarioHint)+'</p><button class="secondary" onclick="demoAnswers()">'+escape(t.scenario)+' →</button></div>';
+original.map(q=>'<div class="question" id="question-'+q.n+'"><div class="qhead"><span class="qtag">T'+q.n+'</span><span class="qtext">'+escape(q.q[f])+'</span></div><div class="answers">'+["yes","partial","no","unknown","na"].map((v,i)=>'<button class="ans '+(answers[q.n]===v?"active":"")+'" onclick="setAnswer('+q.n+',\''+v+'\')" aria-pressed="'+(answers[q.n]===v)+'">'+escape(t.answers[i])+'</button>').join("")+'</div></div>').join("")+
+'<div class="controls"><button class="primary" '+(!original.every(q=>answers[q.n])?"disabled":"")+' onclick="showResults()">'+escape(t.next)+' → ('+original.filter(q=>answers[q.n]).length+'/6)</button><button class="secondary" onclick="go(0)">← '+escape(t.home)+'</button><button class="secondary" onclick="clearAnswers()">'+escape(t.clear)+'</button></div><div class="callout"><b>'+escape(t.scenario)+'</b><p class="caption">'+escape(t.scenarioHint)+'</p><button class="secondary" onclick="demoAnswers()">'+escape(t.scenario)+' →</button></div>';
 }
 function risk(q){return ["no","partial","unknown"].includes(answers[q.n])}
 function priorityList(){return original.filter(risk)}
@@ -178,10 +181,10 @@ areas.forEach((a,i)=>{let [x,y]=point(i,1);s+='<line x1="'+cx+'" y1="'+cy+'" x2=
 function renderResults(){const t=L(),gaps=priorityList(),f=lang==="en"?0:1;
 $("stage").innerHTML='<div class="label">'+escape(t.steps[2])+'</div><h2>'+escape(t.resultTitle)+'</h2><p class="explain">'+escape(t.resultDesc)+'</p>'+(demo?'<div class="status plan">'+escape(t.fiction)+'</div>':'<div class="status">'+escape(t.real)+'</div>')+
 '<div class="results"><div>'+radarSvg()+'<p class="legend"><i></i>'+escape(t.chartLabel)+'<br><i class="empty"></i>'+escape(t.notAssessed)+'</p></div><div><h3 style="margin:0 0 12px;font-size:18px">'+escape(t.findingTitle)+'</h3>'+
-(gaps.length?gaps.map(q=>'<div class="finding"><b>T'+q.n+' · '+escape(name(q.n))+'</b><span class="flag">'+escape(answers[q.n]==="unknown"?t.unknown:t.priority)+'</span><span>'+escape(q.action[f])+'</span></div>').join(""):'<div class="finding">'+escape(t.noGaps)+'</div>')+
+(gaps.length?gaps.map(q=>'<div class="finding"><b>T'+q.n+' · '+escape(name(q.n))+'</b><button class="secondary" style="float:right;padding:5px 8px;font-size:11px" onclick="changeAnswer('+q.n+')">'+escape(t.edit)+'</button><span class="flag">'+escape(answers[q.n]==="unknown"?t.unknown:t.priority)+'</span><span>'+escape(q.action[f])+'</span></div>').join(""):'<div class="finding">'+escape(t.noGaps)+'</div>')+
 '</div></div>'+
 (answers[6]==="yes"&&answers[3]==="no"?'<div class="callout"><b>'+escape(t.other)+'</b><div>'+escape(t.possible)+'</div></div>':'')+
-'<p class="caption"><b>'+escape(t.source)+'</b>: '+original.map(q=>q.code+' → '+q.link).join(' · ')+'</p><div class="controls"><button class="primary" onclick="go(3)">'+escape(t.nextMaster)+' →</button><button class="secondary" onclick="go(1)">'+escape(t.back)+'</button></div>';
+'<p class="caption"><b>'+escape(t.source)+'</b>: '+original.map(q=>q.code+' → '+q.link).join(' · ')+'</p><div class="controls"><button class="primary" onclick="go(3)">'+escape(t.nextMaster)+' →</button><button class="secondary" onclick="go(1)">← '+escape(t.edit)+'</button></div>';
 }
 function renderMaster(){const t=L(),f=lang==="en"?0:1,gaps=priorityList();const priorities=gaps.filter(q=>answers[q.n]!=="unknown").slice(0,3);const list=priorities.length?priorities.map(q=>'T'+q.n+' · '+name(q.n)).join(" · "):(lang==="en"?"No missing/partial practice reported":"Отсутствующие или частичные практики не заявлены");
 $("stage").innerHTML='<div class="label">'+escape(t.steps[3])+'</div><h2>'+escape(t.masterTitle)+'</h2><p class="explain">'+escape(t.masterDesc)+'</p>'+
@@ -190,7 +193,7 @@ $("stage").innerHTML='<div class="label">'+escape(t.steps[3])+'</div><h2>'+escap
 '<div class="chainItem"><span class="num">02 · '+escape(t.working)+'</span><h3>'+escape(t.master2)+'</h3><p>'+escape(t.master2Desc)+'</p>'+(priorities.length?'<p>'+priorities.map(q=>escape(q.action[f])).join(' ')+'</p>':'')+'</div><div class="down">↓</div>'+
 '<div class="chainItem"><span class="num">03 · '+escape(t.method)+'</span><h3>'+escape(t.master3)+'</h3><p>'+escape(t.master3Desc)+'</p></div><div class="down">↓</div>'+
 '<div class="chainItem"><span class="num">04 · '+escape(t.planned)+'</span><h3>'+escape(t.master4)+'</h3><p>'+escape(t.master4Desc)+'</p></div></div>'+
-'<div class="callout"><strong>'+escape(t.end)+'</strong></div><div class="controls"><button class="secondary" onclick="go(2)">'+escape(t.return)+'</button><button class="secondary" onclick="go(0)">'+escape(t.restart)+'</button></div>';
+'<div class="callout"><strong>'+escape(t.end)+'</strong></div><div class="controls"><button class="secondary" onclick="go(2)">← '+escape(t.return)+'</button><button class="secondary" onclick="resetAll()">'+escape(t.restart)+'</button></div>';
 }
 function render(){initShell();if(screen===0)renderStart();if(screen===1)renderQuestions();if(screen===2)renderResults();if(screen===3)renderMaster();}
 render();
