@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marketing Studio | Start-Up Chile Build Prototype</title>
+<meta name="description" content="Working diagnostic prototype and MASTER methodology demo, connected through an honest, traceable user journey.">
+<style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#17382f;background:#f3f6f2}
+*{box-sizing:border-box}body{margin:0}button,a{font:inherit}button{cursor:pointer}
+.top{background:#173b30;color:white;padding:17px max(22px,calc((100vw - 1350px)/2));display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.brand{font-size:13px;font-weight:800;letter-spacing:.1em}.top small{display:block;font-size:11px;letter-spacing:0;color:#d1e4da;font-weight:400;margin-top:3px}
+.mode{font-size:11px;border:1px solid #85ad9b;border-radius:22px;padding:8px 11px;color:#e9f6ee}
+.wrap{max-width:1350px;margin:auto;padding:24px 22px 50px}
+h1{font-size:clamp(28px,3.5vw,41px);letter-spacing:-.04em;margin:0 0 10px;line-height:1.12}
+.lead{font-size:15px;color:#527064;line-height:1.55;max-width:930px;margin:0 0 16px}
+.switcher{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px}
+.tab{border:1px solid #c9dcd0;border-radius:10px;background:white;color:#1f5e49;padding:12px 15px;font-weight:700}
+.tab[aria-selected=true]{background:#175841;color:#fff;border-color:#175841}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start}
+.app{border:1px solid #d3e2d8;border-radius:16px;background:white;min-width:0;overflow:hidden;box-shadow:0 10px 30px #2148370b}
+.appheader{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:#eaf3ed;border-bottom:1px solid #d6e6da;flex-wrap:wrap}
+.appheader strong{font-size:14px}.appheader small{font-size:11px;color:#507260}
+iframe{border:0;display:block;width:100%;height:720px;background:white}
+.aside{background:white;border:1px solid #d3e2d8;border-radius:16px;padding:20px;box-shadow:0 10px 30px #2148370b}
+h2{font-size:17px;margin:0 0 12px}h3{font-size:14px;margin:16px 0 7px}
+p,li{line-height:1.55}.aside p,.aside li{font-size:13px;color:#4f665b}.aside ul{padding-left:18px}
+.divider{height:1px;background:#e2ece5;margin:18px 0}
+.pill{display:inline-block;padding:5px 9px;border-radius:20px;background:#edf4ee;color:#2b654d;font-size:11px;font-weight:700}
+.badge{color:#6a5432;background:#fff4df;border-radius:7px;padding:5px 8px;font-size:11px;display:inline-block;margin:8px 0}
+.primary{border:0;background:#175841;color:white;border-radius:10px;padding:12px 14px;font-weight:750;width:100%;text-align:center;margin:10px 0 0}
+.secondary{border:1px solid #c6ded0;background:#f3f8f4;color:#175841;border-radius:9px;padding:9px 11px;font-size:12px;font-weight:700}
+.muted{color:#718076;font-size:12px}
+#handoffList{padding-left:18px;font-size:13px}
+.status{display:flex;gap:7px;align-items:center;font-size:12px;color:#446656;font-weight:600}
+.dot{width:8px;height:8px;background:#15946c;border-radius:50%;display:inline-block}
+.explain{max-width:860px;margin:auto;background:white;border:1px solid #d7e4db;border-radius:17px;padding:28px}
+.stack{display:grid;gap:10px}.node{border:1px solid #d4e5d9;border-radius:11px;padding:16px;background:#f5f9f6}.node b{display:block;margin-bottom:4px}.node span{font-size:13px;color:#597267}.arrow{text-align:center;color:#2b7e5e;font-size:24px}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.foot{margin-top:20px;border-top:1px solid #dce7df;padding-top:16px;color:#63766a;font-size:12px}
+a{color:#17624a}
+#metaNote{background:#faf8ee;border:1px solid #ebdfb4;border-radius:10px;padding:11px;font-size:12px;line-height:1.55}
+@media(max-width:930px){.grid{grid-template-columns:1fr}.aside{order:-1}iframe{height:700px}}
+@media(max-width:600px){.wrap{padding:18px 12px}.top{padding:14px 12px}.appheader{font-size:12px}.twocol{grid-template-columns:1fr}iframe{height:690px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand">MARKETING STUDIO <small>Start-Up Chile Build · working components demonstration</small></div><span class="mode">Early-stage prototype · not integrated MVP</span></header>
+<main class="wrap">
+<h1>From a business problem to professional marketing work</h1>
+<p class="lead">Marketing Studio aims to make structured professional marketing accessible to small businesses. This demonstration connects two existing components: a working self-assessment and a separate illustration of the MASTER decision method. Their end-to-end automated integration is a planned Build milestone.</p>
+<nav class="switcher" role="tablist" aria-label="Demo stages">
+<button id="tab-diagnostic" class="tab" role="tab" aria-selected="true" onclick="go('diagnostic')">1 · Working self-assessment</button>
+<button id="tab-method" class="tab" role="tab" aria-selected="false" onclick="go('method')">2 · MASTER: professional method</button>
+<button id="tab-roadmap" class="tab" role="tab" aria-selected="false" onclick="go('roadmap')">3 · What Build will integrate</button>
+</nav>
+<div id="workbench" class="grid">
+<section class="app">
+<div class="appheader"><div><strong id="frameTitle">Working diagnostic prototype</strong> <small id="frameSub">Actual application · FROZEN 15 November 2026</small></div><div class="status"><i class="dot"></i><span>Existing component</span></div></div>
+<iframe id="viewer" title="Marketing Studio working diagnostic prototype" src="./diagnostic.html" loading="eager" allow="fullscreen"></iframe>
+</section>
+<aside class="aside" aria-live="polite">
+<div id="paneDiagnostic">
+<span class="pill">STEP 1 / BUSINESS OWNER</span>
+<h2 style="margin-top:12px">Start with a real business concern</h2>
+<p>Choose a business problem, select company or product context, answer the selected questions, and inspect the resulting 13-domain profile.</p>
+<p>This is a working rules-based interface. It asks questions grounded in the Marketing Map and gives preliminary next checks.</p>
+<div class="divider"></div>
+<h3>What the demo can and cannot establish</h3>
+<ul><li>Working interaction, scenario-dependent questions and a traceable preliminary result</li><li>No external evidence verification, causal diagnosis or validated maturity score</li></ul>
+<button class="primary" onclick="go('method')">See the MASTER method →</button>
+</div>
+<div id="paneMethod" hidden>
+<span class="pill">STEP 2 / PROFESSIONAL METHOD</span>
+<h2 style="margin-top:12px">How the next work is structured</h2>
+<div id="captured"><p>No assessment result has been captured yet. You can review the separate MASTER demonstration independently, or return to step 1 and complete an assessment.</p></div>
+<div class="divider"></div>
+<p id="metaNote"><strong>Important:</strong> MASTER below is a documented methodology and illustrative decision route. It does not automatically execute the previous answers. This screen carries the context for explanation only.</p>
+<button class="secondary" onclick="go('diagnostic')">← Back to assessment</button>
+<button class="primary" onclick="go('roadmap')">What Build will connect →</button>
+</div>
+</aside>
+</div>
+<section id="roadmap" class="explain" hidden>
+<span class="pill">STEP 3 / BUILD OBJECTIVE</span>
+<h2 style="font-size:24px;margin-top:13px">One integrated workflow is the next milestone</h2>
+<p>These two separate prototypes illustrate the product direction. Marketing Studio is not yet an operational system that automatically transfers a self-assessment into MASTER, runs independent research or revises decisions when new evidence appears.</p>
+<div class="stack">
+<div class="node"><b>1. Business problem or self-assessment</b><span>Existing working diagnostic component: five problem-based entry points, one general profile, domain-specific questions and follow-up suggestions.</span></div>
+<div class="arrow">↓</div>
+<div class="node"><b>2. Formal professional method</b><span>Existing MASTER methodology: required inputs, professional operations, decision rules, gates and return paths. The current public MASTER demo is illustrative, not an executing engine.</span></div>
+<div class="arrow">↓</div>
+<div class="node"><b>3. Research and evidence</b><span>Experimental Research Harness methods exist separately. The automated orchestration and shared evidence store are planned.</span></div>
+<div class="arrow">↓</div>
+<div class="node"><b>4. Choices, plans and follow-up</b><span>Separate tools for strategy, annual planning and budgeting exist. Linking decisions, actions and evidence changes is a planned integrated workflow.</span></div>
+</div>
+<div class="twocol"><div class="node"><b>What has been built</b><span>Ontology · MASTER methods · research experiments · working self-assessment · separate planning tools</span></div><div class="node"><b>What we will test in Chile</b><span>One bounded end-to-end use case with Chilean SMEs, including reliability, human effort, evidence quality and willingness to pay</span></div></div>
+<button class="secondary" onclick="go('method')">← Review MASTER</button>
+<div class="foot">This demo intentionally distinguishes existing software and published methods from future integrations. Fictional example responses inside the diagnostic are labelled as examples, not client validation.</div>
+</section>
+<footer class="foot"><strong>Sources:</strong> Marketing Map (13 interconnected domains), MASTER v1.5 (current methodological reference), frozen self-assessment prototype (15 Nov 2026). MASTER v2.0 RC5 is a draft. <span class="muted">This demo does not establish commercial traction or a complete integrated MVP.</span></footer>
+</main>
+<script>
+const names=["Environment","Stakeholders","Buyer behavior","Market and demand","Competition","Value proposition","Brand","Pricing","Channels","Communication","Customer relationships and sales","Organization","Data"];
+const statusNames={yes:"Systematic",partial:"Partial",no:"Not performed",unknown:"Unknown",na:"Not applicable"};
+let active="diagnostic",assessment=null,masterExample=false;
+const viewer=document.getElementById("viewer");
+function go(stage){
+ active=stage;
+ for(const n of ["diagnostic","method","roadmap"]){const b=document.getElementById("tab-"+n);b.setAttribute("aria-selected",String(stage===n));}
+ document.getElementById("workbench").hidden=stage==="roadmap";
+ document.getElementById("roadmap").hidden=stage!=="roadmap";
+ document.getElementById("paneDiagnostic").hidden=stage!=="diagnostic";
+ document.getElementById("paneMethod").hidden=stage!=="method";
+ if(stage==="method"){document.getElementById("frameTitle").textContent="MASTER · professional decision method";document.getElementById("frameSub").textContent="Methodological demonstration · not an executing engine";if(!viewer.src.endsWith("master.html#example")&&!viewer.src.endsWith("master.html"))viewer.src="./master.html#example";renderContext();}
+ if(stage==="diagnostic"){document.getElementById("frameTitle").textContent="Working diagnostic prototype";document.getElementById("frameSub").textContent="Actual application · FROZEN 15 November 2026";if(!viewer.src.endsWith("diagnostic.html"))viewer.src="./diagnostic.html";}
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderContext(){
+ const c=document.getElementById("captured");c.replaceChildren();
+ if(!assessment){const p=document.createElement("p");p.textContent="No assessment result captured. This MASTER example is independent; complete step 1 first for a contextual handoff.";c.appendChild(p);return;}
+ const h=document.createElement("h3");h.textContent="Context from the previous screen";c.appendChild(h);
+ const p=document.createElement("p");p.textContent=assessment.task+" · "+(assessment.demo?"fictional demonstration company":"user-reported assessment")+" · "+(assessment.scope==="company"?"whole company":"product or business line");c.appendChild(p);
+ const caption=document.createElement("p");caption.textContent="Selected areas and reported practices:";c.appendChild(caption);
+ const list=document.createElement("ul");list.id="handoffList";
+ const relevant=(assessment.areas||[]).map(Number);
+ const gaps=relevant.filter(n=>assessment.answers[n]==="no"||assessment.answers[n]==="partial"||assessment.answers[n]==="unknown");
+ for(const n of (gaps.length?gaps:relevant).slice(0,6)){const li=document.createElement("li");li.textContent="T"+n+" · "+names[n-1]+" — "+(statusNames[assessment.answers[n]]||"Not assessed");list.appendChild(li);}
+ c.appendChild(list);
+ const note=document.createElement("p");note.className="muted";note.textContent="The context is displayed here for explanation only; MASTER does not automatically consume these answers in this demo.";c.appendChild(note);
+}
+window.addEventListener("message",function(e){
+ if(e.origin!==window.location.origin)return;
+ const d=e.data;if(!d||typeof d!=="object")return;
+ if(d.type==="marketing-studio-assessment-result"){assessment=d;renderContext();}
+ if(d.type==="marketing-studio-open-method")go("method");
+});
+</script>
+</body></html>
