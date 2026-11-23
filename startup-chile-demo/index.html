@@ -260,7 +260,7 @@ $("stage").innerHTML='<div class="label">'+escape(t.steps[2])+'</div><h2>'+escap
 function renderMaster(){const t=L(),f=lang==="en"?0:1,gaps=priorityList();const priorities=gaps.filter(q=>answers[q.n]!=="unknown").slice(0,3);const list=priorities.length?priorities.map(q=>'T'+q.n+' · '+name(q.n)).join(" · "):(lang==="en"?"No missing/partial practice reported":"Отсутствующие или частичные практики не заявлены");
 $("stage").innerHTML='<div class="label">'+escape(t.steps[3])+'</div><h2>'+escape(t.masterTitle)+'</h2><p class="explain">'+escape(t.masterDesc)+'</p>'+
 '<div class="chain">'+
-'<div class="chainItem"><span class="num">01 · '+escape(t.working)+'</span><h3>'+escape(t.master1)+'</h3><p>'+escape(t.master1Desc)+'</p><p><strong>'+escape(mode==="general"?t.generalProblem:t.problem)+'</strong><br>'+escape(list)+'</p></div><div class="down">↓</div>'+
+'<div class="chainItem"><span class="num">01 · '+escape(t.working)+'</span><h3>'+escape(t.master1)+'</h3><p>'+escape(t.master1Desc)+'</p><p><strong>'+escape(mode==="general"?t.generalProblem:activeTask().title[f])+'</strong><br>'+escape(list)+'</p></div><div class="down">↓</div>'+
 '<div class="chainItem"><span class="num">02 · '+escape(t.working)+'</span><h3>'+escape(t.master2)+'</h3><p>'+escape(t.master2Desc)+'</p>'+(priorities.length?'<p>'+priorities.map(q=>escape(q.action[f])).join(' ')+'</p>':'')+'</div><div class="down">↓</div>'+
 '<div class="chainItem"><span class="num">03 · '+escape(t.method)+'</span><h3>'+escape(t.master3)+'</h3><p>'+escape(t.master3Desc)+'</p></div><div class="down">↓</div>'+
 '<div class="chainItem"><span class="num">04 · '+escape(t.planned)+'</span><h3>'+escape(t.master4)+'</h3><p>'+escape(t.master4Desc)+'</p></div></div>'+
