@@ -2,137 +2,197 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Marketing Studio | Start-Up Chile Build Prototype</title>
-<meta name="description" content="Working diagnostic prototype and MASTER methodology demo, connected through an honest, traceable user journey.">
+<meta name="description" content="A real working Marketing Studio self-assessment prototype and transparent demonstration of how MASTER provides methodological next steps.">
+<title>Marketing Studio — Start-Up Chile working prototype</title>
 <style>
-:root{font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#17382f;background:#f3f6f2}
-*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0}button,a{font:inherit}button{cursor:pointer}
-.top{background:#173b30;color:white;padding:17px max(22px,calc((100vw - 1350px)/2));display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.brand{font-size:13px;font-weight:800;letter-spacing:.1em}.top small{display:block;font-size:11px;letter-spacing:0;color:#d1e4da;font-weight:400;margin-top:3px}
-.mode{font-size:11px;border:1px solid #85ad9b;border-radius:22px;padding:8px 11px;color:#e9f6ee}
-.wrap{max-width:1350px;margin:auto;padding:24px 22px 50px}
-h1{font-size:clamp(28px,3.5vw,41px);letter-spacing:-.04em;margin:0 0 10px;line-height:1.12}
-.lead{font-size:15px;color:#527064;line-height:1.55;max-width:930px;margin:0 0 16px}
-.switcher{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px}
-.tab{border:1px solid #c9dcd0;border-radius:10px;background:white;color:#1f5e49;padding:12px 15px;font-weight:700}
-.tab[aria-selected=true]{background:#175841;color:#fff;border-color:#175841}
-.grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start}
-.app{border:1px solid #d3e2d8;border-radius:16px;background:white;min-width:0;overflow:hidden;box-shadow:0 10px 30px #2148370b}
-.appheader{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:#eaf3ed;border-bottom:1px solid #d6e6da;flex-wrap:wrap}
-.appheader strong{font-size:14px}.appheader small{font-size:11px;color:#507260}
-iframe{border:0;display:block;width:100%;height:720px;background:white}
-.aside{background:white;border:1px solid #d3e2d8;border-radius:16px;padding:20px;box-shadow:0 10px 30px #2148370b}
-h2{font-size:17px;margin:0 0 12px}h3{font-size:14px;margin:16px 0 7px}
-p,li{line-height:1.55}.aside p,.aside li{font-size:13px;color:#4f665b}.aside ul{padding-left:18px}
-.divider{height:1px;background:#e2ece5;margin:18px 0}
-.pill{display:inline-block;padding:5px 9px;border-radius:20px;background:#edf4ee;color:#2b654d;font-size:11px;font-weight:700}
-.badge{color:#6a5432;background:#fff4df;border-radius:7px;padding:5px 8px;font-size:11px;display:inline-block;margin:8px 0}
-.primary{border:0;background:#175841;color:white;border-radius:10px;padding:12px 14px;font-weight:750;width:100%;text-align:center;margin:10px 0 0}
-.secondary{border:1px solid #c6ded0;background:#f3f8f4;color:#175841;border-radius:9px;padding:9px 11px;font-size:12px;font-weight:700}
-.muted{color:#718076;font-size:12px}
-#handoffList{padding-left:18px;font-size:13px}
-.status{display:flex;gap:7px;align-items:center;font-size:12px;color:#446656;font-weight:600}
-.dot{width:8px;height:8px;background:#15946c;border-radius:50%;display:inline-block}
-.explain{max-width:860px;margin:auto;background:white;border:1px solid #d7e4db;border-radius:17px;padding:28px}
-.stack{display:grid;gap:10px}.node{border:1px solid #d4e5d9;border-radius:11px;padding:16px;background:#f5f9f6}.node b{display:block;margin-bottom:4px}.node span{font-size:13px;color:#597267}.arrow{text-align:center;color:#2b7e5e;font-size:24px}
-.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
-.foot{margin-top:20px;border-top:1px solid #dce7df;padding-top:16px;color:#63766a;font-size:12px}
-a{color:#17624a}
-#metaNote{background:#faf8ee;border:1px solid #ebdfb4;border-radius:10px;padding:11px;font-size:12px;line-height:1.55}
-@media(max-width:930px){.grid{grid-template-columns:1fr}.aside{order:-1}iframe{height:700px}}
-@media(max-width:600px){.wrap{padding:18px 12px}.top{padding:14px 12px}.appheader{font-size:12px}.twocol{grid-template-columns:1fr}iframe{height:690px}}
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#18392f;background:#f3f6f2;font-size:16px}
+*{box-sizing:border-box}body{margin:0}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #e8a84d;outline-offset:3px}[hidden]{display:none!important}
+header{background:#164734;color:white}.top{max-width:1160px;padding:13px 24px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.logo{font-weight:850;font-size:15px;letter-spacing:.09em}.subtitle{font-size:11px;color:#c5e6d5;margin-top:3px}.languages{display:flex;gap:5px}
+.language{border:1px solid #7ba593;color:white;background:transparent;border-radius:8px;padding:6px 9px;font-size:12px;font-weight:750}
+.language.active{background:#fff;color:#194c38}
+main{max-width:1160px;margin:auto;padding:23px 24px 40px}
+.kicker{text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:850;color:#2a8567}
+h1{font-size:clamp(30px,4.0vw,48px);line-height:1.1;letter-spacing:-.05em;margin:8px 0 12px;max-width:900px}
+.lead{font-size:17px;line-height:1.5;max-width:870px;color:#51695e;margin:0 0 20px}
+.steps{display:flex;gap:8px;margin:0 0 18px}.step{flex:1;border:1px solid #d6e3d9;background:white;border-radius:10px;padding:10px 13px;color:#4e7060;font-size:13px;font-weight:750}
+.step.current{background:#175b45;color:#fff;border-color:#175b45}.step.complete{background:#e5f2e9;color:#175b45}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:18px;align-items:start}
+.stage{background:white;border:1px solid #d7e5dc;border-radius:18px;padding:27px 31px;box-shadow:0 12px 34px #14372a09;min-height:480px}
+.sidebar{background:#eaf3ed;border-radius:16px;padding:21px;border:1px solid #d6e6dc}
+.sidebar h3{font-size:17px;margin:0 0 10px}.sidebar p{font-size:14px;line-height:1.6;margin:8px 0;color:#416554}
+.sidebar strong{color:#204b3b}.sidebar .notice{border-left:3px solid #bd934a;padding-left:10px}
+h2{font-size:25px;letter-spacing:-.03em;margin:3px 0 10px;line-height:1.2}
+.explain{font-size:15px;line-height:1.6;color:#586f62;margin:0 0 20px}
+.choice{display:flex;width:100%;align-items:center;justify-content:space-between;text-align:left;background:#f9fbf9;color:#18392f;border:1px solid #d5e3da;border-radius:14px;padding:20px;gap:15px;margin:10px 0}
+.choice:hover,.choice:focus-visible{border-color:#2d8868;background:#f1f9f2}
+.choice strong{display:block;font-size:19px;margin-bottom:6px}.choice small{font-size:13px;color:#60766b;line-height:1.4;display:block}.choice .go{font-size:24px;color:#247858}
+.label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#247858;font-weight:850;margin:0 0 8px}
+.context{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+select{padding:10px;background:white;border:1px solid #c7d9cd;border-radius:8px;font:inherit;font-size:14px;max-width:100%}
+.field span{display:block;font-size:12px;color:#526c5f;margin-bottom:5px}
+.question{margin:0 0 15px;border-bottom:1px solid #e4ede6;padding-bottom:14px}
+.qhead{display:flex;gap:12px;align-items:baseline;margin-bottom:9px}
+.qtag{color:#2c8667;font-size:12px;font-weight:850;min-width:34px}.qtext{font-size:16px;font-weight:650;line-height:1.4}
+.answers{display:flex;gap:7px;flex-wrap:wrap;margin-left:45px}
+.ans{font-size:12px;font-weight:650;padding:8px 10px;border-radius:8px;border:1px solid #d4e2d7;background:#f7faf7;color:#436353}
+.ans.active{background:#1b684f;color:#fff;border-color:#1b684f}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.primary{background:#176148;color:white;border:1px solid #176148;padding:13px 21px;border-radius:10px;font-size:15px;font-weight:800}
+.primary:disabled{opacity:.45;cursor:not-allowed}.secondary{background:white;border:1px solid #c3d8cb;color:#1b674f;padding:12px 17px;border-radius:10px;font-weight:750;font-size:14px}
+.caption{font-size:12px;color:#62776c;line-height:1.5}
+.results{display:grid;grid-template-columns:280px minmax(0,1fr);gap:22px;align-items:start}
+.radar{width:100%;max-width:320px;display:block}
+.legend{font-size:12px;color:#5b7164;line-height:1.55}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:#d88f43;margin-right:6px}
+.legend .empty{background:white;border:1px solid #5c8b77}
+.finding{padding:12px 15px;border-radius:11px;background:#f7faf7;border:1px solid #e0e9e0;margin:0 0 9px}
+.finding b{font-size:14px}.finding span{font-size:13px;color:#586e62;line-height:1.45;display:block;margin-top:5px}
+.flag{font-size:11px;color:#986323;margin-left:8px}.good{color:#1a7d5b}
+.chain{display:grid;gap:9px}
+.chainItem{background:#f4f8f5;border:1px solid #d9e9dd;border-radius:13px;padding:16px}
+.chainItem .num{color:#287e5d;font-size:12px;font-weight:850}.chainItem h3{font-size:17px;margin:5px 0 6px}
+.chainItem p{font-size:14px;line-height:1.5;margin:0;color:#506d5e}.down{text-align:center;font-size:22px;color:#3d8c71}
+.status{display:inline-block;border-radius:7px;background:#e5f2e9;padding:5px 9px;color:#216b50;font-weight:750;font-size:11px;margin:8px 0}
+.status.plan{background:#fff2de;color:#90631b}.callout{background:#f5f8f2;border-left:4px solid #2c8667;padding:16px;font-size:14px;line-height:1.6;margin:15px 0}
+.foot{margin-top:20px;color:#657a6e;font-size:12px;line-height:1.5}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{min-height:0}.results{grid-template-columns:1fr}.radar{max-width:300px}.stage{min-height:0}}
+@media(max-width:600px){main{padding:17px 13px}.top{padding:12px 13px}.stage{padding:19px 15px}.steps{gap:4px}.step{padding:9px 5px;font-size:10px;text-align:center}.answers{margin-left:0}.qtext{font-size:14px}.ans{font-size:11px}.layout{gap:12px}}
 </style>
 </head>
 <body>
-<header class="top"><div class="brand">MARKETING STUDIO <small>Start-Up Chile Build · working components demonstration</small></div><span class="mode">Early-stage prototype · not integrated MVP</span></header>
-<main class="wrap">
-<h1>From a business problem to professional marketing work</h1>
-<p class="lead">Marketing Studio aims to make structured professional marketing accessible to small businesses. This demonstration connects two existing components: a working self-assessment and a separate illustration of the MASTER decision method. Their end-to-end automated integration is a planned Build milestone.</p>
-<nav class="switcher" role="tablist" aria-label="Demo stages">
-<button id="tab-diagnostic" class="tab" role="tab" aria-selected="true" onclick="go('diagnostic')">1 · Working self-assessment</button>
-<button id="tab-method" class="tab" role="tab" aria-selected="false" onclick="go('method')">2 · MASTER: professional method</button>
-<button id="tab-roadmap" class="tab" role="tab" aria-selected="false" onclick="go('roadmap')">3 · What Build will integrate</button>
-</nav>
-<div id="workbench" class="grid">
-<section class="app">
-<div class="appheader"><div><strong id="frameTitle">Working diagnostic prototype</strong> <small id="frameSub">Actual application · FROZEN 15 November 2026</small></div><div class="status"><i class="dot"></i><span>Existing component</span></div></div>
-<iframe id="viewer" title="Marketing Studio working diagnostic prototype" src="./diagnostic.html" loading="eager" allow="fullscreen"></iframe>
-</section>
-<aside class="aside" aria-live="polite">
-<div id="paneDiagnostic">
-<span class="pill">STEP 1 / BUSINESS OWNER</span>
-<h2 style="margin-top:12px">Start with a real business concern</h2>
-<p>Choose a business problem, select company or product context, answer the selected questions, and inspect the resulting 13-domain profile.</p>
-<p>This is a working rules-based interface. It asks questions grounded in the Marketing Map and gives preliminary next checks.</p>
-<div class="divider"></div>
-<h3>What the demo can and cannot establish</h3>
-<ul><li>Working interaction, scenario-dependent questions and a traceable preliminary result</li><li>No external evidence verification, causal diagnosis or validated maturity score</li></ul>
-<button class="primary" onclick="go('method')">See the MASTER method →</button>
-</div>
-<div id="paneMethod" hidden>
-<span class="pill">STEP 2 / PROFESSIONAL METHOD</span>
-<h2 style="margin-top:12px">How the next work is structured</h2>
-<div id="captured"><p>No assessment result has been captured yet. You can review the separate MASTER demonstration independently, or return to step 1 and complete an assessment.</p></div>
-<div class="divider"></div>
-<p id="metaNote"><strong>Important:</strong> MASTER below is a documented methodology and illustrative decision route. It does not automatically execute the previous answers. This screen carries the context for explanation only.</p>
-<button class="secondary" onclick="go('diagnostic')">← Back to assessment</button>
-<button class="primary" onclick="go('roadmap')">What Build will connect →</button>
-</div>
-</aside>
-</div>
-<section id="roadmap" class="explain" hidden>
-<span class="pill">STEP 3 / BUILD OBJECTIVE</span>
-<h2 style="font-size:24px;margin-top:13px">One integrated workflow is the next milestone</h2>
-<p>These two separate prototypes illustrate the product direction. Marketing Studio is not yet an operational system that automatically transfers a self-assessment into MASTER, runs independent research or revises decisions when new evidence appears.</p>
-<div class="stack">
-<div class="node"><b>1. Business problem or self-assessment</b><span>Existing working diagnostic component: five problem-based entry points, one general profile, domain-specific questions and follow-up suggestions.</span></div>
-<div class="arrow">↓</div>
-<div class="node"><b>2. Formal professional method</b><span>Existing MASTER methodology: required inputs, professional operations, decision rules, gates and return paths. The current public MASTER demo is illustrative, not an executing engine.</span></div>
-<div class="arrow">↓</div>
-<div class="node"><b>3. Research and evidence</b><span>Experimental Research Harness methods exist separately. The automated orchestration and shared evidence store are planned.</span></div>
-<div class="arrow">↓</div>
-<div class="node"><b>4. Choices, plans and follow-up</b><span>Separate tools for strategy, annual planning and budgeting exist. Linking decisions, actions and evidence changes is a planned integrated workflow.</span></div>
-</div>
-<div class="twocol"><div class="node"><b>What has been built</b><span>Ontology · MASTER methods · research experiments · working self-assessment · separate planning tools</span></div><div class="node"><b>What we will test in Chile</b><span>One bounded end-to-end use case with Chilean SMEs, including reliability, human effort, evidence quality and willingness to pay</span></div></div>
-<button class="secondary" onclick="go('method')">← Review MASTER</button>
-<div class="foot">This demo intentionally distinguishes existing software and published methods from future integrations. Fictional example responses inside the diagnostic are labelled as examples, not client validation.</div>
-</section>
-<footer class="foot"><strong>Sources:</strong> Marketing Map (13 interconnected domains), MASTER v1.5 (current methodological reference), frozen self-assessment prototype (15 Nov 2026). MASTER v2.0 RC5 is a draft. <span class="muted">This demo does not establish commercial traction or a complete integrated MVP.</span></footer>
+<header><div class="top"><div><div class="logo">MARKETING STUDIO</div><div class="subtitle" id="hdrSub"></div></div><div class="languages"><button class="language" id="langRu" onclick="setLang('ru')">РУС</button><button class="language active" id="langEn" onclick="setLang('en')">EN</button></div></div></header>
+<main>
+<div class="kicker" id="kicker"></div><h1 id="headline"></h1><p class="lead" id="lead"></p>
+<div class="steps" id="steps"></div>
+<div class="layout"><section class="stage" id="stage"></section><aside class="sidebar" id="sidebar"></aside></div>
+<p class="foot" id="footer"></p>
 </main>
 <script>
-const names=["Environment","Stakeholders","Buyer behavior","Market and demand","Competition","Value proposition","Brand","Pricing","Channels","Communication","Customer relationships and sales","Organization","Data"];
-const statusNames={yes:"Systematic",partial:"Partial",no:"Not performed",unknown:"Unknown",na:"Not applicable"};
-let active="diagnostic",assessment=null,masterExample=false;
-const viewer=document.getElementById("viewer");
-function go(stage){
- active=stage;
- for(const n of ["diagnostic","method","roadmap"]){const b=document.getElementById("tab-"+n);b.setAttribute("aria-selected",String(stage===n));}
- document.getElementById("workbench").hidden=stage==="roadmap";
- document.getElementById("roadmap").hidden=stage!=="roadmap";
- document.getElementById("paneDiagnostic").hidden=stage!=="diagnostic";
- document.getElementById("paneMethod").hidden=stage!=="method";
- if(stage==="method"){document.getElementById("frameTitle").textContent="MASTER · professional decision method";document.getElementById("frameSub").textContent="Methodological demonstration · not an executing engine";if(!viewer.src.endsWith("master.html#example")&&!viewer.src.endsWith("master.html"))viewer.src="./master.html#example";renderContext();}
- if(stage==="diagnostic"){document.getElementById("frameTitle").textContent="Working diagnostic prototype";document.getElementById("frameSub").textContent="Actual application · FROZEN 15 November 2026";if(!viewer.src.endsWith("diagnostic.html"))viewer.src="./diagnostic.html";}
- window.scrollTo({top:0,behavior:"smooth"});
+"use strict";
+// The six concrete prompts and links are derived from the frozen assessment (15 Nov 2026).
+// No simulated customer validation, automated research or executable MASTER integration is claimed.
+const areas=[
+["Environment","Среда"],["Stakeholders","Участники"],["Buyer behavior","Поведение покупателя"],
+["Market & demand","Рынок и спрос"],["Competition","Конкуренция"],
+["Value proposition","Ценность и предложение"],["Brand","Бренд"],["Pricing","Цена"],
+["Channels","Каналы"],["Communication","Коммуникации"],
+["Relationships & sales","Отношения и продажи"],["Organization","Организация"],["Data","Данные"]];
+const original=[
+{n:3,code:"T3.09",link:"REL.005 · MEC.006",q:["Do you ask customers which criteria they use to compare your offering with alternatives?","Вы выясняете у покупателей, по каким критериям они сравнивают ваше предложение с альтернативами?"],action:["Ask several buyers what mattered most when they compared options.","Спросите нескольких покупателей, что было решающим при сравнении вариантов."]},
+{n:5,code:"T5.05",link:"MEC.009",q:["Do you investigate other ways customers can solve the same problem?","Вы выясняете, какими другими способами покупатели могут решить ту же задачу?"],action:["List direct competitors and alternative ways to solve the customer's problem.","Составьте перечень прямых конкурентов и других способов решить задачу."]},
+{n:2,code:"T2.07",link:"REL.005",q:["Do you know who actually makes the purchase decision?","Вы выясняете, кто принимает решение о покупке вашего предложения?"],action:["Identify who chooses, pays for and uses the offering.","Определите, кто выбирает, кто оплачивает и кто использует предложение."]},
+{n:6,code:"T6.06",link:"REL.014–015 · MEC.011",q:["Can you explain the specific value of your offering for the buyers you target?","Для выбранных покупателей вы можете сформулировать конкретную пользу вашего предложения?"],action:["Link your value promise to a customer's need, then check their understanding.","Свяжите обещаемую пользу с задачей покупателя и проверьте её понимание."]},
+{n:8,code:"T8.07",link:"REL.021 · MEC.014",q:["Do you investigate what price and payment terms buyers are willing to accept?","Вы выясняете, какую цену и условия оплаты покупатели готовы принять?"],action:["Check willingness to pay for a defined offer in a specific context.","Проверьте готовность платить за конкретное предложение в определённой ситуации."]},
+{n:9,code:"T9.07",link:"REL.024 · MEC.017",q:["Do you check whether target customers can actually obtain your offering?","Вы проверяете, может ли целевой покупатель реально получить ваше предложение?"],action:["Follow the buyer's path from decision to actual product delivery.","Пройдите путь от решения купить до фактического получения продукта."]}
+];
+const tr={
+en:{
+sub:"Start-Up Chile Build · live prototype walkthrough",kicker:"WORKING PROTOTYPE · REAL SOFTWARE",
+headline:"A business problem becomes a structured marketing check",
+lead:"A small business owner starts with a question. The working diagnostic selects relevant marketing practices, collects answers and recommends what to check next.",
+steps:["Business question","Six checks","Results","MASTER connection"],
+sideTitle:["What is happening?","What is happening?","What is happening?","What is happening?"],
+side:[
+["You do not have to know which marketing method to choose.","The diagnostic starts with the owner's own business concern.","This version is a focused, functional self-assessment, not the full Marketing Studio."],
+["The application selects six prompts linked to the Marketing Map's 13 domains.","You report which practices exist. No third-party evidence is checked.","Answer all six to generate your actual result; no fabricated data are necessary."],
+["The 13-domain visualization marks what was and was not assessed.","The recommendations are generated from your answers, not a static slide.","These results are preliminary self-reports, not a diagnosis of why sales fall."],
+["The context identifies marketing questions that need more evidence.","MASTER defines how professional checks, evidence gates and returns should work.","Automated execution of MASTER and Research Harness is a future integration, not demonstrated here."]
+],
+problemTitle:"What is your business problem?",problemDesc:"Choose an everyday business concern. Marketing Studio begins there, not with a list of software tools.",
+problem:"Why don't customers buy?",problemHint:"The assessment checks six practices related to buyer choice. It cannot establish the cause of lost sales.",
+start:"Start self-assessment",contextTitle:"Tell us about your situation",scope:"What are you assessing?",scopeOpts:["A product or business line","The company as a whole"],stage:"Are you already selling?",stageOpts:["Yes, to customers","Not yet — preparing to launch"],
+questionTitle:"Six questions selected for this business problem",questionDesc:"Answer about what your company actually does, not what it plans to do. You can see the source links in the results.",
+answers:["Yes, systematically","Sometimes / partly","No","I don't know","Not relevant"],
+next:"Show my results",back:"Back",clear:"Reset answers",missing:"Answer all six questions to continue.",scenario:"Fictional example for a quick walkthrough",scenarioHint:"Fills six answers and clearly labels the result as fictional. Use only if you want to show a sample instead of completing the assessment.",fiction:"FICTIONAL EXAMPLE — not a real customer",real:"Answers entered in this session",
+resultTitle:"Your initial marketing profile",resultDesc:"The chart shows all 13 domains. Only six have been assessed; empty domains must not be interpreted as weaknesses.",chartLabel:"Selected practices · no maturity score",notAssessed:"Not assessed",priority:"Check next",reported:"Reported as systematic",unknown:"Information missing",noGaps:"No gaps were reported for these six questions. Verify the practices with evidence before relying on them.",
+findingTitle:"What should be checked next?",possible:"A potential inconsistency: value is claimed, but the criteria customers use to choose alternatives are not being studied. This calls for verification, not an automatic diagnosis.",other:"Suggested verification",nextMaster:"How does MASTER structure the next work?",restart:"Start again",source:"Source links from the frozen diagnostic",masterTitle:"From self-assessment to professional work",
+masterDesc:"The diagnostic identifies possible gaps. MASTER describes the method that could guide professional verification. This demo shows that connection without claiming an executing integrated system.",
+master1:"Input from your assessment",master2:"Professional check proposed",master3:"MASTER method: evidence gate",master4:"Next action under the intended product",
+master1Desc:"This is the selected business problem and the practices you marked as missing or partial.",
+master2Desc:"A marketer would investigate buyer choice, alternatives, value or other relevant facts. The diagnostic has suggested where to look, not performed the investigation.",
+master3Desc:"MASTER v1.5 specifies required inputs, checks and return paths. Whether evidence is sufficient still needs a professional or future software implementation.",
+master4Desc:"Marketing Studio's Build milestone is to link the assessment, research findings and strategic decisions into one testable workflow with Chilean SMEs.",
+planned:"PLANNED INTEGRATION",working:"WORKING SELF-ASSESSMENT",method:"EXISTING METHOD · NOT AN EXECUTING ENGINE",end:"A working entry point today. An evidence-driven integrated workflow is the next step.",return:"Back to results",
+footer:"Early-stage demonstration. Marketing Map: 13 domains. Diagnostic source: FROZEN v1.0 (15 Nov 2026). MASTER v1.5: methodological reference. No customers or real-world performance are asserted by this demo."
+},
+ru:{
+sub:"Start-Up Chile Build · демонстрация работающего прототипа",kicker:"РАБОТАЮЩИЙ ПРОТОТИП · РЕАЛЬНАЯ ПРОГРАММА",
+headline:"От бизнес-проблемы — к профессиональным маркетинговым проверкам",
+lead:"Предприниматель начинает с вопроса. Работающая самодиагностика выбирает практики маркетинга, получает ответы и рекомендует, что проверить дальше.",
+steps:["Бизнес-проблема","Шесть проверок","Результат","Связь с MASTER"],
+sideTitle:["Что здесь происходит?","Что здесь происходит?","Что здесь происходит?","Что здесь происходит?"],
+side:[
+["Предпринимателю не нужно самому выбирать маркетинговый метод.","Самодиагностика начинается с понятной ему бизнес-проблемы.","Это действующий ограниченный инструмент, а не вся Marketing Studio."],
+["Программа выбирает шесть вопросов по областям Marketing Map.","Компания сообщает, какие практики применяет; внешние доказательства пока не проверяются.","После шести ответов программа вычисляет результат."],
+["На карте 13 областей различаются оценённые и неоценённые практики.","Рекомендации формируются из ответов, это не статичная презентация.","Самооценка не устанавливает причины падения продаж."],
+["Результат показывает, какие профессиональные проверки могут понадобиться.","MASTER задаёт методологию операций, доказательств и контрольных точек.","Автоматическое исполнение MASTER и Harness пока не реализовано."]
+],
+problemTitle:"С какой проблемой пришёл предприниматель?",problemDesc:"Начинаем с бизнес-задачи, а не с выбора рекламного или аналитического инструмента.",
+problem:"Почему клиенты не покупают?",problemHint:"Диагностика проверяет шесть практик, связанных с покупательским выбором. Причины отказов она не устанавливает.",
+start:"Начать самодиагностику",contextTitle:"Контекст компании",scope:"Что оцениваем?",scopeOpts:["Продукт или направление","Компанию целиком"],stage:"Продажи уже идут?",stageOpts:["Да, есть клиенты","Нет, готовимся к запуску"],
+questionTitle:"Шесть вопросов, выбранных для этой задачи",questionDesc:"Отвечайте о том, что действительно делаете. Связи с онтологией показаны в результатах.",
+answers:["Да, систематически","Иногда / частично","Нет","Не знаю","Не относится"],
+next:"Показать результат",back:"Назад",clear:"Сбросить ответы",missing:"Ответьте на все шесть вопросов.",scenario:"Условный пример для быстрого показа",scenarioHint:"Заполняет шесть ответов и явно обозначает вымышленную компанию. Используйте, только если не проходите опрос вручную.",fiction:"УСЛОВНЫЙ ПРИМЕР — не реальный клиент",real:"Ответы, введённые в этом сеансе",
+resultTitle:"Предварительный маркетинговый профиль",resultDesc:"Показаны все 13 областей. Оценены только шесть: отсутствие ответа по другим областям не означает слабость.",
+chartLabel:"Оценённые практики · не оценка зрелости",notAssessed:"Не оценивалось",priority:"Нужно проверить",reported:"Заявлено как систематическая практика",unknown:"Нет информации",noGaps:"По этим шести вопросам пробелы не заявлены. Для выводов нужны подтверждающие данные.",
+findingTitle:"Что требуется проверить дальше?",possible:"Возможная несогласованность: ценность предложения заявлена, но критерии выбора покупателей не исследуются. Это повод для проверки, а не доказательство проблемы.",other:"Предлагаемая проверка",nextMaster:"Как MASTER организует дальнейшую работу?",restart:"Начать заново",source:"Коды связей из исходной самодиагностики",masterTitle:"От самодиагностики к профессиональной работе",
+masterDesc:"Самодиагностика выявляет возможные пробелы. MASTER описывает метод дальнейших профессиональных проверок. Здесь показывается связь, но не готовый интегрированный движок.",
+master1:"Данные самодиагностики",master2:"Какая профессиональная проверка нужна",master3:"MASTER: контроль доказательств",master4:"Следующий этап разработки",
+master1Desc:"Исходная бизнес-задача и практики, отмеченные как отсутствующие или частичные.",
+master2Desc:"Маркетолог должен проверить поведение покупателей, альтернативы, ценность и прочие релевантные факты. Самодиагностика определила направление, но не провела исследование.",
+master3Desc:"MASTER v1.5 описывает необходимые входы, проверки и возвраты. Достаточность доказательств здесь ещё не подтверждена.",
+master4Desc:"Цель этапа Build — соединить диагностику, исследования и стратегические решения в один проверяемый процесс и испытать его с МСП Чили.",
+planned:"ПЛАНИРУЕМАЯ ИНТЕГРАЦИЯ",working:"РАБОТАЮЩАЯ САМОДИАГНОСТИКА",method:"МЕТОДОЛОГИЯ ЕСТЬ · ДВИЖОК НЕ РЕАЛИЗОВАН",end:"Работающий вход уже есть. Доказательная интегрированная работа — следующий этап.",return:"Вернуться к результату",
+footer:"Ранняя демонстрация. Marketing Map: 13 областей. Источник: самодиагностика FROZEN v1.0 от 15.11.2026. MASTER v1.5 — методологический эталон. Данные реальных клиентов и подтверждённая эффективность не заявляются."
+}};
+let lang="en",screen=0,answers={},demo=false,scope="product",stage="active";
+const $=id=>document.getElementById(id),L=()=>tr[lang],txt=(x)=>x[lang==="en"?0:1],escape=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function setLang(next){lang=next;render()}
+function go(next){screen=next;render();window.scrollTo({top:0,behavior:"smooth"})}
+function setAnswer(n,value){answers[n]=value;demo=false;render()}
+function setScope(v){scope=v}
+function setStage(v){stage=v}
+function demoAnswers(){answers={3:"no",5:"partial",2:"yes",6:"yes",8:"unknown",9:"partial"};demo=true;go(2)}
+function clearAnswers(){answers={};demo=false;render()}
+function begin(){answers={};demo=false;go(1)}
+function showResults(){if(original.every(q=>answers[q.n]))go(2)}
+function name(n){return areas[n-1][lang==="en"?0:1]}
+function initShell(){const t=L();$("hdrSub").textContent=t.sub;$("kicker").textContent=t.kicker;$("headline").textContent=t.headline;$("lead").textContent=t.lead;$("footer").textContent=t.footer;
+$("langEn").classList.toggle("active",lang==="en");$("langRu").classList.toggle("active",lang==="ru");
+$("steps").innerHTML=t.steps.map((x,i)=>'<div class="step '+(screen===i?"current":screen>i?"complete":"")+'">'+(i+1)+'. '+escape(x)+'</div>').join("");
+$("sidebar").innerHTML='<h3>'+escape(t.sideTitle[screen])+'</h3>'+t.side[screen].map((s,i)=>'<p'+(i===2?' class="notice"':'')+'>'+escape(s)+'</p>').join("");
 }
-function renderContext(){
- const c=document.getElementById("captured");c.replaceChildren();
- if(!assessment){const p=document.createElement("p");p.textContent="No assessment result captured. This MASTER example is independent; complete step 1 first for a contextual handoff.";c.appendChild(p);return;}
- const h=document.createElement("h3");h.textContent="Context from the previous screen";c.appendChild(h);
- const p=document.createElement("p");p.textContent=assessment.task+" · "+(assessment.demo?"fictional demonstration company":"user-reported assessment")+" · "+(assessment.scope==="company"?"whole company":"product or business line");c.appendChild(p);
- const caption=document.createElement("p");caption.textContent="Selected areas and reported practices:";c.appendChild(caption);
- const list=document.createElement("ul");list.id="handoffList";
- const relevant=(assessment.areas||[]).map(Number);
- const gaps=relevant.filter(n=>assessment.answers[n]==="no"||assessment.answers[n]==="partial"||assessment.answers[n]==="unknown");
- for(const n of (gaps.length?gaps:relevant).slice(0,6)){const li=document.createElement("li");li.textContent="T"+n+" · "+names[n-1]+" — "+(statusNames[assessment.answers[n]]||"Not assessed");list.appendChild(li);}
- c.appendChild(list);
- const note=document.createElement("p");note.className="muted";note.textContent="The context is displayed here for explanation only; MASTER does not automatically consume these answers in this demo.";c.appendChild(note);
+function renderStart(){const t=L();$("stage").innerHTML='<div class="label">'+escape(t.steps[0])+'</div><h2>'+escape(t.problemTitle)+'</h2><p class="explain">'+escape(t.problemDesc)+'</p><button class="choice" onclick="begin()"><span><strong>'+escape(t.problem)+'</strong><small>'+escape(t.problemHint)+'</small></span><span class="go">→</span></button><div class="controls"><button class="primary" onclick="begin()">'+escape(t.start)+' →</button></div>';}
+function renderQuestions(){const t=L(),f=lang==="en"?0:1;
+$("stage").innerHTML='<div class="label">'+escape(t.steps[1])+'</div><h2>'+escape(t.questionTitle)+'</h2><p class="explain">'+escape(t.questionDesc)+'</p>'+
+'<div class="context"><label class="field"><span>'+escape(t.scope)+'</span><select onchange="setScope(this.value)"><option value="product" '+(scope==="product"?"selected":"")+'>'+escape(t.scopeOpts[0])+'</option><option value="company" '+(scope==="company"?"selected":"")+'>'+escape(t.scopeOpts[1])+'</option></select></label><label class="field"><span>'+escape(t.stage)+'</span><select onchange="setStage(this.value)"><option value="active" '+(stage==="active"?"selected":"")+'>'+escape(t.stageOpts[0])+'</option><option value="new" '+(stage==="new"?"selected":"")+'>'+escape(t.stageOpts[1])+'</option></select></label></div>'+
+original.map(q=>'<div class="question"><div class="qhead"><span class="qtag">T'+q.n+'</span><span class="qtext">'+escape(q.q[f])+'</span></div><div class="answers">'+["yes","partial","no","unknown","na"].map((v,i)=>'<button class="ans '+(answers[q.n]===v?"active":"")+'" onclick="setAnswer('+q.n+',\''+v+'\')" aria-pressed="'+(answers[q.n]===v)+'">'+escape(t.answers[i])+'</button>').join("")+'</div></div>').join("")+
+'<div class="controls"><button class="primary" '+(!original.every(q=>answers[q.n])?"disabled":"")+' onclick="showResults()">'+escape(t.next)+' → ('+original.filter(q=>answers[q.n]).length+'/6)</button><button class="secondary" onclick="go(0)">'+escape(t.back)+'</button><button class="secondary" onclick="clearAnswers()">'+escape(t.clear)+'</button></div><div class="callout"><b>'+escape(t.scenario)+'</b><p class="caption">'+escape(t.scenarioHint)+'</p><button class="secondary" onclick="demoAnswers()">'+escape(t.scenario)+' →</button></div>';
 }
-window.addEventListener("message",function(e){
- if(e.origin!==window.location.origin)return;
- const d=e.data;if(!d||typeof d!=="object")return;
- if(d.type==="marketing-studio-assessment-result"){assessment=d;renderContext();}
- if(d.type==="marketing-studio-open-method")go("method");
-});
+function risk(q){return ["no","partial","unknown"].includes(answers[q.n])}
+function priorityList(){return original.filter(risk)}
+function radarSvg(){const cx=151,cy=148,r=111,k=2*Math.PI/13;const point=(i,v)=>{const a=-Math.PI/2+i*k;return [cx+Math.cos(a)*r*v,cy+Math.sin(a)*r*v]};let s='<svg class="radar" viewBox="0 0 305 310" role="img" aria-label="13 marketing domains: only assessed dimensions are marked">';
+for(const lev of [.25,.5,.75,1]){s+='<polygon points="'+areas.map((_,i)=>point(i,lev).map(n=>n.toFixed(1)).join(",")).join(" ")+'" fill="none" stroke="#dce9df"/>'}
+areas.forEach((a,i)=>{let [x,y]=point(i,1);s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="#dce8df"/>';const n=i+1,active=Object.hasOwn(answers,n),pos=point(i,1.19);s+='<text x="'+pos[0].toFixed(1)+'" y="'+(pos[1]+4).toFixed(1)+'" text-anchor="middle" fill="'+(active?"#17654d":"#8b9e91")+'" font-size="11" font-weight="'+(active?800:450)+'">T'+n+'</text>';if(active){const v=({yes:.83,partial:.51,no:.2,unknown:.5,na:.5})[answers[n]];const [px,py]=point(i,v);s+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="6" fill="'+(answers[n]==="unknown"||answers[n]==="na"?"#fff":"#d98f46")+'" stroke="#a66b32" stroke-width="2"/>';}});return s+"</svg>";}
+function renderResults(){const t=L(),gaps=priorityList(),f=lang==="en"?0:1;
+$("stage").innerHTML='<div class="label">'+escape(t.steps[2])+'</div><h2>'+escape(t.resultTitle)+'</h2><p class="explain">'+escape(t.resultDesc)+'</p>'+(demo?'<div class="status plan">'+escape(t.fiction)+'</div>':'<div class="status">'+escape(t.real)+'</div>')+
+'<div class="results"><div>'+radarSvg()+'<p class="legend"><i></i>'+escape(t.chartLabel)+'<br><i class="empty"></i>'+escape(t.notAssessed)+'</p></div><div><h3 style="margin:0 0 12px;font-size:18px">'+escape(t.findingTitle)+'</h3>'+
+(gaps.length?gaps.map(q=>'<div class="finding"><b>T'+q.n+' · '+escape(name(q.n))+'</b><span class="flag">'+escape(answers[q.n]==="unknown"?t.unknown:t.priority)+'</span><span>'+escape(q.action[f])+'</span></div>').join(""):'<div class="finding">'+escape(t.noGaps)+'</div>')+
+'</div></div>'+
+(answers[6]==="yes"&&answers[3]==="no"?'<div class="callout"><b>'+escape(t.other)+'</b><div>'+escape(t.possible)+'</div></div>':'')+
+'<p class="caption"><b>'+escape(t.source)+'</b>: '+original.map(q=>q.code+' → '+q.link).join(' · ')+'</p><div class="controls"><button class="primary" onclick="go(3)">'+escape(t.nextMaster)+' →</button><button class="secondary" onclick="go(1)">'+escape(t.back)+'</button></div>';
+}
+function renderMaster(){const t=L(),f=lang==="en"?0:1,gaps=priorityList();const priorities=gaps.filter(q=>answers[q.n]!=="unknown").slice(0,3);const list=priorities.length?priorities.map(q=>'T'+q.n+' · '+name(q.n)).join(" · "):(lang==="en"?"No missing/partial practice reported":"Отсутствующие или частичные практики не заявлены");
+$("stage").innerHTML='<div class="label">'+escape(t.steps[3])+'</div><h2>'+escape(t.masterTitle)+'</h2><p class="explain">'+escape(t.masterDesc)+'</p>'+
+'<div class="chain">'+
+'<div class="chainItem"><span class="num">01 · '+escape(t.working)+'</span><h3>'+escape(t.master1)+'</h3><p>'+escape(t.master1Desc)+'</p><p><strong>'+escape(t.problem)+'</strong><br>'+escape(list)+'</p></div><div class="down">↓</div>'+
+'<div class="chainItem"><span class="num">02 · '+escape(t.working)+'</span><h3>'+escape(t.master2)+'</h3><p>'+escape(t.master2Desc)+'</p>'+(priorities.length?'<p>'+priorities.map(q=>escape(q.action[f])).join(' ')+'</p>':'')+'</div><div class="down">↓</div>'+
+'<div class="chainItem"><span class="num">03 · '+escape(t.method)+'</span><h3>'+escape(t.master3)+'</h3><p>'+escape(t.master3Desc)+'</p></div><div class="down">↓</div>'+
+'<div class="chainItem"><span class="num">04 · '+escape(t.planned)+'</span><h3>'+escape(t.master4)+'</h3><p>'+escape(t.master4Desc)+'</p></div></div>'+
+'<div class="callout"><strong>'+escape(t.end)+'</strong></div><div class="controls"><button class="secondary" onclick="go(2)">'+escape(t.return)+'</button><button class="secondary" onclick="go(0)">'+escape(t.restart)+'</button></div>';
+}
+function render(){initShell();if(screen===0)renderStart();if(screen===1)renderQuestions();if(screen===2)renderResults();if(screen===3)renderMaster();}
+render();
 </script>
 </body></html>
