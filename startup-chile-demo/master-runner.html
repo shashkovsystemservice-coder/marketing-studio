@@ -208,6 +208,6 @@ document.addEventListener("change",e=>{if(e.target?.id==="importFile"){const fil
 document.addEventListener("input",e=>{if(e.target?.id==="projectName")renameProject(e.target.value)});
 document.addEventListener("keydown",e=>{let el=e.target.closest("[data-node]");if(el&&(e.key==="Enter"||e.key===" ")){e.preventDefault();step(Number(el.dataset.node))}});
 if(!loadProject())initialize();
-try{const queryLang=new URLSearchParams(window.location.search).get("lang");if(queryLang==="en"||queryLang==="ru")lang=queryLang}catch(e){}
+try{const queryLang=String(window.location.search||"").match(/[?&]lang=(ru|en)(?:&|$)/)?.[1];if(queryLang)lang=queryLang}catch(e){}
 render();
 </script></body></html>
