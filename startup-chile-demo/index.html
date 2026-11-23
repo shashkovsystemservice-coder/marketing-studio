@@ -254,7 +254,9 @@ function radarSvg(){
   const n=i+1,pos=polar(i,plottedActual[i]),lab=polar(i,1.2);
   h+='<text x="'+lab[0]+'" y="'+(lab[1]+4)+'" font-size="10" text-anchor="middle" fill="currentColor">T'+n+'</text>';
   if(target[i]!==null){const g=polar(i,target[i]);h+='<circle cx="'+g[0]+'" cy="'+g[1]+'" r="3.5" fill="#12816c"/>'}
-  h+='<circle cx="'+pos[0]+'" cy="'+pos[1]+'" r="4.5" fill="'+(actual[i]===null?"white":"#d98a42")+'" stroke="#d98a42" stroke-width="1.5"/>';
+  const gap=(target[i]===null||actual[i]===null)?null:target[i]-actual[i];
+  const priorityColor=actual[i]===null?"#85948c":gap!==null&&gap>=.35?"#b9433c":gap!==null&&gap>=.12?"#d99b3f":"#d98a42";
+  h+='<circle cx="'+pos[0]+'" cy="'+pos[1]+'" r="'+(gap!==null&&gap>=.35?6:4.5)+'" fill="'+(actual[i]===null?"white":priorityColor)+'" stroke="'+priorityColor+'" stroke-width="'+(gap!==null&&gap>=.35?2.5:1.5)+'"/>';
  }
  return h+"</svg>";
 }
