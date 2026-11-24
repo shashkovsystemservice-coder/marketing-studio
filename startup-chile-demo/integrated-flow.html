@@ -69,8 +69,8 @@ function invalidateChoice(){ownerApproval="";planApproved=false;budgetApproved=f
 function choose(s){if(!["A","B"].includes(s))return;ownerApproval=s;planApproved=false;budgetApproved=false;unlocked=3;render()}
 function changeMarket(v){marketAccess=Number(v);invalidateChoice();render()}
 function changeCapability(v){capability=Number(v);invalidateChoice();render()}
-function changeResources(v){resources=Number(v);planApproved=false;budgetApproved=false;unlocked=Math.min(unlocked,5);render()}
-function shock(){externalShock=!externalShock;if(externalShock){reviewRequired=true;planApproved=false;budgetApproved=false;unlocked=3;}render()}
+function changeResources(v){resources=Number(v);planApproved=false;budgetApproved=false;unlocked=Math.min(unlocked,4);step=Math.min(step,4);render()}
+function shock(){if(reviewRequired)return;externalShock=true;reviewRequired=true;planApproved=false;budgetApproved=false;unlocked=3;render()}
 function setActualConversations(v){actualConversations=Number(v);render()}
 function setActualSpend(v){actualSpend=Number(v);render()}
 function setResearchView(v){if(["facts","hypotheses"].includes(v)){researchView=v;render()}}
@@ -239,7 +239,7 @@ function view(){
  '<div class="control"><label>Actual Q1 marketing spend (synthetic)</label><input aria-label="Actual Q1 marketing spend" type="range" min="0" max="24000" step="100" value="'+actualSpend+'" data-input="actualSpend"><b>'+usd(actualSpend)+'</b></div>'+
  '<div class="fact"><strong>Measurement → variance → diagnosis</strong>Conversations: '+actualConversations+' actual vs '+p.targetConversations+' target (variance '+(actualConversations-p.targetConversations)+'). Spend: '+usd(actualSpend)+' actual vs '+usd(p.annual)+' planned (variance '+(actualSpend>=p.annual?"+":"-")+usd(Math.abs(actualSpend-p.annual))+'). Arithmetic variance does not establish the cause.</div>'+
  status(actualConversations<p.targetConversations?"Below target: investigate segment access, buying objections and activity execution before altering strategy.":"Conversations meet or exceed the simulated target; review quality and value, not just volume.",actualConversations<p.targetConversations)+
- '<div class="control"><label>Entry economics deteriorated</label><button class="btn '+(externalShock?"primary":"")+'" data-act="shock">'+(externalShock?"YES · Shock active":"NO · Simulate shock")+'</button></div>'+
+ '<div class="control"><label>Entry economics deteriorated</label><button class="btn '+(externalShock?"primary":"")+'" data-act="shock" '+(reviewRequired?"disabled":"")+'>'+(externalShock?"YES · Shock active":"NO · Simulate shock")+'</button></div>'+
  status(externalShock?"Assumption A-04 is challenged. Re-open pricing/route-to-market, the strategic choice and downstream plan/budget approval. Unrelated facts remain intact.":"Assumption A-04 is not challenged in this fictional example. Continue periodic review.",externalShock);}
  }
  return h;
