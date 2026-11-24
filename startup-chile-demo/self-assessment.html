@@ -127,7 +127,26 @@ select{padding:10px;background:white;border:1px solid #c7d9cd;border-radius:8px;
 .demoSampleBar strong{font-size:13px}.demoSampleBar span{font-size:12px;color:#536c5b}
 .demoSampleBar .primary{padding:9px 12px;font-size:13px}
 @media(max-width:620px){.demoLaunch{grid-template-columns:1fr}.demoLaunch .primary{width:100%}}
-.backToMap{display:inline-flex;margin:10px auto 0;color:#d7efe3;text-decoration:none;font-size:12px;font-weight:700;border:1px solid #77aa8f;padding:7px 10px;border-radius:8px}.backToMap:hover{background:#216749}</style>
+.backToMap{display:inline-flex;margin:10px auto 0;color:#d7efe3;text-decoration:none;font-size:12px;font-weight:700;border:1px solid #77aa8f;padding:7px 10px;border-radius:8px}.backToMap:hover{background:#216749}/* Status colors are independent of selection. */
+.finding.critical,.verdictCard.critical,.handoffNode.critical{background:#fff1ef;border:1px solid #e2a8a0;border-left:5px solid #b9433c;color:#9d302c}
+.finding.moderate,.finding.near,.verdictCard.moderate,.verdictCard.near,.handoffNode.moderate,.handoffNode.near,.handoffNode.verification{background:#fff5e6;border:1px solid #e3c28e;border-left:5px solid #b87928;color:#795018}
+.finding.meets{background:#edf7f0;border:1px solid #b4d6c0;border-left:5px solid #248061;color:#216548}
+.finding.unknown,.handoffNode.unknown{background:#f1f3f5;border:1px solid #c5ccd3;border-left:5px solid #85948c;color:#52616c}
+.finding .gapValues{font-weight:800;color:inherit}
+.handoffNode.critical p,.handoffNode.moderate p,.handoffNode.near p,.handoffNode.verification p,.handoffNode.unknown p,.handoffNode.critical small,.handoffNode.moderate small,.handoffNode.near small,.handoffNode.verification small{color:inherit}
+.handoffChoice small{display:block;font-size:10px;font-weight:650;margin-top:3px}
+.handoffChoice.critical{background:#fff0ee;color:#a43832;border-color:#d5958f}
+.handoffChoice.moderate,.handoffChoice.near{background:#fff4e2;color:#805019;border-color:#d9b574}
+.handoffChoice.unknown{background:#eef1f3;color:#52616c;border-color:#b9c2cb}
+.handoffChoice.critical.current{background:#a93832;color:white;border-color:#a93832}
+.handoffChoice.moderate.current,.handoffChoice.near.current{background:#8d5a1e;color:white;border-color:#8d5a1e}
+.handoffChoice.unknown.current{background:#52616c;color:white;border-color:#52616c}
+.handoffChoice.current{outline:2px solid #344b64;outline-offset:2px}
+.handoffNode.planned{background:#f3f4f6;border-color:#c5cbd0;color:#64717c}
+.flag.critical{color:#a43832;background:#ffe4df}.flag.moderate,.flag.near{color:#805019;background:#ffebca}.flag.meets{color:#216548;background:#e1f3e7}.flag.unknown{color:#52616c;background:#e5e9ee}
+.gateStatus.return,.gateOption.missing.active{background:#fff0ee;color:#a43832;border-color:#c66a62}.gateOption.unknown.active{background:#fff4e2;color:#805019;border-color:#d9b574}.gateOption.enough.active{background:#17694e;color:white}
+
+</style>
 </head>
 <body><div style="background:#154b38;text-align:center"><a class="backToMap" href="./index.html">← Back to Marketing Studio overview</a></div>
 <header><div class="top"><div><div class="logo">MARKETING STUDIO</div><div class="subtitle" id="hdrSub"></div></div><div class="languages"><button class="language" id="langRu" onclick="setLang('ru')">РУС</button><button class="language active" id="langEn" onclick="setLang('en')">EN</button></div></div></header>
@@ -324,35 +343,38 @@ function radarSvg(){
  h+='<polygon points="'+poly(plottedActual)+'" stroke="#d98a42" stroke-width="2.5" fill="#d98a42" fill-opacity=".07"/>';
  for(let i=0;i<13;i++){
   const n=i+1,pos=polar(i,plottedActual[i]),lab=polar(i,1.2);
-  h+='<text x="'+lab[0]+'" y="'+(lab[1]+4)+'" font-size="10" text-anchor="middle" fill="currentColor">T'+n+'</text>';
+  h+='<text x="'+lab[0]+'" y="'+(lab[1]+4)+'" font-size="10" text-anchor="middle" fill="'+(mode==="general"?({critical:"#b9433c",moderate:"#946019",near:"#946019",unknown:"#85948c",meets:"#248061"})[gapInfo(n).status]:"currentColor")+'">T'+n+'</text>';
   if(target[i]!==null){const g=polar(i,target[i]);h+='<circle cx="'+g[0]+'" cy="'+g[1]+'" r="3.5" fill="#12816c"/>'}
   const gap=(target[i]===null||actual[i]===null)?null:target[i]-actual[i];
-  const priorityColor=actual[i]===null?"#85948c":gap!==null&&gap>=.35?"#b9433c":gap!==null&&gap>=.12?"#d99b3f":"#d98a42";
+  const gs=gapStatus(gap===null?null:Math.round(gap*100)/100);const priorityColor=({critical:"#b9433c",moderate:"#b87928",near:"#b87928",unknown:"#85948c",meets:"#248061"})[gs];
   h+='<circle cx="'+pos[0]+'" cy="'+pos[1]+'" r="'+(gap!==null&&gap>=.35?6:4.5)+'" fill="'+(actual[i]===null?"white":priorityColor)+'" stroke="'+priorityColor+'" stroke-width="'+(gap!==null&&gap>=.35?2.5:1.5)+'"/>';
  }
  return h+"</svg>";
 }
 
+function gapStatus(gap){return gap===null?"unknown":gap>=.35?"critical":gap>=.12?"moderate":gap>0?"near":"meets"}
+function gapLabel(q,isEn){return ({critical:isEn?"Major gap":"Большой разрыв",moderate:isEn?"Partial gap":"Частичный разрыв",near:isEn?"Small deviation":"Небольшое отклонение",unknown:isEn?"No data":"Нет данных",meets:isEn?"At target":"На уровне цели"})[q.status]}
+function gapNumbers(q,isEn){return (isEn?"Target ":"Цель ")+(q.target*100).toFixed(0)+"% · "+(isEn?"Reported ":"Ответ ")+(q.actual===null?"—":(q.actual*100).toFixed(0)+"%")+(q.gap===null?"":" · Δ "+(q.gap>0?"−":q.gap<0?"+":"")+Math.abs(Math.round(q.gap*100))+" "+(isEn?"pp":"п.п."))}
 function gapInfo(n){
  const target=generalTargetLevels[n-1]/10,actual=({yes:.83,partial:.52,no:.18})[answers[n]]??null;
- const gap=actual===null?null:target-actual;
- return {n,target,actual,gap,status:gap===null?"unknown":gap>=.35?"critical":gap>=.12?"moderate":"meets"};
+ const gap=actual===null?null:Math.round((target-actual)*100)/100;
+ return {n,target,actual,gap,status:gapStatus(gap)};
 }
-function sortedGaps(){const weight={critical:0,moderate:1,unknown:2,meets:3};return general.map(q=>({...q,...gapInfo(q.n)})).sort((a,b)=>weight[a.status]-weight[b.status]||(b.gap??-1)-(a.gap??-1))}
-function summaryCounts(){const st=general.map(q=>gapInfo(q.n).status);return {critical:st.filter(x=>x==="critical").length,moderate:st.filter(x=>x==="moderate").length,unknown:st.filter(x=>x==="unknown").length,meets:st.filter(x=>x==="meets").length}}
+function sortedGaps(){const weight={critical:0,moderate:1,near:2,unknown:3,meets:4};return general.map(q=>({...q,...gapInfo(q.n)})).sort((a,b)=>weight[a.status]-weight[b.status]||(b.gap??-1)-(a.gap??-1))}
+function summaryCounts(){const st=general.map(q=>gapInfo(q.n).status);return {critical:st.filter(x=>x==="critical").length,moderate:st.filter(x=>x==="moderate"||x==="near").length,unknown:st.filter(x=>x==="unknown").length,meets:st.filter(x=>x==="meets").length}}
 function renderResults(){
  const isEn=lang==="en",data=sortedGaps(),counts=summaryCounts(),f=isEn?0:1;
- const urgent=data.filter(q=>q.status==="critical"),focus=urgent.length?urgent:data.filter(q=>q.status==="moderate");
+ const urgent=data.filter(q=>q.status==="critical"),focus=urgent.length?urgent:data.filter(q=>q.status==="moderate"||q.status==="near");
  const top=focus.slice(0,2),first=top[0];
  const verdictHeading=urgent.length?(isEn?"Priority gaps need verification":"Приоритетные разрывы требуют проверки"):counts.moderate?(isEn?"Several practices need attention":"Есть практики, требующие внимания"):(isEn?"No major gaps reported":"Крупных разрывов не заявлено");
  const conclusion=top.length?(isEn?"The largest reported deviations are in these marketing areas:":"Наиболее значимые расхождения выявлены в областях:"):(isEn?"Review missing answers and validate the effectiveness of current practices.":"Проверьте пропущенные ответы и подтвердите результативность текущих практик.");
  const recommendation=first?first.action[f]:(isEn?"Gather independent evidence before interpreting the self-assessment as business performance.":"Соберите независимые данные, прежде чем судить по самооценке о результатах бизнеса.");
- const label={critical:isEn?"Major gap — review first":"Большой разрыв — проверить сначала",moderate:isEn?"Partial gap":"Частичный разрыв",unknown:isEn?"Not assessed":"Нет данных",meets:isEn?"At or above the reference":"На уровне ориентира или выше"};
- const status=i=>'<span class="flag">'+escape(label[i])+'</span>';
+ const label={critical:isEn?"Major gap — review first":"Большой разрыв — проверить сначала",moderate:isEn?"Partial gap":"Частичный разрыв",near:isEn?"Small deviation":"Небольшое отклонение",unknown:isEn?"Not assessed":"Нет данных",meets:isEn?"At or above the reference":"На уровне ориентира или выше"};
+ const status=i=>'<span class="flag '+i+'">'+escape(label[i])+'</span>';
  const stats=[["critical",counts.critical,isEn?"Major gaps":"Большие разрывы"],["moderate",counts.moderate,isEn?"Partial gaps":"Частичные"],["meets",counts.meets,isEn?"At target":"На уровне цели"],["unknown",counts.unknown,isEn?"No data":"Нет данных"]];
  $("stage").innerHTML='<div class="label">'+escape(isEn?"SELF-ASSESSMENT RESULTS":"РЕЗУЛЬТАТ САМОДИАГНОСТИКИ")+'</div>'+
  '<h2>'+escape(isEn?"Where do actual practices differ from the target?":"Где фактические практики расходятся с ориентиром?")+'</h2>'+
- '<p class="explain">'+escape(isEn?"Green = preliminary expert target (different across 13 areas). Orange = self-reported current practices. Red marks large gaps. All values are illustrative, not measured capability levels.":"Зелёный = предварительный целевой ориентир (разный для 13 областей). Оранжевый = заявленная практика. Красный — большой разрыв. Уровни условные, а не измеренная эффективность.")+'</p>'+
+ '<p class="explain">'+escape(isEn?"Dashed green line = preliminary target; orange line = self-reported practices. Red points = major gaps (35+ pp); amber = smaller deviations; green = at or above target; grey = no data. Values are illustrative.":"Зелёный пунктир — целевой ориентир; оранжевая линия — заявленная практика. Красные точки — крупные разрывы (от 35 п.п.), янтарные — меньшие отклонения, зелёные — на уровне цели, серые — нет данных. Уровни условные.")+'</p>'+
  (demo?'<div class="status plan">'+escape(isEn?(sampleEdited?"FICTIONAL SAMPLE — edited answer, recalculated":"FICTIONAL SAMPLE COMPANY — not customer data"):(sampleEdited?"УСЛОВНАЯ КОМПАНИЯ — ответ изменён, расчёт обновлён":"УСЛОВНАЯ ДЕМО-КОМПАНИЯ — не данные клиента"))+'</div>':'')+
  '<div class="summaryStats">'+stats.map(x=>'<div class="stat '+x[0]+'"><b>'+x[1]+'</b><small>'+escape(x[2])+'</small></div>').join("")+'</div>'+
  '<section class="assessmentVerdict" aria-label="'+escape(isEn?"Assessment findings and recommendations":"Выводы и рекомендации")+'">'+
@@ -360,7 +382,7 @@ function renderResults(){
  '<h3 class="verdictTitle">'+escape(verdictHeading)+'</h3>'+
  '<p class="verdictContext">'+escape(conclusion)+'</p>'+
  '<div class="verdictGrid">'+(top.length?top.map(q=>
- '<div class="verdictCard"><small>'+escape(isEn?"Priority gap":"Приоритетный разрыв")+'</small><b>T'+q.n+' · '+escape(name(q.n))+'</b><p>'+escape(isEn?"Target reference":"Целевой ориентир")+': '+Math.round(q.target*10)+'/10 · '+escape(isEn?"Reported practice":"Заявленная практика")+': '+escape(q.actual===null?(isEn?"unknown":"неизвестно"):q.actual===.83?(isEn?"systematic":"систематически"):q.actual===.52?(isEn?"partial":"частично"):(isEn?"not done":"не выполняется"))+'</p></div>'
+ '<div class="verdictCard '+q.status+'"><small>'+escape(isEn?"Priority gap":"Приоритетный разрыв")+'</small><b>T'+q.n+' · '+escape(name(q.n))+'</b><p>'+escape(isEn?"Target reference":"Целевой ориентир")+': '+Math.round(q.target*10)+'/10 · '+escape(isEn?"Reported practice":"Заявленная практика")+': '+escape(q.actual===null?(isEn?"unknown":"неизвестно"):q.actual===.83?(isEn?"systematic":"систематически"):q.actual===.52?(isEn?"partial":"частично"):(isEn?"not done":"не выполняется"))+'</p></div>'
  ).join(""):'<div class="verdictCard" style="border-left-color:#2b8061;background:#f5faf6"><b>'+escape(isEn?"No critical areas":"Нет критических областей")+'</b><p>'+escape(isEn?"This does not establish that the marketing system is effective.":"Это не доказывает, что маркетинг работает эффективно.")+'</p></div>')+'</div>'+
  '<div class="verdictAction"><strong>'+escape(isEn?"RECOMMENDED NEXT CHECKS":"РЕКОМЕНДУЕМЫЕ СЛЕДУЮЩИЕ ПРОВЕРКИ")+'</strong>'+(top.length?top.map((q,i)=>'<p><b>'+(i+1)+'. '+escape(name(q.n))+':</b> '+escape(q.action[f])+'</p>').join(""):'<p>'+escape(recommendation)+'</p>')+'</div>'+
  '<p class="verdictCaution">'+escape(isEn?"Based only on self-reported answers and preliminary target levels. These gaps are not established causes of business outcomes.":"Вывод основан только на ответах компании и предварительных целевых ориентирах. Разрывы не являются доказанными причинами бизнес-результатов.")+'</p></section>'+
@@ -374,6 +396,7 @@ function renderResults(){
  '<h3>'+escape(isEn?"All 13 marketing areas — target, actual and next check":"Все 13 областей — цель, факт и следующая проверка")+'</h3>'+
  '<p class="caption">'+escape(isEn?"These are different areas of professional marketing, not 13 numerical KPIs. T1–T13 are domain IDs. Click a row to revisit the question.":"Это 13 областей профессионального маркетинга, а не 13 числовых KPI. T1–T13 — их обозначения. По кнопке можно вернуться к вопросу.")+'</p>'+
  data.map(q=>'<div class="finding '+q.status+'"><b>T'+q.n+' · '+escape(name(q.n))+'</b> '+status(q.status)+
+ '<span class="gapValues">'+escape(gapNumbers(q,isEn))+'</span>'+
  '<span>'+escape(isEn?"Target":"Ориентир")+': '+Math.round(q.target*10)+'/10 · '+escape(isEn?"Reported":"Ответ")+': '+escape(q.actual===null?(isEn?"unknown or n/a":"неизвестно / не применимо"):q.actual===.83?(isEn?"systematic":"систематически"):q.actual===.52?(isEn?"partly":"частично"):(isEn?"not done":"не делаем"))+'</span>'+
  '<span>'+escape(isEn?"Why this matters / next check: ":"Что проверить дальше: ")+escape(q.action[f])+'</span>'+
  '<button class="secondary" style="padding:5px 9px;margin-top:8px;font-size:12px" onclick="changeAnswer('+q.n+')">'+escape(isEn?"Edit this response":"Изменить ответ")+'</button></div>').join("")+
@@ -394,8 +417,8 @@ function renderAssessmentHandoff(){
  if(!focus)return '<section class="handoff"><h3>'+escape(isEn?"No reported practice gaps":"Нет заявленных разрывов")+'</h3><p>'+escape(isEn?"You can still investigate effectiveness through a separate business question.":"Можно отдельно проверить результативность через постановку бизнес-задачи.")+'</p></section>';
  const route=professionalRouteFor(focus.n),sampleLink="./master-cases.html?lang="+(isEn?"en":"ru")+"&case="+route.caseId+"&origin=assessment&focus="+focus.n;
  const nodes=[
- {state:"live",stage:isEn?"1 · RESULT":"1 · РЕЗУЛЬТАТ",title:isEn?"Self-assessment":"Самодиагностика",body:"T"+focus.n+" · "+name(focus.n)},
- {state:"live",stage:isEn?"2 · NEXT CHECK":"2 · ПРОВЕРКА",title:isEn?"Evidence needed":"Необходимые сведения",body:focus.action[f]},
+ {state:focus.status,stage:isEn?"1 · DETECTED STATUS":"1 · ВЫЯВЛЕННЫЙ СТАТУС",title:"T"+focus.n+" · "+name(focus.n),body:gapLabel(focus,isEn)+" · "+gapNumbers(focus,isEn)},
+ {state:"verification",stage:isEn?"2 · NEXT CHECK":"2 · ПРОВЕРКА",title:isEn?"Evidence needed":"Необходимые сведения",body:focus.action[f]},
  {state:"live",stage:isEn?"3 · EXAMPLE":"3 · ПРИМЕР",title:"MASTER",body:route.operations.join(" → ")},
  {state:"planned",stage:isEn?"4 · AFTER REVIEW":"4 · ПОСЛЕ ПРОВЕРКИ",title:isEn?"Strategy":"Стратегия",body:isEn?"Compare options and approve the choice":"Сравнить варианты и утвердить выбор"},
  {state:"planned",stage:isEn?"5 · AFTER APPROVAL":"5 · ПОСЛЕ РЕШЕНИЯ",title:isEn?"Plan, budget, control":"План, бюджет, контроль",body:isEn?"Activities, resources and results":"Действия, ресурсы и результаты"}
@@ -403,7 +426,7 @@ function renderAssessmentHandoff(){
  return '<section class="handoff"><span class="handoffEyebrow">'+escape(isEn?"HOW THIS LEADS TO PROFESSIONAL WORK":"КАК САМОДИАГНОСТИКА ВЕДЁТ К РАБОТЕ")+'</span>'+
  '<h3>'+escape(isEn?"From a detected gap to a professional workflow":"От выявленного разрыва к профессиональному маршруту")+'</h3>'+
  '<p class="handoffLead">'+escape(isEn?"Choose a gap to see the required evidence, related MASTER operations and possible downstream decisions.":"Выберите разрыв, чтобы увидеть необходимую проверку, связанные операции MASTER и дальнейшие решения.")+'</p>'+
- '<div class="handoffChoices">'+top.map(q=>'<button class="handoffChoice '+(q.n===focus.n?"current":"")+'" onclick="chooseAssessmentFocus('+q.n+')">T'+q.n+' · '+escape(name(q.n))+'</button>').join("")+'</div>'+
+ '<div class="handoffChoices">'+top.map(q=>'<button class="handoffChoice '+q.status+' '+(q.n===focus.n?"current":"")+'" aria-pressed="'+(q.n===focus.n)+'" onclick="chooseAssessmentFocus('+q.n+')">T'+q.n+' · '+escape(name(q.n))+'<small>'+escape(gapLabel(q,isEn))+'</small></button>').join("")+'</div>'+
  '<div class="handoffChain">'+nodes.map(x=>'<div class="handoffNode '+x.state+'"><small>'+escape(x.stage)+'</small><b>'+escape(x.title)+'</b><p>'+escape(x.body)+'</p></div>').join("")+'</div>'+
  '<div class="handoffNext"><a class="primary" href="'+sampleLink+'">'+escape(isEn?"Explore related MASTER example →":"Открыть связанный пример MASTER →")+'</a>'+
  '<a class="secondary" href="./integrated-flow.html">'+escape(isEn?"Preview strategy → plan → budget →":"Пример стратегия → план → бюджет →")+'</a></div>'+
@@ -416,7 +439,7 @@ function renderGeneralActions(){
  '<p class="explain">'+escape(isEn?"These are suggested checks based on your answers, not completed investigations or a verified strategy.":"Это рекомендации по вашим ответам, а не проведённые исследования и не подтверждённая стратегия.")+'</p>'+
  '<div class="checksIntro"><strong>'+escape(isEn?"What happens next?":"Что делать дальше?")+'</strong><p>'+escape(isEn?"Start with the largest gaps. Gather evidence for each highlighted practice, check whether the gap is real, then decide which corrective action is justified. The system does not claim to have done that research already.":"Начните с крупнейших разрывов. Соберите подтверждения по каждой практике, проверьте, существует ли проблема, и только затем определяйте обоснованные действия. Исследование ещё не выполнено системой.")+'</p></div>'+
  renderAssessmentHandoff()+
- (top.length?top.map((q,i)=>'<div class="finding '+q.status+'"><b>'+(i+1)+'. T'+q.n+' · '+escape(name(q.n))+'</b><span>'+escape(q.action[f])+'</span><button class="secondary" style="margin-top:9px" onclick="changeAnswer('+q.n+')">'+escape(isEn?"← Review this answer":"← Вернуться к ответу")+'</button></div>').join(""):'<div class="finding meets">'+escape(isEn?"No reported gaps: validate the effectiveness of these practices with external evidence.":"Заявленных пробелов нет: подтвердите результативность практик внешними данными.")+'</div>')+
+ (top.length?top.map((q,i)=>'<div class="finding '+q.status+'"><b>'+(i+1)+'. T'+q.n+' · '+escape(name(q.n))+'</b><span class="gapValues">'+escape(gapLabel(q,isEn)+' · '+gapNumbers(q,isEn))+'</span><span>'+escape(q.action[f])+'</span><button class="secondary" style="margin-top:9px" onclick="changeAnswer('+q.n+')">'+escape(isEn?"← Review this answer":"← Вернуться к ответу")+'</button></div>').join(""):'<div class="finding meets">'+escape(isEn?"No reported gaps: validate the effectiveness of these practices with external evidence.":"Заявленных пробелов нет: подтвердите результативность практик внешними данными.")+'</div>')+
  '<div class="controls"><button class="primary" onclick="go(2)">'+escape(isEn?"← Back to results and radar":"← Назад к результату и паутинке")+'</button><button class="secondary" onclick="window.location.assign(\'./index.html\')">'+escape(isEn?"← Two starting paths":"← К двум входам")+'</button></div>';
 }
 
@@ -469,7 +492,7 @@ function renderProblemGates(){
   const n=i+1,value=gateAnswers[n]||"unknown";
   const message=value==="enough"?(isEn?"Example gate passed; the method allows the next step.":"Условная проверка пройдена — метод допускает следующий шаг."):value==="missing"?(isEn?"STOP: evidence is insufficient. Return to the relevant research or earlier operation.":"СТОП: доказательств недостаточно. Вернуться к нужному исследованию или предыдущей операции."):(isEn?"No evidence decision yet. Select a hypothetical status below.":"Решение о достаточности не принято. Выберите условный статус.");
   return '<div class="gatePanel"><h3>G'+n+' · '+escape(p[f])+'</h3><p>'+escape(isEn?"What evidence would justify moving ahead? If not sufficient, MASTER prescribes a return to the affected step.":"Какие доказательства позволяют двигаться дальше? При недостатке MASTER предусматривает возврат к затронутой операции.")+'</p>'+
-  '<div class="answers">'+opts.map(z=>'<button class="ans '+(value===z[0]?"active":"")+'" onclick="setGate('+n+',\''+z[0]+'\')" aria-pressed="'+(value===z[0])+'">'+escape(z[1])+'</button>').join("")+'</div>'+
+  '<div class="answers">'+opts.map(z=>'<button class="ans gateOption '+z[0]+' '+(value===z[0]?"active":"")+'" onclick="setGate('+n+',\''+z[0]+'\')" aria-pressed="'+(value===z[0])+'">'+escape(z[1])+'</button>').join("")+'</div>'+
   '<div class="gateStatus '+(value==="missing"?"return":value==="enough"?"ok":"")+'">'+escape(message)+'</div>'+
   (value==="missing"?'<button class="secondary" style="margin-top:10px" onclick="gateAction('+n+')">'+escape(isEn?"↶ Return to workflow and affected inputs":"↶ Вернуться к схеме и исходным данным")+'</button>':"")+'</div>';
  }).join("")+
