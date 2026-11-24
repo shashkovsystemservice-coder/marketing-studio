@@ -36,15 +36,17 @@ main{max-width:1160px;margin:auto;padding:27px 18px 65px}h1{font-size:clamp(30px
 .links{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
 @media(max-width:900px){.flow{grid-template-columns:repeat(3,1fr)}.bodygrid{grid-template-columns:1fr}}
 @media(max-width:600px){.flow{grid-template-columns:repeat(2,1fr)}.choice{grid-template-columns:1fr}.budgetrow{grid-template-columns:repeat(6,1fr)}.budgetrow>span:first-child{grid-column:1 / -1}}
+.flow button:disabled{cursor:not-allowed;background:#f0f2f4;color:#75818b;border-color:#cbd2d8}.flow button:disabled small{color:#75818b}.stageState{font-weight:850;letter-spacing:.06em;margin-top:8px}.handoffBox{margin-top:24px;border:2px solid #7aab90;border-radius:13px;padding:18px;background:#f5faf6}.handoffLabel{font-size:11px;font-weight:900;letter-spacing:.1em;color:#286d50;margin-bottom:8px}.handoffData{background:white;border:1px solid #d2e2d7;border-radius:8px;padding:14px;font-size:14px;font-weight:650;line-height:1.6}.holdBox{background:#fff0ee;border-left:5px solid #b9433c;color:#9d302c;padding:13px;margin:12px 0;font-weight:750}.passBox{background:#e7f4eb;border-left:4px solid #248061;color:#216548;padding:12px;margin:12px 0;font-size:12px;font-weight:750}.handoffNext{display:block;width:100%;font-size:15px;padding:14px;margin-bottom:9px}.handoffBox>.btn:not(.handoffNext){margin:4px 6px 0 0}.status.warn{background:#fff1ef;border-left-color:#b9433c;color:#9d302c}
 </style></head><body><header><div class="bar"><strong>MARKETING STUDIO / INTEGRATED WORKFLOW</strong><div><a href="./index.html">← Two entry routes</a>　<a href="./master-cases.html">MASTER cases</a></div></div></header>
 <main><span class="kicker">START-UP CHILE · EXPLICITLY FICTIONAL B2B CASE</span><h1>One business question. One connected decision process.</h1>
-<p class="lead">A worked example connecting MASTER to the frozen Marketing Strategy Tool v1.4.1, Annual Marketing Plan v1.0 and Budget Tool v2.2. All inputs, costs and outcomes are fictional. The source spreadsheets are not modified.</p>
+<p class="lead">A worked example connecting MASTER to the frozen Marketing Strategy Tool v1.4.1, Annual Marketing Plan v1.0 and Budget Tool v2.2. All inputs, costs and outcomes are fictional. This is a separate market-entry example, not a continuation of your assessment data. The source spreadsheets are not modified.</p>
 <div class="flow" id="nav"></div><div class="bodygrid"><section class="panel" id="main"></section><aside class="panel aside" id="aside"></aside></div>
 <div class="panel" style="margin-top:15px"><h3>Source workbooks and methodological boundaries</h3><p class="subtle">The demo reproduces selected decision rules and data handoffs. It does not open or execute the original Excel calculation engine, and the frozen source files remain unchanged.</p><div class="links"><a href="https://drive.google.com/file/d/15pWbDmU5tho6jCLp4F8Ua15Gckg8brH8/view" target="_blank" rel="noopener noreferrer">Strategy Tool v1.4.1</a><a href="https://drive.google.com/file/d/1SXc7Jk3ydw7zTr-uwqcX5EyjbNhogjaa/view" target="_blank" rel="noopener noreferrer">Annual Plan v1.0</a><a href="https://drive.google.com/file/d/1dMWSsWlqfjhzjvDQJROMGsIGsRbxg-N3/view" target="_blank" rel="noopener noreferrer">Budget Tool v2.2</a><a href="https://docs.google.com/document/d/1DbcSEhYoOfrN1hhzUsjxPJ4k02ndEVJEvvYAsm95zHM/edit" target="_blank" rel="noopener noreferrer">Control Tool evidence log (research stage)</a></div></div>
 <div class="links"><a class="btn" href="./master-cases.html">Open the separate MASTER scenarios</a><a class="btn" href="./master-runner.html">Open the manual evidence workspace</a><button class="btn" data-act="reset">Reset fictional example</button></div></main>
 <script>
 "use strict";
 let step=0,marketAccess=3,capability=3,ownerApproval="",resources=15000,externalShock=false,actualConversations=2,actualSpend=9100,researchView="facts",strategyBlock=0,planBlock=0;
+let unlocked=0,planApproved=false,budgetApproved=false,reviewRequired=false;
 const $=id=>document.getElementById(id);
 const usd=n=>"$"+Math.round(n).toLocaleString("en-US");
 const S=["Business question","MASTER","Research","Strategy Tool","Annual Plan","Budget","Control"];
@@ -63,12 +65,12 @@ function assumptions(){const d=data();return [
 {id:"A-03",text:"The pilot can be delivered within resources",depends:["Initiative I-01","Annual plan","Budget"],condition:d.selected?resources>=transfer().annual:null},
 {id:"A-04",text:"Market-entry economics remain viable",depends:["Pricing/RTM","Strategy approval"],condition:d.selected?!externalShock:null}
 ]}
-function invalidateChoice(){ownerApproval="";step=Math.min(step,3)}
-function choose(s){if(!["A","B"].includes(s))return;ownerApproval=s;render()}
+function invalidateChoice(){ownerApproval="";planApproved=false;budgetApproved=false;unlocked=Math.min(unlocked,2);step=Math.min(step,2)}
+function choose(s){if(!["A","B"].includes(s))return;ownerApproval=s;planApproved=false;budgetApproved=false;unlocked=3;render()}
 function changeMarket(v){marketAccess=Number(v);invalidateChoice();render()}
 function changeCapability(v){capability=Number(v);invalidateChoice();render()}
-function changeResources(v){resources=Number(v);render()}
-function shock(){externalShock=!externalShock;render()}
+function changeResources(v){resources=Number(v);planApproved=false;budgetApproved=false;unlocked=Math.min(unlocked,5);render()}
+function shock(){externalShock=!externalShock;if(externalShock){reviewRequired=true;planApproved=false;budgetApproved=false;unlocked=3;}render()}
 function setActualConversations(v){actualConversations=Number(v);render()}
 function setActualSpend(v){actualSpend=Number(v);render()}
 function setResearchView(v){if(["facts","hypotheses"].includes(v)){researchView=v;render()}}
@@ -116,8 +118,10 @@ function strategyDetail(){
  '<div class="selectedBlock"><strong>BLOCK '+(strategyBlock+1)+' / 7 · '+x.title+'</strong><p><b>Inputs:</b> '+x.input+'</p><p><b>Computed / structured output:</b> '+x.result+'</p><p><b>Workbook check:</b> '+x.gate+'</p></div>'+
  (failure.length?'<div class="gateStatus">Current challenged assumptions: '+failure.map(z=>z.id).join(", ")+'. Downstream decisions require review.</div>':"");
 }
-function nav(i){step=i;render()}
-function reset(){strategyBlock=0;planBlock=0;step=0;marketAccess=3;capability=3;ownerApproval="";resources=15000;externalShock=false;actualConversations=2;actualSpend=9100;researchView="facts";render()}
+function nav(i){if(Number.isInteger(i)&&i>=0&&i<=unlocked){step=i;render()}}
+function advance(){const p=transfer();if(step===3&&(!p||externalShock||reviewRequired))return;if(step===4){if(!p||externalShock||reviewRequired)return;planApproved=true;}if(step===5){if(!planApproved||!p||p.annual>resources||externalShock||reviewRequired||data().selected.capability<3)return;budgetApproved=true;}if(step<6){unlocked=Math.max(unlocked,step+1);step++;render();window.scrollTo(0,0)}}
+function revisit(){externalShock=false;reviewRequired=false;invalidateChoice();step=2;unlocked=2;render();window.scrollTo(0,0)}
+function reset(){unlocked=0;planApproved=false;budgetApproved=false;reviewRequired=false;strategyBlock=0;planBlock=0;step=0;marketAccess=3;capability=3;ownerApproval="";resources=15000;externalShock=false;actualConversations=2;actualSpend=9100;researchView="facts";render()}
 function transfer(){
  const d=data();if(!d.selected)return null;
  const strategyId="S-"+ownerApproval,broad=ownerApproval==="A";
@@ -159,11 +163,11 @@ function view(){
  '<div class="fact"><strong>A-02 · Product fit</strong>Test whether the offer meets the customer job.</div>'+
  '<div class="fact"><strong>Falsifier</strong>If capability or market access weakens, revisit segment and strategy decisions.</div>')+
  status("Synthetic evidence ledger produced for illustration. No external evidence-pass has occurred.")+
- '<div class="controls"><button class="btn primary" data-nav="3">Review strategy alternatives →</button></div>';
+ '<div class="controls"><button class="btn primary" data-act="advance">Review strategy alternatives →</button></div>';
  }
  if(step===3){
  const bcap=d.Bfit?"plausible with validation":"capability gap: build, partner or do not pursue";
- h='<h2>03 · Strategy Tool v1.4.1</h2><p>The frozen workbook requires seven blocks, evidence and assumptions, <strong>2–3 coherent strategic alternatives</strong> and a responsible choice. An automatically weighted score is prohibited.</p>'+
+ h='<h2>04 · Strategy Tool v1.4.1</h2><p>The frozen workbook requires seven blocks, evidence and assumptions, <strong>2–3 coherent strategic alternatives</strong> and a responsible choice. An automatically weighted score is prohibited.</p>'+
  '<div class="arrows"><span>1. Business goal</span><span>2. Market context</span><span>3. Segments</span><span>4. Value</span><span>5. Advantage</span><span>6. Growth / alternatives</span><span>7. Initiatives</span></div>'+
  '<h3>Seven workbook blocks — working drill-down</h3>'+strategyDetail()+
  [
@@ -196,7 +200,7 @@ function view(){
  '<p class="subtle">No overall score: management evaluates trade-offs, source quality and strategic coherence. Alternatives remain provisional until evidence and responsible choice.</p>'+
  initCard("Strategy gate 6.6","Compare goal fit, market attractiveness, Right to Win, segment economics, competitor response, evidence, assumptions, resources and strategic coherence. No automatic winner score.");
  }
- if(step===4){h='<h2>04 · Annual Marketing Plan v1.0</h2>';
+ if(step===4){h='<h2>05 · Annual Marketing Plan v1.0</h2>';
  if(!p)h+=status("HOLD: no strategy has been selected by the owner. Annual programme cannot be approved.",true);
  else{h+='<p>The selected strategic initiative becomes a <strong>marketing objective → programme → activity → responsibility → timing → cost</strong> chain.</p>'+
  initCard("Strategy trace",p.strategyId+" · "+p.market+" → "+p.objective+" → "+p.decision)+
@@ -208,7 +212,7 @@ function view(){
  status("Hypothetical programme, awaiting evidence review and plan approval. Strategy Tool does not contain an activity calendar.");
  }
  }
- if(step===5){h='<h2>05 · Marketing Budget Tool v2.2</h2>';
+ if(step===5){h='<h2>06 · Marketing Budget Tool v2.2</h2>';
  if(!p)h+=status("HOLD: no approved strategic direction. There are no budget lines to transfer.",true);
  else{const q=p.initiatives.reduce((acc,a)=>{acc[a.month-1]+=a.cost;return acc},[0,0,0,0]);
  h+='<p>Budget v2.2 receives activities from the Annual Plan and computes planned spending by activity, month and quarter. It does not make a new strategy or report actual expenditure.</p>'+
@@ -227,14 +231,14 @@ function view(){
  status(p.annual<=resources?"The planned budget fits the simplified resource cap; this is not a financing approval.":"Budget exceeds available resources. The plan needs a resource or scope decision.",p.annual>resources)+
  initCard("Boundary with Tool #4","Planning and allocation only. Actual spending, variance and forecast belong to Management / Control.");
  }}
- if(step===6){h='<h2>06 · Management & Control boundary</h2><p>Tool #4 remains in research. This page performs an explicitly synthetic target–actual comparison, variance and diagnostic prompt, NOT an implementation of the finished management tool.</p>';
- if(!p)h+=status("No approved strategy or budget to monitor.",true);
+ if(step===6){h='<h2>07 · Management & Control boundary</h2><p>Tool #4 remains in research. This page performs an explicitly synthetic target–actual comparison, variance and diagnostic prompt, NOT an implementation of the finished management tool.</p>';
+ if(!p||(!budgetApproved&&!reviewRequired))h+=status("HOLD: approve the simulated budget before monitoring.",true);
  else{h+=initCard("Control inputs transferred","Strategy "+p.strategyId+" · Activities I-01 to I-03 · KPI: "+p.kpi+" · Planned Q1 budget "+usd(p.annual))+
  '<p>Try changing the external assumption below. Affected decisions should be flagged for a review rather than silently treated as valid.</p>'+
  '<div class="control"><label>Actual qualified conversations (synthetic)</label><input aria-label="Actual qualified conversations" type="range" min="0" max="6" value="'+actualConversations+'" data-input="actualConversations"><b>'+actualConversations+' / goal '+p.targetConversations+'</b></div>'+
- '<div class="control"><label>Actual Q1 marketing spend (synthetic)</label><input aria-label="Actual Q1 marketing spend" type="range" min="0" max="18000" step="100" value="'+actualSpend+'" data-input="actualSpend"><b>'+usd(actualSpend)+'</b></div>'+
+ '<div class="control"><label>Actual Q1 marketing spend (synthetic)</label><input aria-label="Actual Q1 marketing spend" type="range" min="0" max="24000" step="100" value="'+actualSpend+'" data-input="actualSpend"><b>'+usd(actualSpend)+'</b></div>'+
  '<div class="fact"><strong>Measurement → variance → diagnosis</strong>Conversations: '+actualConversations+' actual vs '+p.targetConversations+' target (variance '+(actualConversations-p.targetConversations)+'). Spend: '+usd(actualSpend)+' actual vs '+usd(p.annual)+' planned (variance '+(actualSpend>=p.annual?"+":"-")+usd(Math.abs(actualSpend-p.annual))+'). Arithmetic variance does not establish the cause.</div>'+
- status(actualConversations<p.targetConversations?"Below target: investigate segment access, buying objections and activity execution before altering strategy.":"Conversations meet or exceed the simulated target; review quality and value, not just volume.",actualConversations<3)+
+ status(actualConversations<p.targetConversations?"Below target: investigate segment access, buying objections and activity execution before altering strategy.":"Conversations meet or exceed the simulated target; review quality and value, not just volume.",actualConversations<p.targetConversations)+
  '<div class="control"><label>Entry economics deteriorated</label><button class="btn '+(externalShock?"primary":"")+'" data-act="shock">'+(externalShock?"YES · Shock active":"NO · Simulate shock")+'</button></div>'+
  status(externalShock?"Assumption A-04 is challenged. Re-open pricing/route-to-market, the strategic choice and downstream plan/budget approval. Unrelated facts remain intact.":"Assumption A-04 is not challenged in this fictional example. Continue periodic review.",externalShock);}
  }
@@ -250,11 +254,12 @@ function contextPanel(){
  '<div class="fact"><strong>Management / Control</strong>Planned boundary; actual data integration and financial control are not yet implemented.</div>'+
  '<h3>Assumption trace</h3>'+a.map(x=>'<div class="line"><b>'+x.id+'</b><span>'+x.text+'<br>'+ (x.condition===null?"Not assessed":x.condition?"Not challenged by current demo values":"Requires review")+'</span></div>').join("");
 }
+function handoff(){const p=transfer();const blocked=step===3&&(!p||externalShock||reviewRequired)||step===4&&(!p||externalShock||reviewRequired)||step===5&&(!planApproved||!p||p.annual>resources||externalShock||reviewRequired||data().selected.capability<3);const outputs=["Problem brief M00 · decision scope and horizon","Operation graph M04–M11 · candidate segments and checks","Fictional evidence ledger E-01…E-03 · assumptions A-01…A-04",p?p.strategyId+" · "+p.objective+" · "+p.kpi:"No strategy selected",p?p.initiatives.map(x=>x.id+" · "+x.owner+" · month "+x.month).join("<br>"):"No programme",p?usd(p.annual)+" planned · "+usd(resources)+" available":"No budget",p?"KPI "+actualConversations+" / "+p.targetConversations+" · spend "+usd(actualSpend)+" / "+usd(p.annual):"No baseline"];const next=["Open MASTER operations","Open research evidence","Compare strategy alternatives","Confirm simulated strategy → Annual Plan","Confirm draft activities → Calculate budget","Approve simulated budget → Control",""];let reason=step===3?"Select S-A or S-B to continue.":step===4?"A strategic candidate and review are required.":step===5?"Resolve the resource or delivery capability gap before approval.":"";if(step===5&&p&&p.annual>resources)reason="Funding gap: "+usd(p.annual-resources)+". Return to Annual Plan to revise resources, or Strategy to change direction.";if(step===5&&p&&data().selected.capability<3)reason+=" Delivery capability is below the example minimum (3/5). Return to MASTER or Strategy.";return '<section class="handoffBox"><div class="handoffLabel">OUTPUT OF THIS STAGE · '+(step===6?"REVIEW":"HANDOFF") +'</div><h3>'+S[step]+' → '+(S[step+1]||"Affected decisions")+'</h3><div class="handoffData">'+outputs[step]+'</div>'+(step===6?(reviewRequired?'<div class="holdBox">A-04 challenged. Previous approvals invalidated. Re-open the evidence and strategic choice.</div><button class="btn primary" data-act="revisit">↶ Return to evidence and reconsider strategy</button>':'<p class="subtle">Monitor deviations and investigate causes before changing the strategy.</p>'):(blocked?'<div class="holdBox">HOLD · '+reason+'</div>':'<div class="passBox">READY FOR NEXT DEMO STEP · no real-world approval implied.</div>')+'<button class="btn primary handoffNext" data-act="advance" '+(blocked?"disabled":"")+'>'+next[step]+' →</button>')+(step>0?'<button class="btn" data-nav="'+(step-1)+'">← Return to '+S[step-1]+'</button>':"")+(step===5?'<button class="btn" data-nav="3">↶ Reconsider strategy</button>':"")+'</section>'}
 function render(){
- $("nav").innerHTML=S.map((x,i)=>'<button class="'+(step===i?"active":i<step?"ready":i===5?"future":"")+'" data-nav="'+i+'"><b>0'+(i+1)+'. '+x+'</b><small>'+descriptors[i]+'</small></button>').join("");
- $("main").innerHTML=view();$("aside").innerHTML=contextPanel();
+ $("nav").innerHTML=S.map((x,i)=>'<button class="'+(step===i?"active":i<unlocked?"ready":i>unlocked?"future":"")+'" data-nav="'+i+'" '+(i>unlocked?"disabled":"")+'><b>0'+(i+1)+'. '+x+'</b><small>'+descriptors[i]+'</small><small class="stageState">'+(step===i?"CURRENT":i>unlocked?"LOCKED":i<unlocked?"REVIEWABLE":"AVAILABLE")+'</small></button>').join("");
+ $("main").innerHTML=view()+handoff();$("aside").innerHTML=contextPanel();
 }
-document.addEventListener("click",e=>{const z=e.target.closest("[data-nav],[data-choice],[data-act],[data-research],[data-strategy-block],[data-plan-block]");if(!z)return;if(z.dataset.nav!==undefined)nav(Number(z.dataset.nav));else if(z.dataset.choice)choose(z.dataset.choice);else if(z.dataset.research)setResearchView(z.dataset.research);else if(z.dataset.strategyBlock!==undefined)showStrategyBlock(Number(z.dataset.strategyBlock));else if(z.dataset.planBlock!==undefined)showPlanBlock(Number(z.dataset.planBlock));else if(z.dataset.act==="shock")shock();else if(z.dataset.act==="reset")reset()});
+document.addEventListener("click",e=>{const z=e.target.closest("[data-nav],[data-choice],[data-act],[data-research],[data-strategy-block],[data-plan-block]");if(!z)return;if(z.dataset.nav!==undefined)nav(Number(z.dataset.nav));else if(z.dataset.choice)choose(z.dataset.choice);else if(z.dataset.research)setResearchView(z.dataset.research);else if(z.dataset.strategyBlock!==undefined)showStrategyBlock(Number(z.dataset.strategyBlock));else if(z.dataset.planBlock!==undefined)showPlanBlock(Number(z.dataset.planBlock));else if(z.dataset.act==="advance")advance();else if(z.dataset.act==="revisit")revisit();else if(z.dataset.act==="shock")shock();else if(z.dataset.act==="reset")reset()});
 document.addEventListener("input",e=>{const k=e.target.dataset?.input;if(k==="market")changeMarket(e.target.value);if(k==="capability")changeCapability(e.target.value);if(k==="resources")changeResources(e.target.value);if(k==="actualConversations")setActualConversations(e.target.value);if(k==="actualSpend")setActualSpend(e.target.value)});
 try{const x=new URL(window.location.href);for(const k of [...x.searchParams.keys()])if(/^utm_/i.test(k)){x.searchParams.delete(k);window.history.replaceState(null,"",x.pathname+x.search+x.hash)}}catch(e){}
 render();
