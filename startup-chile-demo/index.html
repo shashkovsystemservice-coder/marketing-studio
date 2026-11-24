@@ -40,6 +40,31 @@ h1{font-size:clamp(30px,4vw,49px);letter-spacing:-.05em;line-height:1.08;max-wid
 .muted{font-size:11px;color:#607969;line-height:1.5}.footer{font-size:11px;color:#6b8074;margin-top:18px}
 @media(max-width:890px){.layout{grid-template-columns:1fr}.actionPanel{position:static}.quartet{grid-template-columns:1fr 1fr}}
 @media(max-width:630px){.entries{grid-template-columns:1fr}.paper{padding:14px}.management{flex-wrap:wrap}.management span{flex:1 1 44%}}
+
+main{max-width:920px;padding-top:40px}h1{max-width:680px}.lead{font-size:17px;max-width:730px}
+.entries{gap:17px;margin:18px 0 0}
+.entry{min-height:194px;border:2px solid #cbded1;padding:20px 22px}
+.entry:hover,.entry.selected{padding:20px 22px}
+.entry:first-child{border-color:#298060;background:#f6fbf7}
+.entry:last-child{border-color:#9db6d6;background:#f7faff}
+.entry strong{font-size:23px}.entry p{font-size:14px}.entry small{font-size:11px}.entry .go{font-size:13px}
+#problemSelector[hidden]{display:none}
+#problemSelector{background:#fff;border:1px solid #c9dbd2;border-radius:15px;margin-top:15px;padding:21px}
+#problemSelector h2{font-size:21px}
+#problemSelector p{font-size:14px;color:#607565;line-height:1.55}
+#problemSelector .choice{font-size:15px;padding:14px 16px;border:1px solid #c6dacd;border-radius:10px;text-decoration:none;display:block}
+#problemSelector .choice:hover{border-color:#246e50;background:#ecf6ef}
+#problemSelector .choice strong{font-size:16px}#problemSelector .choice span{font-size:13px}
+#problemSelector .secondaryLink{display:inline-block;margin-top:13px;color:#1b6c50;font-size:13px}
+.architectureDetails{margin-top:24px}
+.architectureDetails summary{cursor:pointer;color:#416e58;font-size:14px;font-weight:750;padding:14px 17px;border:1px solid #cfdfd4;border-radius:10px;background:white}
+.architectureDetails[open] summary{margin-bottom:12px}
+.architectureDetails .layout{margin-top:0;display:grid;grid-template-columns:1fr}
+.architectureDetails #panel{display:none}
+.architectureDetails .paper{padding:19px}
+.architectureDetails .map{max-width:680px;margin:auto}
+.footer{margin-top:18px;font-size:12px}
+@media(max-width:630px){.entries{grid-template-columns:1fr}.entry{min-height:160px}.entry strong{font-size:20px}}
 </style></head><body>
 <header><div class="head"><strong>MARKETING STUDIO</strong><span>START-UP CHILE · WORKING PROTOTYPE</span></div></header>
 <main><span class="eyebrow">ONE SYSTEM · TWO WAYS TO BEGIN</span>
@@ -54,6 +79,15 @@ h1{font-size:clamp(30px,4vw,49px);letter-spacing:-.05em;line-height:1.08;max-wid
 <small>PATH 02 · WORKING MASTER EXAMPLES</small><strong>Work on a business problem</strong>
 <p>Select a predefined problem. See the professional operations, evaluate a fictional case and inspect the effects on decisions.</p><span class="go">CHOOSE A BUSINESS PROBLEM →</span></button>
 </div>
+<section id="problemSelector" hidden aria-label="Choose a working business problem">
+<h2>Choose a business question</h2>
+<p>Three illustrative examples. Each runs a different MASTER model using explicitly fictional data. Free-text input is planned for the future.</p>
+<a class="choice" href="./master-cases.html?lang=en&case=0"><strong>1. Why don't customers buy?</strong><span>Compare possible causes and identify what evidence to check.</span></a>
+<a class="choice" href="./master-cases.html?lang=en&case=1"><strong>2. How should we enter a new market?</strong><span>Compare strategic alternatives and market-entry constraints.</span></a>
+<a class="choice" href="./master-cases.html?lang=en&case=2"><strong>3. Why are customers leaving?</strong><span>Review affected decisions when new information appears.</span></a>
+<a class="secondaryLink" href="./integrated-flow.html">View the full strategy → plan → budget example</a>
+</section>
+<details class="architectureDetails" id="architecture"><summary>How does Marketing Studio work? · View the system architecture</summary>
 <div class="layout">
 <section class="paper">
 <div class="mapHeading"><div><h2>How Marketing Studio fits together</h2><p>The same professional architecture supports both entry points.</p></div><span class="pill" id="mapPill">SYSTEM MAP</span></div>
@@ -78,7 +112,7 @@ h1{font-size:clamp(30px,4vw,49px);letter-spacing:-.05em;line-height:1.08;max-wid
 <p class="caption">Solid blocks have working prototype logic; dashed blocks are partial or experimental. *Control is not a completed production tool. The full research-to-strategy pipeline remains planned.</p>
 </section>
 <aside class="paper actionPanel" id="panel" aria-live="polite"></aside>
-</div>
+</div></details>
 <p class="footer">For evaluators: all example customer data, costs and outcomes are fictional. The separate original tools are preserved. This is an early functional prototype, not an autonomous research or decision-making service.</p>
 </main>
 <script>
@@ -98,10 +132,11 @@ function cleanLocation(){
  if(kept.length!==items.length)window.history.replaceState(null,"",String(window.location.pathname||"/")+(kept.length?"?"+kept.join("&"):"")+String(window.location.hash||""));
  }catch(e){}
 }
-function selectEntry(v){entry=v;render()}
+function selectEntry(v){if(v==="assessment"){window.location.assign("./self-assessment.html");return}entry=v;render();if(v==="problem")document.getElementById("problemSelector").scrollIntoView({behavior:"smooth",block:"nearest"})}
 function selectProblem(i){problem=i;entry="problem";render()}
 function render(){
  $("entryAssessment").classList.toggle("selected",entry==="assessment");
+ $("problemSelector").hidden=entry!=="problem";
  $("entryProblem").classList.toggle("selected",entry==="problem");
  const active=entry==="assessment"?["mapAssessment","mapMap","mapState","mapIntegrity"]:entry==="problem"?cases[problem].nodes:[];
  for(const id of ["mapOwner","mapAssessment","mapProblem","mapArchitecture","mapMap","mapMaster","mapExecution","mapResearch","mapState","mapMethod","mapIntegrity","mapManagement","mapFeedback"])$(id).classList.toggle("selected",active.includes(id));
