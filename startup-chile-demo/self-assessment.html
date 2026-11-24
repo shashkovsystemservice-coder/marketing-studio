@@ -19,6 +19,28 @@ h1{font-size:clamp(30px,4.0vw,48px);line-height:1.1;letter-spacing:-.05em;margin
 .step:disabled{cursor:default;opacity:.55}.step.current{background:#175b45;color:#fff;border-color:#175b45}.step.complete{background:#e5f2e9;color:#175b45}
 .step.nextAction{border:2px solid #21865f;background:#e6f7ed;color:#165941;cursor:pointer;font-weight:850;padding:9px 12px;box-shadow:0 0 0 3px #c9ead654}
 .step.nextAction:after{content:" →"}
+.assessmentVerdict{background:#fff;border:2px solid #c5ded0;border-radius:15px;padding:20px 21px;margin:14px 0 17px}
+.verdictTop{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.verdictLabel{font-size:11px;letter-spacing:.1em;font-weight:900;color:#286e51}
+.verdictCount{font-size:12px;font-weight:850;color:#ac4540;background:#fff0ee;border-radius:7px;padding:7px 9px}
+.verdictTitle{font-size:23px;line-height:1.2;letter-spacing:-.025em;color:#183e2d;margin:3px 0 8px}
+.verdictContext{font-size:13px;color:#587263;line-height:1.45;margin:0 0 12px}
+.verdictGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}
+.verdictCard{padding:13px;border:1px solid #efd1cd;background:#fff8f6;border-left:5px solid #bd4943;border-radius:10px}
+.verdictCard b{display:block;font-size:15px;color:#713d35;margin-bottom:5px}
+.verdictCard small{font-size:10px;text-transform:uppercase;letter-spacing:.055em;color:#a35a4f;font-weight:850}
+.verdictCard p{font-size:13px;line-height:1.5;color:#4d6557;margin:7px 0}
+.verdictAction{margin-top:11px;background:#ecf5ee;border-radius:10px;padding:13px 14px;border:1px solid #c7e1cf}
+.verdictAction strong{font-size:13px;display:block;color:#175b40}
+.verdictAction p{margin:5px 0 0;font-size:14px;line-height:1.55;color:#2b5a3f}
+.verdictCaution{font-size:11px;color:#668073;line-height:1.5;margin:9px 0 0}
+.radarDetails{margin:16px 0 18px;border:1px solid #d7e6db;border-radius:11px;padding:10px 14px}
+.radarDetails summary{font-size:14px;font-weight:800;cursor:pointer;color:#255e44;padding:5px 0}
+.radarDetails .results{margin-top:13px}
+.allAreasDetails{margin-top:18px;border:1px solid #dce8e0;border-radius:11px;padding:10px 14px}
+.allAreasDetails summary{cursor:pointer;font-size:14px;font-weight:800;color:#315e48;padding:5px 0}
+.allAreasDetails h3{margin-top:15px}
+@media(max-width:630px){.verdictGrid{grid-template-columns:1fr}.assessmentVerdict{padding:14px}.verdictTitle{font-size:20px}}
 .resultNext{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:#edf7ef;border:1px solid #a4d1b4;border-radius:12px;padding:15px 17px;margin:0 0 23px}
 .resultNext strong{display:block;font-size:15px;color:#1d654a}.resultNext p{font-size:12px;color:#547462;margin:4px 0 0;line-height:1.4;max-width:340px}
 .resultNext .primary{padding:12px 16px;font-size:14px;white-space:nowrap}
@@ -302,6 +324,11 @@ function sortedGaps(){const weight={critical:0,moderate:1,unknown:2,meets:3};ret
 function summaryCounts(){const st=general.map(q=>gapInfo(q.n).status);return {critical:st.filter(x=>x==="critical").length,moderate:st.filter(x=>x==="moderate").length,unknown:st.filter(x=>x==="unknown").length,meets:st.filter(x=>x==="meets").length}}
 function renderResults(){
  const isEn=lang==="en",data=sortedGaps(),counts=summaryCounts(),f=isEn?0:1;
+ const urgent=data.filter(q=>q.status==="critical"),focus=urgent.length?urgent:data.filter(q=>q.status==="moderate");
+ const top=focus.slice(0,2),first=top[0];
+ const verdictHeading=urgent.length?(isEn?"Priority gaps need verification":"Приоритетные разрывы требуют проверки"):counts.moderate?(isEn?"Several practices need attention":"Есть практики, требующие внимания"):(isEn?"No major gaps reported":"Крупных разрывов не заявлено");
+ const conclusion=top.length?(isEn?"The largest reported deviations are in these marketing areas:":"Наиболее значимые расхождения выявлены в областях:"):(isEn?"Review missing answers and validate the effectiveness of current practices.":"Проверьте пропущенные ответы и подтвердите результативность текущих практик.");
+ const recommendation=first?first.action[f]:(isEn?"Gather independent evidence before interpreting the self-assessment as business performance.":"Соберите независимые данные, прежде чем судить по самооценке о результатах бизнеса.");
  const label={critical:isEn?"Major gap — review first":"Большой разрыв — проверить сначала",moderate:isEn?"Partial gap":"Частичный разрыв",unknown:isEn?"Not assessed":"Нет данных",meets:isEn?"At or above the reference":"На уровне ориентира или выше"};
  const status=i=>'<span class="flag">'+escape(label[i])+'</span>';
  const stats=[["critical",counts.critical,isEn?"Major gaps":"Большие разрывы"],["moderate",counts.moderate,isEn?"Partial gaps":"Частичные"],["meets",counts.meets,isEn?"At target":"На уровне цели"],["unknown",counts.unknown,isEn?"No data":"Нет данных"]];
@@ -310,18 +337,29 @@ function renderResults(){
  '<p class="explain">'+escape(isEn?"Green = preliminary expert target (different across 13 areas). Orange = self-reported current practices. Red marks large gaps. All values are illustrative, not measured capability levels.":"Зелёный = предварительный целевой ориентир (разный для 13 областей). Оранжевый = заявленная практика. Красный — большой разрыв. Уровни условные, а не измеренная эффективность.")+'</p>'+
  (demo?'<div class="status plan">'+escape(isEn?(sampleEdited?"FICTIONAL SAMPLE — edited answer, recalculated":"FICTIONAL SAMPLE COMPANY — not customer data"):(sampleEdited?"УСЛОВНАЯ КОМПАНИЯ — ответ изменён, расчёт обновлён":"УСЛОВНАЯ ДЕМО-КОМПАНИЯ — не данные клиента"))+'</div>':'')+
  '<div class="summaryStats">'+stats.map(x=>'<div class="stat '+x[0]+'"><b>'+x[1]+'</b><small>'+escape(x[2])+'</small></div>').join("")+'</div>'+
+ '<section class="assessmentVerdict" aria-label="'+escape(isEn?"Assessment findings and recommendations":"Выводы и рекомендации")+'">'+
+ '<div class="verdictTop"><span class="verdictLabel">'+escape(isEn?"ASSESSMENT FINDINGS":"ГЛАВНЫЕ ВЫВОДЫ")+'</span><span class="verdictCount">'+counts.critical+' '+escape(isEn?"major gaps":"крупных разрыва")+'</span></div>'+
+ '<h3 class="verdictTitle">'+escape(verdictHeading)+'</h3>'+
+ '<p class="verdictContext">'+escape(conclusion)+'</p>'+
+ '<div class="verdictGrid">'+(top.length?top.map(q=>
+ '<div class="verdictCard"><small>'+escape(isEn?"Identified gap":"Выявленный разрыв")+'</small><b>T'+q.n+' · '+escape(name(q.n))+'</b><p>'+escape(q.action[f])+'</p></div>'
+ ).join(""):'<div class="verdictCard" style="border-left-color:#2b8061;background:#f5faf6"><b>'+escape(isEn?"No critical areas":"Нет критических областей")+'</b><p>'+escape(isEn?"This does not establish that the marketing system is effective.":"Это не доказывает, что маркетинг работает эффективно.")+'</p></div>')+'</div>'+
+ '<div class="verdictAction"><strong>'+escape(isEn?"RECOMMENDED FIRST ACTION":"ПЕРВОЕ РЕКОМЕНДУЕМОЕ ДЕЙСТВИЕ")+'</strong><p>'+escape(recommendation)+'</p></div>'+
+ '<p class="verdictCaution">'+escape(isEn?"Based only on self-reported answers and preliminary target levels. These gaps are not established causes of business outcomes.":"Вывод основан только на ответах компании и предварительных целевых ориентирах. Разрывы не являются доказанными причинами бизнес-результатов.")+'</p></section>'+
  '<div class="resultNext"><div><strong>'+escape(isEn?"Your assessment is complete":"Самодиагностика завершена")+'</strong><p>'+escape(isEn?"Next: turn the highest-priority gaps into practical verification tasks.":"Далее: превратите главные разрывы в конкретные задачи для проверки.")+'</p></div><button class="primary" onclick="go(3)">'+escape(isEn?"Continue to step 4 — Next checks →":"Перейти к шагу 4 — Что проверить →")+'</button></div>'+
- '<div class="results"><div>'+radarSvg()+'<p class="legend"><span style="color:#12816c">━━</span> '+escape(isEn?"Target reference":"Целевой ориентир")+'<br><span style="color:#d98a42">━━</span> '+escape(isEn?"Self-reported practices":"Заявленные практики")+'<br><span style="color:#b9433c">●</span> '+escape(isEn?"Major gap":"Большой разрыв")+'</p></div>'+
+ '<details class="radarDetails" open><summary>'+escape(isEn?"See the evidence: target vs actual radar":"Посмотреть основание: цель и факт на паутинке")+'</summary><div class="results"><div>'+radarSvg()+'<p class="legend"><span style="color:#12816c">━━</span> '+escape(isEn?"Target reference":"Целевой ориентир")+'<br><span style="color:#d98a42">━━</span> '+escape(isEn?"Self-reported practices":"Заявленные практики")+'<br><span style="color:#b9433c">●</span> '+escape(isEn?"Major gap":"Большой разрыв")+'</p></div>'+
  '<div><h3>'+escape(isEn?"First priorities":"Первые приоритеты")+'</h3>'+
  data.filter(x=>x.status!=="meets").slice(0,5).map(q=>'<div class="finding '+q.status+'"><b>T'+q.n+' · '+escape(name(q.n))+'</b>'+status(q.status)+
  '<span>'+escape(q.status==="unknown"?(isEn?"Check whether this practice exists.":"Выясните, выполняется ли практика."):q.action[f])+'</span>'+
- '<button class="secondary" style="margin-top:8px;padding:6px 9px;font-size:12px" onclick="changeAnswer('+q.n+')">'+escape(isEn?"Review answer ↶":"Вернуться к ответу ↶")+'</button></div>').join("")+'</div></div>'+
+ '<button class="secondary" style="margin-top:8px;padding:6px 9px;font-size:12px" onclick="changeAnswer('+q.n+')">'+escape(isEn?"Review answer ↶":"Вернуться к ответу ↶")+'</button></div>').join("")+'</div></div></details>'+
+ '<details class="allAreasDetails"><summary>'+escape(isEn?"Explore all 13 marketing areas and edit answers":"Все 13 областей: детали и изменение ответов")+'</summary>'+
  '<h3>'+escape(isEn?"All 13 marketing areas — target, actual and next check":"Все 13 областей — цель, факт и следующая проверка")+'</h3>'+
  '<p class="caption">'+escape(isEn?"These are different areas of professional marketing, not 13 numerical KPIs. T1–T13 are domain IDs. Click a row to revisit the question.":"Это 13 областей профессионального маркетинга, а не 13 числовых KPI. T1–T13 — их обозначения. По кнопке можно вернуться к вопросу.")+'</p>'+
  data.map(q=>'<div class="finding '+q.status+'"><b>T'+q.n+' · '+escape(name(q.n))+'</b> '+status(q.status)+
  '<span>'+escape(isEn?"Target":"Ориентир")+': '+Math.round(q.target*10)+'/10 · '+escape(isEn?"Reported":"Ответ")+': '+escape(q.actual===null?(isEn?"unknown or n/a":"неизвестно / не применимо"):q.actual===.83?(isEn?"systematic":"систематически"):q.actual===.52?(isEn?"partly":"частично"):(isEn?"not done":"не делаем"))+'</span>'+
  '<span>'+escape(isEn?"Why this matters / next check: ":"Что проверить дальше: ")+escape(q.action[f])+'</span>'+
  '<button class="secondary" style="padding:5px 9px;margin-top:8px;font-size:12px" onclick="changeAnswer('+q.n+')">'+escape(isEn?"Edit this response":"Изменить ответ")+'</button></div>').join("")+
+ '</details>'+
  '<div class="callout">'+escape(isEn?"A reported gap is not evidence that it caused a business outcome. The target references are experimental expert assumptions and need validation for each company.":"Разрыв не доказывает причину бизнес-проблемы. Целевые ориентиры — экспериментальные экспертные предположения, их нужно проверять для конкретной компании.")+'</div>'+
  '<div class="controls"><button class="primary" onclick="go(3)">'+escape(isEn?"Summarise next checks →":"План следующих проверок →")+'</button><button class="secondary" onclick="go(1)">'+escape(isEn?"← Edit answers":"← Исправить ответы")+'</button></div>';
 }
