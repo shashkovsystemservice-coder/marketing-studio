@@ -91,9 +91,12 @@ const cases=[
 ];
 const $=id=>document.getElementById(id);
 function cleanLocation(){
- try{const u=new URL(window.location.href);let changed=false;
- for(const k of [...u.searchParams.keys()])if(/^utm_/i.test(k)){u.searchParams.delete(k);changed=true}
- if(changed)window.history.replaceState(null,"",u.pathname+u.search+u.hash)}catch(e){}
+ try{
+ const query=String(window.location.search||("?" + String(window.location.href).split("?")[1]?.split("#")[0]||"")).replace(/^\?/,"");
+ const items=query.split("&").filter(Boolean);
+ const kept=items.filter(p=>!/^utm_/i.test(p.split("=")[0]));
+ if(kept.length!==items.length)window.history.replaceState(null,"",String(window.location.pathname||"/")+(kept.length?"?"+kept.join("&"):"")+String(window.location.hash||""));
+ }catch(e){}
 }
 function selectEntry(v){entry=v;render()}
 function selectProblem(i){problem=i;entry="problem";render()}
