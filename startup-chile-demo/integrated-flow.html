@@ -17,6 +17,10 @@ main{max-width:1160px;margin:auto;padding:27px 18px 65px}h1{font-size:clamp(30px
 .line:first-child{border-top:none}.line b{min-width:125px}.line span{color:#607566}
 .budgetrow{display:grid;grid-template-columns:minmax(0,2fr) repeat(4,minmax(0,1fr)) minmax(0,1.3fr);gap:6px;align-items:center;padding:10px 0;border-top:1px solid #e7ede8;font-size:12px}
 .budgetrow b{text-align:right}.budgetrow.header{font-size:11px;color:#5f7969;font-weight:750}
+.compareRow{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:10px;align-items:center;padding:10px 12px;border-top:1px solid #e4eee7;font-size:12px}
+.compareRow.header{background:#edf6ef;border-radius:7px 7px 0 0;font-weight:800;border-top:0}
+.compareRow span:nth-child(2),.compareRow span:nth-child(3){text-align:center}
+.compareRow span:first-child{font-weight:650}
 .strategy{border:1px solid #dce8df;padding:12px;border-radius:10px;margin:9px 0}.strategy.selected{border-color:#308969;background:#ecf6ee}
 .strategy strong{font-size:13px}.strategy p{font-size:12px;color:#64796d;margin:4px 0}
 .status{border-radius:8px;padding:12px;background:#e8f5ec;border-left:4px solid #26845e;font-size:13px;margin:12px 0;line-height:1.5}
@@ -134,7 +138,7 @@ function view(){
  '<div class="strategy"><strong>S-C · Wait / build capability</strong><p>Defer market entry until access and delivery capability improve. Explicit non-choice: no immediate launch.</p><button class="btn" data-choice="C" disabled title="Not implemented as an executable planning choice">Not executed in this example</button></div>'+
  status(ownerApproval?"Simulated owner-selected candidate: S-"+ownerApproval+". Rationale: "+(ownerApproval==="A"?"larger addressable demand; requires closing a capability and access gap.":"stronger specialist fit and achievable pilot resource demand.")+" Non-choice: "+(ownerApproval==="A"?"no unsupported immediate scale.":"no broad untargeted launch.")+" Evidence remains unverified.":"No owner decision yet. Plans and budgets must not be portrayed as approved.",!ownerApproval)+
  '<h3>Whole-strategy alternatives — comparable checks (6.6)</h3>'+
- '<div class="budgetrow header"><span>Evaluation dimension</span><span>S-A</span><span>S-B</span><span></span><span></span><span></span></div>'+
+ '<div class="compareRow header"><span>Evaluation dimension</span><span>S-A · Broad</span><span>S-B · Focused</span></div>'+
  [
  ["Market attractiveness","5 / 5","3 / 5"],
  ["Relative delivery capability","2 / 5",capability+" / 5"],
@@ -144,7 +148,7 @@ function view(){
  ["Evidence quality","Unverified","Unverified"],
  ["Competitive response","Higher risk","Narrower niche"],
  ["Strategic coherence","Capability gap","Conditional fit"]
- ].map(row=>'<div class="budgetrow"><span>'+row[0]+'</span><span>'+row[1]+'</span><span>'+row[2]+'</span><span></span><span></span><span></span></div>').join("")+
+ ].map(row=>'<div class="compareRow"><span>'+row[0]+'</span><span>'+row[1]+'</span><span>'+row[2]+'</span></div>').join("")+
  '<p class="subtle">No overall score: management evaluates trade-offs, source quality and strategic coherence. Alternatives remain provisional until evidence and responsible choice.</p>'+
  initCard("Strategy gate 6.6","Compare goal fit, market attractiveness, Right to Win, segment economics, competitor response, evidence, assumptions, resources and strategic coherence. No automatic winner score.");
  }
