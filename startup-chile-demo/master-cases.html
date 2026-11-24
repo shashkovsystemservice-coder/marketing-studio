@@ -32,10 +32,13 @@ p{line-height:1.55}.muted{color:#5d7769}.small{font-size:12px;color:#648071}.eye
 .path span{padding:8px;background:#edf5ee;border-radius:8px;flex:1;text-align:center;min-width:95px}
 .footer{font-size:12px;color:#647d6e;margin:20px 0;line-height:1.6}
 @media(max-width:800px){.layout,.scenarios{grid-template-columns:1fr}.panel{padding:14px}}
+.assessmentOrigin{border:1px solid #c6e0d1;border-left:5px solid #288260;border-radius:10px;background:#eaf5ed;padding:12px 15px;margin:14px 0 8px}
+.assessmentOrigin strong{font-size:13px;color:#205b42}.assessmentOrigin p{font-size:12px;color:#587364;margin:5px 0;line-height:1.5}
+.assessmentOrigin a{color:#195e44;font-size:12px;font-weight:750}
 </style></head><body>
 <header><div class="head"><strong>MARKETING STUDIO / MASTER</strong><div><a id="manualLink" href="./master-runner.html?lang=en">Manual MASTER workspace</a>　<a id="homeLink" href="./index.html">← Two entry paths</a>　<button class="btn" id="language" data-action="language">EN</button></div></div></header>
 <main><span class="eyebrow" id="eyebrow"></span><h1 id="title"></h1><p id="subtitle" class="muted"></p>
-<div class="panel" style="margin:13px 0;background:#edf6ef"><strong>Continue the same fictional case through all tools</strong><p class="note" style="margin:7px 0 11px">MASTER → frozen Strategy Tool v1.4.1 → Annual Plan v1.0 → Budget v2.2 → Management / Control prototype.</p><a class="btn primary" href="./integrated-flow.html" style="text-decoration:none">Open complete strategy-to-budget walkthrough →</a></div><section class="scenarios" id="scenarios"></section>
+<div class="panel" style="margin:13px 0;background:#edf6ef"><strong>Continue the same fictional case through all tools</strong><p class="note" style="margin:7px 0 11px">MASTER → frozen Strategy Tool v1.4.1 → Annual Plan v1.0 → Budget v2.2 → Management / Control prototype.</p><a class="btn primary" href="./integrated-flow.html" style="text-decoration:none">Open complete strategy-to-budget walkthrough →</a></div><div class="assessmentOrigin" id="assessmentOrigin" hidden></div><section class="scenarios" id="scenarios"></section>
 <div class="layout"><section class="panel">
 <div class="stepbar" id="stepbar"></div><span class="badge" id="phase"></span><h2 id="stageTitle"></h2><p class="muted" id="stageDescription"></p>
 <div class="graph" id="graph"></div><div id="currentResult"></div><div class="controls"><button class="btn" data-action="prev" id="prev"></button><button class="btn primary" data-action="next" id="next"></button><button class="btn" data-action="reset" id="reset"></button></div>
@@ -53,7 +56,7 @@ try{
  for(const key of [...cleanUrl.searchParams.keys()])if(/^utm_/i.test(key)){cleanUrl.searchParams.delete(key);changed=true}
  if(changed)window.history.replaceState(null,"",cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
 }catch(e){}
-let lang="en",current=0,phase=0;
+let lang="en",current=0,phase=0,assessmentOrigin=null,assessmentFocus=null;
 const $=id=>document.getElementById(id),t=(ru,en)=>lang==="ru"?ru:en,idx=()=>lang==="ru"?0:1;
 const fmt=n=>Math.round(n*10)/10;
 const config=[
@@ -161,6 +164,13 @@ function inputsUI(){
  '<p class="note">'+t("Измените любое значение: граф, выводы и рекомендации пересчитаются. Это условные данные — не статистическая модель причинности.","Change any value to recompute the graph, findings and next actions. Synthetic inputs are not a causal statistical model.")+'</p>';
 }
 function render(){
+ const referral=$("assessmentOrigin");
+ referral.hidden=assessmentOrigin!=="assessment";
+ if(!referral.hidden){
+  const focusLabel=assessmentFocus!==null?"T"+assessmentFocus:"a reported gap";
+  referral.innerHTML='<strong>'+t("Переход от самодиагностики","From your self-assessment")+' · '+focusLabel+'</strong><p>'+t("Вы перешли сюда из выявленного разрыва маркетинговых практик. Ниже — работающий пример MASTER на вымышленных данных. Ответы компании и доказательства автоматически НЕ переданы.","You arrived from a reported marketing-practice gap. The MASTER example below runs on fictional data; your assessment responses and evidence have NOT been transferred automatically.")+'</p><a href="./self-assessment.html">'+t("← Вернуться к самодиагностике","← Return to self-assessment")+'</a>';
+ }
+
  document.documentElement.lang=lang;
  $("language").textContent=lang==="ru"?"EN":"РУС";
  $("manualLink").textContent=t("Ручной режим MASTER","Manual MASTER workspace");$("manualLink").href="./master-runner.html?lang="+lang;
@@ -192,6 +202,6 @@ function reset(){input[current]={...initial[current]};phase=0;render()}
 function language(){lang=lang==="ru"?"en":"ru";render()}
 document.addEventListener("click",event=>{const el=event.target.closest("[data-scenario],[data-action]");if(!el)return;if(el.dataset.scenario!==undefined)setScenario(Number(el.dataset.scenario));else if(el.dataset.action==="prev")go(-1);else if(el.dataset.action==="next")go(1);else if(el.dataset.action==="reset")reset();else if(el.dataset.action==="language")language()});
 document.addEventListener("input",event=>{const id=event.target?.dataset?.value;if(id)setValue(id,event.target.value)});
-try{const query=String(window.location.search||"");const q=query.match(/[?&]lang=(ru|en)(?:&|$)/)?.[1];if(q)lang=q;const n=query.match(/[?&]case=([012])(?:&|$)/)?.[1];if(n!==undefined)current=Number(n)}catch(e){}
+try{const query=String(window.location.search||"");const q=query.match(/[?&]lang=(ru|en)(?:&|$)/)?.[1];if(q)lang=q;const n=query.match(/[?&]case=([012])(?:&|$)/)?.[1];if(n!==undefined)current=Number(n);assessmentOrigin=query.includes("origin=assessment")?"assessment":null;const focus=query.match(/[?&]focus=(\d{1,2})(?:&|$)/)?.[1];if(focus!==undefined&&Number(focus)>=1&&Number(focus)<=13)assessmentFocus=Number(focus)}catch(e){}
 render();
 </script></body></html>
