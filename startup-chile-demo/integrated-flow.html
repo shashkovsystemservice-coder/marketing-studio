@@ -110,11 +110,22 @@ function view(){
  const bcap=d.Bfit?"plausible with validation":"capability gap: build, partner or do not pursue";
  h='<h2>03 · Strategy Tool v1.4.1</h2><p>The frozen workbook requires seven blocks, evidence and assumptions, <strong>2–3 coherent strategic alternatives</strong> and a responsible choice. An automatically weighted score is prohibited.</p>'+
  '<div class="arrows"><span>1. Business goal</span><span>2. Market context</span><span>3. Segments</span><span>4. Value</span><span>5. Advantage</span><span>6. Growth / alternatives</span><span>7. Initiatives</span></div>'+
+ '<h3>Seven workbook blocks — linked hypothetical outputs</h3>'+
+ [
+ ["1 · Objectives","Validate one new-market acquisition route rather than maximize advertising activity."],
+ ["2 · Market & situation","Segment A has greater demand but weak delivery capability; segment B is more focused."],
+ ["3 · Target segments","A and B remain candidates. Market attractiveness and competitive strength are distinct axes."],
+ ["4 · Value & positioning","A: broad positioning. B: use-case-specific delivery proof."],
+ ["5 · Competitive advantage","A has a serious capability gap; B needs external evidence of repeatability."],
+ ["6 · Growth & strategy choice","S-A, S-B and defer/build alternatives must be considered under identical criteria."],
+ ["7 · Initiatives & outcomes","Only a separately owner-selected strategy transfers to a conditional activity programme."]
+ ].map(x=>'<div class="line"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join("")+
+
  initCard("A-01 · Explicit assumption","Specialized equipment firms can be reached via decision-makers. Must verify with interviews; currently hypothetical.")+
- '<div class="strategy '+(ownerApproval==="A"?"selected":"")+'"><strong>S-A · Broad market development</strong><p>Segment: broad manufacturers · Value: general-purpose offer · Route: wide coverage and partner introductions · Capability gap: weak delivery fit and access · Trade-off: higher reach, higher entry risk. '+(d.Aneed?"Gate: investigate build/partner option first.":"Gate: scope and access currently plausible.")+'</p><button class="btn" data-choice="A">Owner selects S-A</button></div>'+
- '<div class="strategy '+(ownerApproval==="B"?"selected":"")+'"><strong>S-B · Focused specialist pilot</strong><p>Segment: specialized equipment firms · Value: narrower use-case and delivery proof · Route: direct decision-maker validation · Advantage: stronger use-case fit · Trade-off: smaller initial market. Gate: '+bcap+'.</p><button class="btn" data-choice="B">Owner selects S-B</button></div>'+
+ '<div class="strategy '+(ownerApproval==="A"?"selected":"")+'"><strong>S-A · Broad market development</strong><p>Segment: broad manufacturers · Value: general-purpose offer · Route: wide coverage and partner introductions · Capability gap: weak delivery fit and access · Trade-off: higher reach, higher entry risk. '+(d.Aneed?"Gate: investigate build/partner option first.":"Gate: scope and access currently plausible.")+'</p><button class="btn" data-choice="A">Simulate owner choice: S-A</button></div>'+
+ '<div class="strategy '+(ownerApproval==="B"?"selected":"")+'"><strong>S-B · Focused specialist pilot</strong><p>Segment: specialized equipment firms · Value: narrower use-case and delivery proof · Route: direct decision-maker validation · Advantage: stronger use-case fit · Trade-off: smaller initial market. Gate: '+bcap+'.</p><button class="btn" data-choice="B">Simulate owner choice: S-B</button></div>'+
  '<div class="strategy"><strong>S-C · Wait / build capability</strong><p>Defer market entry until access and delivery capability improve. Explicit non-choice: no immediate launch.</p><button class="btn" data-choice="C" disabled title="Not implemented as an executable planning choice">Not executed in this example</button></div>'+
- status(ownerApproval?"Owner-selected candidate: S-"+ownerApproval+". Still conditional on evidence, capabilities and economics.":"No owner decision yet. Plan and budget must not be portrayed as approved.",!ownerApproval)+
+ status(ownerApproval?"Simulated owner-selected candidate: S-"+ownerApproval+". Still conditional on evidence, capabilities and economics.":"No owner decision yet. Plan and budget must not be portrayed as approved.",!ownerApproval)+
  initCard("Strategy gate 6.6","Compare goal fit, market attractiveness, Right to Win, segment economics, competitor response, evidence, assumptions, resources and strategic coherence. No automatic winner score.");
  }
  if(step===4){h='<h2>04 · Annual Marketing Plan v1.0</h2>';
@@ -138,10 +149,14 @@ function view(){
  status(p.annual<=resources?"The planned budget fits the simplified resource cap; this is not a financing approval.":"Budget exceeds available resources. The plan needs a resource or scope decision.",p.annual>resources)+
  initCard("Boundary with Tool #4","Planning and allocation only. Actual spending, variance and forecast belong to Management / Control.");
  }}
- if(step===6){h='<h2>06 · Management & Control boundary</h2><p>Tool #4 is not a finished integrated module. This panel illustrates the control handoff specified in the methodology, not an executed plan–actual analysis.</p>';
+ if(step===6){h='<h2>06 · Management & Control boundary</h2><p>Tool #4 remains in research. This page performs an explicitly synthetic target–actual comparison, variance and diagnostic prompt, NOT an implementation of the finished management tool.</p>';
  if(!p)h+=status("No approved strategy or budget to monitor.",true);
  else{h+=initCard("Control inputs transferred","Strategy "+p.strategyId+" · Activities I-01 to I-03 · KPI: "+p.kpi+" · Planned Q1 budget "+usd(p.annual))+
  '<p>Try changing the external assumption below. Affected decisions should be flagged for a review rather than silently treated as valid.</p>'+
+ '<div class="control"><label>Actual qualified conversations (synthetic)</label><input aria-label="Actual qualified conversations" type="range" min="0" max="6" value="'+actualConversations+'" data-input="actualConversations"><b>'+actualConversations+' / goal 3</b></div>'+
+ '<div class="control"><label>Actual Q1 marketing spend (synthetic)</label><input aria-label="Actual Q1 marketing spend" type="range" min="0" max="18000" step="100" value="'+actualSpend+'" data-input="actualSpend"><b>'+usd(actualSpend)+'</b></div>'+
+ '<div class="fact"><strong>Measurement → variance → diagnosis</strong>Conversations: '+actualConversations+' actual vs 3 target (variance '+(actualConversations-3)+'). Spend: '+usd(actualSpend)+' actual vs '+usd(p.annual)+' planned (variance '+(actualSpend>=p.annual?"+":"-")+usd(Math.abs(actualSpend-p.annual))+'). Arithmetic variance does not establish the cause.</div>'+
+ status(actualConversations<3?"Below target: investigate segment access, buying objections and activity execution before altering strategy.":"Conversations meet or exceed the simulated target; review quality and value, not just volume.",actualConversations<3)+
  '<div class="control"><label>Entry economics deteriorated</label><button class="btn '+(externalShock?"primary":"")+'" data-act="shock">'+(externalShock?"YES · Shock active":"NO · Simulate shock")+'</button></div>'+
  status(externalShock?"Assumption A-04 is challenged. Re-open pricing/route-to-market, the strategic choice and downstream plan/budget approval. Unrelated facts remain intact.":"Assumption A-04 is not challenged in this fictional example. Continue periodic review.",externalShock);}
  }
