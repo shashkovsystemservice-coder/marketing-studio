@@ -78,6 +78,15 @@ select{padding:10px;background:white;border:1px solid #c7d9cd;border-radius:8px;
 .foot{margin-top:20px;color:#657a6e;font-size:12px;line-height:1.5}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{min-height:0}.results{grid-template-columns:1fr}.radar{max-width:300px}.stage{min-height:0}}
 @media(max-width:600px){main{padding:17px 13px}.top{padding:12px 13px}.stage{padding:19px 15px}.steps{gap:4px}.step{padding:9px 5px;font-size:10px;text-align:center}.answers{margin-left:0}.qtext{font-size:14px}.ans{font-size:11px}.layout{gap:12px}}
+
+.demoLaunch{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:18px;border:2px solid #79b89a;border-radius:13px;background:#eaf6ee;padding:16px 18px;margin:14px 0 19px}
+.demoLaunch strong{font-size:17px;color:#18573f;display:block;margin-bottom:5px}
+.demoLaunch p{font-size:13px;color:#516f60;line-height:1.45;margin:0}
+.demoLaunch .primary{font-size:14px;padding:13px 17px}
+.demoSampleBar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#e8f4ec;border:1px solid #acd4bb;padding:11px 13px;border-radius:10px;margin:10px 0}
+.demoSampleBar strong{font-size:13px}.demoSampleBar span{font-size:12px;color:#536c5b}
+.demoSampleBar .primary{padding:9px 12px;font-size:13px}
+@media(max-width:620px){.demoLaunch{grid-template-columns:1fr}.demoLaunch .primary{width:100%}}
 .backToMap{display:inline-flex;margin:10px auto 0;color:#d7efe3;text-decoration:none;font-size:12px;font-weight:700;border:1px solid #77aa8f;padding:7px 10px;border-radius:8px}.backToMap:hover{background:#216749}</style>
 </head>
 <body><div style="background:#154b38;text-align:center"><a class="backToMap" href="./index.html">← Back to Marketing Studio overview</a></div>
@@ -175,7 +184,7 @@ try{
  for(const key of [...cleanUrl.searchParams.keys()])if(/^utm_/i.test(key)){cleanUrl.searchParams.delete(key);changed=true}
  if(changed)window.history.replaceState(null,"",cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
 }catch(e){}
-let lang="en",screen=0,answers={},demo=false,scope="product",stage="active",mode="problem",scenario=1,gateAnswers={},lastReturn=null;
+let lang="en",screen=0,answers={},demo=false,sampleEdited=false,scope="product",stage="active",mode="problem",scenario=1,gateAnswers={},lastReturn=null;
 function questions(){
  if(mode==="general")return general;
  if(scenario===null)return [];
@@ -188,20 +197,20 @@ function questions(){
 function activeTask(){return scenarios[scenario]||scenarios[1]}
 function chooseScenario(id){scenario=id;gateAnswers={};lastReturn=null;go(2)}
 function entriesCount(){return questions().length}
-function selectEntry(which){mode=which;scenario=which==="problem"?null:1;answers={};demo=false;gateAnswers={};lastReturn=null;go(1)}
+function selectEntry(which){mode=which;scenario=which==="problem"?null:1;answers={};demo=false;sampleEdited=false;gateAnswers={};lastReturn=null;go(1)}
 const $=id=>document.getElementById(id),L=()=>tr[lang],txt=(x)=>x[lang==="en"?0:1],escape=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function setLang(next){lang=next;render()}
 function go(next){if(next<0||next>3)return;if(mode==="general"&&next>=2&&!questions().every(q=>answers[q.n]))next=1;if(mode==="problem"&&next>1&&scenario===null)next=1;screen=next;render();window.scrollTo({top:0,behavior:"smooth"})}
 function jumpToStep(i){if(i<=screen||(mode==="general"&&screen===2&&i===3))go(i)}
 function changeAnswer(n){go(1);const el=document.getElementById("question-"+n);if(el)el.scrollIntoView({behavior:"smooth",block:"center"})}
 function resetAll(){if(window.confirm(L().resetConfirm)){answers={};demo=false;go(1)}}
-function setAnswer(n,value){answers[n]=value;demo=false;render()}
+function setAnswer(n,value){if(demo&&answers[n]!==value)sampleEdited=true;answers[n]=value;render();if(demo&&sampleEdited)window.scrollTo({top:0,behavior:"smooth"})}
 function setScope(v){scope=v}
 function setStage(v){stage=v}
 function demoAnswers(){
  if(mode==="general"){const sample=["yes","partial","no","unknown","yes","partial","no","yes","partial","unknown","no","yes","partial"];answers={};for(let i=1;i<=13;i++)answers[i]=sample[i-1];}
  else {const example=["no","partial","yes","yes","unknown","partial","no","partial","yes","unknown","no","yes","partial"];answers={};questions().forEach(q=>answers[q.n]=example[q.n-1]);}
- demo=true;go(2)
+ demo=true;sampleEdited=false;go(2)
 }
 function clearAnswers(){resetAll()}
 function begin(){go(1)}
@@ -242,9 +251,13 @@ function renderQuestions(){const t=L(),f=lang==="en"?0:1,qset=questions();
  }
 
 $("stage").innerHTML='<div class="label">'+escape(t.steps[1])+'</div><h2>'+escape(mode==="general"?(lang==="en"?"13-area company self-assessment":"Самооценка компании по 13 областям"):activeTask().title[f])+'</h2><p class="explain">'+escape(mode==="general"?(lang==="en"?"Rate one practice in each marketing area. This is self-report, not an effectiveness score.":"Оцените по одной практике в каждой области. Это самооценка, а не оценка эффективности."):t.questionDesc)+'</p>'+
+(mode==="general"?
+ (demo?
+ '<div class="demoSampleBar"><div><strong>'+escape(lang==="en"?"FICTIONAL SAMPLE COMPANY":"УСЛОВНАЯ ДЕМОНСТРАЦИОННАЯ КОМПАНИЯ")+'</strong><span>'+escape(sampleEdited?(lang==="en"?"Answer updated — recalculate the radar and gap priorities.":"Ответ изменён — пересчитайте паутинки и приоритеты."):(lang==="en"?"13 sample responses loaded. Change any answer to test the calculation.":"Загружены 13 условных ответов. Измените любой ответ для проверки расчёта."))+'</span></div><button class="primary" onclick="showResults()">'+escape(lang==="en"?"Show updated results →":"Пересчитать результат →")+'</button></div>':
+ '<div class="demoLaunch"><div><strong>'+escape(lang==="en"?"Try a complete sample assessment in one click":"Попробуйте готовый пример за один клик")+'</strong><p>'+escape(lang==="en"?"Load 13 fictional company responses and instantly see two radar profiles, priority gaps and recommended checks. Or answer manually below.":"Загрузите 13 вымышленных ответов и сразу получите две паутинки, критические разрывы и рекомендации. Или отвечайте вручную ниже.")+'</p></div><button class="primary" onclick="demoAnswers()">'+escape(lang==="en"?"▶ Load sample company":"▶ Загрузить демо-компанию")+'</button></div>'):"")+
 '<div class="context"><label class="field"><span>'+escape(t.scope)+'</span><select onchange="setScope(this.value)"><option value="product" '+(scope==="product"?"selected":"")+'>'+escape(t.scopeOpts[0])+'</option><option value="company" '+(scope==="company"?"selected":"")+'>'+escape(t.scopeOpts[1])+'</option></select></label><label class="field"><span>'+escape(t.stage)+'</span><select onchange="setStage(this.value)"><option value="active" '+(stage==="active"?"selected":"")+'>'+escape(t.stageOpts[0])+'</option><option value="new" '+(stage==="new"?"selected":"")+'>'+escape(t.stageOpts[1])+'</option></select></label></div>'+
 qset.map(q=>'<div class="question" id="question-'+q.n+'"><div class="qhead"><span class="qtag">T'+q.n+'</span><span class="qtext">'+escape(q.q[f])+'</span></div><div class="answers">'+["yes","partial","no","unknown","na"].map((v,i)=>'<button class="ans '+(answers[q.n]===v?"active":"")+'" onclick="setAnswer('+q.n+',\''+v+'\')" aria-pressed="'+(answers[q.n]===v)+'">'+escape(t.answers[i])+'</button>').join("")+'</div></div>').join("")+
-'<div class="controls"><button class="primary" '+(!qset.every(q=>answers[q.n])?"disabled":"")+' onclick="showResults()">'+escape(t.next)+' → ('+qset.filter(q=>answers[q.n]).length+'/'+qset.length+')</button><button class="secondary" onclick="go(0)">← '+escape(t.home)+'</button><button class="secondary" onclick="clearAnswers()">'+escape(t.clear)+'</button></div><div class="callout"><b>'+escape(t.scenario)+'</b><p class="caption">'+escape(t.scenarioHint)+'</p><button class="secondary" onclick="demoAnswers()">'+escape(t.scenario)+' →</button></div>';
+'<div class="controls"><button class="primary" '+(!qset.every(q=>answers[q.n])?"disabled":"")+' onclick="showResults()">'+escape(t.next)+' → ('+qset.filter(q=>answers[q.n]).length+'/'+qset.length+')</button><button class="secondary" onclick="window.location.assign(\'./index.html\')">'+escape(lang==="en"?"← Back to start":"← На главную")+'</button><button class="secondary" onclick="clearAnswers()">'+escape(t.clear)+'</button></div>';
 }
 function risk(q){return ["no","partial","unknown"].includes(answers[q.n])}
 function priorityList(){return questions().filter(risk)}
@@ -295,7 +308,7 @@ function renderResults(){
  $("stage").innerHTML='<div class="label">'+escape(isEn?"SELF-ASSESSMENT RESULTS":"РЕЗУЛЬТАТ САМОДИАГНОСТИКИ")+'</div>'+
  '<h2>'+escape(isEn?"Where do actual practices differ from the target?":"Где фактические практики расходятся с ориентиром?")+'</h2>'+
  '<p class="explain">'+escape(isEn?"Green = preliminary expert target (different across 13 areas). Orange = self-reported current practices. Red marks large gaps. All values are illustrative, not measured capability levels.":"Зелёный = предварительный целевой ориентир (разный для 13 областей). Оранжевый = заявленная практика. Красный — большой разрыв. Уровни условные, а не измеренная эффективность.")+'</p>'+
- (demo?'<div class="status plan">'+escape(isEn?"FICTIONAL EXAMPLE — not customer data":"УСЛОВНЫЙ ПРИМЕР — не данные клиента")+'</div>':'')+
+ (demo?'<div class="status plan">'+escape(isEn?(sampleEdited?"FICTIONAL SAMPLE — edited answer, recalculated":"FICTIONAL SAMPLE COMPANY — not customer data"):(sampleEdited?"УСЛОВНАЯ КОМПАНИЯ — ответ изменён, расчёт обновлён":"УСЛОВНАЯ ДЕМО-КОМПАНИЯ — не данные клиента"))+'</div>':'')+
  '<div class="summaryStats">'+stats.map(x=>'<div class="stat '+x[0]+'"><b>'+x[1]+'</b><small>'+escape(x[2])+'</small></div>').join("")+'</div>'+
  '<div class="resultNext"><div><strong>'+escape(isEn?"Your assessment is complete":"Самодиагностика завершена")+'</strong><p>'+escape(isEn?"Next: turn the highest-priority gaps into practical verification tasks.":"Далее: превратите главные разрывы в конкретные задачи для проверки.")+'</p></div><button class="primary" onclick="go(3)">'+escape(isEn?"Continue to step 4 — Next checks →":"Перейти к шагу 4 — Что проверить →")+'</button></div>'+
  '<div class="results"><div>'+radarSvg()+'<p class="legend"><span style="color:#12816c">━━</span> '+escape(isEn?"Target reference":"Целевой ориентир")+'<br><span style="color:#d98a42">━━</span> '+escape(isEn?"Self-reported practices":"Заявленные практики")+'<br><span style="color:#b9433c">●</span> '+escape(isEn?"Major gap":"Большой разрыв")+'</p></div>'+
