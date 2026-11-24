@@ -132,7 +132,20 @@ function view(){
  '<div class="strategy '+(ownerApproval==="A"?"selected":"")+'"><strong>S-A · Broad market development</strong><p>Segment: broad manufacturers · Value: general-purpose offer · Route: wide coverage and partner introductions · Capability gap: weak delivery fit and access · Trade-off: higher reach, higher entry risk. '+(d.Aneed?"Gate: investigate build/partner option first.":"Gate: scope and access currently plausible.")+'</p><button class="btn" data-choice="A">Simulate owner choice: S-A</button></div>'+
  '<div class="strategy '+(ownerApproval==="B"?"selected":"")+'"><strong>S-B · Focused specialist pilot</strong><p>Segment: specialized equipment firms · Value: narrower use-case and delivery proof · Route: direct decision-maker validation · Advantage: stronger use-case fit · Trade-off: smaller initial market. Gate: '+bcap+'.</p><button class="btn" data-choice="B">Simulate owner choice: S-B</button></div>'+
  '<div class="strategy"><strong>S-C · Wait / build capability</strong><p>Defer market entry until access and delivery capability improve. Explicit non-choice: no immediate launch.</p><button class="btn" data-choice="C" disabled title="Not implemented as an executable planning choice">Not executed in this example</button></div>'+
- status(ownerApproval?"Simulated owner-selected candidate: S-"+ownerApproval+". Still conditional on evidence, capabilities and economics.":"No owner decision yet. Plan and budget must not be portrayed as approved.",!ownerApproval)+
+ status(ownerApproval?"Simulated owner-selected candidate: S-"+ownerApproval+". Rationale: "+(ownerApproval==="A"?"larger addressable demand; requires closing a capability and access gap.":"stronger specialist fit and achievable pilot resource demand.")+" Non-choice: "+(ownerApproval==="A"?"no unsupported immediate scale.":"no broad untargeted launch.")+" Evidence remains unverified.":"No owner decision yet. Plans and budgets must not be portrayed as approved.",!ownerApproval)+
+ '<h3>Whole-strategy alternatives — comparable checks (6.6)</h3>'+
+ '<div class="budgetrow header"><span>Evaluation dimension</span><span>S-A</span><span>S-B</span><span></span><span></span><span></span></div>'+
+ [
+ ["Market attractiveness","5 / 5","3 / 5"],
+ ["Relative delivery capability","2 / 5",capability+" / 5"],
+ ["Buying-group access",marketAccess+" / 5","4 / 5"],
+ ["Required pilot cost",usd(19600),usd(10200)],
+ ["Available resources",resources>=19600?"Fits":"Gap",resources>=10200?"Fits":"Gap"],
+ ["Evidence quality","Unverified","Unverified"],
+ ["Competitive response","Higher risk","Narrower niche"],
+ ["Strategic coherence","Capability gap","Conditional fit"]
+ ].map(row=>'<div class="budgetrow"><span>'+row[0]+'</span><span>'+row[1]+'</span><span>'+row[2]+'</span><span></span><span></span><span></span></div>').join("")+
+ '<p class="subtle">No overall score: management evaluates trade-offs, source quality and strategic coherence. Alternatives remain provisional until evidence and responsible choice.</p>'+
  initCard("Strategy gate 6.6","Compare goal fit, market attractiveness, Right to Win, segment economics, competitor response, evidence, assumptions, resources and strategic coherence. No automatic winner score.");
  }
  if(step===4){h='<h2>04 · Annual Marketing Plan v1.0</h2>';
