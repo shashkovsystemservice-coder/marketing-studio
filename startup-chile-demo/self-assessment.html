@@ -243,6 +243,7 @@ try{
  for(const key of [...cleanUrl.searchParams.keys()])if(/^utm_/i.test(key)){cleanUrl.searchParams.delete(key);changed=true}
  if(changed)window.history.replaceState(null,"",cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
 }catch(e){}
+const journeyKey="ms-guided-assessment-v1";const params=new URLSearchParams(location.search);let guided=params.get("guided")==="1";
 let lang="en",screen=0,answers={},demo=false,sampleEdited=false,selectedAssessmentFocus=null,scope="product",stage="active",mode="problem",scenario=1,gateAnswers={},lastReturn=null;
 function questions(){
  if(mode==="general")return general;
@@ -267,7 +268,7 @@ function setAnswer(n,value){if(demo&&answers[n]!==value)sampleEdited=true;answer
 function setScope(v){scope=v}
 function setStage(v){stage=v}
 function demoAnswers(){
- if(mode==="general"){const sample=["yes","partial","no","unknown","yes","partial","no","yes","partial","unknown","no","yes","partial"];answers={};for(let i=1;i<=13;i++)answers[i]=sample[i-1];}
+ if(mode==="general"){const sample=guided?["yes","partial","no","no","yes","partial","yes","yes","partial","unknown","partial","yes","partial"]:["yes","partial","no","unknown","yes","partial","no","yes","partial","unknown","no","yes","partial"];answers={};for(let i=1;i<=13;i++)answers[i]=sample[i-1];}
  else {const example=["no","partial","yes","yes","unknown","partial","no","partial","yes","unknown","no","yes","partial"];answers={};questions().forEach(q=>answers[q.n]=example[q.n-1]);}
  demo=true;sampleEdited=false;go(1)
 }
@@ -414,6 +415,7 @@ function chooseAssessmentFocus(n){
 function renderAssessmentHandoff(){
  const isEn=lang==="en",f=isEn?0:1,top=sortedGaps().filter(q=>q.status!=="meets").slice(0,5);
  const focus=top.find(q=>q.n===selectedAssessmentFocus)||top[0];
+ if(guided){const q=gapInfo(4);const canContinue=demo&&q.gap!==null&&q.gap>0;return '<section class="handoff"><span class="handoffEyebrow">GUIDED DEMO · SAME FICTIONAL COMPANY</span><h3>Next: define a market-entry question</h3><div class="finding '+q.status+'"><b>T4 · '+escape(name(4))+'</b><span>'+escape(gapNumbers(q,isEn))+'</span><span>'+escape(general[3].action[f])+'</span></div><p class="handoffLead">The guided example focuses on this one reported market-demand gap. We will investigate which customer segment to enter first. Other gaps remain open. Assessment answers are self-reports, not research evidence.</p>'+(canContinue?'<button class="primary" onclick="continueGuided()">Continue to MASTER · market-entry decision →</button>':'<p class="handoffLead">The guided market-entry example requires the fictional sample and a reported T4 gap. Reload the example or return to the answers.</p><button class="primary" onclick="demoAnswers()">Reload fictional sample →</button>')+'</section>';}
  if(!focus)return '<section class="handoff"><h3>'+escape(isEn?"No reported practice gaps":"Нет заявленных разрывов")+'</h3><p>'+escape(isEn?"You can still investigate effectiveness through a separate business question.":"Можно отдельно проверить результативность через постановку бизнес-задачи.")+'</p></section>';
  const route=professionalRouteFor(focus.n),sampleLink="./master-cases.html?lang="+(isEn?"en":"ru")+"&case="+route.caseId+"&origin=assessment&focus="+focus.n;
  const nodes=[
@@ -429,9 +431,10 @@ function renderAssessmentHandoff(){
  '<div class="handoffChoices">'+top.map(q=>'<button class="handoffChoice '+q.status+' '+(q.n===focus.n?"current":"")+'" aria-pressed="'+(q.n===focus.n)+'" onclick="chooseAssessmentFocus('+q.n+')">T'+q.n+' · '+escape(name(q.n))+'<small>'+escape(gapLabel(q,isEn))+'</small></button>').join("")+'</div>'+
  '<div class="handoffChain">'+nodes.map(x=>'<div class="handoffNode '+x.state+'"><small>'+escape(x.stage)+'</small><b>'+escape(x.title)+'</b><p>'+escape(x.body)+'</p></div>').join("")+'</div>'+
  '<div class="handoffNext"><a class="primary" href="'+sampleLink+'">'+escape(isEn?"Explore related MASTER example →":"Открыть связанный пример MASTER →")+'</a>'+
- '<a class="secondary" href="./integrated-flow.html">'+escape(isEn?"Preview strategy → plan → budget →":"Пример стратегия → план → бюджет →")+'</a></div>'+
- '<p class="handoffNote">'+escape(isEn?"Working now: self-assessment computes gaps; MASTER and strategy-to-budget examples run independently on fictional datasets. This illustrates the methodological connection. Automatic evidence transfer and fully integrated execution are not implemented yet.":"Работает сейчас: самодиагностика рассчитывает разрывы; MASTER и стратегия с бюджетом работают отдельно на вымышленных данных. Это методологическая связь; автоматическая передача ответов и полная интеграция ещё не реализованы.")+'</p></section>';
+ '</div>'+
+ '<p class="handoffNote">'+escape(isEn?"The related MASTER example uses fictional data. Your gap identifies the next check; it is not proof of a cause. Other tools can be explored separately from the home page.":"Работает сейчас: самодиагностика рассчитывает разрывы; MASTER и стратегия с бюджетом работают отдельно на вымышленных данных. Это методологическая связь; автоматическая передача ответов и полная интеграция ещё не реализованы.")+'</p></section>';
 }
+function continueGuided(){const q=gapInfo(4);if(!guided||!demo||q.gap===null||q.gap<=0)return;try{sessionStorage.setItem("ms-guided-context-v1",JSON.stringify({version:1,focus:4,target:q.target,actual:q.actual,gap:q.gap,question:"Which customer segment should we enter first?",fictional:true}));sessionStorage.removeItem("ms-integrated-guided-v1")}catch(e){}location.assign("./integrated-flow.html?guided=1&new=1")}
 function renderGeneralActions(){
  const isEn=lang==="en",top=sortedGaps().filter(q=>q.status!=="meets").slice(0,5),f=isEn?0:1;
  $("stage").innerHTML='<div class="label">'+escape(isEn?"DIAGNOSTIC CONCLUSION":"ВЫВОД САМОДИАГНОСТИКИ")+'</div>'+
@@ -502,6 +505,8 @@ function renderProblemGates(){
 
 function render(){
  initShell();
+ if(guided){$("kicker").textContent="GUIDED DEMO · 1 / 7 · ASSESSMENT";$("headline").textContent="One fictional B2B company · assess its marketing";}
+ try{sessionStorage.setItem(journeyKey,JSON.stringify({guided,lang,screen,answers,demo,sampleEdited,selectedAssessmentFocus}))}catch(e){}
  if(screen===0)renderStart();
  else if(mode==="general"){
   if(screen===1)renderQuestions();
@@ -513,6 +518,6 @@ function render(){
   if(screen===3)renderProblemGates();
  }
 }
-mode="general";screen=1;render();
+mode="general";screen=1;try{if(params.get("new")==="1"){sessionStorage.removeItem(journeyKey);sessionStorage.removeItem("ms-guided-context-v1");sessionStorage.removeItem("ms-integrated-guided-v1")}else if(params.get("resume")==="1"){const v=JSON.parse(sessionStorage.getItem(journeyKey)||"null");if(v&&v.guided===guided){lang=v.lang==="ru"?"ru":"en";answers=v.answers||{};demo=!!v.demo;sampleEdited=!!v.sampleEdited;selectedAssessmentFocus=v.selectedAssessmentFocus;screen=Number.isInteger(v.screen)?Math.max(1,Math.min(3,v.screen)):1;}}}catch(e){}render();
 </script>
 </body></html>
