@@ -212,6 +212,15 @@ function view(){
  if(!p)h+=status("HOLD: no approved strategic direction. There are no budget lines to transfer.",true);
  else{const q=p.initiatives.reduce((acc,a)=>{acc[a.month-1]+=a.cost;return acc},[0,0,0,0]);
  h+='<p>Budget v2.2 receives activities from the Annual Plan and computes planned spending by activity, month and quarter. It does not make a new strategy or report actual expenditure.</p>'+
+ '<h3>Monthly allocation and cost categories · Budget Tool v2.2</h3>'+
+ '<div class="compareRow header"><span>Category</span><span>January</span><span>February / March</span></div>'+
+ [...new Set(p.initiatives.map(x=>x.category))].map(category=>{
+   const items=p.initiatives.filter(x=>x.category===category),month=n=>items.filter(x=>x.month===n).reduce((a,x)=>a+x.cost,0);
+   return '<div class="compareRow"><span>'+category+'</span><span>'+usd(month(1))+'</span><span>'+usd(month(2)+month(3))+'</span></div>';
+ }).join("")+
+ '<div class="compareRow"><strong>All activities</strong><strong>'+usd(p.initiatives.filter(x=>x.month===1).reduce((a,x)=>a+x.cost,0))+'</strong><strong>'+usd(p.initiatives.filter(x=>x.month!==1).reduce((a,x)=>a+x.cost,0))+'</strong></div>'+
+ '<p class="subtle">Activity IDs and cost categories are inherited from the illustrative Annual Plan; budget is recalculated from those records. Full 12-month allocations remain zero outside the fictional 90-day pilot.</p>'+
+
  '<div class="budgetrow header"><span>Marketing activity</span><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span><span>Annual</span></div>'+
  p.initiatives.map(a=>'<div class="budgetrow"><span>'+a.id+' · '+a.desc+'</span><span>'+usd(a.cost)+'</span><span>—</span><span>—</span><span>—</span><b>'+usd(a.cost)+'</b></div>').join("")+
  '<div class="budgetrow"><b>Total planned budget</b><b>'+usd(p.annual)+'</b><b>—</b><b>—</b><b>—</b><b>'+usd(p.annual)+'</b></div>'+
