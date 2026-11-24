@@ -65,6 +65,7 @@ main{max-width:920px;padding-top:40px}h1{max-width:680px}.lead{font-size:17px;ma
 .architectureDetails .map{max-width:680px;margin:auto}
 .footer{margin-top:18px;font-size:12px}
 @media(max-width:630px){.entries{grid-template-columns:1fr}.entry{min-height:160px}.entry strong{font-size:20px}}
+.architectureDetails summary{background:#f3f6fa;border-color:#c5d0de;color:#344b64}.architectureDetails .paper{background:#f3f6fa;border-color:#c5d0de;color:#243b53}.architectureDetails .layer,.architectureDetails .layer.selected{background:#f8fafc;border:1px solid #b8c7d8;padding:13px}.architectureDetails .box,.architectureDetails .box.selected{background:#eaf0f7;border:1px solid #b8c7d8;padding:12px 8px}.architectureDetails .box.working{background:#e1e9f3;border-color:#8fa6bf}.architectureDetails .box.partial{border-style:dashed}.architectureDetails .layer small,.architectureDetails .box small,.architectureDetails .mapHeading p,.architectureDetails .caption{color:#52677e}.architectureDetails .arrow{color:#567590}.architectureDetails .management span,.architectureDetails .pill{background:#dfe8f2;color:#344b64}
 </style></head><body>
 <header><div class="head"><strong>MARKETING STUDIO</strong><span>START-UP CHILE · WORKING PROTOTYPE</span></div></header>
 <main><span class="eyebrow">ONE SYSTEM · TWO WAYS TO BEGIN</span>
@@ -90,7 +91,7 @@ main{max-width:920px;padding-top:40px}h1{max-width:680px}.lead{font-size:17px;ma
 <details class="architectureDetails" id="architecture"><summary>How does Marketing Studio work? · View the system architecture</summary>
 <div class="layout">
 <section class="paper">
-<div class="mapHeading"><div><h2>How Marketing Studio fits together</h2><p>The same professional architecture supports both entry points.</p></div><span class="pill" id="mapPill">SYSTEM MAP</span></div>
+<div class="mapHeading"><div><h2>How Marketing Studio fits together</h2><p>Static architecture reference · not the active execution route. The same model supports both entry points.</p></div><span class="pill" id="mapPill">STATIC SYSTEM MAP</span></div>
 <div class="map">
 <div class="layer" id="mapOwner"><small>BUSINESS OWNER</small><strong>A problem, a decision or an assessment</strong></div>
 <div class="arrow">↓</div>
@@ -139,8 +140,8 @@ function render(){
  $("problemSelector").hidden=entry!=="problem";
  $("entryProblem").classList.toggle("selected",entry==="problem");
  const active=entry==="assessment"?["mapAssessment","mapMap","mapState","mapIntegrity"]:entry==="problem"?cases[problem].nodes:[];
- for(const id of ["mapOwner","mapAssessment","mapProblem","mapArchitecture","mapMap","mapMaster","mapExecution","mapResearch","mapState","mapMethod","mapIntegrity","mapManagement","mapFeedback"])$(id).classList.toggle("selected",active.includes(id));
- $("mapPill").textContent=entry==="none"?"SYSTEM MAP":entry==="assessment"?"SELF-ASSESSMENT PATH":"BUSINESS PROBLEM PATH";
+ for(const id of ["mapOwner","mapAssessment","mapProblem","mapArchitecture","mapMap","mapMaster","mapExecution","mapResearch","mapState","mapMethod","mapIntegrity","mapManagement","mapFeedback"])$(id).classList.remove("selected");
+ $("mapPill").textContent="STATIC SYSTEM MAP";
  if(entry==="none"){
   $("panel").innerHTML='<span class="pill">START HERE</span><h3 class="pathTitle" style="margin-top:12px">Two paths. One professional model.</h3><p class="pathDesc">Choose a starting point above. The highlighted architecture will explain how the relevant tools support that need.</p><div class="result">The self-assessment and MASTER examples work independently. The integrated strategy-to-budget example demonstrates selected rules and data handoffs using fictional inputs.</div>';
  }else if(entry==="assessment"){
