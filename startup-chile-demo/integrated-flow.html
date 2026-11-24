@@ -54,9 +54,9 @@ function data(){
  return {A,B,Aok,Aneed,Bfit,issues,selected:ownerApproval==="A"?A:ownerApproval==="B"?B:null,provisional:ownerApproval===""};
 }
 function assumptions(){const d=data();return [
-{id:"A-01",text:"Segment B's buying group is reachable",depends:["Segment choice","Acquisition route"],condition:d.B.access>=3},
+{id:"A-01",text:(d.selected?d.selected.name:"Candidate segment")+"'s buying group is reachable",depends:["Segment choice","Acquisition route"],condition:d.selected?d.selected.access>=3:null},
 {id:"A-02",text:"The offer fits the selected buyer's use-case",depends:["Value proposition","Positioning"],condition:d.selected?d.selected.fit>=3:null},
-{id:"A-03",text:"The pilot can be delivered within resources",depends:["Initiative I-01","Annual plan","Budget"],condition:d.selected?resources>=10000:null},
+{id:"A-03",text:"The pilot can be delivered within resources",depends:["Initiative I-01","Annual plan","Budget"],condition:d.selected?resources>=transfer().annual:null},
 {id:"A-04",text:"Market-entry economics remain viable",depends:["Pricing/RTM","Strategy approval"],condition:d.selected?!externalShock:null}
 ]}
 function invalidateChoice(){ownerApproval="";step=Math.min(step,3)}
@@ -70,13 +70,19 @@ function setActualSpend(v){actualSpend=Number(v);render()}
 function setResearchView(v){if(["facts","hypotheses"].includes(v)){researchView=v;render()}}
 function nav(i){step=i;render()}
 function reset(){step=0;marketAccess=3;capability=3;ownerApproval="";resources=15000;externalShock=false;actualConversations=2;actualSpend=9100;researchView="facts";render()}
-function transfer(){const d=data();if(!d.selected)return null;const strategyId="S-"+ownerApproval;
-const initiatives=[
-{id:"I-01",desc:"Interview 8 target decision-makers",month:1,category:"Research / analytics",cost:2400,owner:"Founder",kpi:"8 completed interviews"},
-{id:"I-02",desc:"Validate value proposition with 2 pilot prospects",month:2,category:"Research / analytics",cost:3600,owner:"Founder",kpi:"2 tested propositions"},
-{id:"I-03",desc:"Develop a partner-led offer and outreach test",month:3,category:"Channel / partner marketing",cost:4200,owner:"Commercial lead",kpi:"3 qualified conversations"}
-];
-return {strategyId,market:d.selected.name,objective:"Validate entry in one B2B segment before scaling",decision:"Narrowly targeted pilot, not general market launch",nonChoice:"Do not finance a broad advertising launch",initiatives,annual:initiatives.reduce((a,x)=>a+x.cost,0),kpi:"3 qualified conversations within 90 days"};
+function transfer(){
+ const d=data();if(!d.selected)return null;
+ const strategyId="S-"+ownerApproval,broad=ownerApproval==="A";
+ const initiatives=broad?[
+ {id:"I-01",desc:"Assess capability gap and market-entry feasibility",month:1,category:"Research / analytics",cost:4800,owner:"Founder",kpi:"Feasibility assessment"},
+ {id:"I-02",desc:"Pilot channel partner access in the broad segment",month:2,category:"Channel / partner marketing",cost:7900,owner:"Commercial lead",kpi:"2 partner conversations"},
+ {id:"I-03",desc:"Test broad-segment acquisition messages and terms",month:3,category:"Advertising / placement",cost:6900,owner:"Commercial lead",kpi:"5 qualified conversations"}
+ ]:[
+ {id:"I-01",desc:"Interview 8 target decision-makers",month:1,category:"Research / analytics",cost:2400,owner:"Founder",kpi:"8 completed interviews"},
+ {id:"I-02",desc:"Validate value proposition with 2 pilot prospects",month:2,category:"Research / analytics",cost:3600,owner:"Founder",kpi:"2 tested propositions"},
+ {id:"I-03",desc:"Develop a partner-led offer and outreach test",month:3,category:"Channel / partner marketing",cost:4200,owner:"Commercial lead",kpi:"3 qualified conversations"}
+ ];
+ return {strategyId,market:d.selected.name,objective:broad?"Assess viability of broad market entry before scale":"Validate entry in one B2B segment before scale",decision:broad?"Broad entry feasibility with a capability gap":"Narrow specialist pilot",nonChoice:broad?"Do not promise immediate scale without delivery capability":"Do not finance a broad advertising launch",initiatives,annual:initiatives.reduce((sum,x)=>sum+x.cost,0),targetConversations:broad?5:3,kpi:(broad?"5":"3")+" qualified conversations within 90 days"};
 }
 function initCard(title,body){return '<div class="fact"><strong>'+title+'</strong>'+body+'</div>'}
 function status(msg,warn=false){return '<div class="status'+(warn?" warn":"")+'">'+msg+'</div>'}
@@ -154,10 +160,10 @@ function view(){
  if(!p)h+=status("No approved strategy or budget to monitor.",true);
  else{h+=initCard("Control inputs transferred","Strategy "+p.strategyId+" · Activities I-01 to I-03 · KPI: "+p.kpi+" · Planned Q1 budget "+usd(p.annual))+
  '<p>Try changing the external assumption below. Affected decisions should be flagged for a review rather than silently treated as valid.</p>'+
- '<div class="control"><label>Actual qualified conversations (synthetic)</label><input aria-label="Actual qualified conversations" type="range" min="0" max="6" value="'+actualConversations+'" data-input="actualConversations"><b>'+actualConversations+' / goal 3</b></div>'+
+ '<div class="control"><label>Actual qualified conversations (synthetic)</label><input aria-label="Actual qualified conversations" type="range" min="0" max="6" value="'+actualConversations+'" data-input="actualConversations"><b>'+actualConversations+' / goal '+p.targetConversations+'</b></div>'+
  '<div class="control"><label>Actual Q1 marketing spend (synthetic)</label><input aria-label="Actual Q1 marketing spend" type="range" min="0" max="18000" step="100" value="'+actualSpend+'" data-input="actualSpend"><b>'+usd(actualSpend)+'</b></div>'+
- '<div class="fact"><strong>Measurement → variance → diagnosis</strong>Conversations: '+actualConversations+' actual vs 3 target (variance '+(actualConversations-3)+'). Spend: '+usd(actualSpend)+' actual vs '+usd(p.annual)+' planned (variance '+(actualSpend>=p.annual?"+":"-")+usd(Math.abs(actualSpend-p.annual))+'). Arithmetic variance does not establish the cause.</div>'+
- status(actualConversations<3?"Below target: investigate segment access, buying objections and activity execution before altering strategy.":"Conversations meet or exceed the simulated target; review quality and value, not just volume.",actualConversations<3)+
+ '<div class="fact"><strong>Measurement → variance → diagnosis</strong>Conversations: '+actualConversations+' actual vs '+p.targetConversations+' target (variance '+(actualConversations-p.targetConversations)+'). Spend: '+usd(actualSpend)+' actual vs '+usd(p.annual)+' planned (variance '+(actualSpend>=p.annual?"+":"-")+usd(Math.abs(actualSpend-p.annual))+'). Arithmetic variance does not establish the cause.</div>'+
+ status(actualConversations<p.targetConversations?"Below target: investigate segment access, buying objections and activity execution before altering strategy.":"Conversations meet or exceed the simulated target; review quality and value, not just volume.",actualConversations<3)+
  '<div class="control"><label>Entry economics deteriorated</label><button class="btn '+(externalShock?"primary":"")+'" data-act="shock">'+(externalShock?"YES · Shock active":"NO · Simulate shock")+'</button></div>'+
  status(externalShock?"Assumption A-04 is challenged. Re-open pricing/route-to-market, the strategic choice and downstream plan/budget approval. Unrelated facts remain intact.":"Assumption A-04 is not challenged in this fictional example. Continue periodic review.",externalShock);}
  }
