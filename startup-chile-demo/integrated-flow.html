@@ -21,7 +21,7 @@ main{max-width:1160px;margin:auto;padding:27px 18px 65px}h1{font-size:clamp(30px
 .compareRow.header{background:#edf6ef;border-radius:7px 7px 0 0;font-weight:800;border-top:0}
 .compareRow span:nth-child(2),.compareRow span:nth-child(3){text-align:center}
 .compareRow span:first-child{font-weight:650}
-.strategy{border:1px solid #dce8df;padding:12px;border-radius:10px;margin:9px 0}.strategy.selected{border-color:#308969;background:#ecf6ee}
+.substeps{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin:12px 0}.substeps button{font:inherit;font-size:11px;font-weight:800;border:1px solid #d0e1d3;border-radius:8px;padding:10px 4px;background:#f9fcf9;color:#446653;cursor:pointer}.substeps button.active{background:#166c4b;color:#fff}.selectedBlock{background:#f0f8f2;padding:14px;border:1px solid #d5e7da;border-radius:10px;margin:10px 0}.selectedBlock p{font-size:13px;margin:6px 0}.gateStatus{padding:10px;border-radius:8px;background:#fff5e7;color:#905724;font-size:12px;line-height:1.5;margin:10px 0}.strategy{border:1px solid #dce8df;padding:12px;border-radius:10px;margin:9px 0}.strategy.selected{border-color:#308969;background:#ecf6ee}
 .strategy strong{font-size:13px}.strategy p{font-size:12px;color:#64796d;margin:4px 0}
 .status{border-radius:8px;padding:12px;background:#e8f5ec;border-left:4px solid #26845e;font-size:13px;margin:12px 0;line-height:1.5}
 .status.warn{background:#fff4e7;border-left-color:#c78a4e;color:#845027}
@@ -44,7 +44,7 @@ main{max-width:1160px;margin:auto;padding:27px 18px 65px}h1{font-size:clamp(30px
 <div class="links"><a class="btn" href="./master-cases.html">Open the separate MASTER scenarios</a><a class="btn" href="./master-runner.html">Open the manual evidence workspace</a><button class="btn" data-act="reset">Reset fictional example</button></div></main>
 <script>
 "use strict";
-let step=0,marketAccess=3,capability=3,ownerApproval="",resources=15000,externalShock=false,actualConversations=2,actualSpend=9100,researchView="facts";
+let step=0,marketAccess=3,capability=3,ownerApproval="",resources=15000,externalShock=false,actualConversations=2,actualSpend=9100,researchView="facts",strategyBlock=0;
 const $=id=>document.getElementById(id);
 const usd=n=>"$"+Math.round(n).toLocaleString("en-US");
 const S=["Business question","MASTER","Research","Strategy Tool","Annual Plan","Budget","Control"];
@@ -72,8 +72,26 @@ function shock(){externalShock=!externalShock;render()}
 function setActualConversations(v){actualConversations=Number(v);render()}
 function setActualSpend(v){actualSpend=Number(v);render()}
 function setResearchView(v){if(["facts","hypotheses"].includes(v)){researchView=v;render()}}
+function showStrategyBlock(n){if(Number.isInteger(n)&&n>=0&&n<7){strategyBlock=n;render()}}
+function strategyDetail(){
+ const d=data(),sel=d.selected,b=ownerApproval,ass=assumptions();
+ const blocks=[
+ {title:"Business and marketing objectives",input:"Fictional revenue baseline: $200k; proposed target: $260k within 12 months.",result:"Marketing contribution hypothesis: validate 3–5 qualified buying conversations over 90 days before committing to scale.",gate:"Business-to-marketing objective link is proposed, not demonstrated by causal evidence."},
+ {title:"Market and strategic situation",input:"Two hypothetical industrial buyer groups; existing competitors and substitution risks assumed.",result:"Segment A offers higher apparent market attractiveness; B may offer easier practical entry.",gate:"PESTEL/Five Forces/market-size evidence has not been externally collected."},
+ {title:"Target customers and segments",input:"A: attractiveness "+d.A.market+"/5, access "+d.A.access+"/5. B: attractiveness "+d.B.market+"/5, access "+d.B.access+"/5.",result:"Separate attractiveness and Right to Win; customer buying group, exclusion criteria and selection criteria remain hypotheses.",gate:"3.4 preliminary choice only. No aggregate segment score; 6.6 required for final strategy."},
+ {title:"Value proposition and positioning",input:"Candidate A: general-purpose industrial solution. Candidate B: focused equipment use-case.",result:"A requires broader value claims; B suggests a narrower, testable differentiated promise.",gate:"Proof points and competitor-response stress test not independently validated."},
+ {title:"Competitive advantage",input:"A delivery capability: "+d.A.capability+"/5; B delivery capability: "+d.B.capability+"/5.",result:sel?("For S-"+b+", capacity to deliver: "+sel.capability+"/5. "+(sel.capability<3?"Build/partner or defer commitment.":"A limited capability hypothesis is plausible.")):"Capability gap is a central strategic decision before owner choice.",gate:"Right to Win and future capability gap require evidence and a build/acquire/partner/no-go decision."},
+ {title:"Growth alternatives and strategic choice",input:"S-A broad entry; S-B narrow focused pilot; S-C wait and build.",result:b?("Selected candidate S-"+b+" with conditional rationale and explicit non-choice."):"Two launch alternatives plus defer; the owner must select or withhold a strategy.",gate:"6.5–6.6: compare complete strategies; no weighted winner; comparable risks, economics, source quality and coherence."},
+ {title:"Strategic initiatives and outcomes",input:"Chosen strategy and strategic assumptions A-01…A-04.",result:sel?("Create traceable I-01…I-03 programme for "+sel.name+"; KPI and cost check follow in Tool #2."): "Initiatives remain draft until a strategy is chosen.",gate:"Initiative gate 7.4: strategic fit, effect, resources, economics, evidence and assumptions; re-test 7.5 falsifiers."}
+ ];
+ const x=blocks[strategyBlock];
+ const failure=ass.filter(z=>z.condition===false);
+ return '<div class="substeps">'+blocks.map((v,i)=>'<button class="'+(i===strategyBlock?"active":"")+'" data-strategy-block="'+i+'" title="'+v.title+'">'+(i+1)+'</button>').join("")+'</div>'+
+ '<div class="selectedBlock"><strong>BLOCK '+(strategyBlock+1)+' / 7 · '+x.title+'</strong><p><b>Inputs:</b> '+x.input+'</p><p><b>Computed / structured output:</b> '+x.result+'</p><p><b>Workbook check:</b> '+x.gate+'</p></div>'+
+ (failure.length?'<div class="gateStatus">Current challenged assumptions: '+failure.map(z=>z.id).join(", ")+'. Downstream decisions require review.</div>':"");
+}
 function nav(i){step=i;render()}
-function reset(){step=0;marketAccess=3;capability=3;ownerApproval="";resources=15000;externalShock=false;actualConversations=2;actualSpend=9100;researchView="facts";render()}
+function reset(){strategyBlock=0;step=0;marketAccess=3;capability=3;ownerApproval="";resources=15000;externalShock=false;actualConversations=2;actualSpend=9100;researchView="facts";render()}
 function transfer(){
  const d=data();if(!d.selected)return null;
  const strategyId="S-"+ownerApproval,broad=ownerApproval==="A";
@@ -121,7 +139,7 @@ function view(){
  const bcap=d.Bfit?"plausible with validation":"capability gap: build, partner or do not pursue";
  h='<h2>03 · Strategy Tool v1.4.1</h2><p>The frozen workbook requires seven blocks, evidence and assumptions, <strong>2–3 coherent strategic alternatives</strong> and a responsible choice. An automatically weighted score is prohibited.</p>'+
  '<div class="arrows"><span>1. Business goal</span><span>2. Market context</span><span>3. Segments</span><span>4. Value</span><span>5. Advantage</span><span>6. Growth / alternatives</span><span>7. Initiatives</span></div>'+
- '<h3>Seven workbook blocks — linked hypothetical outputs</h3>'+
+ '<h3>Seven workbook blocks — working drill-down</h3>'+strategyDetail()+
  [
  ["1 · Objectives","Validate one new-market acquisition route rather than maximize advertising activity."],
  ["2 · Market & situation","Segment A has greater demand but weak delivery capability; segment B is more focused."],
@@ -200,7 +218,7 @@ function render(){
  $("nav").innerHTML=S.map((x,i)=>'<button class="'+(step===i?"active":i<step?"ready":i===5?"future":"")+'" data-nav="'+i+'"><b>0'+(i+1)+'. '+x+'</b><small>'+descriptors[i]+'</small></button>').join("");
  $("main").innerHTML=view();$("aside").innerHTML=contextPanel();
 }
-document.addEventListener("click",e=>{const z=e.target.closest("[data-nav],[data-choice],[data-act],[data-research]");if(!z)return;if(z.dataset.nav!==undefined)nav(Number(z.dataset.nav));else if(z.dataset.choice)choose(z.dataset.choice);else if(z.dataset.research)setResearchView(z.dataset.research);else if(z.dataset.act==="shock")shock();else if(z.dataset.act==="reset")reset()});
+document.addEventListener("click",e=>{const z=e.target.closest("[data-nav],[data-choice],[data-act],[data-research],[data-strategy-block]");if(!z)return;if(z.dataset.nav!==undefined)nav(Number(z.dataset.nav));else if(z.dataset.choice)choose(z.dataset.choice);else if(z.dataset.research)setResearchView(z.dataset.research);else if(z.dataset.strategyBlock!==undefined)showStrategyBlock(Number(z.dataset.strategyBlock));else if(z.dataset.act==="shock")shock();else if(z.dataset.act==="reset")reset()});
 document.addEventListener("input",e=>{const k=e.target.dataset?.input;if(k==="market")changeMarket(e.target.value);if(k==="capability")changeCapability(e.target.value);if(k==="resources")changeResources(e.target.value);if(k==="actualConversations")setActualConversations(e.target.value);if(k==="actualSpend")setActualSpend(e.target.value)});
 try{const x=new URL(window.location.href);for(const k of [...x.searchParams.keys()])if(/^utm_/i.test(k)){x.searchParams.delete(k);window.history.replaceState(null,"",x.pathname+x.search+x.hash)}}catch(e){}
 render();
