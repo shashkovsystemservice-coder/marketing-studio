@@ -41,9 +41,9 @@ main{max-width:1160px;margin:auto;padding:27px 18px 65px}h1{font-size:clamp(30px
 .journeyBanner{display:flex;flex-direction:column;gap:6px;border:1px solid #b5cbd8;background:#eef4f8;color:#304c62;border-radius:12px;padding:15px;margin:15px 0}.journeyBanner small,.currentStage,.gateDemo small{font-size:11px;font-weight:900;letter-spacing:.07em}.journeyBanner strong{font-size:18px}.journeyBanner span,.journeyBanner a{font-size:13px}.journeyBanner a{color:#345d7a;font-weight:750}.currentStage{color:#176649;margin-bottom:12px}.gateDemo{border:1px solid #d5b780;background:#fff9ee;border-radius:10px;padding:15px;margin-top:16px}.gateDemo small{color:#805019}.gateDemo h3{margin-top:8px}.gateDemo p{font-size:13px;line-height:1.5}.gateDemo .btn{margin:4px 3px 0 0}.handoffBox{border-width:2px}.handoffNext{min-height:47px}
 </style></head><body><header><div class="bar"><strong>MARKETING STUDIO / INTEGRATED WORKFLOW</strong><div><a href="./index.html">← Two entry routes</a>　<a href="./master-cases.html">MASTER cases</a></div></div></header>
 <main><span class="kicker">START-UP CHILE · EXPLICITLY FICTIONAL B2B CASE</span><h1>One business question. One connected decision process.</h1>
-<p class="lead">A worked example connecting MASTER to the frozen Marketing Strategy Tool v1.4.1, Annual Marketing Plan v1.0 and Budget Tool v2.2. All research inputs, costs and outcomes are fictional. The guided route carries the selected assessment gap into this example; no external research is performed. The source spreadsheets are not modified.</p>
+<p class="lead">A worked example connecting MASTER to Strategy, Annual Plan, Budget and Control. All research inputs, costs and outcomes are fictional. The guided route carries the selected assessment gap into this example; no external research is performed.</p>
 <div id="journeyContext"></div><div class="flow" id="nav"></div><div class="bodygrid"><section class="panel" id="main"></section><aside class="panel aside" id="aside"></aside></div>
-<details class="panel" style="margin-top:15px;background:#f0f4f8;border-color:#c5d2df"><summary style="cursor:pointer;font-weight:800;color:#344b64">How it works · source workbooks and methodological boundaries</summary><p class="subtle">The demo reproduces selected decision rules and data handoffs. It does not open or execute the original Excel calculation engine, and the frozen source files remain unchanged.</p><div class="links"><a href="https://drive.google.com/file/d/15pWbDmU5tho6jCLp4F8Ua15Gckg8brH8/view" target="_blank" rel="noopener noreferrer">Strategy Tool v1.4.1</a><a href="https://drive.google.com/file/d/1SXc7Jk3ydw7zTr-uwqcX5EyjbNhogjaa/view" target="_blank" rel="noopener noreferrer">Annual Plan v1.0</a><a href="https://drive.google.com/file/d/1dMWSsWlqfjhzjvDQJROMGsIGsRbxg-N3/view" target="_blank" rel="noopener noreferrer">Budget Tool v2.2</a><a href="https://docs.google.com/document/d/1DbcSEhYoOfrN1hhzUsjxPJ4k02ndEVJEvvYAsm95zHM/edit" target="_blank" rel="noopener noreferrer">Control Tool evidence log (research stage)</a></div></details>
+
 <details class="panel" style="margin-top:12px;background:#f0f4f8;border-color:#c5d2df"><summary style="cursor:pointer;font-weight:800;color:#344b64">Advanced workspace · optional separate tools</summary><div class="links"><a class="btn" href="./master-cases.html?case=1">Separate MASTER scenarios</a><a class="btn" href="./master-runner.html?case=1">Manual evidence workspace</a></div></details><div class="links"><button class="btn" data-act="reset">Reset this fictional example</button><a href="./index.html" class="btn">Home</a></div></main>
 <script>
 "use strict";
@@ -99,7 +99,7 @@ function planInspector(p){
  ["90-Day focus",p.initiatives.map(x=>"Month "+x.month+": "+x.kpi).join("; ")+". Review at each milestone."],
  ["Annual plan and readiness",r.status+" · "+(r.issues.length?r.issues.join("; "):"No internal resource contradiction; external evidence still missing.")+". Owner approval remains separate."]
  ];
- return '<h3>Annual Plan v1.0 · 10 workbook blocks</h3><div class="substeps">'+blocks.map((x,i)=>'<button class="'+(planBlock===i?"active":"")+'" data-plan-block="'+i+'" title="'+x[0]+'">'+(i+1)+'</button>').join("")+'</div>'+
+ return '<h3>Annual Plan · 10 planning blocks</h3><div class="substeps">'+blocks.map((x,i)=>'<button class="'+(planBlock===i?"active":"")+'" data-plan-block="'+i+'" title="'+x[0]+'">'+(i+1)+'</button>').join("")+'</div>'+
  '<div class="selectedBlock"><strong>BLOCK '+(planBlock+1)+' / 10 · '+blocks[planBlock][0]+'</strong><p>'+blocks[planBlock][1]+'</p></div>'+
  status("Readiness Gate: "+r.status+(r.issues.length?" · "+r.issues.join("; "):" · potential plan can be considered, not automatically approved."),r.status==="VALIDATION PLAN");
 }
@@ -118,7 +118,7 @@ function strategyDetail(){
  const x=blocks[strategyBlock];
  const failure=ass.filter(z=>z.condition===false);
  return '<div class="substeps">'+blocks.map((v,i)=>'<button class="'+(i===strategyBlock?"active":"")+'" data-strategy-block="'+i+'" title="'+v.title+'">'+(i+1)+'</button>').join("")+'</div>'+
- '<div class="selectedBlock"><strong>BLOCK '+(strategyBlock+1)+' / 7 · '+x.title+'</strong><p><b>Inputs:</b> '+x.input+'</p><p><b>Computed / structured output:</b> '+x.result+'</p><p><b>Workbook check:</b> '+x.gate+'</p></div>'+
+ '<div class="selectedBlock"><strong>BLOCK '+(strategyBlock+1)+' / 7 · '+x.title+'</strong><p><b>Inputs:</b> '+x.input+'</p><p><b>Computed / structured output:</b> '+x.result+'</p><p><b>Decision check:</b> '+x.gate+'</p></div>'+
  (failure.length?'<div class="gateStatus">Current challenged assumptions: '+failure.map(z=>z.id).join(", ")+'. Downstream decisions require review.</div>':"");
 }
 function nav(i){if(guided&&i===0){location.assign("./self-assessment.html?guided=1&resume=1");return}if(Number.isInteger(i)&&i>=0&&i<=unlocked){step=i;render();window.scrollTo(0,0)}}
@@ -170,9 +170,9 @@ function view(){
  }
  if(step===3){
  const bcap=d.Bfit?"plausible with validation":"capability gap: build, partner or do not pursue";
- h='<h2>04 · Strategy Tool v1.4.1</h2><p>The frozen workbook requires seven blocks, evidence and assumptions, <strong>2–3 coherent strategic alternatives</strong> and a responsible choice. An automatically weighted score is prohibited.</p>'+
+ h='<h2>04 · Strategy</h2><p>The strategy process requires seven blocks, evidence and assumptions, <strong>2–3 coherent strategic alternatives</strong> and a responsible choice. An automatically weighted score is prohibited.</p>'+
  '<div class="arrows"><span>1. Business goal</span><span>2. Market context</span><span>3. Segments</span><span>4. Value</span><span>5. Advantage</span><span>6. Growth / alternatives</span><span>7. Initiatives</span></div>'+
- '<h3>Seven workbook blocks — working drill-down</h3>'+strategyDetail()+
+ '<h3>Seven strategy blocks — explore details</h3>'+strategyDetail()+
  [
  ["1 · Objectives","Validate one new-market acquisition route rather than maximize advertising activity."],
  ["2 · Market & situation","Segment A has greater demand but weak delivery capability; segment B is more focused."],
@@ -203,7 +203,7 @@ function view(){
  '<p class="subtle">No overall score: management evaluates trade-offs, source quality and strategic coherence. Alternatives remain provisional until evidence and responsible choice.</p>'+
  initCard("Strategy gate 6.6","Compare goal fit, market attractiveness, Right to Win, segment economics, competitor response, evidence, assumptions, resources and strategic coherence. No automatic winner score.");
  }
- if(step===4){h='<h2>05 · Annual Marketing Plan v1.0</h2>';
+ if(step===4){h='<h2>05 · Annual Marketing Plan</h2>';
  if(!p)h+=status("HOLD: no strategy has been selected by the owner. Annual programme cannot be approved.",true);
  else{h+='<p>The selected strategic initiative becomes a <strong>marketing objective → programme → activity → responsibility → timing → cost</strong> chain.</p>'+
  initCard("Strategy trace",p.strategyId+" · "+p.market+" → "+p.objective+" → "+p.decision)+
@@ -215,11 +215,11 @@ function view(){
  status("Hypothetical programme, awaiting evidence review and plan approval. Strategy Tool does not contain an activity calendar.");
  }
  }
- if(step===5){h='<h2>06 · Marketing Budget Tool v2.2</h2>';
+ if(step===5){h='<h2>06 · Marketing Budget</h2>';
  if(!p)h+=status("HOLD: no approved strategic direction. There are no budget lines to transfer.",true);
  else{const q=p.initiatives.reduce((acc,a)=>{acc[a.month-1]+=a.cost;return acc},[0,0,0,0]);
- h+='<div class="budgetSummary"><div><small>PLANNED Q1 / YEAR</small><strong>'+usd(p.annual)+'</strong></div><div><small>RESOURCE LIMIT</small><strong>'+usd(resources)+'</strong></div><div class="'+(p.annual>resources?'negative':'positive')+'"><small>'+(p.annual>resources?'FUNDING GAP':'AVAILABLE RESERVE')+'</small><strong>'+usd(Math.abs(resources-p.annual))+'</strong></div></div><p>Budget v2.2 receives activities from the Annual Plan and computes planned spending by activity, month and quarter. It does not make a new strategy or report actual expenditure.</p>'+
- '<h3>Monthly allocation and cost categories · Budget Tool v2.2</h3>'+
+ h+='<div class="budgetSummary"><div><small>PLANNED Q1 / YEAR</small><strong>'+usd(p.annual)+'</strong></div><div><small>RESOURCE LIMIT</small><strong>'+usd(resources)+'</strong></div><div class="'+(p.annual>resources?'negative':'positive')+'"><small>'+(p.annual>resources?'FUNDING GAP':'AVAILABLE RESERVE')+'</small><strong>'+usd(Math.abs(resources-p.annual))+'</strong></div></div><p>Budget receives activities from the Annual Plan and computes planned spending by activity, month and quarter. It does not make a new strategy or report actual expenditure.</p>'+
+ '<h3>Monthly allocation and cost categories · Budget</h3>'+
  '<div class="monthRow header"><span>Category</span><span>Month 1</span><span>Month 2</span><span>Month 3</span></div>'+
  [...new Set(p.initiatives.map(x=>x.category))].map(category=>{
    const items=p.initiatives.filter(x=>x.category===category),month=n=>items.filter(x=>x.month===n).reduce((a,x)=>a+x.cost,0);
