@@ -44,7 +44,7 @@ main{max-width:1160px;margin:auto;padding:27px 18px 65px}h1{font-size:clamp(30px
 <div class="links"><a class="btn" href="./master-cases.html">Open the separate MASTER scenarios</a><a class="btn" href="./master-runner.html">Open the manual evidence workspace</a><button class="btn" data-act="reset">Reset fictional example</button></div></main>
 <script>
 "use strict";
-let step=0,marketAccess=3,capability=3,ownerApproval="",resources=15000,externalShock=false,actualConversations=2,actualSpend=9100,researchView="facts",strategyBlock=0;
+let step=0,marketAccess=3,capability=3,ownerApproval="",resources=15000,externalShock=false,actualConversations=2,actualSpend=9100,researchView="facts",strategyBlock=0,planBlock=0;
 const $=id=>document.getElementById(id);
 const usd=n=>"$"+Math.round(n).toLocaleString("en-US");
 const S=["Business question","MASTER","Research","Strategy Tool","Annual Plan","Budget","Control"];
@@ -72,6 +72,32 @@ function shock(){externalShock=!externalShock;render()}
 function setActualConversations(v){actualConversations=Number(v);render()}
 function setActualSpend(v){actualSpend=Number(v);render()}
 function setResearchView(v){if(["facts","hypotheses"].includes(v)){researchView=v;render()}}
+function showPlanBlock(n){if(Number.isInteger(n)&&n>=0&&n<10){planBlock=n;render()}}
+function planReadiness(){
+ const p=transfer();if(!p)return {status:"HOLD",issues:["No strategy selection"]};
+ const issues=[];
+ if(p.annual>resources)issues.push("Resource capacity is below planned cost");
+ if(p.strategyId==="S-A"&&data().A.capability<3)issues.push("Critical delivery capability gap");
+ if(externalShock)issues.push("Market-entry economics assumption challenged");
+ return {status:issues.length?"VALIDATION PLAN":"CONDITIONALLY READY",issues};
+}
+function planInspector(p){
+ const r=planReadiness(),blocks=[
+ ["Strategy handoff","Selected "+p.strategyId+" · "+p.market+" · "+p.nonChoice],
+ ["Annual business goals","Hypothetical baseline $200,000 → target $260,000 revenue. Not independently validated."],
+ ["Marketing objectives","MO-01 · "+p.objective+". KPI: "+p.kpi],
+ ["Opportunity field","Considered: broad entry / narrow pilot / defer. Status SELECT: "+p.strategyId+"; other pathways HOLD / REJECT for this simulated plan."],
+ ["Action programme",p.initiatives.map(x=>x.id+" → "+x.desc+" · "+x.owner+" · month "+x.month).join(" | ")],
+ ["Resources and feasibility","Planned "+usd(p.annual)+" against cap "+usd(resources)+". "+(resources<p.annual?"Resource GAP: change or drop actions.":"Within the simulated financial cap.")],
+ ["Assumptions, triggers and contingency","A-01 buying access, A-02 offer fit, A-03 resources, A-04 economics. External shock → REVIEW strategy, pricing and channels."],
+ ["Marketing activities and costs",p.initiatives.map(x=>x.id+" · "+x.category+" · "+usd(x.cost)).join(" | ")],
+ ["90-Day focus",p.initiatives.map(x=>"Month "+x.month+": "+x.kpi).join("; ")+". Review at each milestone."],
+ ["Annual plan and readiness",r.status+" · "+(r.issues.length?r.issues.join("; "):"No internal resource contradiction; external evidence still missing.")+". Owner approval remains separate."]
+ ];
+ return '<h3>Annual Plan v1.0 · 10 workbook blocks</h3><div class="substeps">'+blocks.map((x,i)=>'<button class="'+(planBlock===i?"active":"")+'" data-plan-block="'+i+'" title="'+x[0]+'">'+(i+1)+'</button>').join("")+'</div>'+
+ '<div class="selectedBlock"><strong>BLOCK '+(planBlock+1)+' / 10 · '+blocks[planBlock][0]+'</strong><p>'+blocks[planBlock][1]+'</p></div>'+
+ status("Readiness Gate: "+r.status+(r.issues.length?" · "+r.issues.join("; "):" · potential plan can be considered, not automatically approved."),r.status==="VALIDATION PLAN");
+}
 function showStrategyBlock(n){if(Number.isInteger(n)&&n>=0&&n<7){strategyBlock=n;render()}}
 function strategyDetail(){
  const d=data(),sel=d.selected,b=ownerApproval,ass=assumptions();
@@ -91,7 +117,7 @@ function strategyDetail(){
  (failure.length?'<div class="gateStatus">Current challenged assumptions: '+failure.map(z=>z.id).join(", ")+'. Downstream decisions require review.</div>':"");
 }
 function nav(i){step=i;render()}
-function reset(){strategyBlock=0;step=0;marketAccess=3;capability=3;ownerApproval="";resources=15000;externalShock=false;actualConversations=2;actualSpend=9100;researchView="facts";render()}
+function reset(){strategyBlock=0;planBlock=0;step=0;marketAccess=3;capability=3;ownerApproval="";resources=15000;externalShock=false;actualConversations=2;actualSpend=9100;researchView="facts";render()}
 function transfer(){
  const d=data();if(!d.selected)return null;
  const strategyId="S-"+ownerApproval,broad=ownerApproval==="A";
@@ -174,6 +200,7 @@ function view(){
  if(!p)h+=status("HOLD: no strategy has been selected by the owner. Annual programme cannot be approved.",true);
  else{h+='<p>The selected strategic initiative becomes a <strong>marketing objective → programme → activity → responsibility → timing → cost</strong> chain.</p>'+
  initCard("Strategy trace",p.strategyId+" · "+p.market+" → "+p.objective+" → "+p.decision)+
+ planInspector(p)+
  '<h3>First 90 days — fictional action programme</h3>'+
  p.initiatives.map(a=>'<div class="line"><b>'+a.id+' · Month '+a.month+'</b><span>'+a.desc+' · '+a.owner+' · '+a.kpi+'</span></div>').join("")+
  initCard("Resource feasibility","Planned activity cost: "+usd(p.annual)+" · Available cap: "+usd(resources)+". Annual Plan status: "+(resources>=p.annual?"feasible for this simplified example":"resource gap — change scope or defer")+".")+
@@ -218,7 +245,7 @@ function render(){
  $("nav").innerHTML=S.map((x,i)=>'<button class="'+(step===i?"active":i<step?"ready":i===5?"future":"")+'" data-nav="'+i+'"><b>0'+(i+1)+'. '+x+'</b><small>'+descriptors[i]+'</small></button>').join("");
  $("main").innerHTML=view();$("aside").innerHTML=contextPanel();
 }
-document.addEventListener("click",e=>{const z=e.target.closest("[data-nav],[data-choice],[data-act],[data-research],[data-strategy-block]");if(!z)return;if(z.dataset.nav!==undefined)nav(Number(z.dataset.nav));else if(z.dataset.choice)choose(z.dataset.choice);else if(z.dataset.research)setResearchView(z.dataset.research);else if(z.dataset.strategyBlock!==undefined)showStrategyBlock(Number(z.dataset.strategyBlock));else if(z.dataset.act==="shock")shock();else if(z.dataset.act==="reset")reset()});
+document.addEventListener("click",e=>{const z=e.target.closest("[data-nav],[data-choice],[data-act],[data-research],[data-strategy-block],[data-plan-block]");if(!z)return;if(z.dataset.nav!==undefined)nav(Number(z.dataset.nav));else if(z.dataset.choice)choose(z.dataset.choice);else if(z.dataset.research)setResearchView(z.dataset.research);else if(z.dataset.strategyBlock!==undefined)showStrategyBlock(Number(z.dataset.strategyBlock));else if(z.dataset.planBlock!==undefined)showPlanBlock(Number(z.dataset.planBlock));else if(z.dataset.act==="shock")shock();else if(z.dataset.act==="reset")reset()});
 document.addEventListener("input",e=>{const k=e.target.dataset?.input;if(k==="market")changeMarket(e.target.value);if(k==="capability")changeCapability(e.target.value);if(k==="resources")changeResources(e.target.value);if(k==="actualConversations")setActualConversations(e.target.value);if(k==="actualSpend")setActualSpend(e.target.value)});
 try{const x=new URL(window.location.href);for(const k of [...x.searchParams.keys()])if(/^utm_/i.test(k)){x.searchParams.delete(k);window.history.replaceState(null,"",x.pathname+x.search+x.hash)}}catch(e){}
 render();
