@@ -8,7 +8,7 @@ main{max-width:1160px;margin:auto;padding:27px 18px 65px}h1{font-size:clamp(30px
 .btn{border:1px solid #bfd7c8;border-radius:9px;background:white;color:#186348;padding:9px 13px;font-size:13px;font-weight:800;cursor:pointer}
 .btn.primary{background:#176649;border-color:#176649;color:white}.btn:disabled{opacity:.4;cursor:not-allowed}.btn:focus-visible,input:focus-visible{outline:3px solid #d59e50;outline-offset:2px}
 .panel{padding:19px;border:1px solid #d4e5d8;background:white;border-radius:15px;min-width:0}
-.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:18px 0}
+.flow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:18px 0}
 .flow button{border:1px solid #cbdfd0;border-radius:11px;padding:12px 9px;text-align:left;background:white;min-height:88px;color:#24523b;font:inherit;cursor:pointer}
 .flow button b{display:block;font-size:12px;margin-bottom:5px}.flow button small{font-size:10px;color:#57715f;line-height:1.4;display:block}
 .flow button.active{border:2px solid #1a6e50;background:#e8f5eb;padding:11px 8px}.flow button.ready{background:#edf6ef}.flow button.future{border-style:dashed}
@@ -39,11 +39,11 @@ main{max-width:1160px;margin:auto;padding:27px 18px 65px}h1{font-size:clamp(30px
 <div class="links"><a class="btn" href="./master-cases.html">Open the separate MASTER scenarios</a><a class="btn" href="./master-runner.html">Open the manual evidence workspace</a><button class="btn" data-act="reset">Reset fictional example</button></div></main>
 <script>
 "use strict";
-let step=0,marketAccess=3,capability=3,ownerApproval="",resources=15000,externalShock=false;
+let step=0,marketAccess=3,capability=3,ownerApproval="",resources=15000,externalShock=false,actualConversations=2,actualSpend=9100,researchView="facts";
 const $=id=>document.getElementById(id);
 const usd=n=>"$"+Math.round(n).toLocaleString("en-US");
-const S=["Business question","MASTER","Strategy Tool","Annual Plan","Budget","Control"];
-const descriptors=["Identify the decision","Map relevant work","Compare full strategies","Translate approved decisions","Cost approved activities","Check assumptions later"];
+const S=["Business question","MASTER","Research","Strategy Tool","Annual Plan","Budget","Control"];
+const descriptors=["Identify the decision","Map relevant work","Organize fictional evidence","Compare full strategies","Translate owner choice","Cost planned activities","Diagnose and revise"];
 function data(){
  const A={name:"Broad manufacturers",market:5,access:marketAccess,capability:2,fit:3};
  const B={name:"Specialized equipment firms",market:3,access:4,capability:capability,fit:4};
@@ -58,14 +58,17 @@ function assumptions(){const d=data();return [
 {id:"A-03",text:"The pilot can be delivered within resources",depends:["Initiative I-01","Annual plan","Budget"],condition:d.selected?resources>=10000:null},
 {id:"A-04",text:"Market-entry economics remain viable",depends:["Pricing/RTM","Strategy approval"],condition:d.selected?!externalShock:null}
 ]}
-function invalidateChoice(){ownerApproval="";step=Math.min(step,2)}
+function invalidateChoice(){ownerApproval="";step=Math.min(step,3)}
 function choose(s){if(!["A","B"].includes(s))return;ownerApproval=s;render()}
 function changeMarket(v){marketAccess=Number(v);invalidateChoice();render()}
 function changeCapability(v){capability=Number(v);invalidateChoice();render()}
 function changeResources(v){resources=Number(v);render()}
 function shock(){externalShock=!externalShock;render()}
+function setActualConversations(v){actualConversations=Number(v);render()}
+function setActualSpend(v){actualSpend=Number(v);render()}
+function setResearchView(v){if(["facts","hypotheses"].includes(v)){researchView=v;render()}}
 function nav(i){step=i;render()}
-function reset(){step=0;marketAccess=3;capability=3;ownerApproval="";resources=15000;externalShock=false;render()}
+function reset(){step=0;marketAccess=3;capability=3;ownerApproval="";resources=15000;externalShock=false;actualConversations=2;actualSpend=9100;researchView="facts";render()}
 function transfer(){const d=data();if(!d.selected)return null;const strategyId="S-"+ownerApproval;
 const initiatives=[
 {id:"I-01",desc:"Interview 8 target decision-makers",month:1,category:"Research / analytics",cost:2400,owner:"Founder",kpi:"8 completed interviews"},
@@ -90,7 +93,20 @@ function view(){
  '<div class="control"><label>Segment A buying access</label><input aria-label="Segment A buying access" type="range" min="1" max="5" value="'+marketAccess+'" data-input="market"><b>'+marketAccess+'/5</b></div>'+
  '<div class="control"><label>Segment B delivery capability</label><input aria-label="Segment B delivery capability" type="range" min="1" max="5" value="'+capability+'" data-input="capability"><b>'+capability+'/5</b></div>';
  }
- if(step===2){
+ if(step===2){h='<h2>03 · Research Harness / Evidence State</h2><p>Illustrative research output with source provenance and assumptions. No external research engine is connected.</p>'+
+ '<div class="arrows"><span>Research inputs</span><span>Source records</span><span>Facts vs assumptions</span><span>Decision dependencies</span></div>'+
+ '<div class="controls"><button class="btn '+(researchView==="facts"?"primary":"")+'" data-research="facts">Fictional source records</button><button class="btn '+(researchView==="hypotheses"?"primary":"")+'" data-research="hypotheses">Assumptions and falsifiers</button></div>'+
+ (researchView==="facts"?
+ '<div class="fact"><strong>E-01 · Fictional customer interviews</strong>Buyers in segment B appear easier to reach. No actual interviews have been conducted.</div>'+
+ '<div class="fact"><strong>E-02 · Fictional competitor scan</strong>Segment A has a larger apparent opportunity, but stronger established substitutes.</div>'+
+ '<div class="fact"><strong>E-03 · Capability hypothesis</strong>Segment B delivery capability: '+capability+'/5. Not independently verified.</div>':
+ '<div class="fact"><strong>A-01 · Reachability</strong>Access to buying groups requires interviews and verified channel evidence.</div>'+
+ '<div class="fact"><strong>A-02 · Product fit</strong>Test whether the offer meets the customer job.</div>'+
+ '<div class="fact"><strong>Falsifier</strong>If capability or market access weakens, revisit segment and strategy decisions.</div>')+
+ status("Synthetic evidence ledger produced for illustration. No external evidence-pass has occurred.")+
+ '<div class="controls"><button class="btn primary" data-nav="3">Review strategy alternatives →</button></div>';
+ }
+ if(step===3){
  const bcap=d.Bfit?"plausible with validation":"capability gap: build, partner or do not pursue";
  h='<h2>03 · Strategy Tool v1.4.1</h2><p>The frozen workbook requires seven blocks, evidence and assumptions, <strong>2–3 coherent strategic alternatives</strong> and a responsible choice. An automatically weighted score is prohibited.</p>'+
  '<div class="arrows"><span>1. Business goal</span><span>2. Market context</span><span>3. Segments</span><span>4. Value</span><span>5. Advantage</span><span>6. Growth / alternatives</span><span>7. Initiatives</span></div>'+
@@ -101,7 +117,7 @@ function view(){
  status(ownerApproval?"Owner-selected candidate: S-"+ownerApproval+". Still conditional on evidence, capabilities and economics.":"No owner decision yet. Plan and budget must not be portrayed as approved.",!ownerApproval)+
  initCard("Strategy gate 6.6","Compare goal fit, market attractiveness, Right to Win, segment economics, competitor response, evidence, assumptions, resources and strategic coherence. No automatic winner score.");
  }
- if(step===3){h='<h2>04 · Annual Marketing Plan v1.0</h2>';
+ if(step===4){h='<h2>04 · Annual Marketing Plan v1.0</h2>';
  if(!p)h+=status("HOLD: no strategy has been selected by the owner. Annual programme cannot be approved.",true);
  else{h+='<p>The selected strategic initiative becomes a <strong>marketing objective → programme → activity → responsibility → timing → cost</strong> chain.</p>'+
  initCard("Strategy trace",p.strategyId+" · "+p.market+" → "+p.objective+" → "+p.decision)+
@@ -112,7 +128,7 @@ function view(){
  status("Hypothetical programme, awaiting evidence review and plan approval. Strategy Tool does not contain an activity calendar.");
  }
  }
- if(step===4){h='<h2>05 · Marketing Budget Tool v2.2</h2>';
+ if(step===5){h='<h2>05 · Marketing Budget Tool v2.2</h2>';
  if(!p)h+=status("HOLD: no approved strategic direction. There are no budget lines to transfer.",true);
  else{const q=p.initiatives.reduce((acc,a)=>{acc[a.month-1]+=a.cost;return acc},[0,0,0,0]);
  h+='<p>Budget v2.2 receives activities from the Annual Plan and computes planned spending by activity, month and quarter. It does not make a new strategy or report actual expenditure.</p>'+
@@ -122,7 +138,7 @@ function view(){
  status(p.annual<=resources?"The planned budget fits the simplified resource cap; this is not a financing approval.":"Budget exceeds available resources. The plan needs a resource or scope decision.",p.annual>resources)+
  initCard("Boundary with Tool #4","Planning and allocation only. Actual spending, variance and forecast belong to Management / Control.");
  }}
- if(step===5){h='<h2>06 · Management & Control boundary</h2><p>Tool #4 is not a finished integrated module. This panel illustrates the control handoff specified in the methodology, not an executed plan–actual analysis.</p>';
+ if(step===6){h='<h2>06 · Management & Control boundary</h2><p>Tool #4 is not a finished integrated module. This panel illustrates the control handoff specified in the methodology, not an executed plan–actual analysis.</p>';
  if(!p)h+=status("No approved strategy or budget to monitor.",true);
  else{h+=initCard("Control inputs transferred","Strategy "+p.strategyId+" · Activities I-01 to I-03 · KPI: "+p.kpi+" · Planned Q1 budget "+usd(p.annual))+
  '<p>Try changing the external assumption below. Affected decisions should be flagged for a review rather than silently treated as valid.</p>'+
@@ -145,8 +161,8 @@ function render(){
  $("nav").innerHTML=S.map((x,i)=>'<button class="'+(step===i?"active":i<step?"ready":i===5?"future":"")+'" data-nav="'+i+'"><b>0'+(i+1)+'. '+x+'</b><small>'+descriptors[i]+'</small></button>').join("");
  $("main").innerHTML=view();$("aside").innerHTML=contextPanel();
 }
-document.addEventListener("click",e=>{const z=e.target.closest("[data-nav],[data-choice],[data-act]");if(!z)return;if(z.dataset.nav!==undefined)nav(Number(z.dataset.nav));else if(z.dataset.choice)choose(z.dataset.choice);else if(z.dataset.act==="shock")shock();else if(z.dataset.act==="reset")reset()});
-document.addEventListener("input",e=>{const k=e.target.dataset?.input;if(k==="market")changeMarket(e.target.value);if(k==="capability")changeCapability(e.target.value);if(k==="resources")changeResources(e.target.value)});
+document.addEventListener("click",e=>{const z=e.target.closest("[data-nav],[data-choice],[data-act],[data-research]");if(!z)return;if(z.dataset.nav!==undefined)nav(Number(z.dataset.nav));else if(z.dataset.choice)choose(z.dataset.choice);else if(z.dataset.research)setResearchView(z.dataset.research);else if(z.dataset.act==="shock")shock();else if(z.dataset.act==="reset")reset()});
+document.addEventListener("input",e=>{const k=e.target.dataset?.input;if(k==="market")changeMarket(e.target.value);if(k==="capability")changeCapability(e.target.value);if(k==="resources")changeResources(e.target.value);if(k==="actualConversations")setActualConversations(e.target.value);if(k==="actualSpend")setActualSpend(e.target.value)});
 try{const x=new URL(window.location.href);for(const k of [...x.searchParams.keys()])if(/^utm_/i.test(k)){x.searchParams.delete(k);window.history.replaceState(null,"",x.pathname+x.search+x.hash)}}catch(e){}
 render();
 </script></body></html>
