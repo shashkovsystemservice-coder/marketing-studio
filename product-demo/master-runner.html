@@ -1,0 +1,262 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Marketing Studio — MASTER Engine</title>
+<style>
+:root{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;color:#17392d;background:#f3f7f4}*{box-sizing:border-box}body{margin:0}header{background:#15513c;color:white;padding:15px 24px}header .wrap{max-width:1250px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}header a{color:white;text-decoration:none;font-size:13px}main{max-width:1250px;margin:auto;padding:24px 18px 45px}h1{font-size:clamp(29px,3.5vw,44px);letter-spacing:-.04em;line-height:1.1;margin:8px 0}h2{font-size:22px;margin:0 0 10px}.kicker{font-size:11px;font-weight:800;letter-spacing:.1em;color:#257b5d}.intro{color:#547363;font-size:15px;line-height:1.6;max-width:900px}.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.scene{background:white;border:1px solid #c9ddcf;border-radius:12px;padding:15px;text-align:left;color:#173e2e;cursor:pointer;font:inherit}.scene strong{display:block;font-size:17px;margin:0 0 7px}.scene small{font-size:12px;line-height:1.4;color:#5d7768}.scene.active{border:2px solid #176b50;background:#e8f4ec;padding:14px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 335px;gap:15px}.panel{background:white;border:1px solid #d7e5dc;border-radius:15px;padding:19px;min-width:0}.graph{overflow-x:auto;border:1px solid #dce8df;background:#fcfefa;border-radius:12px}.graph svg{display:block;width:100%;min-width:660px;height:auto}.graphbtn{font:inherit;cursor:pointer}.graphbtn:hover rect{stroke-width:3}button{cursor:pointer;font:inherit}button:focus-visible{outline:3px solid #d7a85c;outline-offset:2px}.btn{background:white;color:#176047;border:1px solid #bed7c7;padding:10px 12px;border-radius:9px;font-size:13px;font-weight:750}.btn.primary{color:white;background:#18664a;border-color:#18664a}.btn.warn{color:#9a4b2c;background:#fff7ef;border-color:#d9a17a}.btn:disabled{opacity:.4;cursor:not-allowed}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.side h3{font-size:20px;margin:8px 0}.side p{font-size:13px;line-height:1.5;color:#536e5e}.box{background:#f7faf8;border:1px solid #e0e9e1;padding:12px;border-radius:9px;margin:10px 0}.box small{display:block;text-transform:uppercase;font-size:10px;color:#4d765e;font-weight:750;margin-bottom:6px}.box p{margin:0;color:#2b523d}.pill{background:#e5f2e9;padding:5px 8px;font-size:11px;font-weight:750;border-radius:7px;color:#256448}.banner{background:#fff0e2;border-left:4px solid #bd814b;border-radius:6px;padding:12px;margin:12px 0;color:#754827;font-size:13px;line-height:1.5}.ok{background:#e6f5ed;border-left-color:#3e9873;color:#2b6e4b}.report{margin-top:15px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #e9eee9;padding:9px 0;font-size:13px}.row span:first-child{font-weight:650}.small{font-size:12px;color:#658071;line-height:1.55}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#56705f;margin:12px 0}.dot{display:inline-block;width:10px;height:10px;border-radius:3px;border:1px solid #acc2b0;margin-right:5px}.evidenceForm{margin-top:14px;border-top:1px solid #dce9df;padding-top:13px}.evidenceForm label{display:block;font-size:12px;font-weight:700;margin:9px 0 4px}.evidenceForm input,.evidenceForm textarea,.evidenceForm select{width:100%;border:1px solid #cbded1;border-radius:8px;background:white;padding:9px;font:inherit;font-size:13px}.evidenceForm textarea{min-height:66px;resize:vertical}.evidenceItem{padding:11px;background:#f6f9f7;border:1px solid #e0eae0;border-radius:9px;margin:8px 0}.evidenceItem strong{font-size:12px}.evidenceItem p{margin:5px 0;font-size:12px;overflow-wrap:anywhere}.evidenceItem .btn{padding:6px;font-size:11px}.projectBar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0}.projectBar input{flex:1;min-width:180px;border-radius:8px;padding:9px;border:1px solid #c7d9ce;font:inherit;font-size:13px}.walkthrough{border:1px solid #bbd9c6;background:linear-gradient(135deg,#eef8f1,#fff);border-radius:14px;padding:17px;margin:0 0 16px}
+.walkthroughHead{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.walkthroughHead strong{font-size:16px}.walkthroughText{font-size:14px;color:#365e48;line-height:1.55;margin:8px 0}
+.walkthroughStatus{font-size:11px;font-weight:800;letter-spacing:.08em;color:#247555}.walkthroughButtons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.walkthroughProgress{display:flex;gap:5px;margin:10px 0}.walkthroughProgress i{flex:1;height:6px;border-radius:9px;background:#d9e6dd}.walkthroughProgress i.current{background:#1d8663}.walkthroughProgress i.complete{background:#87c9aa}
+.walkthroughIssue{border-left:4px solid #ca804b;background:#fff2e6;color:#844c28;padding:10px;border-radius:5px;margin:9px 0;font-size:13px}
+.walkthroughSuccess{border-left:4px solid #368b6c;background:#e6f4ed;color:#246b4e;padding:10px;border-radius:5px;margin:9px 0;font-size:13px}
+.walkthroughHow{font-size:12px;color:#627969}.walkthroughOn .graph{border:2px solid #4c9a76}
+.foot{font-size:12px;color:#657c6d;line-height:1.6;margin-top:17px}
+.scopePanel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 16px}
+.scopeCard{border:1px solid #d0e1d5;background:#fff;border-radius:12px;padding:14px 16px}
+.scopeCard.future{background:#f7f9f7;border-style:dashed}
+.scopeCard strong{display:block;color:#164f3b;font-size:14px;margin-bottom:6px}
+.scopeCard p{font-size:12px;color:#526c5d;line-height:1.5;margin:0}
+.scopeCard .scopeTag{display:block;font-weight:800;font-size:10px;letter-spacing:.075em;color:#2b8361;margin-bottom:7px}
+.methodExample{margin-top:15px;border:1px solid #d7e5dc;border-radius:15px;background:#fff}
+.methodExample summary{cursor:pointer;padding:16px 20px;font-size:15px;font-weight:750;color:#1d5942}
+.methodBody{padding:0 20px 20px}
+.methodLead{font-size:13px;color:#607465;line-height:1.55}
+.methodSequence{max-width:710px;margin:13px auto 18px}
+.methodNode{padding:15px 13px;background:#edf5ef;border:1px solid #ccdfd1;border-radius:10px;text-align:center}
+.methodNode strong{display:block;font-size:14px;color:#205340}
+.methodNode small{display:block;color:#597566;margin-top:4px;font-size:12px;line-height:1.45}
+.methodGate{text-align:center;color:#187758;font-size:14px;font-weight:700;margin:8px 0}
+.methodOutcomes{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.methodOutcome{background:#e8f3ec;border:1px solid #d2e4d5;padding:12px;border-radius:10px}
+.methodOutcome.return{background:#fff1e7;border-color:#eddbc9}
+.methodOutcome strong{font-size:13px}
+.methodOutcome p{margin:5px 0 0;font-size:12px;line-height:1.45;color:#537062}
+.methodOutcome.return p{color:#9a6542}
+@media(max-width:720px){.scopePanel{grid-template-columns:1fr}.methodOutcomes{grid-template-columns:1fr}}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.scenarios{grid-template-columns:1fr}.panel{padding:14px}}
+.walkthroughIssue.gate{border-color:#b9433c;background:#fff0ee;color:#a43832}.btn.warn[data-mark="insufficient"]{border-color:#c66a62;color:#a43832;background:#fff0ee}.walkthroughIssue.return{border-color:#b87928;background:#fff4e2;color:#805019}
+</style></head><body><header><div class="wrap"><strong>MARKETING STUDIO / MASTER</strong><div><a href="./index.html" id="back">← К двум вариантам входа</a>　<button class="btn" id="language" data-action="lang">EN</button></div></div></header>
+<main><span class="kicker" id="kicker">РАБОТАЮЩИЕ ПРАВИЛА · 3 ПРИМЕРА</span><h1 id="headline">MASTER строит разные маршруты для разных задач</h1><p id="intro" class="intro"></p><div class="projectBar"><label for="projectName" id="projectLabel">Проект</label><input id="projectName" maxlength="100" placeholder="Компания / продукт"><button class="btn" data-action="export" id="export">Экспорт JSON</button><button class="btn" data-action="import" id="import">Импорт JSON</button><input id="importFile" type="file" accept=".json,application/json" hidden><span class="small" id="saved"></span></div><div class="buttons" style="margin:12px 0 15px"><a href="./master-cases.html?lang=en" id="casesLink" class="btn primary" style="text-decoration:none">▶ See three executable MASTER examples</a></div><div class="scopePanel"><div class="scopeCard"><span class="scopeTag" id="existingTag"></span><strong id="existingTitle"></strong><p id="existingDesc"></p></div><div class="scopeCard future"><span class="scopeTag" id="futureTag"></span><strong id="futureTitle"></strong><p id="futureDesc"></p></div></div><h2 id="scenariosHeading"></h2><div class="scenarios" id="scenes"></div><section class="walkthrough" id="walkthrough"><div class="walkthroughHead"><strong id="walkthroughTitle"></strong><span class="walkthroughStatus" id="walkthroughStatus"></span></div><p class="walkthroughText" id="walkthroughExplain"></p><div class="walkthroughProgress" id="walkthroughProgress"></div><div id="walkthroughOutcome"></div><div class="walkthroughButtons"><button class="btn primary" data-action="tour-start" id="tourStart"></button><button class="btn" data-action="tour-prev" id="tourPrev"></button><button class="btn primary" data-action="tour-next" id="tourNext"></button><button class="btn" data-action="tour-stop" id="tourStop"></button></div><p class="walkthroughHow" id="walkthroughHow"></p></section><div class="layout" id="workspace"><div class="panel"><h2 id="chartTitle">Схема работы</h2><div id="chartDesc" class="small"></div><div id="legend" class="legend"></div><div id="graph" class="graph"></div><div id="message"></div><div class="buttons"><button class="btn" data-action="reset" id="reset"></button><button class="btn primary" data-action="next" id="next"></button></div></div><aside class="panel side" id="details"></aside></div><details class="methodExample" id="methodExample"><summary id="methodSummary"></summary><div class="methodBody"><p class="methodLead" id="methodLead"></p><div class="methodSequence"><div class="methodNode"><strong id="exampleNode1"></strong><small id="exampleDetail1"></small></div><div class="methodGate" id="exampleGate1"></div><div class="methodNode"><strong id="exampleNode2"></strong><small id="exampleDetail2"></small></div><div class="methodGate" id="exampleGate2"></div><div class="methodNode"><strong id="exampleNode3"></strong><small id="exampleDetail3"></small></div><div class="methodGate" id="exampleGate3"></div><div class="methodOutcomes"><div class="methodOutcome"><strong id="examplePassTitle"></strong><p id="examplePassDesc"></p></div><div class="methodOutcome return"><strong id="exampleFailTitle"></strong><p id="exampleFailDesc"></p></div></div></div><p class="small" id="methodFoot"></p></div></details><div class="panel report" id="report"></div><div class="foot" id="foot"></div></main>
+<script>
+"use strict";
+// Operational node IDs follow MASTER 0–20. Scenario subgraphs and gate mappings are
+// illustrative configurations of MASTER v1.5, cross-checked with MASTER v2.0 RC5 DRAFT.
+// No external evidence is read or validated; all confirmation is explicit simulation.
+const ops={
+0:["Паспорт задачи","Problem brief","Задача, объект, ограничения","Problem, scope and constraints","Паспорт задачи","Problem definition","Контекст и цель заданы","Context and goal are specified"],
+3:["Продукт / ЦКП","Product / outcome","Продукт и результат","Offering and outcome","Результат продукта","Product outcome","Результат проверяем и исполним","Outcome is testable and feasible"],
+4:["Референтный рынок","Reference market","Функции, клиенты, альтернативы","Needs, buyers and alternatives","Границы рынка","Market boundaries","Рынок определён по спросу","Market is defined by demand"],
+5:["Ситуация спроса","Demand situation","Контекст, триггеры, ограничения","Context, triggers, constraints","Карта ситуаций спроса","Demand situations","Ясно когда и почему возникает спрос","Demand timing and triggers are clear"],
+6:["Сегмент / целевой клиент","Segment / ICP","Потребности, доступность, привлекательность","Needs, access, attractiveness","Приоритетный сегмент","Priority segment","Выбор сегмента обоснован","Segment choice is justified"],
+7:["Покупательская система","Buying system","Роли, процесс, препятствия","Roles, journey and barriers","Карта покупки","Buying journey map","Уточнены критерии выбора","Buying criteria are understood"],
+8:["Задача клиента","Customer job / JTBD","Задача, триггеры, контекст","Job, triggers and context","Гипотеза задачи клиента","Customer job hypothesis","Задача клиента подтверждается","Customer job has supporting evidence"],
+9:["Ценность предложения","CVP / value","JTBD, продукт, альтернативы","JTBD, product and alternatives","Проверяемая ценность","Testable value proposition","Ценность отвечает на задачу клиента","Value addresses the customer job"],
+10:["Альтернативы","Alternatives","Конкуренты, заменители, критерии","Competitors, substitutes, criteria","Карта сравнений","Comparison map","Отличие значимо и исполнимо","Difference is meaningful and feasible"],
+11:["Стратегический выбор","Strategic choice","Сегмент, альтернативы, ценность","Segment, alternatives and value","Где играть / как выигрывать","Where to play / how to win","Выбор обоснован","Choice is justified"],
+14:["Доказательства обещания","Proof points","Заявления и свидетельства","Claims and evidence","Обоснованное обещание","Evidence-supported claim","Обещание не сильнее доказательств","Claim does not exceed evidence"],
+15:["Оффер","Offer","Условия, ценность, исполнение","Terms, value and delivery","Проверяемое предложение","Testable offer","Выполнимость обещания проверена","Promise feasibility is checked"],
+20:["Доставка и контроль","Delivery & control","Опыт клиента, исполнение обещания","Customer experience and delivery","Маршрут и контроль","Journey and controls","Путь клиента проверен фактами","Journey has supporting evidence"]};
+const cases=[
+{title:["Почему клиенты не покупают?","Why don't customers buy?"],description:["Маршрут выбора покупателей, альтернатив и доказательств ценности","Buying criteria, alternatives and value proof"],ids:[0,7,8,10,9,14],edges:[[0,7],[7,8],[7,10],[8,9],[10,9],[9,14]],gates:[{id:7,back:0},{id:9,back:10},{id:14,back:9}]},
+{title:["Как выйти на новый рынок?","How can we enter a new market?"],description:["Маршрут рынка, спроса, сегмента и стратегического выбора","Market, demand, segments and strategic choice"],ids:[0,4,5,6,10,11],edges:[[0,4],[4,5],[5,6],[4,10],[6,11],[10,11]],gates:[{id:5,back:4},{id:6,back:5},{id:11,back:10}]},
+{title:["Почему клиенты уходят?","Why are customers leaving?"],description:["Маршрут клиентского опыта, ценности и исполнения обещаний","Customer experience, value and delivery"],ids:[0,7,20,8,9,15],edges:[[0,7],[7,20],[7,8],[8,9],[20,9],[9,15]],gates:[{id:20,back:7},{id:9,back:20},{id:15,back:9}]}];
+try{
+ const cleanUrl=new URL(window.location.href);
+ let changed=false;
+ for(const key of [...cleanUrl.searchParams.keys()])if(/^utm_/i.test(key)){cleanUrl.searchParams.delete(key);changed=true}
+ if(changed)window.history.replaceState(null,"",cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
+}catch(e){}
+let lang="en",which=0,active=0,states={},event=null;
+let tourIndex=-1;
+function tourSteps(){
+ const c=caseNow(),root=c.ids[0],first=c.ids[1],gate=c.gates[0],last=c.ids[c.ids.length-1];
+ return [
+ {node:root,kind:"start",title:["Получена бизнес-задача","Business request received"],why:["MASTER фиксирует проблему и ограничения, не предлагая решение раньше исследования.","MASTER records the problem and constraints rather than jumping to a solution."]},
+ {node:first,kind:"operation",title:["Выбор профессиональной операции","Select a professional operation"],why:["Зависимости определяют следующую операцию и нужные исходные сведения.","Dependencies determine the next operation and its required inputs."]},
+ {node:gate.id,kind:"gate",title:["Проверка остановила переход","Evidence gate stops progression"],why:["Данных недостаточно для утверждения. Это специально смоделированный пример, не результат исследования.","Evidence is insufficient to approve the result. This is a simulated example, not research output."]},
+ {node:gate.back,kind:"return",title:["Возврат к затронутой операции","Return to the affected operation"],why:["MASTER указывает адрес возврата; связанные выводы требуют повторной проверки.","MASTER identifies a return address; dependent conclusions must be reconsidered."]},
+ {node:gate.id,kind:"recheck",title:["Уточнение данных и повторная проверка","Clarify data and re-check"],why:["Предположим, специалист добавил и проверил нужные сведения. Теперь контрольную точку можно рассмотреть снова.","Assume a specialist added and reviewed the required evidence. The gate can now be reconsidered."]},
+ {node:last,kind:"finish",title:["Возможен следующий шаг","Next step becomes possible"],why:["При выполнении условий продолжается маршрут. Реальные маркетинговые решения здесь ещё не принимаются.","When prerequisites are met, the workflow can continue. No real marketing decision has been made."]}
+ ];
+}
+function tourStart(){tourIndex=0;render()}
+function tourAdvance(){if(tourIndex<0)tourIndex=0;else tourIndex=Math.min(tourIndex+1,tourSteps().length-1);render()}
+function tourBack(){tourIndex=Math.max(0,tourIndex-1);render()}
+function tourStop(){tourIndex=-1;render()}
+function tourState(){return tourIndex>=0?tourSteps()[tourIndex]:null}
+let projectName="",evidence=[],serial=1;
+const STORAGE_KEY="marketing-studio-master-evidence-v1";
+const snapshots={};
+function snapshot(){return {states:{...states},evidence:evidence.map(x=>({...x})),serial,active,projectName}}
+function applySnapshot(data){states={...data.states};evidence=(data.evidence||[]).map(x=>({...x}));serial=data.serial||1;active=caseNow().ids.includes(data.active)?data.active:caseNow().ids[0];projectName=data.projectName||"";event=null}
+function saveProject(){
+ snapshots[which]=snapshot();
+ try{window.localStorage.setItem(STORAGE_KEY,JSON.stringify({version:1,which,lang,snapshots}))}catch(e){}
+}
+function loadProject(){
+ try{const p=JSON.parse(window.localStorage.getItem(STORAGE_KEY)||"null");if(!p||p.version!==1||!p.snapshots)return false;Object.assign(snapshots,p.snapshots);which=(p.which>=0&&p.which<cases.length)?p.which:0;lang=p.lang==="ru"?"ru":"en";if(snapshots[which]){applySnapshot(snapshots[which]);return true}}catch(e){}return false
+}
+function evidenceFor(id){return evidence.filter(x=>x.node===id)}
+function reviewedEvidence(id){return evidenceFor(id).filter(x=>x.kind==="fact"&&x.reviewed===true&&x.statement.trim()&&x.source.trim())}
+function evidenceSupports(id){return reviewedEvidence(id).length>0}
+function invalidateEvidence(id,reason){
+ if(states[id]==="verified"||children(id).some(x=>states[x]==="verified")){states[id]="unknown";children(id).forEach(x=>states[x]="unknown");event={kind:"invalidated",from:id,reason}}
+}
+function addEvidence(){
+ const statement=$("factStatement").value.trim(),source=$("factSource").value.trim(),kind=$("factKind").value,reviewed=$("factReviewed").checked;
+ if(!statement||!source){$("evidenceError").textContent=t("Заполните утверждение и источник.","Enter a statement and its source.");return false}
+ invalidateEvidence(active,"change");
+ evidence.push({id:"E"+serial++,node:active,statement,source,kind,reviewed,createdAt:new Date().toISOString()});
+ saveProject();render();return true
+}
+function deleteEvidence(id){const record=evidence.find(x=>x.id===id);if(!record)return;invalidateEvidence(record.node,"delete");evidence=evidence.filter(x=>x.id!==id);saveProject();render()}
+function toggleEvidence(id){const item=evidence.find(x=>x.id===id);if(!item)return;invalidateEvidence(item.node,"review");item.reviewed=!item.reviewed;saveProject();render()}
+function renameProject(v){projectName=String(v).slice(0,100);saveProject()}
+function importProjectData(raw){
+ if(!raw||raw.app!=="Marketing Studio MASTER evidence workspace"||raw.version!==1||![0,1,2].includes(raw.which))throw Error("Invalid project file");
+ const incoming=cases[raw.which],statuses={},records=[];
+ if(!raw.states||typeof raw.states!=="object")throw Error("Missing operation states");
+ const allowed=["unknown","hypothesis","verified","insufficient"];
+ for(const id of incoming.ids){const st=raw.states[id];statuses[id]=allowed.includes(st)?st:"unknown"}
+ if(!Array.isArray(raw.evidence)||raw.evidence.length>300)throw Error("Invalid evidence list");
+ let seen=new Set();
+ for(const item of raw.evidence){
+  if(!item||typeof item.id!=="string"||seen.has(item.id)||!incoming.ids.includes(Number(item.node))||!["fact","hypothesis"].includes(item.kind)||typeof item.statement!=="string"||typeof item.source!=="string"||item.statement.length>2000||item.source.length>500)throw Error("Invalid evidence record");
+  seen.add(item.id);records.push({id:item.id,node:Number(item.node),kind:item.kind,statement:item.statement,source:item.source,reviewed:item.reviewed===true,createdAt:typeof item.createdAt==="string"?item.createdAt:""});
+ }
+ // Imported approvals are never trusted. Require explicit re-review after moving data.
+ for(const record of records)record.reviewed=false;
+ for(const id of incoming.ids)statuses[id]="unknown";
+ which=raw.which;states=statuses;evidence=records;serial=Math.max(1,...records.map(r=>Number(r.id.replace(/^E/,""))||0))+1;
+ projectName=String(raw.projectName||"").slice(0,100);active=incoming.ids.includes(raw.active)?raw.active:incoming.ids[0];
+ event={kind:"imported"};saveProject();render();
+}
+async function importProject(file){
+ if(!file||file.size>1000000){window.alert(t("Файл отсутствует или слишком велик.","Missing or oversized project file."));return}
+ try{const data=JSON.parse(await file.text());importProjectData(data)}
+ catch(e){window.alert(t("Ошибка импорта: ","Import error: ")+String(e.message||e))}
+}
+function exportProject(){
+ const data={app:"Marketing Studio MASTER evidence workspace",version:1,exportedAt:new Date().toISOString(),which,scenario:caseNow().title[0],...snapshot(),caveat:"Manual review, not independent verification of sources."};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="marketing-studio-master-project.json";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)
+}
+const $=id=>document.getElementById(id),loc=()=>lang==="ru"?0:1,t=(ru,en)=>lang==="ru"?ru:en,caseNow=()=>cases[which];
+function label(id){return ops[id][loc()]}
+function parentOf(id){return caseNow().edges.filter(x=>x[1]===id).map(x=>x[0])}
+function children(id){let discovered=new Set(),stack=[id];while(stack.length){let current=stack.pop();for(const [a,b] of caseNow().edges){if(a===current&&!discovered.has(b)){discovered.add(b);stack.push(b)}}}return [...discovered]}
+function initialize(){states={};caseNow().ids.forEach(x=>states[x]="unknown");active=caseNow().ids[0];event=null;evidence=[];serial=1}
+function setScenario(n){tourIndex=-1;saveProject();which=n;if(snapshots[n])applySnapshot(snapshots[n]);else initialize();saveProject();render()}
+function setLanguage(){lang=lang==="ru"?"en":"ru";saveProject();render()}
+function step(id){if(caseNow().ids.includes(id)){active=id;saveProject();render()}}
+function changeStatus(id,status){
+ if(!caseNow().ids.includes(id))return;
+ const missing=parentOf(id).filter(p=>states[p]!=="verified");
+ if(status==="verified"&&!evidenceSupports(id)){active=id;event={kind:"noEvidence",from:id};render();return}
+ if(status==="verified"&&missing.length){active=missing[0];event={kind:"blocked",from:id,to:active};render();return}
+ if(states[id]!==status){states[id]=status;children(id).forEach(n=>states[n]="unknown")}
+ if(status==="verified"){
+  let next=caseNow().ids.find(x=>states[x]!=="verified"&&parentOf(x).every(p=>states[p]==="verified"));
+  active=next===undefined?id:next;event={kind:"pass",from:id,to:active};
+ }else{
+  const gate=caseNow().gates.find(g=>g.id===id);
+  active=gate?.back??id;event={kind:"return",from:id,to:active,status};
+ }
+ saveProject();render();
+}
+function nextCheck(){let n=caseNow().ids.find(id=>states[id]!=="verified"&&parentOf(id).every(p=>states[p]==="verified"));active=n??caseNow().ids[0];saveProject();render()}
+function reset(){if(!window.confirm(t("Сбросить все статусы и доказательства текущего сценария?","Reset all statuses and evidence in this scenario?")))return;initialize();saveProject();render()}
+function escaped(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&quot;"}[c]))}
+function positions(){let depths={},groups={};for(const id of caseNow().ids){let p=parentOf(id);depths[id]=p.length?Math.max(...p.map(x=>depths[x]))+1:0;(groups[depths[id]]??=[]).push(id)}const points={};for(const [col,ids] of Object.entries(groups)){ids.forEach((id,i)=>points[id]={x:93+Number(col)*174,y:165+(i-(ids.length-1)/2)*120})}return {points,width:Math.max(750,(Math.max(...Object.values(depths))+1)*174+90),height:340}}
+function chart(){
+ const c=caseNow(),{points,width,height}=positions(),tour=tourState();let out='<svg viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+t("Граф операций MASTER","MASTER graph")+'"><defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#247f59"/></marker><marker id="b" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#bc8148"/></marker></defs>';
+ for(const [a,b] of c.edges){let p=points[a],q=points[b];out+='<path d="M'+(p.x+59)+' '+p.y+' C'+(p.x+98)+' '+p.y+' '+(q.x-95)+' '+q.y+' '+(q.x-61)+' '+q.y+'" fill="none" stroke="#247f59" stroke-width="2" marker-end="url(#a)"/>'}
+ c.gates.forEach((g,i)=>{let p=points[g.id],q=points[g.back];let y=36+i*15;out+='<path d="M'+p.x+' '+(p.y+29)+' Q'+((p.x+q.x)/2)+' '+(height-19-i*9)+' '+q.x+' '+(q.y+30)+'" fill="none" stroke="#ba8047" stroke-width="1.7" stroke-dasharray="6 4" marker-end="url(#b)"/><text x="'+(p.x+18)+'" y="'+(p.y+47)+'" font-size="10" fill="#95622b">G'+(i+1)+'</text>'});
+ for(const id of c.ids){let p=points[id],st=states[id],fill=st==="verified"?"#e2f2e9":st==="insufficient"?"#ffe5e2":st==="hypothesis"?"#fcf5dd":"#f9fbf9",stroke=tour&&tour.node===id&&tour.kind==="gate"?"#b9433c":st==="insufficient"?"#b9433c":tour&&tour.node===id?"#b45c24":id===active?"#175b43":"#b9d3c3";if(tour&&tour.node===id)fill=tour.kind==="gate"?"#ffe5e2":tour.kind==="return"?"#ffe6d2":"#daf1e4";let words=label(id).split(" "),lines=[],line="";for(const word of words){if((line+" "+word).length>17&&line){lines.push(line);line=word}else line+=(line?" ":"")+word}if(line)lines.push(line);
+ out+='<g class="graphbtn" tabindex="0" role="button" data-node="'+id+'"><rect x="'+(p.x-60)+'" y="'+(p.y-29)+'" width="120" height="58" rx="9" fill="'+fill+'" stroke="'+stroke+'" stroke-width="'+((tour&&tour.node===id)||id===active?3:1.5)+'"/><text x="'+p.x+'" y="'+(p.y-15)+'" text-anchor="middle" font-size="11" fill="#267b5b">M'+id+'</text>';
+ lines.slice(0,2).forEach((q,i)=>out+='<text x="'+p.x+'" y="'+(p.y+i*14+1)+'" font-size="11" text-anchor="middle" fill="#173e2e">'+escaped(q)+'</text>');out+='</g>'
+ }
+ return out+"</svg>"
+}
+function detail(){
+ let values=ops[active],missing=parentOf(active).filter(x=>states[x]!=="verified"),gate=caseNow().gates.findIndex(x=>x.id===active),state=states[active],statusNames={unknown:t("Нет данных","Unknown"),hypothesis:t("Гипотеза","Hypothesis"),verified:t("Условно проверено","Simulated verified"),insufficient:t("Недостаточно","Insufficient")};
+ let html='<span class="pill">MASTER · M'+active+(gate>=0?' / G'+(gate+1):"")+'</span><h3>'+label(active)+'</h3>';
+ for(const [caption,index] of [[t("Входные данные","Inputs"),2],[t("Выход операции","Output"),4],[t("Правило проверки","Gate criterion"),6]])html+='<div class="box"><small>'+caption+'</small><p>'+values[index+loc()]+'</p></div>';
+ html+='<p><strong>'+t("Статус: ","Status: ")+'</strong>'+statusNames[state]+'</p>';
+ if(!evidenceSupports(active))html+='<div class="banner">'+t("Нет вручную проверенного факта с указанным источником. Подтверждение узла заблокировано.","No manually reviewed fact with a source. Node approval is blocked.")+'</div>';
+ if(missing.length)html+='<div class="banner">'+t("Нельзя подтвердить без предыдущих операций: ","Requires completed predecessor operations: ")+missing.map(x=>"M"+x).join(", ")+'</div>';
+ html+='<div class="buttons"><button class="btn" data-mark="hypothesis">'+t("Гипотеза","Hypothesis")+'</button><button class="btn primary" data-mark="verified" '+((missing.length||!evidenceSupports(active))?"disabled":"")+'>'+t("Доказательства есть*","Evidence available*")+'</button><button class="btn warn" data-mark="insufficient">'+t("Нет данных — возврат","Insufficient — return")+'</button></div>';
+ if(gate>=0)html+='<div class="banner">'+t("G"+(gate+1)+": при недостатке доказательств метод возвращает к M","G"+(gate+1)+": insufficient evidence returns to M")+caseNow().gates[gate].back+'</div>';
+ html+='<p class="small">'+t("* Ручной условный статус для проверки алгоритма. Источники автоматически не анализируются.","* Manually simulated status to test the workflow; no automatic evidence analysis.")+'</p>';
+ html+='<div class="evidenceForm"><h3>'+t("Реестр доказательств · M","Evidence registry · M")+active+'</h3><p class="small">'+t("Запись может быть фактом или гипотезой. Проверка — ручная отметка пользователя, а не внешняя верификация.","A record may be a fact or hypothesis. Review is a manual user attestation, not external validation.")+'</p>';
+ html+=evidenceFor(active).map(r=>'<div class="evidenceItem"><strong>'+escaped(r.id)+' · '+(r.kind==="fact"?t("Факт","Fact"):t("Гипотеза","Hypothesis"))+' · '+(r.reviewed?t("Проверено пользователем","User reviewed"):t("Без проверки","Unreviewed"))+'</strong><p>'+escaped(r.statement)+'</p><p>'+escaped(r.source)+'</p><div class="buttons"><button class="btn" data-review="'+escaped(r.id)+'">'+t("Изменить отметку проверки","Toggle review")+'</button><button class="btn warn" data-delete="'+escaped(r.id)+'">'+t("Удалить","Delete")+'</button></div></div>').join("");
+ html+='<label for="factKind">'+t("Тип записи","Record type")+'</label><select id="factKind"><option value="fact">'+t("Факт","Fact")+'</option><option value="hypothesis">'+t("Гипотеза","Hypothesis")+'</option></select><label for="factStatement">'+t("Утверждение / сведения","Claim or observation")+'</label><textarea id="factStatement" maxlength="2000" placeholder="'+t("Что именно известно?","What do you know?")+'"></textarea><label for="factSource">'+t("Источник (URL, интервью, документ, собственные данные)","Source (URL, interview, document, internal data)")+'</label><input id="factSource" maxlength="500" placeholder="'+t("Откуда получено?","Where did this come from?")+'"><label><input type="checkbox" id="factReviewed"> '+t("Я лично проверил источник и сведения","I personally reviewed this source and claim")+'</label><p class="small" id="evidenceError"></p><button class="btn primary" data-action="add-evidence">'+t("Добавить запись","Add evidence")+'</button></div>';
+ $("details").innerHTML=html
+}
+function renderTour(){
+ const step=tourState(),steps=tourSteps(),ru=lang==="ru",i=loc();
+ $("workspace").classList.toggle("walkthroughOn",!!step);
+ $("walkthroughTitle").textContent=step?step.title[i]:t("Что реально делает MASTER?","What does MASTER actually do?");
+ $("walkthroughStatus").textContent=step?t("ШАГ ","STEP ")+(tourIndex+1)+" / "+steps.length:t("ИНТЕРАКТИВНАЯ ДЕМОНСТРАЦИЯ","INTERACTIVE WALKTHROUGH");
+ $("walkthroughExplain").textContent=step?step.why[i]:t("Нажмите «Показать работу MASTER». Система подсветит операции по очереди, покажет остановку контрольной точки, адрес возврата и повторную проверку — без заполнения реестра.","Click “Show MASTER in action.” Watch the operations highlight one by one, an evidence gate stop progression, a return and a re-check — without filling in the evidence registry.");
+ $("walkthroughProgress").innerHTML=steps.map((_,j)=>'<i class="'+(step?(j<tourIndex?"complete":j===tourIndex?"current":""):"")+'"></i>').join("");
+ $("walkthroughOutcome").innerHTML=step?(step.kind==="gate"||step.kind==="return"?'<div class="walkthroughIssue '+step.kind+'">'+(step.kind==="gate"?t("СТОП: недостаточно оснований для перехода.","STOP: insufficient evidence to proceed."):t("ВОЗВРАТ: к операции M","RETURN: to operation M")+step.node)+'</div>':step.kind==="recheck"||step.kind==="finish"?'<div class="walkthroughSuccess">'+t("Условный пример: продолжение возможно после проверки.","Simulation: progress possible after review.")+'</div>':""):"";
+ $("tourStart").textContent=t("▶ Показать работу MASTER","▶ Show MASTER in action");
+ $("tourPrev").textContent=t("← Назад","← Previous");
+ $("tourNext").textContent=t("Следующий шаг →","Next step →");
+ $("tourStop").textContent=t("Завершить показ","Close walkthrough");
+ $("tourStart").hidden=!!step;$("tourPrev").hidden=!step;$("tourNext").hidden=!step;$("tourStop").hidden=!step;
+ $("tourPrev").disabled=tourIndex<=0;$("tourNext").disabled=tourIndex>=steps.length-1;
+ $("walkthroughHow").textContent=t("Это отдельная учебная симуляция поверх выбранного графа. Реальные доказательства, статусы проекта и записи не изменяются.","This guided simulation overlays the selected graph. It does not change actual evidence, project statuses or records.");
+}
+function render(){
+ document.documentElement.lang=lang;
+ document.title=t("Marketing Studio — алгоритм MASTER","Marketing Studio — MASTER workflow engine");
+ $("projectName").placeholder=t("Компания / продукт","Company / product");
+ renderTour();
+ $("casesLink").textContent=t("▶ Посмотреть три работающих примера MASTER","▶ See three executable MASTER examples");$("casesLink").href="./master-cases.html?lang="+lang;
+ $("projectLabel").textContent=t("Название проекта:","Project name:");$("export").textContent=t("Экспорт JSON","Export JSON");$("import").textContent=t("Импорт JSON","Import JSON");$("saved").textContent=t("Сохраняется в этом браузере","Saved in this browser");if(document.activeElement!==$("projectName"))$("projectName").value=projectName;
+ $("back").textContent=t("← К двум входам","← Two entry paths");$("language").textContent=lang==="ru"?"EN":"РУС";
+ $("existingTag").textContent=t("РАБОТАЕТ В ЭТОМ ПРОТОТИПЕ","WORKING IN THIS PROTOTYPE");
+ $("existingTitle").textContent=t("Три примера бизнес-запросов","Three example business requests");
+ $("existingDesc").textContent=t("Выберите один пример. MASTER построит соответствующий граф операций и применит проверки зависимостей, доказательств и возвратов. Эти три сценария — не исчерпывающий перечень задач маркетинга.","Choose an example. MASTER builds its operation graph and applies dependency, evidence and return rules. These three cases do not define the full scope of marketing problems.");
+ $("futureTag").textContent=t("ПЛАНИРУЕТСЯ В ПОЛНОМ ПРОДУКТЕ","PLANNED FOR THE FULL PRODUCT");
+ $("futureTitle").textContent=t("Свободная формулировка задачи","Describe your own business problem");
+ $("futureDesc").textContent=t("Предприниматель сможет написать вопрос своими словами. Система должна распознать задачу, уточнить контекст и собрать маршрут из операций MASTER. Сейчас произвольный текст ещё не обрабатывается.","An owner will describe a problem in their own words. The system is intended to interpret it, clarify context and compose a route from MASTER operations. Open-text input is not implemented yet.");
+ $("scenariosHeading").textContent=t("Выберите пример для запуска","Choose a working example");
+ $("methodSummary").textContent=t("▾ Пример из исходного MASTER: три контрольные точки и два исхода","▾ Original MASTER example: three gates and two outcomes");
+ $("methodLead").textContent=t("Это отдельная иллюстрация методологии «от продукта к обоснованному рыночному обещанию». Она не заменяет выбранный выше рабочий граф и не отображает фактически проведённое исследование.","This separate illustration shows the method from product definition to a supported market claim. It does not replace the executable scenario above or represent completed research.");
+ $("exampleNode1").textContent=t("Продукт / результат + сегмент / задача клиента","Product / outcome + segment / customer job");
+ $("exampleDetail1").textContent=t("Определить результат и значимую задачу клиента","Define the outcome and the customer's meaningful job");
+ $("exampleGate1").textContent=t("↓ G1 · Соответствие продукта задаче","↓ G1 · Product–job fit");
+ $("exampleNode2").textContent=t("Альтернативы → ценность → отличия","Alternatives → value → differences");
+ $("exampleDetail2").textContent=t("Сопоставить ценность, альтернативы и выполнимость отличий","Compare value, alternatives and feasibility of differences");
+ $("exampleGate2").textContent=t("↓ G2 · Значимость и реализуемость","↓ G2 · Relevance and feasibility");
+ $("exampleNode3").textContent=t("Рыночное обещание → доказательства","Market claim → supporting evidence");
+ $("exampleDetail3").textContent=t("Связать обещание с проверяемыми основаниями","Connect the claim to verifiable support");
+ $("exampleGate3").textContent=t("↓ G3 · Достаточность доказательств","↓ G3 · Sufficiency of evidence");
+ $("examplePassTitle").textContent=t("Критерии выполнены","Criteria met");
+ $("examplePassDesc").textContent=t("Можно перейти к разработке предложения и проверке его на рынке.","Proceed to offer development and a market test.");
+ $("exampleFailTitle").textContent=t("Критерии не выполнены","Criteria not met");
+ $("exampleFailDesc").textContent=t("Вернуться к затронутой операции, уточнить данные или ограничить обещание.","Return to the affected operation, collect evidence or qualify the claim.");
+ $("methodFoot").textContent=t("Схема адаптирована из исходной страницы MASTER v1.5. Это методологический пример, а не четвёртый выполняемый сценарий.","Adapted from the original MASTER v1.5 page. This is a method illustration, not a fourth executable scenario.");
+ $("kicker").textContent=t("РАБОТАЮЩИЙ ПРОТОТИП ПРАВИЛ MASTER","WORKING MASTER RULES PROTOTYPE");
+ $("headline").textContent=t("Одна методология — три разные схемы","One methodology — three different workflows");
+ $("intro").textContent=t("Выбери бизнес-задачу: система строит схему операций, отмечает зависимости и контрольные точки. При отсутствии доказательств возвращает к нужной операции, а при изменении раннего узла сбрасывает зависимые подтверждения.","Choose a business problem to generate a dependency graph, control gates and return routes. Missing evidence triggers a return; changing an earlier node invalidates dependent confirmations.");
+ $("scenes").innerHTML=cases.map((c,i)=>'<button class="scene '+(i===which?"active":"")+'" data-scenario="'+i+'"><strong>'+(i+1)+'. '+c.title[loc()]+'</strong><small>'+c.description[loc()]+'</small></button>').join("");
+ $("chartTitle").textContent=t("Маршрут MASTER","MASTER workflow");
+ $("chartDesc").textContent=t("Зелёные стрелки — рабочие зависимости. Пунктир — адреса возвратов от контрольных точек.","Green arrows show dependencies; dashed arrows show gate return routes.");
+ $("legend").innerHTML=[["#f9fbf9",t("Нет данных","Unknown")],["#fcf5dd",t("Гипотеза","Hypothesis")],["#e2f2e9",t("Условно проверено","Verified*")],["#fff0e1",t("Недостаточно","Insufficient")]].map(x=>'<span><i class="dot" style="background:'+x[0]+'"></i>'+x[1]+'</span>').join("");
+ $("graph").innerHTML=chart();
+ $("reset").textContent=t("↺ Начать заново","↺ Reset");$("next").textContent=t("Следующая проверка →","Next gate →");
+ $("message").innerHTML=event?.kind==="return"?'<div class="banner"><strong>'+t("ВОЗВРАТ: ","RETURN: ")+'</strong>M'+event.from+' → M'+event.to+'. '+t("Зависимые статусы сброшены.","Dependent statuses reset.")+'</div>':event?.kind==="blocked"?'<div class="banner">'+t("Переход заблокирован: ","Progress blocked: ")+'M'+event.from+' → M'+event.to+'</div>':event?.kind==="noEvidence"?'<div class="banner">'+t("Нельзя подтвердить M","Cannot approve M")+event.from+t(": сначала внесите факт с источником и отметьте его проверенным.",": first add a sourced fact and mark it reviewed.")+'</div>':event?.kind==="invalidated"?'<div class="banner">'+t("Изменены доказательства M","Evidence changed for M")+event.from+t(". Подтверждение этого и зависимых узлов сброшено.",". Its approval and downstream approvals were invalidated.")+'</div>':event?.kind==="imported"?'<div class="banner">'+t("Проект импортирован. Все подтверждения сброшены; источники нужно проверить заново.","Project imported. All approvals reset; sources require new review.")+'</div>':event?.kind==="pass"?'<div class="banner ok">M'+event.from+t(" условно подтверждён. Следующий доступный узел: M"," simulated verified. Next accessible node: M")+event.to+'</div>':"";
+ detail();
+ let remaining=caseNow().ids.filter(id=>states[id]!=="verified");
+ $("report").innerHTML='<h2>'+t("Состояние операций","Operation states")+'</h2><p class="small">'+t("Всего узлов: ","Nodes: ")+caseNow().ids.length+' · '+t("Условно проверено: ","Simulated verified: ")+(caseNow().ids.length-remaining.length)+'</p>'+caseNow().ids.map(id=>'<div class="row"><span>M'+id+' · '+label(id)+'</span><span>'+({unknown:t("Нет данных","Unknown"),hypothesis:t("Гипотеза","Hypothesis"),verified:t("Условно проверено","Verified*"),insufficient:t("Недостаточно","Insufficient")})[states[id]]+'</span><button class="btn" data-node="'+id+'">'+t("Открыть","Open")+'</button></div>').join("");
+ $("foot").textContent=t("Это ограниченный исполняемый прототип правил и зависимостей, основанный на MASTER v1.5; названия операций сверены с проектом MASTER v2.0 RC5 (DRAFT). Сценарии — демонстрационные конфигурации. Не проводит исследования, не проверяет источники, не принимает управленческие решения.","A bounded executable rules prototype grounded in MASTER v1.5; operation names cross-checked with MASTER v2.0 RC5 DRAFT. Routes are illustrative. No research, automated evidence validation, or management decisions are performed.");
+}
+document.addEventListener("click",e=>{let el=e.target.closest("[data-node],[data-scenario],[data-mark],[data-action],[data-review],[data-delete]");if(!el)return;if(el.dataset.review!==undefined)toggleEvidence(el.dataset.review);else if(el.dataset.delete!==undefined)deleteEvidence(el.dataset.delete);else if(el.dataset.node!==undefined)step(Number(el.dataset.node));else if(el.dataset.scenario!==undefined)setScenario(Number(el.dataset.scenario));else if(el.dataset.mark)changeStatus(active,el.dataset.mark);else if(el.dataset.action==="lang")setLanguage();else if(el.dataset.action==="reset")reset();else if(el.dataset.action==="tour-start")tourStart();else if(el.dataset.action==="tour-next")tourAdvance();else if(el.dataset.action==="tour-prev")tourBack();else if(el.dataset.action==="tour-stop")tourStop();else if(el.dataset.action==="next")nextCheck();else if(el.dataset.action==="add-evidence")addEvidence();else if(el.dataset.action==="export")exportProject();else if(el.dataset.action==="import")$("importFile").click()});
+document.addEventListener("change",e=>{if(e.target?.id==="importFile"){const file=e.target.files?.[0];importProject(file);e.target.value=""}});
+document.addEventListener("input",e=>{if(e.target?.id==="projectName")renameProject(e.target.value)});
+document.addEventListener("keydown",e=>{let el=e.target.closest("[data-node]");if(el&&(e.key==="Enter"||e.key===" ")){e.preventDefault();step(Number(el.dataset.node))}});
+if(!loadProject())initialize();
+try{const queryLang=String(window.location.search||"").match(/[?&]lang=(ru|en)(?:&|$)/)?.[1];if(queryLang)lang=queryLang;const queryCase=String(window.location.search||"").match(/[?&]case=([012])(?:&|$)/)?.[1];if(queryCase!==undefined&&Number(queryCase)!==which)setScenario(Number(queryCase))}catch(e){}
+render();
+</script></body></html>
