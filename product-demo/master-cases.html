@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marketing Studio — MASTER in Action</title>
+<style>
+:root{font-family:Inter,system-ui,"Segoe UI",Arial,sans-serif;color:#193e30;background:#f3f7f4}
+*{box-sizing:border-box}body{margin:0}header{background:#164e3a;color:white;padding:15px 22px}header .head{max-width:1160px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header strong{font-size:13px;letter-spacing:.075em}header a{color:#e1f1e7;text-decoration:none;font-size:13px}main{max-width:1160px;margin:auto;padding:23px 18px 45px}
+h1{font-size:clamp(28px,3.8vw,42px);letter-spacing:-.04em;line-height:1.13;margin:9px 0}h2{font-size:21px;letter-spacing:-.025em}
+p{line-height:1.55}.muted{color:#5d7769}.small{font-size:12px;color:#648071}.eyebrow{font-size:11px;font-weight:850;letter-spacing:.09em;color:#25805e}
+.btn{padding:10px 13px;background:white;border:1px solid #bcd7c5;border-radius:9px;font:inherit;font-size:13px;font-weight:750;color:#1a694e;cursor:pointer}
+.btn.primary{background:#17694d;color:white;border-color:#17694d}.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn:focus-visible,.scenario:focus-visible,input:focus-visible{outline:3px solid #d99a50;outline-offset:2px}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:20px 0}
+.scenario{border:1px solid #cfe1d4;border-radius:13px;background:white;padding:15px;min-height:94px;text-align:left;cursor:pointer;color:#183f2f;font:inherit}
+.scenario.active{border:2px solid #1a7453;padding:14px;background:#e6f3ea}
+.scenario b{display:block;margin-bottom:6px}.scenario span{display:block;font-size:12px;color:#5c7668;line-height:1.45}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 345px;gap:14px}
+.panel{border:1px solid #d4e6d9;border-radius:16px;background:white;padding:19px;min-width:0}
+.stepbar{display:flex;gap:7px;margin:0 0 14px}.stepbar i{height:6px;border-radius:6px;background:#e1e9e1;flex:1}.stepbar i.done{background:#8ecbae}.stepbar i.current{background:#217d59}
+.graph{overflow-x:auto;background:#fbfdfb;border:1px solid #e0e9e2;border-radius:12px;margin:14px 0}
+.graph svg{width:100%;min-width:520px;height:auto;display:block}
+.sectiontitle{font-size:17px;font-weight:800;margin:12px 0 6px}.result{padding:13px 15px;background:#e8f4ed;border-left:4px solid #30875e;border-radius:7px;margin:12px 0;font-size:14px;line-height:1.5}
+.warning{background:#fff3e8;border-color:#c18a52;color:#85542c}.entry{border-top:1px solid #e9efe9;padding:11px 0;display:flex;gap:10px;justify-content:space-between}
+.entry strong{font-size:13px;display:block}.entry span{font-size:12px;color:#5a7666}
+.controls{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.field{margin:16px 0}.field label{display:flex;justify-content:space-between;gap:7px;font-size:13px;font-weight:750}
+.field input[type=range]{width:100%;accent-color:#167656;margin:10px 0}
+.note{font-size:12px;color:#5b7766;line-height:1.55}.badge{display:inline-block;font-size:10px;font-weight:850;letter-spacing:.06em;background:#ebf3e8;color:#246e4b;padding:6px 8px;border-radius:5px}
+.outcome{border:1px solid #dce8e0;border-radius:10px;padding:13px;margin:10px 0}
+.outcome strong{display:block;margin-bottom:7px}.outcome p{margin:0;font-size:13px;color:#5c7565}
+.summary{background:#f4f8f5;border:1px solid #dce9df;padding:12px;border-radius:10px;font-size:13px}
+.path{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;font-size:12px;color:#426a53;margin:8px 0}
+.path span{padding:8px;background:#edf5ee;border-radius:8px;flex:1;text-align:center;min-width:95px}
+.footer{font-size:12px;color:#647d6e;margin:20px 0;line-height:1.6}
+@media(max-width:800px){.layout,.scenarios{grid-template-columns:1fr}.panel{padding:14px}}
+.assessmentOrigin{border:1px solid #c6e0d1;border-left:5px solid #288260;border-radius:10px;background:#eaf5ed;padding:12px 15px;margin:14px 0 8px}
+.assessmentOrigin strong{font-size:13px;color:#205b42}.assessmentOrigin p{font-size:12px;color:#587364;margin:5px 0;line-height:1.5}
+.assessmentOrigin a{color:#195e44;font-size:12px;font-weight:750}
+.masterReference{margin:14px 0 18px;border:1px solid #b9c8d9;background:#f2f6fa;border-radius:14px;color:#263e56;padding:16px}.masterReference summary{font-weight:800;cursor:pointer;color:#344e69}.masterReference h2{margin:14px 0 6px}.masterReference p{font-size:13px;margin:7px 0;color:#40566c}.masterReference .methodGraph{background:white;border:1px solid #cbd6e2;border-radius:10px;padding:12px;overflow-x:auto}.masterReference svg{min-width:570px}.masterReference svg text{stroke:none}.masterReference .methodNode{border:1px solid #bacbdc;background:#fff;border-radius:8px;padding:11px;text-align:center;font-size:14px;font-weight:750}.masterReference .methodNode small{display:block;font-weight:400;color:#52677d;margin-top:4px}.masterReference .methodGate{text-align:center;color:#895b22;font-weight:750;font-size:13px;padding:8px}.masterReference .methodOutcomes{display:grid;grid-template-columns:1fr 1fr;gap:8px}.masterReference .methodOutcomes>div{padding:12px;border:1px solid #b9c8d9;border-radius:8px;background:white;font-size:13px}.masterReference .methodOutcomes>div:last-child{background:#fff3e5;border-color:#e4c39f}.masterReference .methodLink{display:inline-block;margin-top:12px;color:#17694d;font-weight:800;font-size:14px}.masterReference [hidden]{display:none!important}@media(max-width:600px){.masterReference .methodOutcomes{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="head"><strong>MARKETING STUDIO / MASTER</strong><div><a id="manualLink" href="./master-runner.html?lang=en">Manual MASTER workspace</a>　<a id="homeLink" href="./index.html">← Two entry paths</a>　<button class="btn" id="language" data-action="language">EN</button></div></div></header>
+<main><span class="eyebrow" id="eyebrow"></span><h1 id="title"></h1><p id="subtitle" class="muted"></p>
+<div class="panel" id="caseJourney" style="margin:13px 0;background:#f0f4f8;border-color:#c5d2df"></div><div class="assessmentOrigin" id="assessmentOrigin" hidden></div><details class="masterReference" id="masterReference"><summary id="masterReferenceSummary">MASTER · How the method works (static reference)</summary><div id="methodEnglish"><h2>A dependency graph, not a linear instruction</h2><p>Each operational node has a contract: <b>inputs → operation → output → acceptance criterion → next node / return address.</b> Four research branches supply data; evidence gates restrict progression.</p><div class="methodGraph"><svg viewBox="0 0 740 390" role="img" aria-label="Research inputs, operational dependencies and three evidence gates with return routes" style="width:100%;height:auto;display:block"><defs><marker id="method-en-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#267a5d"/></marker><marker id="method-en-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#bc8548"/></marker></defs><text x="15" y="19" font-size="12" fill="#567568" font-weight="700">RESEARCH INPUTS</text><g fill="#eaf3ed" stroke="#c8ddcf"><rect x="15" y="30" width="161" height="43" rx="9"/><text x="95" y="56" text-anchor="middle" font-size="14" fill="#174b3a">Company</text><rect x="198" y="30" width="161" height="43" rx="9"/><text x="278" y="56" text-anchor="middle" font-size="14" fill="#174b3a">Market</text><rect x="381" y="30" width="161" height="43" rx="9"/><text x="461" y="56" text-anchor="middle" font-size="14" fill="#174b3a">Customers</text><rect x="564" y="30" width="161" height="43" rx="9"/><text x="644" y="56" text-anchor="middle" font-size="14" fill="#174b3a">Competitors</text></g><g stroke="#82aa95" stroke-width="1.5" stroke-dasharray="4 4" fill="none"><path d="M95 73 V102 H165"/><path d="M278 73 V120 H165"/><path d="M461 73 V120 H365"/><path d="M644 73 V190 H565"/></g><text x="15" y="106" font-size="12" fill="#567568" font-weight="700">OPERATIONAL ROUTE</text><g fill="#e6f1e9" stroke="#a9ccb5"><rect x="15" y="130" width="150" height="57" rx="9"/><rect x="215" y="130" width="150" height="57" rx="9"/><rect x="415" y="130" width="150" height="57" rx="9"/><rect x="585" y="235" width="140" height="55" rx="9"/></g><g fill="#164e3b" font-size="15" text-anchor="middle" font-weight="600"><text x="90" y="153">Product / outcome</text><text x="90" y="170" font-size="11" font-weight="400">outcome</text><text x="290" y="153">ICP / JTBD</text><text x="290" y="170" font-size="11" font-weight="400">customer and job</text><text x="490" y="153">CVP / difference</text><text x="490" y="170" font-size="11" font-weight="400">value</text><text x="655" y="258">USP / Proof</text><text x="655" y="275" font-size="11" font-weight="400">claim and evidence</text></g><g stroke="#267a5d" stroke-width="2" fill="none" marker-end="url(#method-en-ar)"><path d="M165 158 H215"/><path d="M365 158 H415"/><path d="M565 158 H655 V235"/></g><g fill="#fff0d8" stroke="#c99347" stroke-width="1.5"><polygon points="290,207 331,234 290,261 249,234"/><polygon points="490,207 531,234 490,261 449,234"/><polygon points="655,305 695,332 655,359 615,332"/></g><g fill="#79551d" text-anchor="middle" font-weight="700" font-size="14"><text x="290" y="239">G1</text><text x="490" y="239">G2</text><text x="655" y="337">G3</text></g><g stroke="#267a5d" stroke-width="1.6" fill="none"><path d="M290 187 V207"/><path d="M490 187 V207"/><path d="M655 290 V305"/></g><g stroke="#bc8548" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#method-en-back)"><path d="M249 234 H90 V187"/><path d="M449 234 H395 V118 H290 V130"/><path d="M615 332 H555 V300 H490 V261"/></g><g fill="#a16f35" font-size="11"><text x="106" y="222">return</text><text x="361" y="224">return</text><text x="544" y="319">return</text></g><text x="15" y="377" font-size="12" fill="#5c7568">Solid arrows: dependencies; dashed arrows: targeted review.</text></svg></div><p>MASTER v1.5 simplified reference. Research may run in parallel; the return address depends on the reason for non-compliance.</p><h2>From product to a substantiated market promise</h2><p>Task: substantiate how an offer differs from alternatives and delivers a specific customer outcome.</p><div class="methodNode">Product / outcome + segment / JTBD<small>Define the outcome and a meaningful customer job</small></div><div class="methodGate">↓ G1 · Product–Job Fit</div><div class="methodNode">Alternatives → CVP → differentiators<small>Compare value, alternatives and feasibility of differentiation</small></div><div class="methodGate">↓ G2 · Relevance and feasibility</div><div class="methodNode">USP → Proof Points<small>Connect the claim to verifiable evidence</small></div><div class="methodGate">↓ G3 · Evidence sufficiency</div><div class="methodOutcomes"><div><b>Criteria met</b><p>Continue developing the offer and market test.</p></div><div><b>Criteria not met</b><p>Return to the affected node, qualify the claim or gather evidence.</p></div></div><p>Methodological illustration, not an executed client project or an autonomous engine.</p><a class="methodLink" id="methodRunEn" href="./master-runner.html?lang=en">Try a working gate, return and re-check in MASTER →</a></div><div id="methodRussian" hidden><h2>Граф зависимостей, а не линейная инструкция</h2><p>Контракт узла: <b>входы → операция → выход → критерий принятия → следующий узел / адрес возврата.</b> Четыре исследовательские ветви обеспечивают данные; контрольные точки ограничивают переходы.</p><div class="methodGraph"><svg viewBox="0 0 740 390" role="img" aria-label="Исследовательские ветви компании, рынка, клиентов и конкурентов питают операционные узлы продукта, задачи клиента, ценности и доказательств. Контрольные точки G1, G2, G3 допускают переход либо возвращают к уточнению." style="width:100%;height:auto;display:block"><defs><marker id="method-ru-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#267a5d"/></marker><marker id="method-ru-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#bc8548"/></marker></defs><text x="15" y="19" font-size="12" fill="#567568" font-weight="700">ИССЛЕДОВАТЕЛЬСКИЕ ВХОДЫ</text><g fill="#eaf3ed" stroke="#c8ddcf"><rect x="15" y="30" width="161" height="43" rx="9"/><text x="95" y="56" text-anchor="middle" font-size="14" fill="#174b3a">Компания</text><rect x="198" y="30" width="161" height="43" rx="9"/><text x="278" y="56" text-anchor="middle" font-size="14" fill="#174b3a">Рынок</text><rect x="381" y="30" width="161" height="43" rx="9"/><text x="461" y="56" text-anchor="middle" font-size="14" fill="#174b3a">Клиенты</text><rect x="564" y="30" width="161" height="43" rx="9"/><text x="644" y="56" text-anchor="middle" font-size="14" fill="#174b3a">Конкуренты</text></g><g stroke="#82aa95" stroke-width="1.5" stroke-dasharray="4 4" fill="none"><path d="M95 73 V102 H165"/><path d="M278 73 V120 H165"/><path d="M461 73 V120 H365"/><path d="M644 73 V190 H565"/></g><text x="15" y="106" font-size="12" fill="#567568" font-weight="700">ОПЕРАЦИОННЫЙ МАРШРУТ</text><g fill="#e6f1e9" stroke="#a9ccb5"><rect x="15" y="130" width="150" height="57" rx="9"/><rect x="215" y="130" width="150" height="57" rx="9"/><rect x="415" y="130" width="150" height="57" rx="9"/><rect x="585" y="235" width="140" height="55" rx="9"/></g><g fill="#164e3b" font-size="15" text-anchor="middle" font-weight="600"><text x="90" y="153">Продукт / ЦКП</text><text x="90" y="170" font-size="11" font-weight="400">результат</text><text x="290" y="153">ICP / JTBD</text><text x="290" y="170" font-size="11" font-weight="400">клиент и задача</text><text x="490" y="153">CVP / отличие</text><text x="490" y="170" font-size="11" font-weight="400">ценность</text><text x="655" y="258">УТП / Proof</text><text x="655" y="275" font-size="11" font-weight="400">обещание и основания</text></g><g stroke="#267a5d" stroke-width="2" fill="none" marker-end="url(#method-ru-ar)"><path d="M165 158 H215"/><path d="M365 158 H415"/><path d="M565 158 H655 V235"/></g><g fill="#fff0d8" stroke="#c99347" stroke-width="1.5"><polygon points="290,207 331,234 290,261 249,234"/><polygon points="490,207 531,234 490,261 449,234"/><polygon points="655,305 695,332 655,359 615,332"/></g><g fill="#79551d" text-anchor="middle" font-weight="700" font-size="14"><text x="290" y="239">G1</text><text x="490" y="239">G2</text><text x="655" y="337">G3</text></g><g stroke="#267a5d" stroke-width="1.6" fill="none"><path d="M290 187 V207"/><path d="M490 187 V207"/><path d="M655 290 V305"/></g><g stroke="#bc8548" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#method-ru-back)"><path d="M249 234 H90 V187"/><path d="M449 234 H395 V118 H290 V130"/><path d="M615 332 H555 V300 H490 V261"/></g><g fill="#a16f35" font-size="11"><text x="106" y="222">возврат</text><text x="361" y="224">возврат</text><text x="544" y="319">возврат</text></g><text x="15" y="377" font-size="12" fill="#5c7568">Зелёные стрелки — зависимости и переходы; пунктир — адресный пересмотр.</text></svg></div><p>Упрощённая схема MASTER v1.5. Исследования могут идти параллельно; адрес возврата зависит от причины несоответствия.</p><h2>От продукта к обоснованному рыночному обещанию</h2><p>Задача: доказать отличие предложения от альтернатив и конкретный результат для клиента.</p><div class="methodNode">Продукт / ЦКП + сегмент / JTBD<small>Определить результат и значимую задачу клиента</small></div><div class="methodGate">↓ G1 · Product–Job Fit</div><div class="methodNode">Альтернативы → CVP → дифференциаторы<small>Сопоставить ценность, альтернативы и исполнимость отличия</small></div><div class="methodGate">↓ G2 · Значимость и реализуемость</div><div class="methodNode">УТП → Proof Points<small>Связать обещание с проверяемыми основаниями</small></div><div class="methodGate">↓ G3 · Доказательность</div><div class="methodOutcomes"><div><b>Критерии выполнены</b><p>Продолжить работу над оффером и рыночным тестом.</p></div><div><b>Критерии не выполнены</b><p>Вернуться к затронутому узлу, ослабить утверждение либо собрать доказательства.</p></div></div><p>Демонстрация методологии, не выполненный клиентский проект и не автономный движок.</p><a class="methodLink" id="methodRunRu" href="./master-runner.html?lang=ru">Проверить работающий контроль, возврат и повторную проверку →</a></div></details><section class="scenarios" id="scenarios"></section>
+<div class="layout"><section class="panel">
+<div class="stepbar" id="stepbar"></div><span class="badge" id="phase"></span><h2 id="stageTitle"></h2><p class="muted" id="stageDescription"></p>
+<div class="graph" id="graph"></div><div id="currentResult"></div><div class="controls"><button class="btn" data-action="prev" id="prev"></button><button class="btn primary" data-action="next" id="next"></button><button class="btn" data-action="reset" id="reset"></button></div>
+</section><aside class="panel"><div class="sectiontitle" id="inputsTitle"></div><div id="inputs"></div><div class="sectiontitle" id="evidenceTitle"></div><div id="evidence"></div></aside></div>
+<div class="panel" style="margin-top:15px"><h2 id="resultTitle"></h2><div id="fullResult"></div></div><div class="footer" id="disclaimer"></div>
+</main>
+<script>
+"use strict";
+/* Bounded scenario evaluation based on MASTER operation contracts.
+   All evidence values are synthetic fixtures, never evidence collected from customers.
+   The three simulation rules below do NOT constitute a general decision agent. */
+try{
+ const cleanUrl=new URL(window.location.href);
+ let changed=false;
+ for(const key of [...cleanUrl.searchParams.keys()])if(/^utm_/i.test(key)){cleanUrl.searchParams.delete(key);changed=true}
+ if(changed)window.history.replaceState(null,"",cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
+}catch(e){}
+let lang="en",current=0,phase=0,assessmentOrigin=null,assessmentFocus=null;
+const $=id=>document.getElementById(id),t=(ru,en)=>lang==="ru"?ru:en,idx=()=>lang==="ru"?0:1;
+const fmt=n=>Math.round(n*10)/10;
+const config=[
+{names:["Почему клиенты не покупают?","Why don't customers buy?"],descs:["Поиск причин и корректной следующей проверки","Investigate plausible reasons and appropriate next checks"],ids:["M00","M07","M08","M10","M09","M14"],edges:[["M00","M07"],["M07","M08"],["M07","M10"],["M08","M09"],["M10","M09"],["M09","M14"]]},
+{names:["Как выйти на новый рынок?","How to enter a new market?"],descs:["Сравнение двух сегментов и выбор пилота","Compare two market segments and choose a pilot"],ids:["M00","M04","M05","M06","M10","M11"],edges:[["M00","M04"],["M04","M05"],["M05","M06"],["M04","M10"],["M06","M11"],["M10","M11"]]},
+{names:["Почему клиенты уходят?","Why do customers leave?"],descs:["Новые свидетельства и адресный пересмотр решений","New evidence and targeted decision review"],ids:["M00","M07","M20","M08","M09","M15"],edges:[["M00","M07"],["M07","M20"],["M07","M08"],["M08","M09"],["M20","M09"],["M09","M15"]]}
+];
+const nodeLabels={
+M00:["Паспорт задачи","Problem brief"],M04:["Границы рынка","Market boundaries"],M05:["Ситуации спроса","Demand situations"],M06:["Сегмент / клиент","Customer segment"],M07:["Процесс покупки","Buying process"],M08:["Задача клиента","Customer job"],M09:["Ценность предложения","Value proposition"],M10:["Альтернативы","Alternatives"],M11:["Стратегический выбор","Strategic choice"],M14:["Доказательства","Proof points"],M15:["Предложение","Offer"],M20:["Клиентский опыт","Customer experience"]
+};
+const initial=[
+{choiceMismatch:80,competition:45,awareness:24,price:35},
+{aDemand:90,aAccess:20,aFit:35,bDemand:65,bAccess:78,bFit:88},
+{price:75,service:20,serviceNew:80}
+];
+let input=initial.map(x=>({...x}));
+const stages=[
+[["Запрос и возможные причины","Problem and candidate causes"],["Проверка критериев выбора","Checking buying criteria"],["Сопоставление гипотез","Comparing explanations"],["Вывод и следующая проверка","Conclusion and next check"]],
+[["Запрос о новом рынке","New market request"],["Проверка спроса и доступности","Demand and access checks"],["Сравнение сегментов","Segment comparison"],["Выбор пилота с ограничениями","Pilot recommendation with limits"]],
+[["Исходная гипотеза ухода","Initial churn hypothesis"],["Первоначальный вывод","Provisional conclusion"],["Поступили новые сведения","New evidence arrives"],["Локальный пересмотр и новый вывод","Targeted reassessment"]]
+];
+function values(){return input[current]}
+function evaluate(scenario=current,v=values()){
+ if(scenario===0){
+  const items=[
+   {id:"choice",node:"M08",weight:v.choiceMismatch,name:["Несоответствие критериям выбора","Mismatch with buying criteria"],action:["Проверить критерии выбора в интервью с покупателями","Interview buyers about their choice criteria"]},
+   {id:"competitor",node:"M10",weight:v.competition,name:["Альтернативы покупателей","Buyers' alternatives"],action:["Сравнить реальные заменители и условия","Compare real alternatives and terms"]},
+   {id:"awareness",node:"M07",weight:v.awareness,name:["Недостаток осведомлённости","Awareness gap"],action:["Проверить знание предложения у целевых клиентов","Check awareness among target buyers"]},
+   {id:"price",node:"M09",weight:v.price,name:["Ценовые барьеры","Price barriers"],action:["Проверить условия и воспринимаемую ценность цены","Test terms and perceived pricing value"]}
+  ].sort((a,b)=>b.weight-a.weight);
+  return {items,winner:items[0],runner:items[1],summary:items[0].action,metrics:items.map(x=>({name:x.name[idx()],value:x.weight})),uncertain:items[0].weight-items[1].weight<15};
+ }
+ if(scenario===1){
+  // Frozen Strategy Tool 1.4.1: two distinct axes, NEVER auto-sum or approve by score.
+  // Conservative prototype strength signal = weaker of buying access and product fit; not a normative metric.
+  const A={market:v.aDemand,strength:Math.min(v.aAccess,v.aFit)},B={market:v.bDemand,strength:Math.min(v.bAccess,v.bFit)};
+  const dominance=A.market>B.market&&A.strength>B.strength?"A":B.market>A.market&&B.strength>A.strength?"B":"tradeoff";
+  return {A,B,dominance,uncertain:dominance==="tradeoff"};
+ }
+ // Churn example. The new service evidence supersedes the old service assumption.
+ const initialRank=v.price>=v.service?"price":"service";
+ const finalRank=v.price>=v.serviceNew?"price":"service";
+ const changed=initialRank!==finalRank;
+ return {initialRank,finalRank,changed,invalidated:changed?["M09","M15"]:[],preserved:["M00","M07"],before:{price:v.price,service:v.service},after:{price:v.price,service:v.serviceNew}};
+}
+function graph(){
+ const c=config[current],width=910,height=240;
+ const dep={};for(const id of c.ids){const p=c.edges.filter(e=>e[1]===id).map(e=>e[0]);dep[id]=p.length?Math.max(...p.map(x=>dep[x]))+1:0}
+ const groups={};c.ids.forEach(id=>(groups[dep[id]]??=[]).push(id));
+ const coords={};for(const [col,ids] of Object.entries(groups)){ids.forEach((id,i)=>coords[id]={x:75+Number(col)*155,y:118+(i-(ids.length-1)/2)*95})}
+ const highlight=(current===0?[["M00"],["M07","M08"],["M10","M09"],["M09","M14"]]:current===1?[["M00"],["M04","M05"],["M06","M10"],["M11"]]:[["M00","M07"],["M09"],["M20"],["M09","M15"]])[phase];
+ let html='<svg viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+t("Граф работы MASTER","MASTER workflow graph")+'"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#398763"/></marker></defs>';
+ for(const [a,b] of c.edges){const p=coords[a],q=coords[b];html+='<path d="M'+(p.x+60)+' '+p.y+' C'+(p.x+105)+' '+p.y+' '+(q.x-106)+' '+q.y+' '+(q.x-59)+' '+q.y+'" fill="none" stroke="#428966" stroke-width="2" marker-end="url(#arr)"/>'}
+ for(const id of c.ids){const p=coords[id],on=highlight.includes(id),invalid=current===2&&phase===3&&evaluate().invalidated.includes(id);
+ const color=invalid?"#fff0e1":on?"#d7f0e3":"#f7fbf8",stroke=invalid?"#c3844c":on?"#176b4a":"#cce0d2";
+ const label=nodeLabels[id][idx()].split(" "),lines=[],max=17;let line="";
+ for(const word of label){if((line+" "+word).length>max&&line){lines.push(line);line=word}else line+=(line?" ":"")+word}if(line)lines.push(line);
+ html+='<rect x="'+(p.x-58)+'" y="'+(p.y-31)+'" width="116" height="62" rx="10" fill="'+color+'" stroke="'+stroke+'" stroke-width="'+(on?3:1.3)+'"/><text x="'+p.x+'" y="'+(p.y-14)+'" font-size="11" text-anchor="middle" fill="#227153" font-weight="800">'+id+'</text>';
+ lines.slice(0,2).forEach((word,i)=>{html+='<text x="'+p.x+'" y="'+(p.y+i*14+2)+'" font-size="11" text-anchor="middle" fill="#234b37">'+word+'</text>'});
+ }
+ if(current===2&&phase===3){html+='<text x="705" y="221" font-size="11" fill="#9f602f">'+t("Оранжевые узлы пересматриваются","Orange nodes require review")+'</text>'}
+ return html+"</svg>";
+}
+function metrics(items){return items.map(it=>'<div class="entry"><div><strong>'+(Array.isArray(it.name)?it.name[idx()]:it.name)+'</strong></div><span>'+fmt(it.value??it.weight)+'/100</span></div>').join("")}
+function sourceEvidence(){
+ const v=values(),p=phase,e=evaluate();
+ if(current===0)return [
+  t("Условные сведения: сравнение мотивов выбора покупателей. Значения — демонстрационные сигналы, не вероятности и не выводы из реальных интервью.","Synthetic evidence: comparison of buyer-choice signals. Values are illustrative, not probabilities or findings from actual interviews."),
+  metrics(e.items)
+ ];
+ if(current===1)return [
+  t("Две независимые оси Strategy Tool: привлекательность рынка и наша способность конкурировать. Никакого суммарного балла и автоматического стратегического выбора.","Two separate axes from Strategy Tool: market attractiveness and competitive strength. No combined score or automatic strategic choice."),
+  metrics([{name:t("А: привлекательность рынка","A: market attractiveness"),value:e.A.market},{name:t("А: способность конкурировать","A: competitive strength"),value:e.A.strength},{name:t("Б: привлекательность рынка","B: market attractiveness"),value:e.B.market},{name:t("Б: способность конкурировать","B: competitive strength"),value:e.B.strength}])
+ ];
+ return [
+  t("Исходные сведения: цена "+v.price+", обслуживание "+v.service+". Новое свидетельство об обслуживании: "+v.serviceNew+". Значения условные.","Initial signals: price "+v.price+", service "+v.service+". New service evidence: "+v.serviceNew+". All values are synthetic."),
+  metrics([{name:t("Цена","Price"),value:v.price},{name:t("Обслуживание — раньше","Service — before"),value:v.service},{name:t("Обслуживание — новые данные","Service — new evidence"),value:v.serviceNew}])
+ ];
+}
+function stageResult(){
+ const v=values(),e=evaluate(),p=phase;
+ if(current===0){
+  if(p===0)return {tone:"normal",text:t("MASTER определяет проблему и несколько возможных причин. Падение продаж не доказывает, что нужно увеличивать рекламу.","MASTER frames the problem and candidate causes. Falling sales alone does not justify more advertising.")};
+  if(p===1)return {tone:"normal",text:t("Учитываются критерии выбора, осведомлённость и процесс покупки. Отдельная гипотеза не принимается за факт.","Buying criteria, awareness and purchase steps are compared. A single hypothesis is not treated as fact.")};
+  if(p===2)return {tone:e.uncertain?"warn":"normal",text:t("Наиболее сильный условный сигнал: ","Strongest illustrative signal: ")+e.winner.name[idx()]+" ("+e.winner.weight+"/100). "+t("Следующий по силе: ","Runner-up: ")+e.runner.name[idx()]+" ("+e.runner.weight+"/100)."};
+  return {tone:e.uncertain?"warn":"normal",text:(e.uncertain?t("Близкие сигналы: вывод предварительный. ","Signals are close: conclusion remains provisional. "):"")+t("Следующая проверка: ","Next check: ")+e.winner.action[idx()]+". "+t("Без внешних доказательств не утверждать причину.","Do not assert causality without external evidence.")};
+ }
+ if(current===1){
+  if(p===0)return {tone:"normal",text:t("MASTER ограничивает задачу: новый рынок и два предварительных сегмента. Нужны оценки спроса, доступности и соответствия продукта.","MASTER scopes the market-entry problem and two candidate segments. Demand, access and product fit must be checked.")};
+  if(p===1)return {tone:"normal",text:t("Две оси: рыночная привлекательность и конкурентная сила. Слабейшая из доступности и соответствия продукта — условный сигнал ограничений, не нормативный балл.","Two axes: market attractiveness and competitive strength. The weaker of access and product fit is an illustrative constraint signal, not a normative score.")};
+  if(p===2)return {tone:e.uncertain?"warn":"normal",text:"A: "+e.A.market+"/100 "+t("привлекательность","market appeal")+" · "+e.A.strength+"/100 "+t("сила","strength")+"; B: "+e.B.market+"/100 "+t("привлекательность","market appeal")+" · "+e.B.strength+"/100 "+t("сила","strength")+". "+(e.uncertain?t("Обнаружен компромисс двух осей.","The two axes reveal a trade-off."):t("Один вариант сильнее по обоим сигналам.","One option leads on both signals."))};
+  return {tone:e.uncertain?"warn":"normal",text:e.uncertain?t("Не выбирать сегмент автоматически: сформировать целостные стратегические альтернативы и проверить их на одинаковых критериях в Strategy Tool 6.5–6.6.","Do not auto-select a segment: develop coherent strategies and compare them under the same Strategy Tool 6.5–6.6 criteria."):t("Предварительный ориентир "+e.dominance+" не является утверждённой стратегией. Перейти к целостным альтернативам и ответственному выбору.","A provisional signal favoring "+e.dominance+" is not a strategy approval. Proceed to coherent alternatives and owner decision.")};
+ }
+ if(p===0)return {tone:"normal",text:t("Исходная гипотеза: уход объясняется ","Initial churn hypothesis: ")+(e.initialRank==="price"?t("ценой.","price."):t("обслуживанием.","service."))};
+ if(p===1)return {tone:"normal",text:t("Первоначальная версия решения связана с ","An initial action hypothesis is linked to ")+(e.initialRank==="price"?t("ценовой политикой.","pricing."):t("качеством обслуживания.","service quality."))};
+ if(p===2)return {tone:"warn",text:t("Появились новые условные сведения об обслуживании. MASTER повторно оценивает сравнительную силу причин.","New synthetic evidence about service has arrived. MASTER re-evaluates the competing explanations.")};
+ return {tone:e.changed?"warn":"normal",text:e.changed?t("Версия причины изменилась: теперь сильнее сигнал ","The leading explanation changed: now stronger is ")+(e.finalRank==="service"?t("обслуживания.","service."):t("цены.","price."))+t(" Пересматриваются M09 и M15; M00 и M07 сохраняются."," Reconsider M09 and M15; M00 and M07 remain intact."):t("Основная гипотеза не изменилась. Изменённые данные учтены, но нет основания пересматривать зависимое решение.","The leading hypothesis did not change; no change of the dependent decision is justified.")};
+}
+function inputsUI(){
+ const v=values();let fields=[];
+ if(current===0)fields=[["choiceMismatch",t("Несоответствие критериям","Choice mismatch")],["competition",t("Сила альтернатив","Alternative pressure")],["awareness",t("Недостаток осведомлённости","Awareness gap")],["price",t("Ценовой барьер","Price barrier")]];
+ else if(current===1)fields=[["aDemand",t("A: спрос","A: demand")],["aAccess",t("A: доступность","A: access")],["aFit",t("A: соответствие продукта","A: product fit")],["bDemand",t("B: спрос","B: demand")],["bAccess",t("B: доступность","B: access")],["bFit",t("B: соответствие продукта","B: product fit")]];
+ else fields=[["price",t("Изначально: цена","Initial: price")],["service",t("Изначально: обслуживание","Initial: service")],["serviceNew",t("Новые данные об обслуживании","New service evidence")]];
+ return fields.map(([id,label])=>'<div class="field"><label for="v-'+id+'"><span>'+label+'</span><output id="out-'+id+'">'+v[id]+'</output></label><input type="range" min="0" max="100" step="1" value="'+v[id]+'" data-value="'+id+'" id="v-'+id+'"/></div>').join("")+
+ '<p class="note">'+t("Измените любое значение: граф, выводы и рекомендации пересчитаются. Это условные данные — не статистическая модель причинности.","Change any value to recompute the graph, findings and next actions. Synthetic inputs are not a causal statistical model.")+'</p>';
+}
+function render(){
+ const referral=$("assessmentOrigin");
+ referral.hidden=assessmentOrigin!=="assessment";
+ if(!referral.hidden){
+  const focusLabel=assessmentFocus!==null?"T"+assessmentFocus:"a reported gap";
+  referral.innerHTML='<strong>'+t("Переход от самодиагностики","From your self-assessment")+' · '+focusLabel+'</strong><p>'+t("Вы перешли сюда из выявленного разрыва маркетинговых практик. Ниже — работающий пример MASTER на вымышленных данных. Ответы компании и доказательства автоматически НЕ переданы.","You arrived from a reported marketing-practice gap. The MASTER example below runs on fictional data; your assessment responses and evidence have NOT been transferred automatically.")+'</p><a href="./self-assessment.html?resume=1">'+t("← Вернуться к самодиагностике","← Return to self-assessment")+'</a>';
+ }
+
+ document.documentElement.lang=lang;
+ $("masterReferenceSummary").textContent=t("MASTER · Как устроена методология (статическая схема)","MASTER · How the method works (static reference)");
+ $("methodEnglish").hidden=lang==="ru";$("methodRussian").hidden=lang!=="ru";
+ $("methodRunEn").href="./master-runner.html?lang=en&case="+current;$("methodRunRu").href="./master-runner.html?lang=ru&case="+current;
+ $("language").textContent=lang==="ru"?"EN":"РУС";
+ $("manualLink").textContent=t("Ручной режим MASTER","Manual MASTER workspace");$("manualLink").href="./master-runner.html?lang="+lang+"&case="+current;
+ $("homeLink").textContent=t("← Два способа входа","← Two entry paths");
+ $("eyebrow").textContent=t("ТРИ ПРОВЕРЯЕМЫХ ДЕМОНСТРАЦИОННЫХ СЦЕНАРИЯ","THREE EXECUTABLE ILLUSTRATIVE SCENARIOS");
+ $("title").textContent=t("Посмотрите, как MASTER организует работу","See how MASTER organizes professional work");
+ $("subtitle").textContent=t("Выберите задачу и пройдите её четыре этапа. Система рассчитывает выводы из условных сведений. Измените исходные данные — результат изменится. Все примеры вымышлены.","Choose a problem and explore four stages. The engine computes outputs from fictional inputs. Change the values and observe a different conclusion. All examples are synthetic.");
+ $("scenarios").innerHTML=config.map((c,i)=>'<button class="scenario '+(i===current?"active":"")+'" data-scenario="'+i+'"><b>'+(i+1)+'. '+c.names[idx()]+'</b><span>'+c.descs[idx()]+'</span></button>').join("");
+ $("phase").textContent=t("ЭТАП ","STEP ")+(phase+1)+" / 4";$("stageTitle").textContent=stages[current][phase][idx()];
+ $("stageDescription").textContent=t("Подсвеченные узлы MASTER участвуют в текущей профессиональной операции. Стрелки показывают зависимости.","Highlighted MASTER nodes participate in this operation. Arrows show dependencies.");
+ $("stepbar").innerHTML=Array.from({length:4},(_,i)=>'<i class="'+(i<phase?"done":i===phase?"current":"")+'"></i>').join("");
+ $("graph").innerHTML=graph();
+ $("caseJourney").innerHTML="<strong>"+t("Отдельный пример MASTER · этап ","Standalone MASTER example · step ")+(phase+1)+"/4</strong><p class=\"note\">"+t("Пройдите четыре этапа ниже. Методологическая схема и расширенный режим — справочные материалы.","Complete the four steps below. The methodology and advanced workspace are optional references.")+"</p>";
+ const sr=stageResult();$("currentResult").innerHTML='<div class="result '+(sr.tone==="warn"?"warning":"")+'">'+sr.text+'</div>';
+ $("prev").textContent=t("← Назад","← Back");$("next").textContent=t("Дальше →","Next →");$("reset").textContent=t("Сбросить пример","Reset example");
+ $("prev").disabled=phase===0;$("next").disabled=phase===3;
+ $("inputsTitle").textContent=t("Условные исходные данные","Fictional input data");$("inputs").innerHTML=inputsUI();
+ $("evidenceTitle").textContent=t("Что учитывает система","What the engine considers");
+ const e=sourceEvidence();$("evidence").innerHTML='<p class="note">'+e[0]+'</p>'+e[1];
+ $("resultTitle").textContent=t("Результат текущего расчёта","Current computed outcome");
+ const fin=stageResult();$("fullResult").innerHTML='<div class="summary">'+fin.text+'</div>'+
+ '<div class="path"><span>'+t("Бизнес-задача","Problem")+'</span>→<span>'+t("Операции MASTER","MASTER operations")+'</span>→<span>'+t("Проверка","Verification")+'</span>→<span>'+t("Действие / пересмотр","Action / review")+'</span></div>'+
+ '<p class="small">'+t("Методологическое основание: MASTER v1.5; ID операций сверены с проектом MASTER v2.0 RC5. Пороговые значения и веса — экспериментальная логика демонстрации, не утверждённые нормативы MASTER.","Methodological basis: MASTER v1.5; operation IDs cross-checked with draft MASTER v2.0 RC5. Weights and thresholds are experimental demonstration rules, not approved MASTER standards.")+'</p>';
+ if(phase===3){$("fullResult").innerHTML+='<div class="result"><b>'+t("Пример завершён","Example complete")+'</b><p>'+t("Следующий шаг — проверить гипотезы реальными данными. Этот пример не передаёт результаты в бюджет.","Next: verify the hypotheses with real evidence. This example does not transfer its outputs into a budget.")+'</p><a class="btn" href="./index.html">'+t("Вернуться к выбору маршрута","Return to home")+' →</a> '+(assessmentOrigin?'<a class="btn" href="./self-assessment.html?resume=1">'+t("Назад к результатам оценки","Back to assessment results")+'</a>':"")+'</div>';}
+ $("disclaimer").textContent=t("Важно: система пока не проводит реальные исследования, не извлекает сведения из внешних источников и не подтверждает причинность. Три сценария демонстрируют программную маршрутизацию, сравнение гипотез и пересмотр выводов на вымышленных данных. Реальные решения требуют проверенных доказательств и согласования с предпринимателем.","Important: the prototype does not conduct external research, validate sources or establish causality. These three cases demonstrate executable routing, hypothesis comparison and dependent conclusion review using synthetic data. Real decisions require external evidence and owner approval.");
+}
+function setScenario(n){current=n;phase=0;render()}
+function setValue(k,v){if(Object.hasOwn(values(),k)){values()[k]=Math.max(0,Math.min(100,Number(v)));render()}}
+function go(delta){phase=Math.max(0,Math.min(3,phase+delta));render()}
+function reset(){input[current]={...initial[current]};phase=0;render()}
+function language(){lang=lang==="ru"?"en":"ru";render()}
+document.addEventListener("click",event=>{const el=event.target.closest("[data-scenario],[data-action]");if(!el)return;if(el.dataset.scenario!==undefined)setScenario(Number(el.dataset.scenario));else if(el.dataset.action==="prev")go(-1);else if(el.dataset.action==="next")go(1);else if(el.dataset.action==="reset")reset();else if(el.dataset.action==="language")language()});
+document.addEventListener("input",event=>{const id=event.target?.dataset?.value;if(id)setValue(id,event.target.value)});
+try{const query=String(window.location.search||"");const q=query.match(/[?&]lang=(ru|en)(?:&|$)/)?.[1];if(q)lang=q;const n=query.match(/[?&]case=([012])(?:&|$)/)?.[1];if(n!==undefined)current=Number(n);assessmentOrigin=query.includes("origin=assessment")?"assessment":null;const focus=query.match(/[?&]focus=(\d{1,2})(?:&|$)/)?.[1];if(focus!==undefined&&Number(focus)>=1&&Number(focus)<=13)assessmentFocus=Number(focus)}catch(e){}
+render();
+</script></body></html>
