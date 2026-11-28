@@ -1,0 +1,10 @@
+// Isolated demo state adapter; no UI integration.
+export const KEY="ms-studio-demo-v3";
+const clone=x=>JSON.parse(JSON.stringify(x));
+const object=x=>x!==null&&typeof x==="object"&&!Array.isArray(x);
+export function empty(){return {schemaVersion:3,workspaceId:"demo-industrial",works:{},activeWorkId:null,assessments:[],events:[]}}
+export function load(storage){const raw=storage.getItem(KEY);if(raw===null)return empty();const s=JSON.parse(raw);if(!object(s)||s.schemaVersion!==3||s.workspaceId!=="demo-industrial"||!object(s.works)||!Array.isArray(s.assessments)||!Array.isArray(s.events))throw Error("Invalid demo state");return s}
+export function save(storage,s){if(s.schemaVersion!==3||s.workspaceId!=="demo-industrial")throw Error("Invalid demo namespace");storage.setItem(KEY,JSON.stringify(s))}
+export function importLegacy(storage,s){const next=clone(s),issues=[];for(const [key,id] of [["ms-workspace-v2","W002"],["ms-assessment-v1","W001"]]){if(next.works[id])continue;const raw=storage.getItem(key);if(raw===null)continue;try{const p=JSON.parse(raw);if(id==="W002"){if(!object(p)||!object(p.data)||!["own","a","b"].every(k=>object(p.data[k]))||!Array.isArray(p.history)||!Array.isArray(p.stale))throw Error("Invalid comparison");next.works[id]={id,route:"Q06",status:p.results?"completed":"new",preview:false,payload:clone(p)}}else{if(!object(p)||p.version!==1||!object(p.records)||!Array.isArray(p.target)||p.target.length!==13||typeof p.demo!=="boolean")throw Error("Invalid assessment");if(!p.demo){issues.push(key+": non-demo profile not imported");continue}next.assessments.push({id:"A001",payload:clone(p)});next.works[id]={id,route:"Q25",status:"completed",preview:false,assessmentId:"A001"}}}catch(e){issues.push(key+": "+e.message)}}return {state:next,issues}}
+export function addPreview(s,id,route,request){if(!/^W[0-9]+$/.test(id)||Object.hasOwn(s.works,id))throw Error("Invalid or duplicate work ID");const next=clone(s);next.works[id]={id,route,request,status:"new",preview:true};next.activeWorkId=id;return next}
+export function reset(storage){storage.removeItem(KEY)}
