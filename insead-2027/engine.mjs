@@ -1,0 +1,5 @@
+export function compare(a,b,key){const x=a[key],y=b[key];if(x==null||y==null)return {status:"insufficient",delta:null};if(a.scope!==b.scope)return {status:"conditional",delta:null};return {status:"comparable",delta:x-y};}
+export const sample={own:{price:4800,response:24,visits:4,scope:"annual-industrial"},a:{price:4200,response:48,visits:2,scope:"annual-industrial"},b:{price:5400,response:12,visits:4,scope:"annual-industrial"}};
+export const definitions=[{id:"C01",key:"price",deps:["own.price","b.price","own.scope","b.scope","own.visits","b.visits"]},{id:"C02",key:"response",deps:["own.response","b.response","own.scope","b.scope"]},{id:"C03",key:"price",other:"a",deps:["own.price","a.price","own.scope","a.scope","own.visits","a.visits"]}];
+export function evaluate(data){return definitions.map(d=>{let other=data[d.other||"b"],r=compare(data.own,other,d.key);if(d.key==="price"&&data.own.visits!==other.visits&&r.status==="comparable")r.status="conditional";return {...d,...r};});}
+export function affected(path){let ids=definitions.filter(d=>d.deps.includes(path)).map(d=>d.id);return [...ids,...(ids.includes("C02")?["H01"]:[])];}
